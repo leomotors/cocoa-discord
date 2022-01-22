@@ -21,7 +21,9 @@ export async function syncCommands(
             futures.push(syncGuild(commands, client, guild));
         } else {
             console.log(
-                chalk.yellow(`[Slash Sync WARN]: Guild ${guild_id} not found`)
+                chalk.yellow(
+                    `[Slash Sync WARN]: Guild ${guild_id} not found, please confirm the guild ids, permissions and make sure this function is called after the client is ready.`
+                )
             );
         }
     }
@@ -93,32 +95,3 @@ async function syncGuild(
         );
     }
 }
-
-// temp
-import { Intents } from "discord.js";
-const client = new Client({
-    intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Intents.FLAGS.DIRECT_MESSAGES,
-        Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-    ],
-});
-
-const guild = client.guilds.cache.get("827812873363128351");
-guild?.commands.create({
-    name: "test",
-    description: "Start Netflix",
-});
-
-syncCommands(
-    [
-        {
-            name: "test",
-            description: "Start Netflix",
-        },
-    ],
-    client,
-    ["827812873363128351"]
-);

@@ -38,7 +38,7 @@ export class SlashCenter {
         await syncCommands(commandData, this.client, this.guild_ids);
     }
 
-    handleInteraction(interaction: CommandInteraction) {
+    private async handleInteraction(interaction: CommandInteraction) {
         const cmdname = interaction.commandName;
         for (const cog of this.cogs) {
             if (cog.commands[cmdname]) {
