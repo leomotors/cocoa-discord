@@ -30,9 +30,6 @@ jobs:
       - name: Install Dependencies (Yarn)
         run: yarn install
 
-      - name: Run Config
-        run: yarn config:pkg
-
       - name: Build documentation
         run: yarn docs
 
