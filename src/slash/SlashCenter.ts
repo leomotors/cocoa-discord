@@ -42,7 +42,15 @@ export class SlashCenter {
         const cmdname = interaction.commandName;
         for (const cog of this.cogs) {
             if (cog.commands[cmdname]) {
-                cog.commands[cmdname].func(interaction);
+                try {
+                    await cog.commands[cmdname].func(interaction);
+                } catch (error) {
+                    console.log(
+                        chalk.red(
+                            `[Slash Command: ${cmdname} ERROR] : ${error}`
+                        )
+                    );
+                }
                 return;
             }
         }

@@ -2,6 +2,7 @@ import chalk from "chalk";
 import {
     ApplicationCommand,
     ApplicationCommandData,
+    ApplicationCommandDataResolvable,
     ChatInputApplicationCommandData,
     Client,
     Guild,
@@ -10,7 +11,7 @@ import {
 type CAC = ChatInputApplicationCommandData;
 
 export async function syncCommands(
-    commands: ApplicationCommandData[],
+    commands: ApplicationCommandDataResolvable[],
     client: Client,
     guild_ids: string[]
 ) {
@@ -34,7 +35,7 @@ export async function syncCommands(
 }
 
 async function syncGuild(
-    commands: ApplicationCommandData[],
+    commands: ApplicationCommandDataResolvable[],
     client: Client,
     guild: Guild
 ) {
@@ -82,11 +83,17 @@ async function syncGuild(
                 modified = true;
 
             if (modified) {
-                await previousCommand.edit(newCommand);
+                await previousCommand.edit(
+                    newCommand as ApplicationCommandData
+                );
             }
         }
 
-        console.log(`[Slash Sync DONE]: ${guild.name}`);
+        console.log(
+            chalk.green(
+                `[Slash Sync DONE]: Syncing commands in ${guild.name} finished`
+            )
+        );
     } catch (error) {
         console.log(
             chalk.red(

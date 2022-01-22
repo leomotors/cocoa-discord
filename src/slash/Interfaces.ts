@@ -1,8 +1,11 @@
-import { ApplicationCommandData, CommandInteraction } from "discord.js";
+import {
+    ApplicationCommandDataResolvable,
+    CommandInteraction,
+} from "discord.js";
 
 export interface CocoaSlash {
-    func: (interaction: CommandInteraction) => void;
-    command: ApplicationCommandData;
+    command: ApplicationCommandDataResolvable;
+    func: (interaction: CommandInteraction) => Promise<void>;
 }
 
 export interface Cog {

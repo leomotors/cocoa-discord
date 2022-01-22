@@ -1,0 +1,43 @@
+# * https://github.com/discordjs/voice/blob/main/.github/workflows/docs.yml
+
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs:
+    strategy:
+      matrix:
+        node: ['16']
+
+    name: Documentation (Node v${{ matrix.node }})
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node v${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Yarn Cache
+        uses: c-hive/gha-yarn-cache@v2
+
+      - name: Install Dependencies (Yarn)
+        run: yarn install
+
+      - name: Run Config
+        run: yarn config:pkg
+
+      - name: Build documentation
+        run: yarn docs
+
+      - name: Deploy documentation
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: docs
