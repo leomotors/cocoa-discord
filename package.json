@@ -30,7 +30,7 @@
   "typesVersions": {
     "*": {
       "*": [
-        "dist/index.d.ts"
+        "./dist/index.d.ts"
       ],
       "slash": [
         "./dist/slash/index.d.ts"

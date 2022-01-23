@@ -19,3 +19,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION_MUST_INCREASE: true
+          RELEASE_ON_KEYWORD: ${{ github.event.commits[0].message }}
