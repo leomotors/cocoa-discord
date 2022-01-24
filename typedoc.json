@@ -1,6 +1,7 @@
 {
     "entryPoints": [
         "./src/index.ts",
+        "./src/meta/index.ts",
         "./src/slash/index.ts"
     ]
 }

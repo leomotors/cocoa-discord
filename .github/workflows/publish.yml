@@ -18,6 +18,7 @@ jobs:
         uses: Leomotors/auto-publish-release@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TITLE: "Cocoa Discord Utils {VERSION}"
           VERSION_MUST_INCREASE: true
           RELEASE_ON_KEYWORD: ${{ github.event.commits[0].message }}
           ALWAYS_GENERATE_NOTES: true
