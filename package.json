@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -8,29 +8,34 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "tsc -p .",
+    "build": "yarn lm:config && tsc -p .",
     "clean": "rimraf dist",
     "cb": "yarn clean && yarn build",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "lm:config": "lm-config src/meta/generated.ts"
   },
   "devDependencies": {
-    "leomotors-automation": "^2.0.1",
+    "leomotors-automation": "^3.0.0",
     "typedoc": "^0.22.11",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "chalk": "^5.0.0",
-    "discord.js": "^13.6.0",
-    "rimraf": "^3.0.2"
+    "discord.js": "^13.6.0"
   },
   "exports": {
     ".": "./dist/index.js",
+    "./meta": "./dist/meta/index.js",
     "./slash": "./dist/slash/index.js"
   },
   "typesVersions": {
     "*": {
       "*": [
         "./dist/index.d.ts"
+      ],
+      "meta": [
+        "./dist/meta/index.d.ts"
       ],
       "slash": [
         "./dist/slash/index.d.ts"

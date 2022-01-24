@@ -11,6 +11,6 @@ export interface CocoaSlash {
 export interface Cog {
     name: string;
     commands: {
-        [key: string]: CocoaSlash;
+        [commandName: string]: CocoaSlash;
     };
 }

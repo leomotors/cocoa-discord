@@ -30,6 +30,9 @@ jobs:
       - name: Install Dependencies (Yarn)
         run: yarn install
 
+      - name: Run lm-config
+        run: yarn lm:config
+
       - name: Build documentation
         run: yarn docs
 

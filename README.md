@@ -6,11 +6,24 @@ This package contains many utilities that made especially by me to make my bots
 
 ## 🛍️ Subpackages
 
-- Index: Miscellanous
+### / (index)
 
-- Slash: Slash Command Management
+Miscellanous, consists of many utility classes
 
-- Message: Message Command Management (Planned)
+### /meta [Working on]
+
+Info Stuff, ex. Utils Version, Device Info, etc.
+
+### /slash
+
+Slash Command Management
+
+### /message [Planned]
+
+Message Command Management
+
+**Note**: Command Management is inspired by discord.py's cogs system. The implementations
+are not exactly identical as there are limits in JavaScript, ex. Decorators.
 
 ## ✍️ Discord Bots that use this Package a.k.a. Examples
 

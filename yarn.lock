@@ -161,10 +161,10 @@ jsonc-parser@^3.0.0:
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"
   integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
 
-leomotors-automation@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/leomotors-automation/-/leomotors-automation-2.0.1.tgz#64cd142683ce3f05324b9d51a1e582761914e811"
-  integrity sha512-AZfc11Un9RPib60x1I+MEiJ1KybMDEp2tGtPue37Vl9ZdgS6tmwSxDC+fYmBaNOraMcgpaOPZ4K1SzYUzFqscA==
+leomotors-automation@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/leomotors-automation/-/leomotors-automation-3.0.0.tgz#e31f729903f3d330264d4f184ebc128c33d55abf"
+  integrity sha512-cwVv/30BpCko4ErQSCz/gefHSwaEVFZG/FV50Ilie79R+DcTWNC7xx9Ti/rIgrSHeTmeEfOszDin9D4vKnKSTg==
 
 lunr@^2.3.9:
   version "2.3.9"
