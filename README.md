@@ -14,13 +14,13 @@ Miscellanous, consists of many utility classes
 
 Info Stuff, ex. Utils Version, Device Info, etc.
 
-### /slash
-
-Slash Command Management
-
 ### /message [Planned]
 
 Message Command Management
+
+### /slash
+
+Slash Command Management
 
 **Note**: Command Management is inspired by discord.py's cogs system. The implementations
 are not exactly identical as there are limits in JavaScript, ex. Decorators.
@@ -33,6 +33,9 @@ are not exactly identical as there are limits in JavaScript, ex. Decorators.
 
 If you wish for examples, see above repositories
 
-## 📚 Documents
+## 📚 Documentation
 
 [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
+
+**Note**: There is no Type Check in this package. To avoid unexpected behavior,
+please use TypeScript or activate @ts-check on JavaScript.

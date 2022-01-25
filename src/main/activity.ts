@@ -8,26 +8,26 @@ import { Loader } from "./classes/loader";
 const _5min = 5 * 60 * 1000;
 
 export async function useActivity(
-    client: Client,
+    client: Client<true>,
     loader: Loader<ActivityOptions>,
     interval = _5min
 ) {
     await loader.initialPromise;
-    client.user?.setActivity(loader.getRandom());
+    client.user.setActivity(loader.getRandom());
     setInterval(() => {
-        client.user?.setActivity(loader.getRandom());
+        client.user.setActivity(loader.getRandom());
     }, interval);
 }
 
 export async function useActivityGroup(
-    client: Client,
+    client: Client<true>,
     loader: ActivityGroupLoader,
     interval = _5min
 ) {
     await loader.initialPromise;
-    client.user?.setActivity(loader.getBuiltRandom());
+    client.user.setActivity(loader.getBuiltRandom());
     setInterval(() => {
-        client.user?.setActivity(loader.getBuiltRandom());
+        client.user.setActivity(loader.getBuiltRandom());
     }, interval);
 }
 

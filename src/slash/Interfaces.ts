@@ -10,7 +10,10 @@ export interface CocoaSlash {
 
 export interface Cog {
     name: string;
+    description?: string;
     commands: {
         [commandName: string]: CocoaSlash;
     };
 }
+
+export type CogSlash = Cog;

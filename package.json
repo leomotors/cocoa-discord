@@ -14,6 +14,10 @@
     "docs": "typedoc",
     "lm:config": "lm-config src/meta/generated.ts"
   },
+  "keywords": [
+    "discord-bot",
+    "slash-commands"
+  ],
   "devDependencies": {
     "leomotors-automation": "^3.0.0",
     "typedoc": "^0.22.11",
@@ -26,6 +30,7 @@
   },
   "exports": {
     ".": "./dist/index.js",
+    "./message": "./dist/message/index.js",
     "./meta": "./dist/meta/index.js",
     "./slash": "./dist/slash/index.js"
   },
@@ -33,6 +38,9 @@
     "*": {
       "*": [
         "./dist/index.d.ts"
+      ],
+      "message": [
+        "./dist/message/index.d.ts"
       ],
       "meta": [
         "./dist/meta/index.d.ts"

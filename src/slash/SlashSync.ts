@@ -12,7 +12,7 @@ type CAC = ChatInputApplicationCommandData;
 
 export async function syncCommands(
     commands: ApplicationCommandDataResolvable[],
-    client: Client,
+    client: Client<true>,
     guild_ids: string[]
 ) {
     const futures = [];

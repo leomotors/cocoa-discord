@@ -26,7 +26,17 @@ export class SlashCenter {
         this.cogs.push(cog);
     }
 
+    addCogs(...cogs: Cog[]) {
+        this.cogs.push(...cogs);
+    }
+
     async syncCommands() {
+        if (!this.client.isReady()) {
+            throw Error(
+                "FATAL ERROR: SyncCommands must be called after Client is Ready"
+            );
+        }
+
         const commandData = [];
         for (const cog of this.cogs) {
             for (const commandName in cog.commands) {
