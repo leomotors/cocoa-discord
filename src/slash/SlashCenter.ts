@@ -1,16 +1,16 @@
 import chalk from "chalk";
-import { assert } from "console";
 import { Client, CommandInteraction, Interaction } from "discord.js";
-import { NonEmptyArray } from "../shared";
+
 import { Cog } from "./Interfaces";
 import { syncCommands } from "./SlashSync";
 
 export class SlashCenter {
     private readonly client: Client;
-    private readonly guild_ids: NonEmptyArray<string>;
+    private readonly guild_ids: string[];
     private cogs: Cog[] = [];
+    private validated = false;
 
-    constructor(client: Client, guild_ids: NonEmptyArray<string>) {
+    constructor(client: Client, guild_ids: string[]) {
         this.client = client;
         this.guild_ids = guild_ids;
 
@@ -32,12 +32,22 @@ export class SlashCenter {
         this.cogs.push(...cogs);
     }
 
+    /**
+     * Sync Slash Commands, Call this **ONLY** after client is ready
+     */
     async syncCommands() {
         if (!this.client.isReady()) {
             throw Error(
                 "FATAL ERROR: SyncCommands must be called after Client is Ready"
             );
         }
+
+        if (!this.validated)
+            console.log(
+                chalk.yellow(
+                    "[Slash Center WARN]: Please validate command using .validateCommands() before syncing"
+                )
+            );
 
         const commandData = [];
         for (const cog of this.cogs) {
@@ -71,6 +81,12 @@ export class SlashCenter {
         );
     }
 
+    /**
+     * No multiple Cogs should have same name,
+     * and `Cog.commands` key and value must be the same command name
+     *
+     * This function will ensure that and should be called right before syncing commands
+     */
     validateCommands() {
         const cogNames = [];
         for (const cog of this.cogs) {
@@ -84,5 +100,7 @@ export class SlashCenter {
         if (new Set(cogNames).size !== cogNames.length) {
             throw Error("Duplicate cog names");
         }
+
+        this.validated = true;
     }
 }

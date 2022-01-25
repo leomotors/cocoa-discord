@@ -22,6 +22,10 @@ Message Command Management
 
 Slash Command Management
 
+### /template
+
+Frequently used stuff
+
 **Note**: Command Management is inspired by discord.py's cogs system. The implementations
 are not exactly identical as there are limits in JavaScript, ex. Decorators.
 

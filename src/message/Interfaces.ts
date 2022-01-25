@@ -9,6 +9,10 @@ export interface CocoaMessageCommandOptions {
 
 export interface CocoaMessage {
     command: CocoaMessageCommandOptions;
+    /**
+     * @param message - Message Object (Unmodified)
+     * @param strippedContent - message.content with no mentions and prefixes
+     */
     func: (message: Message, strippedContent: string) => Promise<void>;
 }
 

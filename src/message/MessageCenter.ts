@@ -1,22 +1,31 @@
 import chalk from "chalk";
-import { assert } from "console";
 import { Client, Message } from "discord.js";
 
 import { CogMessage } from "./Interfaces";
 import { NonEmptyArray } from "../shared";
 
 export type MessageCriteria =
-    | ({
-          // * https://stackoverflow.com/a/49910890
-          prefixes: NonEmptyArray<string>;
-      } & { mention?: false })
+    | ({ prefixes: NonEmptyArray<string> } & { mention?: false })
     | ({ mention: true } & { prefixes?: undefined });
 
 export class MessageCenter {
     private readonly client: Client;
     private readonly criteria: MessageCriteria;
     private cogs: CogMessage[] = [];
+    private validated = false;
 
+    /**
+     * @param client - You know what this is
+     * @param criteria - this may look complex but it basically means either
+     * ```js
+     * { mention: true }
+     * ```
+     * or
+     * ```js
+     * { prefixes: ["!", ...] }
+     * ```
+     * The prefixes can be anything as long as it is **not empty** string array
+     */
     constructor(client: Client, criteria: MessageCriteria) {
         this.client = client;
         this.criteria = criteria;
@@ -30,6 +39,18 @@ export class MessageCenter {
 
                 if (suffix) this.handleMessage(message, suffix);
             }).bind(this)
+        );
+
+        setTimeout(
+            (() => {
+                if (!this.validated)
+                    console.log(
+                        chalk.yellow(
+                            "[Message Center WARN]: Please validate command using .validateCommands()"
+                        )
+                    );
+            }).bind(this),
+            5000
         );
     }
 
@@ -47,7 +68,10 @@ export class MessageCenter {
                 `<@[!&#]{0,}${this.client.user!.id}>`,
                 "g"
             );
-            return message.content.replace(regex, "");
+            const st = message.content.replace(regex, "");
+            let sp = 0;
+            while (st[sp] == " ") sp++;
+            return st.slice(sp);
         }
 
         if (this.criteria.prefixes) {
@@ -59,8 +83,8 @@ export class MessageCenter {
         }
     }
 
-    private async handleMessage(message: Message, content: string) {
-        const msgToken = content.split(" ");
+    private async handleMessage(message: Message, strp: string) {
+        const msgToken = strp.split(" ");
         const cmdName = msgToken[0];
 
         for (const cog of this.cogs) {
@@ -102,6 +126,12 @@ export class MessageCenter {
         }
     }
 
+    /**
+     * No multiple Cogs should have same name,
+     * and `Cog.commands` key and value must be the same command name
+     *
+     * This function will ensure that and should be called after all cogs are added
+     */
     validateCommands() {
         const cogNames = [];
         for (const cog of this.cogs) {
@@ -114,5 +144,7 @@ export class MessageCenter {
 
         if (new Set(cogNames).size !== cogNames.length)
             throw Error("Duplicate cog names");
+
+        this.validated = true;
     }
 }

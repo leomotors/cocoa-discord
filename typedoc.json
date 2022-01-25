@@ -3,6 +3,7 @@
         "./src/main/index.ts",
         "./src/message/index.ts",
         "./src/meta/index.ts",
-        "./src/slash/index.ts"
+        "./src/slash/index.ts",
+        "./src/template/index.ts"
     ]
 }
