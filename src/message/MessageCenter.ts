@@ -1,12 +1,12 @@
 import chalk from "chalk";
 import { Client, Message } from "discord.js";
 
-import { CogMessage, UnemptyArray } from "./Interfaces";
+import { CogMessage, NonEmptyArray } from "./Interfaces";
 
 export type MessageCriteria =
     | ({
           // * https://stackoverflow.com/a/49910890
-          prefixes: UnemptyArray<string>;
+          prefixes: NonEmptyArray<string>;
       } & { mention?: false })
     | ({ mention: true } & { prefixes?: undefined });
 

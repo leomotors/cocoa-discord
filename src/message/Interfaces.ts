@@ -1,10 +1,10 @@
 import { Message } from "discord.js";
 
-export type UnemptyArray<T> = T[] & { 0: T };
+export type NonEmptyArray<T> = T[] & { 0: T };
 
 export interface CocoaMessageCommandOptions {
     name: string;
-    aliases?: UnemptyArray<string>;
+    aliases?: NonEmptyArray<string>;
     description?: string;
 }
 
