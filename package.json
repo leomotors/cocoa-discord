@@ -12,7 +12,7 @@
     "cb": "yarn clean && yarn build",
     "docs": "typedoc",
     "lm:config": "lm-config src/meta/generated.ts",
-    "test": "mocha -r ts-node/register --exit \"tests/index.spec.ts\""
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"resolveJsonModule\":true}' mocha -r ts-node/register --exit tests/index.spec.ts"
   },
   "keywords": [
     "discord-bot",
