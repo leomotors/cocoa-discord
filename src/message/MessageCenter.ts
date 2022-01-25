@@ -1,7 +1,9 @@
 import chalk from "chalk";
+import { assert } from "console";
 import { Client, Message } from "discord.js";
 
-import { CogMessage, NonEmptyArray } from "./Interfaces";
+import { CogMessage } from "./Interfaces";
+import { NonEmptyArray } from "../shared";
 
 export type MessageCriteria =
     | ({
@@ -41,7 +43,11 @@ export class MessageCenter {
 
     private checkCriteria(message: Message): string | undefined {
         if (this.criteria.mention) {
-            return message.content.replace(/<@[!&#]{0,}[0-9]+>/g, "");
+            const regex = new RegExp(
+                `<@[!&#]{0,}${this.client.user!.id}>`,
+                "g"
+            );
+            return message.content.replace(regex, "");
         }
 
         if (this.criteria.prefixes) {
@@ -94,5 +100,19 @@ export class MessageCenter {
                 }
             }
         }
+    }
+
+    validateCommands() {
+        const cogNames = [];
+        for (const cog of this.cogs) {
+            cogNames.push(cog.name);
+            for (const [name, cmd] of Object.entries(cog.commands)) {
+                if (name != cmd.command.name)
+                    throw Error("Command name mismatch");
+            }
+        }
+
+        if (new Set(cogNames).size !== cogNames.length)
+            throw Error("Duplicate cog names");
     }
 }

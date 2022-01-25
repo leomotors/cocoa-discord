@@ -1,6 +1,5 @@
 import { Message } from "discord.js";
-
-export type NonEmptyArray<T> = T[] & { 0: T };
+import { NonEmptyArray } from "../shared";
 
 export interface CocoaMessageCommandOptions {
     name: string;

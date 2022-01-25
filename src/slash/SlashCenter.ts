@@ -1,14 +1,16 @@
 import chalk from "chalk";
+import { assert } from "console";
 import { Client, CommandInteraction, Interaction } from "discord.js";
+import { NonEmptyArray } from "../shared";
 import { Cog } from "./Interfaces";
 import { syncCommands } from "./SlashSync";
 
 export class SlashCenter {
     private readonly client: Client;
-    private readonly guild_ids: string[];
+    private readonly guild_ids: NonEmptyArray<string>;
     private cogs: Cog[] = [];
 
-    constructor(client: Client, guild_ids: string[]) {
+    constructor(client: Client, guild_ids: NonEmptyArray<string>) {
         this.client = client;
         this.guild_ids = guild_ids;
 
@@ -67,5 +69,20 @@ export class SlashCenter {
         console.log(
             chalk.red(`[Slash Center ERROR]: Unknown command ${cmdname}`)
         );
+    }
+
+    validateCommands() {
+        const cogNames = [];
+        for (const cog of this.cogs) {
+            cogNames.push(cog.name);
+            for (const [name, cmd] of Object.entries(cog.commands)) {
+                if (name != cmd.command.name)
+                    throw Error("Command name mismatch");
+            }
+        }
+
+        if (new Set(cogNames).size !== cogNames.length) {
+            throw Error("Duplicate cog names");
+        }
     }
 }
