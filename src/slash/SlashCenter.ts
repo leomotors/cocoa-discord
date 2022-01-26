@@ -85,7 +85,7 @@ export class SlashCenter {
      * No multiple Cogs should have same name,
      * and `Cog.commands` key and value must be the same command name
      *
-     * This function will ensure that and should be called right before syncing commands
+     * This function will ensure that and should be called after all cogs are added and **before** syncing commands
      */
     validateCommands() {
         const cogNames = [];

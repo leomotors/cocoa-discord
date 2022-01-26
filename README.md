@@ -14,7 +14,7 @@ Miscellanous, consists of many utility classes
 
 Info Stuff, ex. Utils Version, Device Info, etc.
 
-### /message [Planned]
+### /message
 
 Message Command Management
 

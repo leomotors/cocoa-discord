@@ -41,6 +41,8 @@ async function syncGuild(
 ) {
     // * Modified From https://github.com/Androz2091/discord-sync-commands
     try {
+        const start = new Date().getTime();
+        console.log(`[Slash Sync] Begin syncing commands for ${guild.name}`);
         const currentCommands = await client.application!.commands.fetch({
             guildId: guild.id,
         })!;
@@ -91,7 +93,9 @@ async function syncGuild(
 
         console.log(
             chalk.green(
-                `[Slash Sync DONE]: Syncing commands in ${guild.name} finished`
+                `[Slash Sync DONE]: Syncing commands in ${
+                    guild.name
+                } finished, used ${Math.round(new Date().getTime() - start)} ms`
             )
         );
     } catch (error) {

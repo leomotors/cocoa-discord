@@ -7,6 +7,9 @@ import { Loader } from "./classes/loader";
 
 const _5min = 5 * 60 * 1000;
 
+/**
+ * @important This function **must** be called **AFTER** client is ready
+ */
 export async function useActivity(
     client: Client<true>,
     loader: Loader<ActivityOptions>,
@@ -19,6 +22,9 @@ export async function useActivity(
     }, interval);
 }
 
+/**
+ * @important This function **must** be called **AFTER** client is ready
+ */
 export async function useActivityGroup(
     client: Client<true>,
     loader: ActivityGroupLoader,
