@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "1.0.0-pre.3",
+  "version": "1.0.0-pre.5",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -33,8 +33,10 @@
   "exports": {
     ".": "./dist/main/index.js",
     "./message": "./dist/message/index.js",
+    "./message/class": "./dist/message/class/index.js",
     "./meta": "./dist/meta/index.js",
     "./slash": "./dist/slash/index.js",
+    "./slash/class": "./dist/slash/class/index.js",
     "./template": "./dist/template/index.js"
   },
   "typesVersions": {
@@ -45,11 +47,17 @@
       "message": [
         "./dist/message/index.d.ts"
       ],
+      "message/class": [
+        "./dist/message/class/index.d.ts"
+      ],
       "meta": [
         "./dist/meta/index.d.ts"
       ],
       "slash": [
         "./dist/slash/index.d.ts"
+      ],
+      "slash/class": [
+        "./dist/slash/class/index.d.ts"
       ],
       "template": [
         "./dist/template/index.d.ts"

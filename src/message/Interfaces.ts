@@ -16,10 +16,12 @@ export interface CocoaMessage {
     func: (message: Message, strippedContent: string) => Promise<void>;
 }
 
+export type commandsDict = {
+    [commandName: string]: CocoaMessage;
+};
+
 export interface CogMessage {
     name: string;
     description?: string;
-    commands: {
-        [commandName: string]: CocoaMessage;
-    };
+    commands: commandsDict;
 }

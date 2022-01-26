@@ -4,6 +4,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre.3 is not available here
 
+## [1.0.0-pre.5] - 2022-01-26
+
+- I forgot
+
 ## [1.0.0-pre.2] - 2022-01-25
 
 - Removed Unit Test, Because Mocha does not like ESModule, Muck ESModule

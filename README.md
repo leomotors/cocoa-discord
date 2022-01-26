@@ -26,14 +26,22 @@ Slash Command Management
 
 Frequently used stuff
 
-**Note**: Command Management is inspired by discord.py's cogs system. The implementations
-are not exactly identical as there are limits in JavaScript, ex. Decorators.
+**Note**: Command Management is inspired by discord.py's cogs system. 
+There are two implementations, one that are different, focuses on concept of
+one function per file. And the other one, that is more like discord.py's cogs.
+
+### Experimental Modules
+
+To use Class Cog (with Decorators like discord.py), import them from /message/class
+or /slash/class.
+
+Note that Decorators are complex and I achieve this using *dark magic*
 
 ## ✍️ Discord Bots that use this Package a.k.a. Examples
 
 - [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
 
-- [Harunon JS](https://github.com/CarelessDev/harunon.js) (Coming Soon)
+- [Harunon JS](https://github.com/CarelessDev/harunon.js) (Working on)
 
 If you wish for examples, see above repositories
 

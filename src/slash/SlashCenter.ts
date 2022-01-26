@@ -1,7 +1,9 @@
 import chalk from "chalk";
 import { Client, CommandInteraction, Interaction } from "discord.js";
 
+import { CogClass } from "./class";
 import { Cog } from "./Interfaces";
+import { NonEmptyArray } from "../shared";
 import { syncCommands } from "./SlashSync";
 
 export class SlashCenter {
@@ -24,11 +26,11 @@ export class SlashCenter {
         );
     }
 
-    addCog(cog: Cog) {
+    addCog(cog: Cog | CogClass) {
         this.cogs.push(cog);
     }
 
-    addCogs(...cogs: Cog[]) {
+    addCogs(...cogs: NonEmptyArray<Cog | CogClass>) {
         this.cogs.push(...cogs);
     }
 
@@ -82,16 +84,20 @@ export class SlashCenter {
     }
 
     /**
-     * No multiple Cogs should have same name,
+     * No multiple Cogs or commands should have same name,
      * and `Cog.commands` key and value must be the same command name
      *
-     * This function will ensure that and should be called after all cogs are added and **before** syncing commands
+     * This function will ensure that and should be called after all cogs are added
+     * and **before** syncing slash commands
      */
     validateCommands() {
         const cogNames = [];
+        const cmdNames = [];
         for (const cog of this.cogs) {
             cogNames.push(cog.name);
+            if (cog instanceof CogClass) continue;
             for (const [name, cmd] of Object.entries(cog.commands)) {
+                cmdNames.push(name);
                 if (name != cmd.command.name)
                     throw Error("Command name mismatch");
             }
@@ -99,6 +105,10 @@ export class SlashCenter {
 
         if (new Set(cogNames).size !== cogNames.length) {
             throw Error("Duplicate cog names");
+        }
+
+        if (new Set(cmdNames).size !== cmdNames.length) {
+            throw Error("Duplicate command names");
         }
 
         this.validated = true;

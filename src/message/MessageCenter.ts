@@ -3,6 +3,7 @@ import { Client, Message } from "discord.js";
 
 import { CogMessage } from "./Interfaces";
 import { NonEmptyArray } from "../shared";
+import { CogMessageClass } from "./class";
 
 export type MessageCriteria =
     | ({ prefixes: NonEmptyArray<string> } & { mention?: false })
@@ -54,11 +55,11 @@ export class MessageCenter {
         );
     }
 
-    addCog(cog: CogMessage) {
+    addCog(cog: CogMessage | CogMessageClass) {
         this.cogs.push(cog);
     }
 
-    addCogs(...cogs: CogMessage[]) {
+    addCogs(...cogs: NonEmptyArray<CogMessage | CogMessageClass>) {
         this.cogs.push(...cogs);
     }
 
@@ -127,16 +128,18 @@ export class MessageCenter {
     }
 
     /**
-     * No multiple Cogs should have same name,
+     * No multiple Cogs or commands should have same name,
      * and `Cog.commands` key and value must be the same command name
      *
      * This function will ensure that and should be called after all cogs are added
      */
     validateCommands() {
         const cogNames = [];
+        const cmdNames = [];
         for (const cog of this.cogs) {
             cogNames.push(cog.name);
             for (const [name, cmd] of Object.entries(cog.commands)) {
+                cmdNames.push(name);
                 if (name != cmd.command.name)
                     throw Error("Command name mismatch");
             }
@@ -144,6 +147,10 @@ export class MessageCenter {
 
         if (new Set(cogNames).size !== cogNames.length)
             throw Error("Duplicate cog names");
+
+        if (new Set(cmdNames).size !== cmdNames.length) {
+            throw Error("Duplicate command names");
+        }
 
         this.validated = true;
     }
