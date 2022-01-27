@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-import { CocoaSlash, commandsDict, Cog } from "..";
+import { CocoaSlash, commandsDict, CogSlash } from "..";
 
 const muckStorage: { [cogName: string]: commandsDict } = {};
 
@@ -9,7 +9,7 @@ const muckStorage: { [cogName: string]: commandsDict } = {};
  *
  * Or in normal people's word, This is experimental
  */
-export abstract class CogClass implements Cog {
+export abstract class CogClass implements CogSlash {
     name: string;
     description?: string;
     commands: commandsDict;

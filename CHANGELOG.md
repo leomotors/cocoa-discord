@@ -2,7 +2,7 @@
 
 All notables change for Cocoa Discord Utils will be noted here
 
-**Note**: Changelog before 1.0.0-pre.3 is not available here
+**Note**: Changelog before 1.0.0-pre is not available here
 
 ## [1.0.0-pre.5] - 2022-01-26
 

@@ -65,10 +65,7 @@ export class MessageCenter {
 
     private checkCriteria(message: Message): string | undefined {
         if (this.criteria.mention) {
-            const regex = new RegExp(
-                `<@[!&#]{0,}${this.client.user!.id}>`,
-                "g"
-            );
+            const regex = new RegExp(` *<@!*${this.client.user!.id}>`, "g");
             const st = message.content.replace(regex, "");
             let sp = 0;
             while (st[sp] == " ") sp++;

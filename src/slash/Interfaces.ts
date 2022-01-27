@@ -12,10 +12,13 @@ export type commandsDict = {
     [commandName: string]: CocoaSlash;
 };
 
-export interface Cog {
+export interface CogSlash {
     name: string;
     description?: string;
     commands: commandsDict;
 }
 
-export type CogSlash = Cog;
+/**
+ * @deprecated Use CogSlash instead
+ */
+export type Cog = CogSlash;

@@ -2,14 +2,14 @@ import chalk from "chalk";
 import { Client, CommandInteraction, Interaction } from "discord.js";
 
 import { CogClass } from "./class";
-import { Cog } from "./Interfaces";
+import { CogSlash } from "./Interfaces";
 import { NonEmptyArray } from "../shared";
 import { syncCommands } from "./SlashSync";
 
 export class SlashCenter {
     private readonly client: Client;
     private readonly guild_ids: string[];
-    private cogs: Cog[] = [];
+    private cogs: CogSlash[] = [];
     private validated = false;
 
     constructor(client: Client, guild_ids: string[]) {
@@ -26,11 +26,11 @@ export class SlashCenter {
         );
     }
 
-    addCog(cog: Cog | CogClass) {
+    addCog(cog: CogSlash | CogClass) {
         this.cogs.push(cog);
     }
 
-    addCogs(...cogs: NonEmptyArray<Cog | CogClass>) {
+    addCogs(...cogs: NonEmptyArray<CogSlash | CogClass>) {
         this.cogs.push(...cogs);
     }
 

@@ -31,7 +31,7 @@ export abstract class CogMessageClass implements CogMessage {
 /**
  * Example Usage
  * ```js
- * @MessageCommand({ name: "ping", description: "pong!"})
+ * @MessageCommand({ name: "ping", description: "pong!" })
  * async ping(ctx: Message, strp: string) {
  *   await ctx.reply("pong!");
  * }
