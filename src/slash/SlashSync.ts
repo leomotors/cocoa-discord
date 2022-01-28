@@ -8,13 +8,24 @@ import {
     Guild,
 } from "discord.js";
 
+import { getElapsed } from "../meta";
+
 type CAC = ChatInputApplicationCommandData;
 
 export async function syncCommands(
     commands: ApplicationCommandDataResolvable[],
-    client: Client<true>,
+    client: Client,
     guild_ids: string[]
 ) {
+    if (!client.isReady()) {
+        console.log(
+            chalk.red(
+                "[Slash Sync FAIL] This function must be called after Client is ready"
+            )
+        );
+        return;
+    }
+
     const futures = [];
     for (const guild_id of guild_ids) {
         const guild = client.guilds.cache.get(guild_id);
@@ -28,36 +39,33 @@ export async function syncCommands(
             );
         }
     }
-
-    for (const future of futures) {
-        await future;
-    }
+    await Promise.all(futures);
 }
 
 async function syncGuild(
     commands: ApplicationCommandDataResolvable[],
-    client: Client,
+    client: Client<true>,
     guild: Guild
 ) {
     // * Modified From https://github.com/Androz2091/discord-sync-commands
     try {
         const start = new Date().getTime();
         console.log(`[Slash Sync] Begin syncing commands for ${guild.name}`);
-        const currentCommands = await client.application!.commands.fetch({
+        const currentCommands = await client.application.commands.fetch({
             guildId: guild.id,
         })!;
 
         const newCommands = commands.filter(
             (command) => !currentCommands.some((c) => c.name === command.name)
         );
-        for (let newCommand of newCommands) {
-            await client.application!.commands.create(newCommand, guild.id);
+        for (const newCommand of newCommands) {
+            await client.application.commands.create(newCommand, guild.id);
         }
 
         const deletedCommands = currentCommands
             .filter((command) => !commands.some((c) => c.name === command.name))
             .toJSON();
-        for (let deletedCommand of deletedCommands) {
+        for (const deletedCommand of deletedCommands) {
             await deletedCommand.delete();
         }
 
@@ -65,7 +73,7 @@ async function syncGuild(
             currentCommands.some((c) => c.name === command.name)
         );
 
-        for (let updatedCommand of updatedCommands) {
+        for (const updatedCommand of updatedCommands) {
             const newCommand = updatedCommand;
             const previousCommand = currentCommands.find(
                 (c) => c.name === updatedCommand.name
@@ -95,7 +103,7 @@ async function syncGuild(
             chalk.green(
                 `[Slash Sync DONE]: Syncing commands in ${
                     guild.name
-                } finished, used ${Math.round(new Date().getTime() - start)} ms`
+                } finished, used ${getElapsed(start)} ms`
             )
         );
     } catch (error) {

@@ -2,7 +2,7 @@
 
 Yet another Discord Bot Utility npm package
 
-This package contains many utilities that made especially by me to make my bots
+This package contains many utilities that made by me for me to make my bots
 
 ## 🛍️ Subpackages
 
@@ -47,7 +47,11 @@ If you wish for examples, see above repositories
 
 ## 📚 Documentation
 
-[TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
+- See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
+
+- Read about Command Management System [Here](./docs/cms.md)
 
 **Note**: There is no Type Check in this package. To avoid unexpected behavior,
 please use TypeScript or activate @ts-check on JavaScript.
+
+Note that to use generic type, you need to use TypeScript.

@@ -3,20 +3,16 @@ import {
     CommandInteraction,
 } from "discord.js";
 
+import { commandsDict } from "../shared";
+
+/** This interface represent a single slash command */
 export interface CocoaSlash {
     command: ApplicationCommandDataResolvable;
     func: (interaction: CommandInteraction) => Promise<void>;
 }
 
-export type commandsDict = {
-    [commandName: string]: CocoaSlash;
-};
-
 export interface CogSlash {
     name: string;
     description?: string;
-    commands: commandsDict;
+    commands: commandsDict<CocoaSlash>;
 }
-
-/** @deprecated Use CogSlash instead*/
-export type Cog = CogSlash;

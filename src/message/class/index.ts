@@ -1,18 +1,24 @@
 import chalk from "chalk";
 
-import { CocoaMessage, commandsDict, CogMessage } from "..";
+import { CocoaMessage, CogMessage } from "..";
+import { commandsDict } from "../../shared";
 
-const muckStorage: { [cogName: string]: commandsDict } = {};
+const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 
 /**
  * **Warning**: This feature is made possible with the existence of **Dark Magic**
  *
  * Or in normal people's word, This is experimental
+ *
+ * Equivalent to `CogMessage` for instance, you can use
+ * ```js
+ * addCog(new [your_extended_classname]())
+ * ```
  */
 export abstract class CogMessageClass implements CogMessage {
     name: string;
     description?: string;
-    commands: commandsDict;
+    commands: commandsDict<CocoaMessage>;
 
     constructor(name: string, description?: string) {
         console.log(
@@ -30,7 +36,7 @@ export abstract class CogMessageClass implements CogMessage {
 
 /**
  * Example Usage
- * ```js
+ * ```ts
  * @MessageCommand({ name: "ping", description: "pong!" })
  * async ping(ctx: Message, strp: string) {
  *   await ctx.reply("pong!");

@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import { NonEmptyArray } from "../shared";
+import { commandsDict, NonEmptyArray } from "../shared";
 
 export interface CocoaMessageCommandOptions {
     name: string;
@@ -7,6 +7,7 @@ export interface CocoaMessageCommandOptions {
     description?: string;
 }
 
+/** This interface represent a single message command */
 export interface CocoaMessage {
     command: CocoaMessageCommandOptions;
     /**
@@ -16,12 +17,8 @@ export interface CocoaMessage {
     func: (message: Message, strippedContent: string) => Promise<void>;
 }
 
-export type commandsDict = {
-    [commandName: string]: CocoaMessage;
-};
-
 export interface CogMessage {
     name: string;
     description?: string;
-    commands: commandsDict;
+    commands: commandsDict<CocoaMessage>;
 }

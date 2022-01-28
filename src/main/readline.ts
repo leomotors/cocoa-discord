@@ -5,6 +5,7 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
+/** On enter in console */
 export function setConsoleEvent(handler: (cmd: string) => void) {
     rl.on("line", (cmd: string) => {
         handler(cmd);

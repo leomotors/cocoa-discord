@@ -26,6 +26,7 @@ export class Loader<T> {
         return constructed;
     }
 
+    /** Your json file **must be** array of object with type `T` */
     static fromFile<T>(name: string, filePath: string): Loader<T> {
         const constructed = new Loader<T>(name, [], filePath);
         constructed.initialPromise = constructed.reload();

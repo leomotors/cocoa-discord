@@ -2,18 +2,23 @@ import chalk from "chalk";
 import { Client, Message } from "discord.js";
 
 import { CogMessage } from "./Interfaces";
-import { NonEmptyArray } from "../shared";
 import { CogMessageClass } from "./class";
+import { Awaitable, ManagementCenter, NonEmptyArray } from "../shared";
 
 export type MessageCriteria =
     | ({ prefixes: NonEmptyArray<string> } & { mention?: false })
     | ({ mention: true } & { prefixes?: undefined });
 
-export class MessageCenter {
-    private readonly client: Client;
+export interface MessageEvents {
+    error: (error: unknown, msg: Message) => Awaitable<void>;
+}
+
+export class MessageCenter extends ManagementCenter<
+    CogMessage,
+    CogMessageClass,
+    MessageEvents
+> {
     private readonly criteria: MessageCriteria;
-    private cogs: CogMessage[] = [];
-    private validated = false;
 
     /**
      * @param client - You know what this is
@@ -28,7 +33,7 @@ export class MessageCenter {
      * The prefixes can be anything as long as it is **not empty** string array
      */
     constructor(client: Client, criteria: MessageCriteria) {
-        this.client = client;
+        super(client, { error: [] });
         this.criteria = criteria;
 
         this.client.on(
@@ -53,14 +58,6 @@ export class MessageCenter {
             }).bind(this),
             5000
         );
-    }
-
-    addCog(cog: CogMessage | CogMessageClass) {
-        this.cogs.push(cog);
-    }
-
-    addCogs(...cogs: NonEmptyArray<CogMessage | CogMessageClass>) {
-        this.cogs.push(...cogs);
     }
 
     private checkCriteria(message: Message): string | undefined {
@@ -94,61 +91,36 @@ export class MessageCenter {
                         msgToken.slice(1).join(" ")
                     );
                 } catch (error) {
-                    console.log(
-                        chalk.red(
-                            `[Message Command: ${cmdName} ERROR] : ${error}`
-                        )
-                    );
+                    if (this.hasHandler("error"))
+                        await this.runAllHandler("error", error, message);
+                    else
+                        console.log(
+                            chalk.red(
+                                `[Message Command: ${cmdName} ERROR] : ${error}`
+                            )
+                        );
                 }
                 return;
             }
 
             // * Call by Aliases
             for (const [fullName, cmd] of Object.entries(cog.commands)) {
-                if (
-                    cmd.command.aliases &&
-                    cmd.command.aliases.includes(cmdName)
-                ) {
+                if (cmd.command.aliases?.includes(cmdName)) {
                     try {
                         await cmd.func(message, msgToken.slice(1).join(" "));
                     } catch (error) {
-                        console.log(
-                            chalk.red(
-                                `[Message Command: ${fullName} ERROR] : ${error}`
-                            )
-                        );
+                        if (this.hasHandler("error"))
+                            await this.runAllHandler("error", error, message);
+                        else
+                            console.log(
+                                chalk.red(
+                                    `[Message Command: ${fullName} ERROR] : ${error}`
+                                )
+                            );
                     }
                     return;
                 }
             }
         }
-    }
-
-    /**
-     * No multiple Cogs or commands should have same name,
-     * and `Cog.commands` key and value must be the same command name
-     *
-     * This function will ensure that and should be called after all cogs are added
-     */
-    validateCommands() {
-        const cogNames = [];
-        const cmdNames = [];
-        for (const cog of this.cogs) {
-            cogNames.push(cog.name);
-            for (const [name, cmd] of Object.entries(cog.commands)) {
-                cmdNames.push(name);
-                if (name != cmd.command.name)
-                    throw Error("Command name mismatch");
-            }
-        }
-
-        if (new Set(cogNames).size !== cogNames.length)
-            throw Error("Duplicate cog names");
-
-        if (new Set(cmdNames).size !== cmdNames.length) {
-            throw Error("Duplicate command names");
-        }
-
-        this.validated = true;
     }
 }

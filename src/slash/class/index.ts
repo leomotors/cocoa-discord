@@ -1,18 +1,25 @@
 import chalk from "chalk";
 
-import { CocoaSlash, commandsDict, CogSlash } from "..";
+import { CocoaSlash, CogSlash } from "..";
 
-const muckStorage: { [cogName: string]: commandsDict } = {};
+import { commandsDict } from "../../shared";
+
+const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 
 /**
  * **Warning**: This feature is made possible with the existence of **Dark Magic**
  *
  * Or in normal people's word, This is experimental
+ *
+ * Equivalent to `CogSlash` for instance, you can use
+ * ```js
+ * addCog(new [your_extended_classname]())
+ * ```
  */
 export abstract class CogSlashClass implements CogSlash {
     name: string;
     description?: string;
-    commands: commandsDict;
+    commands: commandsDict<CocoaSlash>;
 
     constructor(name: string, description?: string) {
         console.log(
@@ -28,12 +35,9 @@ export abstract class CogSlashClass implements CogSlash {
     }
 }
 
-/** @deprecated Use CogSlashClass instead*/
-export const CogClass = CogSlashClass;
-
 /**
  * Example Usage
- * ```js
+ * ```ts
  * @SlashCommand(new SlashCommandBuilder().setName("ping").setDescription("pong!").toJSON())
  * async ping(ctx: CommandInteraction) {
  *   await ctx.reply("pong!");
