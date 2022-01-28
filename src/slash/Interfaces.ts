@@ -18,7 +18,5 @@ export interface CogSlash {
     commands: commandsDict;
 }
 
-/**
- * @deprecated Use CogSlash instead
- */
+/** @deprecated Use CogSlash instead*/
 export type Cog = CogSlash;

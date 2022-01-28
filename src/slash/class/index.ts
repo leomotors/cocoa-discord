@@ -9,14 +9,14 @@ const muckStorage: { [cogName: string]: commandsDict } = {};
  *
  * Or in normal people's word, This is experimental
  */
-export abstract class CogClass implements CogSlash {
+export abstract class CogSlashClass implements CogSlash {
     name: string;
     description?: string;
     commands: commandsDict;
 
     constructor(name: string, description?: string) {
         console.log(
-            chalk.yellow("[CogClass WARN] This feature is experimental")
+            chalk.yellow("[CogSlashClass WARN] This feature is experimental")
         );
         this.name = name;
         this.description = description;
@@ -27,6 +27,9 @@ export abstract class CogClass implements CogSlash {
         }
     }
 }
+
+/** @deprecated Use CogSlashClass instead*/
+export const CogClass = CogSlashClass;
 
 /**
  * Example Usage
@@ -41,7 +44,7 @@ export abstract class CogClass implements CogSlash {
  */
 export function SlashCommand(command: CocoaSlash["command"]) {
     return (
-        cog: CogClass,
+        cog: CogSlashClass,
         key: string,
         desc: TypedPropertyDescriptor<CocoaSlash["func"]>
     ) => {
