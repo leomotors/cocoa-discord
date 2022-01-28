@@ -3,7 +3,7 @@ import {
     CommandInteraction,
 } from "discord.js";
 
-import { commandsDict } from "../shared";
+import { Cog } from "../base";
 
 /** This interface represent a single slash command */
 export interface CocoaSlash {
@@ -11,8 +11,4 @@ export interface CocoaSlash {
     func: (interaction: CommandInteraction) => Promise<void>;
 }
 
-export interface CogSlash {
-    name: string;
-    description?: string;
-    commands: commandsDict<CocoaSlash>;
-}
+export type CogSlash = Cog<CocoaSlash>;

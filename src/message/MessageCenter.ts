@@ -3,7 +3,7 @@ import { Client, Message } from "discord.js";
 
 import { CogMessage } from "./Interfaces";
 import { CogMessageClass } from "./class";
-import { Awaitable, ManagementCenter, NonEmptyArray } from "../shared";
+import { Awaitable, ManagementCenter, NonEmptyArray } from "../base";
 
 export type MessageCriteria =
     | ({ prefixes: NonEmptyArray<string> } & { mention?: false })

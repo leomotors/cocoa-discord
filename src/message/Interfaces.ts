@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import { commandsDict, NonEmptyArray } from "../shared";
+import { Cog, NonEmptyArray } from "../base";
 
 export interface CocoaMessageCommandOptions {
     name: string;
@@ -17,8 +17,4 @@ export interface CocoaMessage {
     func: (message: Message, strippedContent: string) => Promise<void>;
 }
 
-export interface CogMessage {
-    name: string;
-    description?: string;
-    commands: commandsDict<CocoaMessage>;
-}
+export type CogMessage = Cog<CocoaMessage>;

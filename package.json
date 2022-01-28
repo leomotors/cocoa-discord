@@ -41,7 +41,9 @@
     "./meta": "./dist/meta/index.js",
     "./slash": "./dist/slash/index.js",
     "./slash/class": "./dist/slash/class/index.js",
-    "./template": "./dist/template/index.js"
+    "./template": "./dist/template/index.js",
+    "./internal/base": "./dist/base/index.js",
+    "./internal/SlashSync": "./dist/slash/SlashSync.js"
   },
   "typesVersions": {
     "*": {
@@ -65,6 +67,12 @@
       ],
       "template": [
         "./dist/template/index.d.ts"
+      ],
+      "internal/base": [
+        "./dist/base/index.d.ts"
+      ],
+      "internal/SlashSync": [
+        "./dist/slash/SlashSync.d.ts"
       ]
     }
   }

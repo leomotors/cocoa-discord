@@ -6,6 +6,7 @@
         "./src/meta/index.ts",
         "./src/slash/index.ts",
         "./src/slash/class/index.ts",
-        "./src/template/index.ts"
+        "./src/template/index.ts",
+        "./src/base/index.ts"
     ]
 }

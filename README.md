@@ -26,6 +26,10 @@ Slash Command Management
 
 Frequently used stuff
 
+### /internal
+
+As the name suggests
+
 **Note**: Command Management is inspired by discord.py's cogs system. 
 There are two implementations, one that are different, focuses on concept of
 one function per file. And the other one, that is more like discord.py's cogs.
