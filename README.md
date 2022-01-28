@@ -45,7 +45,7 @@ Note that Decorators are complex and I achieve this using *dark magic*
 
 - [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
 
-- [Harunon JS](https://github.com/CarelessDev/harunon.js) (Working on)
+- [Harunon JS](https://github.com/CarelessDev/harunon.js)
 
 If you wish for examples, see above repositories
 
@@ -53,9 +53,19 @@ If you wish for examples, see above repositories
 
 - See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
 
-- Read about Command Management System [Here](./docs/cms.md)
+- Read about Command Management System [Here](./doc/cms.md)
 
 **Note**: There is no Type Check in this package. To avoid unexpected behavior,
 please use TypeScript or activate @ts-check on JavaScript.
 
-Note that to use generic type, you need to use TypeScript.
+Please note that to use generic type, TypeScript is required.
+
+## 🍫 What is Cocoa?
+
+Cocoa may have many meanings, but the name `Cocoa / ココア` that is used in this package as well as `cocoa-grader` refers to Cocoa Oneechan `保登心愛 from ご注文はうさぎですか？`
+
+![](https://c.tenor.com/82-e-VM5qNwAAAAC/gochiusa-cocoa.gif)
+
+*nigerundayo... Smokey!* — No one said
+
+Anime Name: [Is the Order a Rabbit?](https://myanimelist.net/anime/21273/Gochuumon_wa_Usagi_Desu_ka)

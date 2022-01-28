@@ -28,6 +28,7 @@ export abstract class ManagementCenter<
     }
 
     addCog(cog: Cog | CogClass) {
+        this.validated = false;
         this.cogs.push(cog);
     }
 
