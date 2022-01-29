@@ -1,7 +1,6 @@
 import chalk from "chalk";
 
 import { CocoaSlash, CogSlash } from "..";
-
 import { commandsDict } from "../../base";
 
 const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};

@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "1.0.0-pre.9",
+  "version": "1.0.0-pre.10",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -12,17 +12,22 @@
     "clean": "rimraf dist/*",
     "cb": "yarn clean && yarn build",
     "docs": "typedoc",
-    "lm:config": "lm-config src/meta/generated.ts"
+    "lm:config": "lm-config src/meta/generated.ts",
+    "prepack": "yarn cb",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src && prettier --check \"src/**/*.ts\""
   },
   "keywords": [
     "discord-bot",
     "slash-commands"
   ],
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^3.1.1",
     "@types/node": "^17.0.13",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "^8.7.0",
+    "discord-api-types": "^0.26.1",
+    "eslint": "^8.8.0",
     "leomotors-automation": "^3.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",

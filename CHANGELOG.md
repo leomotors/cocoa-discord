@@ -4,6 +4,16 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre is not available here
 
+## [1.0.0-pre.10] - 2022-01-29
+
+- Fix Critical bug that prevent usage of options in /template
+
+- Fix sysinfo.ts
+
+- Added Template for Status Embed Fields
+
+- Formatted and Brushed some codes
+
 ## [1.0.0-pre.9] - 2022-01-29
 
 - Typing Changes

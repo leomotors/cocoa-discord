@@ -1,9 +1,10 @@
 import chalk from "chalk";
 import { Client, Message } from "discord.js";
 
-import { CogMessage } from "./Interfaces";
-import { CogMessageClass } from "./class";
 import { Awaitable, ManagementCenter, NonEmptyArray } from "../base";
+
+import { CogMessageClass } from "./class";
+import { CogMessage } from "./Interfaces";
 
 export type MessageCriteria =
     | ({ prefixes: NonEmptyArray<string> } & { mention?: false })

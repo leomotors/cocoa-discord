@@ -3,4 +3,4 @@ export {
     BuildTime as CocoaBuildTime,
 } from "./generated";
 export * from "./perf";
-//export * from "./sysinfo";
+export * from "./sysinfo";

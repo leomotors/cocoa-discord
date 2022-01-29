@@ -6,6 +6,21 @@ This package contains many utilities that made by me for me to make my bots
 
 ## 🛍️ Subpackages
 
+Many utilities are classified into many subpackages
+
+**NOTE**: This package only support esmodule, basically you cannot use `require()`
+
+You also need to use the very new version of node.js (16.9+) as it is requirement
+of discord.js
+
+```js
+import { some_stuff } from "cocoa-discord-utils"; // OK
+
+const { some_stuff } = require("cocoa-discord-utils"); // ERROR!
+```
+
+*Fun Fact*: I suffered from error revolving esmodule alot, muck.
+
 ### / (index)
 
 Miscellanous, consists of many utility classes
@@ -28,7 +43,7 @@ Frequently used stuff
 
 ### /internal
 
-As the name suggests
+As the name suggests, you should avoid touching this subpackage
 
 **Note**: Command Management is inspired by discord.py's cogs system. 
 There are two implementations, one that are different, focuses on concept of

@@ -1,9 +1,10 @@
 import chalk from "chalk";
 import { Client } from "discord.js";
 
-import { BaseCommand, Cog as BaseCog, NonEmptyArray } from "./Interface";
 import { MessageEvents } from "../message";
 import { SlashEvents } from "../slash";
+
+import { BaseCommand, Cog as BaseCog, NonEmptyArray } from "./Interface";
 
 export abstract class ManagementCenter<
     Cog extends BaseCog<BaseCommand>,

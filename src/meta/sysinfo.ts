@@ -22,7 +22,10 @@ export async function getTemp() {
 export async function getRAM(): Promise<[number, number]> {
     try {
         const ram = await exec("free -m");
-        const ln1 = ram.stdout.split("\n")[1].split(" ");
+        const ln1 = ram.stdout
+            .split("\n")[1]
+            .split(" ")
+            .filter((s) => s.length > 0);
         const ramUsed = +ln1[2];
         const ramCap = +ln1[1];
         if (isNaN(ramUsed) || isNaN(ramCap)) throw 0;

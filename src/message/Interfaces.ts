@@ -1,4 +1,5 @@
 import { Message } from "discord.js";
+
 import { Cog, NonEmptyArray } from "../base";
 
 export interface CocoaMessageCommandOptions {

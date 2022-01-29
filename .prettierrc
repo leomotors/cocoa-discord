@@ -4,5 +4,12 @@
     "useTabs": false,
     "singleQuote": false,
     "semi": true,
-    "printWidth": 80
+    "printWidth": 80,
+    "importOrder": [
+        "^[a-zA-Z]",
+        "^[.][.]",
+        "^[.]"
+    ],
+    "importOrderCaseInsensitive": true,
+    "importOrderSeparation": true
 }

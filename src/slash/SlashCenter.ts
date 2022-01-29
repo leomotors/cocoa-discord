@@ -1,9 +1,10 @@
 import chalk from "chalk";
 import { Client, CommandInteraction, Interaction } from "discord.js";
 
+import { Awaitable, ManagementCenter } from "../base";
+
 import { CogSlashClass } from "./class";
 import { CogSlash } from "./Interfaces";
-import { Awaitable, ManagementCenter } from "../base";
 import { syncCommands } from "./SlashSync";
 
 export interface SlashEvents {

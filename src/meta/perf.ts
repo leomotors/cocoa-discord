@@ -2,7 +2,7 @@
  * Get elapsed time from `from`
  * @param from Start time
  * @param round Default = `true`
- * @returns Elapsed time in ms
+ * @returns Elapsed time in **milliseconds**
  */
 export function getElapsed(from: number | Date, round = true) {
     const now = new Date().getTime();
