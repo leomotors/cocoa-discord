@@ -51,14 +51,14 @@ If you wish for examples, see above repositories
 
 ## 📚 Documentation
 
-- See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
+- Doc & Guide: [here](./doc/index.md)
 
-- Read about Command Management System [Here](./doc/cms.md)
+- See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
 
 **Note**: There is no Type Check in this package. To avoid unexpected behavior,
 please use TypeScript or activate @ts-check on JavaScript.
 
-Please note that to use generic type, TypeScript is required.
+To use generic type, TypeScript is required.
 
 ## 🍫 What is Cocoa?
 

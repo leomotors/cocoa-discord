@@ -38,19 +38,18 @@ export const ping: CocoaSlash = {
 }
 ```
 
-**Note**: CocoaSlash is a utility function. The above code translates to
+**Note**: CocoaSlash is a utility function that returns SlashCommandBuilder
 
 ```ts
 CocoaBuilder("ping", "pong!")
-// Is equivalent to
+// Returns
 new SlashCommandBuilder().setName("ping").setDescription("pong!")
-// Note: CocoaBuilder returns SlashCommandBuilder
+// You can continue extend the SlashCommandBuilder normally
 ```
 
-As we use name and description often, the goal of this function is to reduce
-the amount of code.
+The goal of this function is to reduce the amount of frequently used code.
 
-**Note**:
+**Remark**:
 
 - Cocoa Discord Utils does not provide Slash Command Builder,
 you will need to use `SlashCommandBuilder` from `@discordjs/builders`
@@ -74,8 +73,8 @@ export const mainCog: CogSlash = {
 }
 ```
 
-**Note**: The key of commands must match the name its command in SlashCommandBuilder.
-In order to ensure this, you are encourage to run a function which will be
+**Note**: The key of `commands` must match the name of its command in SlashCommandBuilder.
+In order to ensure this, you are encouraged to run a function which will be
 mentioned in the next section.
 
 ### Slash Command Center
@@ -100,7 +99,10 @@ to ensure that the condition mentioned above is met.
 
 However, it is working great ~~and is as stable as [S-Bot Framework](https://www.npmjs.com/package/s-bot-framework)~~.
 
-We will need to extend base class given, implement methods with decorator.
+It may made to `stable` zone soon.
+
+**To use Class Cog**, We will need to extend the base class given,
+and implement methods/commands with decorator.
 
 The `CogClass` are based on Object Cog, so we can add it to management center
 in the ~~same~~ similar way as the Object Cog.
@@ -134,9 +136,15 @@ center.addCogs(new MainCog());
 
 As CogSlashClass implements CogSlash, we can add it to Slash Center and even mix it with Object Cog.
 
+**Note**: Due to some TypeScript mumbo jumbo, you are required to specify type
+in your method arguments. 
+For Message Command, you will need to specify `(msg: Message, strp: string)`
+
+*Argument Name can be changed, but must not be omitted and so do the type*
+
 ## Message Command
 
-To invoke a message command, user need to mets two criteria.
+To invoke a message command, user need to meets two criteria.
 
 - Mention or Global Prefix
 
@@ -168,6 +176,25 @@ class MainCog extends CogMessageClass {
 ```
 
 User can invoke `ping` command by sending `simpping` or `simping`
+
+`strp` (Stripped Content) is `message.content` that removed prefix or mentions
+and command name
+
+*For example*
+
+```ts
+// Command: play (using prefixes: ["simp"])
+"simpplay The Rumbling"
+// strippedContent is equal to
+"The Rumbling"
+
+// Command: submit (using mention: true)
+"<@bot_id> submit cancel_1112 ```py\nimport os; os.system('sudo reboot');```"
+// strippedContent is equal to
+"cancel_1112 ```py\nimport os; os.system('sudo reboot');```"
+```
+
+*`message.content` is remained unmodified, you can access full message there too*
 
 ## On Error
 

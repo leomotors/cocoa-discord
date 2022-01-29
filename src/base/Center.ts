@@ -1,16 +1,12 @@
 import chalk from "chalk";
 import { Client } from "discord.js";
-import { NonEmptyArray } from ".";
+
+import { BaseCommand, Cog as BaseCog, NonEmptyArray } from "./Interface";
 import { MessageEvents } from "../message";
 import { SlashEvents } from "../slash";
 
-export type RequiredForValidation = {
-    name: string;
-    commands: { [commandName: string]: { command: { name: string } } };
-};
-
 export abstract class ManagementCenter<
-    Cog extends RequiredForValidation,
+    Cog extends BaseCog<BaseCommand>,
     CogClass extends Cog,
     Events = MessageEvents | SlashEvents
 > {
