@@ -29,14 +29,14 @@ export const DJCocoaIntents: ClientOptions["intents"] = [
 export const CocoaOptions: ClientOptions = {
     intents: CocoaIntents,
     // To Accept DM
-    partials: ["MESSAGE"],
+    partials: ["CHANNEL"],
 };
 
 /** Template ClientOptions used in Harunon.js */
 export const DJCocoaOptions: ClientOptions = {
     intents: DJCocoaIntents,
     // To Accept DM
-    partials: ["MESSAGE"],
+    partials: ["CHANNEL"],
 };
 
 export function Author(ctx: CommandInteraction) {

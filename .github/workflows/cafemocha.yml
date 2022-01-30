@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  main:
+    name: ESLint & Mocha
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: actions/checkout
+        uses: actions/checkout@v2
+      - name: Yarn Cache
+        uses: c-hive/gha-yarn-cache@v2
+      - name: Install Dependencies (Yarn)
+        run: yarn install
+      - name: Config Package
+        run: yarn lm:config
+      - name: ESLint & Prettier Check
+        run: yarn lint
+      - name: Mocha Test
+        run: yarn test

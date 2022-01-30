@@ -8,18 +8,13 @@ This package contains many utilities that made by me for me to make my bots
 
 Many utilities are classified into many subpackages
 
-**NOTE**: This package only support esmodule, basically you cannot use `require()`
-
-You also need to use the very new version of node.js (16.9+) as it is requirement
+**NOTE**: You need to use the very new version of node.js (16.9+) as it is requirement
 of discord.js
 
-```js
-import { some_stuff } from "cocoa-discord-utils"; // OK
+This package currently supports both commonjs and esmodule. Tested.
 
-const { some_stuff } = require("cocoa-discord-utils"); // ERROR!
-```
-
-*Fun Fact*: I suffered from error revolving esmodule alot, muck.
+*Fun Fact*: I suffered from error revolving esmodule alot, muck. Anyway, I kinda
+understand how they work now.
 
 ### / (index)
 

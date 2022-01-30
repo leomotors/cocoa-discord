@@ -2,3 +2,4 @@
 *.yml
 .prettierrc
 *.md
+tests/index.spec.ts

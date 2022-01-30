@@ -4,6 +4,14 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre is not available here
 
+## [1.0.0-pre.12] - 2022-01-30
+
+- Fix Partial Typo (Bot cannot recieve DM)
+
+- Convert the package to commonjs & Bringing back Mocha Test
+
+- Misc Improvement
+
 ## [1.0.0-pre.10] - 2022-01-29
 
 - Fix Critical bug that prevent usage of options in /template

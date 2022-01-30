@@ -1,4 +1,5 @@
 import { APIEmbedField } from "discord-api-types";
+import { CommandInteraction, Message } from "discord.js";
 
 import { parseTime } from "../main";
 import { getLinuxUptime, getRAM, getTemp } from "../meta";
@@ -20,6 +21,7 @@ export interface getStatusFieldsOption {
  * Or pass `inline: false` to make all fields block
  */
 export async function getStatusFields(
+    ctx: CommandInteraction | Message,
     overrideDefault?: getStatusFieldsOption
 ): Promise<APIEmbedField[]> {
     const {
@@ -33,14 +35,19 @@ export async function getStatusFields(
     } = overrideDefault ?? {};
 
     let temp: string | number = await getTemp();
-    temp = temp == -273 ? "Unknown" : `${temp}`;
+    temp = temp == -273 ? "Unknown" : `${temp} °C`;
     const ram = await getRAM();
 
     return [
         {
             name: runningOn ?? "Running On",
             value: `${process.platform} ${process.arch}, Node.js ${process.version}`,
-            inline: false,
+            inline,
+        },
+        {
+            name: "Websocket Ping",
+            value: `${ctx.client.ws.ping}ms`,
+            inline,
         },
         {
             name: temperature ?? "Temperature",
