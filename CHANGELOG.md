@@ -4,6 +4,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre is not available here
 
+## [1.0.0-rc.1] - 2022-01-30
+
+- Author in /template supports Message
+
 ## [1.0.0-pre.12] - 2022-01-30
 
 - Fix Partial Typo (Bot cannot recieve DM)

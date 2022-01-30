@@ -1,4 +1,10 @@
-import { ClientOptions, CommandInteraction, Intents } from "discord.js";
+import {
+    ClientOptions,
+    CommandInteraction,
+    Intents,
+    Message,
+    User,
+} from "discord.js";
 
 const f = Intents.FLAGS;
 
@@ -39,9 +45,11 @@ export const DJCocoaOptions: ClientOptions = {
     partials: ["CHANNEL"],
 };
 
-export function Author(ctx: CommandInteraction) {
+export function Author(ctx: CommandInteraction | Message) {
+    // @ts-ignore instanceof does not work at runtime
+    const user: User = ctx.user ?? ctx.author;
     return {
-        name: ctx.user.username,
-        iconURL: ctx.user.avatarURL() ?? "",
+        name: user.username,
+        iconURL: user.avatarURL() ?? "",
     };
 }
