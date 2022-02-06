@@ -4,6 +4,9 @@ Yet another Discord Bot Utility npm package
 
 This package contains many utilities that made by me for me to make my bots
 
+**WARNING**: Despite the version number is at *rc*, any breaking changes can still be made.
+~~Because this is my library~~
+
 ## 🛍️ Subpackages
 
 Many utilities are classified into many subpackages
