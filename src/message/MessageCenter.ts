@@ -11,7 +11,7 @@ export type MessageCriteria =
     | ({ mention: true } & { prefixes?: undefined });
 
 export interface MessageEvents {
-    error: (error: unknown, msg: Message) => Awaitable<void>;
+    error: (name: string, error: unknown, msg: Message) => Awaitable<void>;
 }
 
 export class MessageCenter extends ManagementCenter<
@@ -93,7 +93,12 @@ export class MessageCenter extends ManagementCenter<
                     );
                 } catch (error) {
                     if (this.hasHandler("error"))
-                        await this.runAllHandler("error", error, message);
+                        await this.runAllHandler(
+                            "error",
+                            cmdName,
+                            error,
+                            message
+                        );
                     else
                         console.log(
                             chalk.red(
@@ -111,7 +116,12 @@ export class MessageCenter extends ManagementCenter<
                         await cmd.func(message, msgToken.slice(1).join(" "));
                     } catch (error) {
                         if (this.hasHandler("error"))
-                            await this.runAllHandler("error", error, message);
+                            await this.runAllHandler(
+                                "error",
+                                cmd.command.name,
+                                error,
+                                message
+                            );
                         else
                             console.log(
                                 chalk.red(

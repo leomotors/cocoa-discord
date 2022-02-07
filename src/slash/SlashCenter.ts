@@ -8,7 +8,11 @@ import { CogSlash } from "./Interfaces";
 import { syncCommands } from "./SlashSync";
 
 export interface SlashEvents {
-    error: (error: unknown, ctx: CommandInteraction) => Awaitable<void>;
+    error: (
+        name: string,
+        error: unknown,
+        ctx: CommandInteraction
+    ) => Awaitable<void>;
 }
 
 export class SlashCenter extends ManagementCenter<
@@ -66,7 +70,12 @@ export class SlashCenter extends ManagementCenter<
                     await cog.commands[cmdname].func(interaction);
                 } catch (error) {
                     if (this.hasHandler("error"))
-                        await this.runAllHandler("error", error, interaction);
+                        await this.runAllHandler(
+                            "error",
+                            cmdname,
+                            error,
+                            interaction
+                        );
                     console.log(
                         chalk.red(
                             `[Slash Command: ${cmdname} ERROR] : ${error}`
