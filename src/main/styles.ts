@@ -20,7 +20,7 @@ export type embedStyle = {
 
 /** This should not be accessed directly, use `createEmbedStyle` function */
 class EmbedStyle {
-    style: embedStyle;
+    private style: embedStyle;
 
     constructor(style: embedStyle) {
         this.style = style;
@@ -55,6 +55,13 @@ class EmbedStyle {
             return res(ctx);
         }
         return res;
+    }
+
+    extends(style: Partial<embedStyle>) {
+        return new EmbedStyle({
+            ...this.style,
+            ...style,
+        });
     }
 }
 

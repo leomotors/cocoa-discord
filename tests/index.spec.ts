@@ -5,3 +5,4 @@ import "./loader.spec";
 import "./activity.spec";
 import "./command.spec";
 import "./template.spec";
+import "./styles.spec";

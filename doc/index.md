@@ -6,3 +6,5 @@ for frequently used item. Made by me for me (and maybe friends) to make our bots
 ## 📖 Table
 
 - [Command Management System](./cms.md)
+
+- [Configuration File](./cocoarc.md)
