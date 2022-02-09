@@ -1,5 +1,3 @@
-import chalk from "chalk";
-
 import { CocoaSlash, CogSlash } from "..";
 import { commandsDict } from "../../base";
 
@@ -8,7 +6,7 @@ const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 /**
  * **Warning**: This feature is made possible with the existence of **Dark Magic**
  *
- * Or in normal people's word, This is experimental
+ * Or in normal people's word, This is ~~experimental~~ *stable*
  *
  * Equivalent to `CogSlash` for instance, you can use
  * ```js
@@ -21,9 +19,6 @@ export abstract class CogSlashClass implements CogSlash {
     commands: commandsDict<CocoaSlash>;
 
     constructor(name: string, description?: string) {
-        console.log(
-            chalk.yellow("[CogSlashClass WARN] This feature is experimental")
-        );
         this.name = name;
         this.description = description;
         this.commands = muckStorage[this.constructor.name] ?? {};

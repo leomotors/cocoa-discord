@@ -4,6 +4,12 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre is not available here
 
+## [1.0.0-rc.3] - 2022-02-09
+
+- Updated Error Handling
+
+- Marked Cog Class as stable
+
 ## [1.0.0-rc.2] - 2022-02-07
 
 - Added Embed Style

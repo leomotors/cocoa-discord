@@ -1,5 +1,3 @@
-import chalk from "chalk";
-
 import { CocoaMessage, CogMessage } from "..";
 import { commandsDict } from "../../base";
 
@@ -8,7 +6,7 @@ const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 /**
  * **Warning**: This feature is made possible with the existence of **Dark Magic**
  *
- * Or in normal people's word, This is experimental
+ * Or in normal people's word, This is ~~experimental~~ *stable*
  *
  * Equivalent to `CogMessage` for instance, you can use
  * ```js
@@ -21,9 +19,6 @@ export abstract class CogMessageClass implements CogMessage {
     commands: commandsDict<CocoaMessage>;
 
     constructor(name: string, description?: string) {
-        console.log(
-            chalk.yellow("[CogMessageClass WARN] This feature is experimental")
-        );
         this.name = name;
         this.description = description;
         this.commands = muckStorage[this.constructor.name] ?? {};
