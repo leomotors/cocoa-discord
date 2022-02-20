@@ -4,7 +4,7 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre is not available here
 
-## [1.0.0-rc.4] - 2022-02-??
+## [1.0.0-rc.4] - 2022-02-20
 
 - **BREAKING**: `ephemeral` is now `Ephemeral`, and some few interfaces have
 their name changed
