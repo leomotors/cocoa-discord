@@ -6,6 +6,14 @@ ah muck, I wrote this file for so long and accidently delete it.
 
 Anyway, let's get into the rewritten one, hope I don't delete it agian.
 
+## Prerequisite
+
+To understand this guide, you need to know:
+
+- discord.js
+
+- SlashCommandBuilder or JSON Structure of Slash Command
+
 ## Understand the Concept
 
 The Command Management System in this library is inspired by discord.py's
@@ -202,17 +210,24 @@ You can add a event listener to the Management Center.
 
 ```ts
 // This one is Message Center, Slash Center is slightly different
-center.on("error", (err, msg) => {
+center.on("error", (name, err, msg) => {
+    console.log(chalk.red(`Command ${name} just error!`));
     await msg.channel.send(`Oops! This error occured: ${err.message}`);
 })
+// Note that you don't need to care if msg.channel.send will cause error
+// Command Center will handle error from error handler as long as you `await`
 ```
 
 Everytime an error occured in your command, this callback function will be called.
 
-Use case is case given above, the bot can reply to the user telling them directly what happened. So you don't need to check terminal to investigate.
+Use case is the case given above, the bot can reply to the user telling them directly what happened. So you don't need to check terminal to investigate.
 
 The error handler is under try catch, as long as you await the potential harmful async function. It will be fine. Please note that we don't provide `on error error` event handler. That is too much.
 
 **Tips**: It is always best practice to use `await` on every expression that is async including `message.reply` `message.channel.send` `ctx.reply` etc.
 
 Otherwise, the try-catch might not be able to catch and your bot will *boom*
+
+## PS
+
+See [cocoa-grader](https://github.com/Leomotors/cocoa-grader) and [harunon.js](https://github.com/CarelessDev/harunon.js)

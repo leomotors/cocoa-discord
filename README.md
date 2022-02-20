@@ -23,7 +23,7 @@ understand how they work now.
 
 Miscellanous, consists of many utility classes
 
-### /meta [Working on]
+### /meta
 
 Info Stuff, ex. Utils Version, Device Info, etc.
 
