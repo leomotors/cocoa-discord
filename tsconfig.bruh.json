@@ -1,0 +1,8 @@
+{
+    "extends": "./tsconfig.json",
+    // * Feature that we want but it does not exist, workaround
+    "compilerOptions": {
+        "declaration": false,
+        "removeComments": true
+    }
+}

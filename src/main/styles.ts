@@ -6,7 +6,7 @@ import { Author } from "../template";
 
 type Context = CommandInteraction | Message;
 
-interface embedStyleBase {
+export interface embedStyleBase {
     author?: "invoker" | "bot";
     color?: number;
     footer?: EmbedFooterData;
@@ -26,6 +26,13 @@ class EmbedStyle {
         this.style = style;
     }
 
+    /**
+     * Example Usage:
+     * ```js
+     * import { style } from "./where/you/export/yourStyle"
+     * const emb = style.use(ctx).setTitle(...)
+     * ```
+     */
     use(ctx: Context) {
         let e = new Embed();
 
@@ -57,6 +64,9 @@ class EmbedStyle {
         return res;
     }
 
+    /**
+     * Extends (or Override) this style
+     */
     extends(style: Partial<embedStyle>) {
         return new EmbedStyle({
             ...this.style,
@@ -65,6 +75,22 @@ class EmbedStyle {
     }
 }
 
+/**
+ * Create EmbedStyle Object
+ *
+ * Example Usage:
+ * ```js
+ * export const style = createEmbedStyle({ ... });
+ * ```
+ *
+ * Embed Styles Properties:
+ * - author: "invoker" will set the author to who invoke the commands
+ * "bot" is bot, obviously.
+ * - color: Color of Embed
+ * - footer: Footer of Embed
+ *
+ * You can also pass the function that recieves Command Context and return the option.
+ */
 export function createEmbedStyle(style: embedStyle) {
     return new EmbedStyle(style);
 }

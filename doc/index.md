@@ -12,3 +12,5 @@ The API of this library is not stable yet
 - [Command Management System](./cms.md)
 
 - [Configuration File](./cocoarc.md)
+
+- [Useful Things](./useful.md)

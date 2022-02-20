@@ -1,13 +1,14 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
   "author": "Leomotors",
   "license": "MIT",
   "scripts": {
-    "build": "yarn lm:config && tsc && rimraf \"dist/cli/**/*.d.ts\"",
+    "build-inner": "tsc && tsc -p tsconfig.bruh.json",
+    "build": "yarn lm:config && yarn build-inner && rimraf \"dist/cli/**/*.d.ts\"",
     "clean": "rimraf dist/*",
     "cb": "yarn clean && yarn build",
     "docs": "typedoc",

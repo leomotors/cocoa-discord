@@ -4,7 +4,7 @@ import { CommandInteraction, Message } from "discord.js";
 import { parseTime } from "../main";
 import { getLinuxUptime, getRAM, getTemp } from "../meta";
 
-export interface getStatusFieldsOption {
+export interface GetStatusFieldsOption {
     inline?: boolean;
     runningOn?: string;
     temperature?: string;
@@ -22,7 +22,7 @@ export interface getStatusFieldsOption {
  */
 export async function getStatusFields(
     ctx: CommandInteraction | Message,
-    overrideDefault?: getStatusFieldsOption
+    overrideDefault?: GetStatusFieldsOption
 ): Promise<APIEmbedField[]> {
     const {
         inline = true,
