@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// Disable no-explicit-any because I'm too lazy to write all possible types
 import { SlashCommandBuilder } from "@discordjs/builders";
 
 import { CommandInteraction } from "discord.js";
@@ -49,8 +50,7 @@ export function Ephemeral(
     description = "Make your request ephemeral",
     name = "ephemeral"
 ) {
-    return (option: any) =>
-        option.setName(name).setDescription(description).setRequired(false);
+    return CocoaOption(name, description, false);
 }
 
 /**
@@ -64,9 +64,9 @@ export function Ephemeral(
  * ```js
  * ctx.options.getBoolean("ephemeral") ?? false;
  * ```
- * **Note**: As you can see, this function will retrieve the `ephemeral` options,
- * meaning that if you override the Ephemeral's name field, do not use this function!
+ * **Note**: If you have override the `Ephemeral()` name's field,
+ * pass that as the second argument to correctly retrieve parameters!
  */
-export function getEphemeral(ctx: CommandInteraction) {
-    return ctx.options.getBoolean("ephemeral") ?? false;
+export function getEphemeral(ctx: CommandInteraction, override?: string) {
+    return ctx.options.getBoolean(override ?? "ephemeral") ?? false;
 }

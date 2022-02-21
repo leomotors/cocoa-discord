@@ -1,6 +1,9 @@
+import { Embed } from "@discordjs/builders";
+
 import chalk from "chalk";
 import { Client } from "discord.js";
 
+import { EmbedStyle } from "../main";
 import { MessageEvents } from "../message";
 import { SlashEvents } from "../slash";
 
@@ -15,13 +18,20 @@ export abstract class ManagementCenter<
     protected cogs: Cog[] = [];
     protected validated = false;
 
+    helpText = "";
+    helpEmbed?: Embed;
+
+    private centerType: "Message" | "Slash";
+
     constructor(
         client: Client,
+        centerType: "Message" | "Slash",
         protected eventHandler: {
             [event in keyof Events]: Events[event][];
         }
     ) {
         this.client = client;
+        this.centerType = centerType;
     }
 
     addCog(cog: Cog | CogClass) {
@@ -30,6 +40,7 @@ export abstract class ManagementCenter<
     }
 
     addCogs(...cogs: NonEmptyArray<Cog | CogClass>) {
+        this.validated = false;
         this.cogs.push(...cogs);
     }
 
@@ -64,6 +75,17 @@ export abstract class ManagementCenter<
     }
 
     /**
+     * Generate Cog that contains Help Command
+     *
+     * Should be called **after** all cogs are added and **before** commands validation.
+     *
+     * Make sure to **NOT** name any cog `Help` or any command `help`
+     */
+    useHelpCommand(_?: EmbedStyle) {
+        throw "Abstract Class Method is called";
+    }
+
+    /**
      * No multiple Cogs or commands should have same name,
      * and `Cog.commands` key and value must be the same command name
      *
@@ -82,12 +104,43 @@ export abstract class ManagementCenter<
         }
 
         if (new Set(cogNames).size !== cogNames.length)
-            throw Error("Duplicate cog names");
+            throw Error("Duplicate Cog names");
 
         if (new Set(cmdNames).size !== cmdNames.length) {
-            throw Error("Duplicate command names");
+            throw Error("Duplicate Command names");
         }
 
         this.validated = true;
+    }
+
+    generateHelpCommand() {
+        if (this.helpText) return this.helpText;
+
+        for (const cog of this.cogs) {
+            this.helpText += `<== **${cog.name}${
+                cog.description ? ` - ${cog.description}` : ""
+            }** ==>\n`;
+
+            for (const [_, command] of Object.entries(cog.commands)) {
+                const cmd = command.command;
+                this.helpText += `${cmd.name}${
+                    cmd.description ? ` - ${cmd.description}` : ""
+                }\n`;
+            }
+        }
+
+        return this.helpText;
+    }
+
+    generateHelpCommandAsEmbed() {
+        if (this.helpEmbed) return this.helpEmbed;
+
+        this.generateHelpCommand();
+
+        this.helpEmbed = new Embed()
+            .setTitle(`Help for ${this.centerType} Command`)
+            .setDescription(this.helpText);
+
+        return this.helpEmbed;
     }
 }
