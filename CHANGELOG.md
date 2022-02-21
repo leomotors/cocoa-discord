@@ -4,6 +4,13 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note**: Changelog before 1.0.0-pre is not available here
 
+**Note 2**: Not all change will be noted, see commits for *full* changelog
+
+## [1.0.0] - 2022-02-2?
+
+- @MessageCommand (CogMessageClass) no longer require 'name' field.
+(You can still specify it to override what ever your method name is)
+
 ## [1.0.0-rc.5] - 2022-02-21
 
 - Added Help Command Generator

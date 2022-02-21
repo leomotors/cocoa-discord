@@ -6,10 +6,7 @@
 
 Yet another Discord Bot Utility npm package
 
-This package contains many utilities that made by me for me to make my bots
-
-**WARNING**: Despite the version number is at *rc*, any breaking changes can still be made.
-~~Because this is my library~~
+This package contains many utilities that **made by me for me** to make my bots
 
 ## 🛍️ Subpackages
 
@@ -17,11 +14,6 @@ Many utilities are classified into many subpackages
 
 **NOTE**: You need to use the very new version of node.js (16.9+) as it is requirement
 of discord.js
-
-This package currently supports both commonjs and esmodule. Tested.
-
-*Fun Fact*: I suffered from error revolving esmodule alot, muck. Anyway, I kinda
-understand how they work now.
 
 ### / (index)
 
@@ -51,12 +43,13 @@ As the name suggests, you should avoid touching this subpackage
 There are two implementations, one that are different, focuses on concept of
 one function per file. And the other one, that is more like discord.py's cogs.
 
-### Experimental Modules
+### /\<message|slash\>/class
 
 To use Class Cog (with Decorators like discord.py), import them from /message/class
 or /slash/class.
 
-Note that Decorators are complex and I achieve this using *dark magic*
+Note that Decorators are complex and I achieve this using *dark magic*,
+however, from testing, this is pretty stable. **TypeScript is required**.
 
 ## ✍️ Discord Bots that use this Package a.k.a. Examples
 
@@ -73,7 +66,7 @@ If you wish for examples, see above repositories
 - See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
 
 **Note**: There is no Type Check in this package. To avoid unexpected behavior,
-please use TypeScript or activate @ts-check on JavaScript.
+**please use TypeScript** or activate @ts-check on JavaScript.
 
 To use generic type, TypeScript is required.
 

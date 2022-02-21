@@ -113,7 +113,7 @@ export abstract class ManagementCenter<
         this.validated = true;
     }
 
-    generateHelpCommand() {
+    protected generateHelpCommand() {
         if (this.helpText) return this.helpText;
 
         for (const cog of this.cogs) {
@@ -132,7 +132,7 @@ export abstract class ManagementCenter<
         return this.helpText;
     }
 
-    generateHelpCommandAsEmbed() {
+    protected generateHelpCommandAsEmbed() {
         if (this.helpEmbed) return this.helpEmbed;
 
         this.generateHelpCommand();

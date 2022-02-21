@@ -60,7 +60,7 @@ The goal of this function is to reduce the amount of frequently used code.
 **Remark**:
 
 - Cocoa Discord Utils does not provide Slash Command Builder,
-you will need to use `SlashCommandBuilder` from `@discordjs/builders`
+you will need to use `SlashCommandBuilder` from `@discordjs/builders` or `CocoaBuilder` that will eventually returns `SlashCommandBuilder`
 
 - Please refer to `discord.js` documents on how to handle interaction
 
@@ -103,11 +103,11 @@ to ensure that the condition mentioned above is met.
 
 ## Class Cog
 
-**Warning**: This feature is experimental, and is achieved using dark magic. (See source code [here](../src/slash/class/index.ts))
+**Note**: This feature is achieved using dark magic. (See source code [here](../src/slash/class/index.ts))
 
 However, it is working great ~~and is as stable as [S-Bot Framework](https://www.npmjs.com/package/s-bot-framework)~~.
 
-It may made to `stable` zone soon.
+It is marked as `stable` now.
 
 **To use Class Cog**, We will need to extend the base class given,
 and implement methods/commands with decorator.
@@ -173,7 +173,8 @@ class MainCog extends CogMessageClass {
     // constructor omitted
 
     @MessageCommand({
-        name: "ping",
+        // This can be omitted, the decorator will use `name` from function name
+        // name: "ping",
         aliases: ["ing"],
         description: "pong!",
     })
@@ -203,6 +204,22 @@ and command name
 ```
 
 *`message.content` is remained unmodified, you can access full message there too*
+
+## Help Command
+
+Both `MessageCenter` and `SlashCenter` is capable of generating help command, make sure to call them in right order.
+
+The help command is named `help` in `Help` Cog, so beware not to create cog or command with the same name.
+
+```js
+scenter.addCogs( /* all your cogs */);
+// * Help Command, must be called after All Cogs are added
+scenter.useHelpCommand(style);
+// * BUT before Validate Commands
+scenter.validateCommands();
+scenter.on("error", /* if you wanna set */);
+// * REMINDER: syncCommands should be used in client.on("ready")
+```
 
 ## On Error
 
