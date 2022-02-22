@@ -1,10 +1,10 @@
-import { CocoaMessage, CogMessage } from "..";
+import { CocoaMessage, CogMessage, PartialCocoaMessageFunction } from "..";
 import { commandsDict } from "../../base";
 
 const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 
 /**
- * **Warning**: This feature is made possible with the existence of **Dark Magic**
+ * **Note**: This feature is made possible with the existence of **Dark Magic**
  *
  * Or in normal people's word, This is ~~experimental~~ *stable*
  *
@@ -44,11 +44,13 @@ export function MessageCommand(command: Partial<CocoaMessage["command"]> = {}) {
     return (
         cog: CogMessageClass,
         key: string,
-        desc: TypedPropertyDescriptor<CocoaMessage["func"]>
+        desc:
+            | TypedPropertyDescriptor<CocoaMessage["func"]>
+            | TypedPropertyDescriptor<PartialCocoaMessageFunction>
     ) => {
         const muck = (muckStorage[cog.constructor.name] ??= {});
 
-        command.name ??= key;
+        command.name ||= key;
 
         if (muck[command.name]) {
             throw Error(`Duplicate Command Name: ${command.name}`);

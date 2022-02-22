@@ -144,11 +144,10 @@ center.addCogs(new MainCog());
 
 As CogSlashClass implements CogSlash, we can add it to Slash Center and even mix it with Object Cog.
 
-**Note**: Due to some TypeScript mumbo jumbo, you are required to specify type
-in your method arguments. 
-For Message Command, you will need to specify `(msg: Message, strp: string)`
+**Note**: Due to some TypeScript mumbo jumbo, you are required to explicitly 
+specify type in your method arguments.
 
-*Argument Name can be changed, but must not be omitted and so do the type*
+*Argument Name can be changed, but must specify the correct type*
 
 ## Message Command
 

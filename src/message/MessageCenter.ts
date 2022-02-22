@@ -50,7 +50,7 @@ export class MessageCenter extends ManagementCenter<
             if (!this.validated)
                 console.log(
                     chalk.yellow(
-                        "[Message Center WARN]: Please validate command using .validateCommands()"
+                        "[Message Center WARN]: Please validate command by using checkLogin()"
                     )
                 );
         }, 5000);

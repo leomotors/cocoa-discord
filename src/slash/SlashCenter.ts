@@ -46,7 +46,7 @@ export class SlashCenter extends ManagementCenter<
         if (!this.validated)
             console.log(
                 chalk.yellow(
-                    "[Slash Center WARN]: Please validate command using .validateCommands() before syncing"
+                    "[Slash Center WARN]: Please validate command by using checkLogin()"
                 )
             );
 

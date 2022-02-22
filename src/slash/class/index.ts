@@ -4,7 +4,7 @@ import { commandsDict } from "../../base";
 const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 
 /**
- * **Warning**: This feature is made possible with the existence of **Dark Magic**
+ * **Note**: This feature is made possible with the existence of **Dark Magic**
  *
  * Or in normal people's word, This is ~~experimental~~ *stable*
  *

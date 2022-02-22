@@ -1,9 +1,10 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
+  "homepage": "https://github.com/Leomotors/cocoa-discord-utils",
   "author": "Leomotors",
   "license": "MIT",
   "scripts": {

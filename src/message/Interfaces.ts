@@ -13,9 +13,12 @@ export interface CocoaMessage {
     command: CocoaMessageCommandOptions;
     /**
      * @param message - Message Object (Unmodified)
-     * @param strippedContent - message.content with no mentions and prefixes
+     * @param args - message.content with no mentions and prefixes (Stripped)
      */
-    func: (message: Message, strippedContent: string) => Promise<void>;
+    func: (message: Message, args: string) => Promise<void>;
 }
+
+/** To silent decorators TypeScript warning, you don't need to use this */
+export type PartialCocoaMessageFunction = (message: Message) => Promise<void>;
 
 export type CogMessage = Cog<CocoaMessage>;
