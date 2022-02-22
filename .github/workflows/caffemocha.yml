@@ -5,7 +5,7 @@ on:
 
 jobs:
   main:
-    name: ESLint & Mocha
+    name: Iroiro na Test
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +21,5 @@ jobs:
         run: yarn lint
       - name: Mocha Test
         run: yarn test
+      - name: Generating Documents Test
+        run: yarn docs
