@@ -1,7 +1,7 @@
 // * https://stackoverflow.com/a/49910890
 export type NonEmptyArray<T> = T[] & { 0: T };
-
 export type Awaitable<T> = T | PromiseLike<T>;
+export type valueOf<T> = T[keyof T];
 
 export type BaseCommand = { command: { name: string; description?: string } };
 

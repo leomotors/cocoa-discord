@@ -1,8 +1,8 @@
 import { Awaitable } from "./Interface";
 
-type PureFunction = () => Awaitable<void>;
+export type PureFunction = () => Awaitable<void>;
 
-class Store {
+export class Store {
     private store: { [name: string]: PureFunction[] } = {};
 
     subscribe(name: string, func: PureFunction) {

@@ -6,6 +6,12 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.0.1] - 2022-02-2?
+
+- Deprecated `createEmbedStyle` => new EmbedStyle(...);
+
+- Miscellanous Change (Text, Docs, Internal Typings)
+
 ## [1.0.0] - 2022-02-22
 
 - @MessageCommand (CogMessageClass) no longer require 'name' field.

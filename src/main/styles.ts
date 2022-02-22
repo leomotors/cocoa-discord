@@ -2,9 +2,10 @@ import { Embed } from "@discordjs/builders";
 
 import { CommandInteraction, EmbedFooterData, Message } from "discord.js";
 
+import { valueOf } from "../base";
 import { Author } from "../template";
 
-type Context = CommandInteraction | Message;
+export type Context = CommandInteraction | Message;
 
 export interface EmbedStyleBase {
     author?: "invoker" | "bot";
@@ -18,7 +19,24 @@ export type embedStyle = {
         | ((ctx: Context) => EmbedStyleBase[prop]);
 };
 
-/** @private This should not be accessed directly, use `createEmbedStyle` function */
+/**
+ * Usage:
+ * ```js
+ * export const style = new EmbedStyle({ ... });
+ * ```
+ *
+ * Embed Styles Properties:
+ * - author: "invoker" will set the author to who invoke the commands
+ * "bot" is bot, obviously.
+ * - color: Color of Embed
+ * - footer: Footer of Embed
+ *
+ * Embed Styles Methods (See each's method JSDoc for more info):
+ * - use
+ * - apply
+ *
+ * You can also pass the function that recieves Command Context and return the option.
+ * */
 export class EmbedStyle {
     private style: embedStyle;
 
@@ -69,12 +87,11 @@ export class EmbedStyle {
         return this.setStyle(ctx, embed);
     }
 
-    private resolve<T>(
+    private resolve<T extends valueOf<EmbedStyleBase>>(
         ctx: Context,
         res?: T | ((ctx: Context) => T)
     ): T | undefined {
         if (typeof res == "function") {
-            // @ts-ignore Type System too complex, this is private fn anyway
             return res(ctx);
         }
         return res;
@@ -94,20 +111,7 @@ export class EmbedStyle {
 }
 
 /**
- * Create EmbedStyle Object
- *
- * Example Usage:
- * ```js
- * export const style = createEmbedStyle({ ... });
- * ```
- *
- * Embed Styles Properties:
- * - author: "invoker" will set the author to who invoke the commands
- * "bot" is bot, obviously.
- * - color: Color of Embed
- * - footer: Footer of Embed
- *
- * You can also pass the function that recieves Command Context and return the option.
+ * @deprecated Use `new EmbedStyle(opts)` to create Embed Style directly
  */
 export function createEmbedStyle(style: embedStyle) {
     return new EmbedStyle(style);

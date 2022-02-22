@@ -105,5 +105,7 @@ dist
 
 .vscode
 
+docs
+
 # lm-config
 src/meta/generated.ts
