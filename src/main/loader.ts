@@ -5,6 +5,7 @@ export class Loader<T> {
     readonly name: string;
     private _data: T[] = [];
     protected readonly filePath?: string;
+    private reloadInterval?: NodeJS.Timer;
     initialPromise?: Promise<void>;
 
     get data(): T[] {
@@ -50,5 +51,14 @@ export class Loader<T> {
         } catch (error) {
             console.log(chalk.red(`[LOADER ${this.name} ERROR] : ${error}`));
         }
+    }
+
+    /**
+     * Reload this loader every specified time, will reset previous interval
+     */
+    setReloadInterval(interval: number) {
+        if (this.reloadInterval) clearInterval(this.reloadInterval);
+
+        this.reloadInterval = setInterval(this.reload.bind(this), interval);
     }
 }

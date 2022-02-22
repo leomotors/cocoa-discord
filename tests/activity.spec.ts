@@ -4,7 +4,7 @@ import { ActivityGroupLoader } from "../src/main";
 
 import Activities from "./mock/activities.mock.json";
 
-describe("index / Activity Group Loader", () => {
+describe("Activity Group Loader", () => {
     const loader = new ActivityGroupLoader("./tests/mock/activities.mock.json");
 
     it("Loader has 8 Activities (no? check the file and count)", async () => {

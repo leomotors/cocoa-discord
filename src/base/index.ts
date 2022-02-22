@@ -5,3 +5,4 @@
 
 export * from "./Center";
 export * from "./Interface";
+export * from "./store";

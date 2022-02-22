@@ -1,0 +1,24 @@
+import chalk from "chalk";
+import { Client } from "discord.js";
+
+import { store } from "../base";
+
+/**
+ * Do all the checks before login
+ *
+ * You are **encouraged** to use this in place of `Client.login()`
+ *
+ * You don't need to call `ManagementCenter.validateCommands()`
+ * if you will login the client with this function
+ */
+export async function checkLogin(client: Client, token?: string) {
+    if (!token) {
+        throw "Check Fail! Bot token is undefined!";
+    }
+
+    await store.notifyAwait("login");
+
+    console.log(chalk.green("Checks done! Logging in..."));
+
+    client.login(token);
+}

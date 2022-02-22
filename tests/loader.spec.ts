@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import { Loader } from "../src/main";
 
-describe("index / Base Class Loader", () => {
+describe("Base Class Loader", () => {
     describe("From Array <string>", fromArray);
     describe("From File <string>", fromFile);
 });

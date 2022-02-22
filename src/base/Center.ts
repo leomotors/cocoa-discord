@@ -8,6 +8,7 @@ import { MessageEvents } from "../message";
 import { SlashEvents } from "../slash";
 
 import { BaseCommand, Cog as BaseCog, NonEmptyArray } from "./Interface";
+import { store } from "./store";
 
 export abstract class ManagementCenter<
     Cog extends BaseCog<BaseCommand>,
@@ -32,6 +33,8 @@ export abstract class ManagementCenter<
     ) {
         this.client = client;
         this.centerType = centerType;
+
+        store.subscribe("login", this.validateCommands.bind(this));
     }
 
     addCog(cog: Cog | CogClass) {
@@ -82,7 +85,7 @@ export abstract class ManagementCenter<
      * Make sure to **NOT** name any cog `Help` or any command `help`
      */
     useHelpCommand(_?: EmbedStyle) {
-        throw "Abstract Class Method is called";
+        throw "ManagementCenter is Abstract and also Private class, it's method is called";
     }
 
     /**
@@ -90,8 +93,17 @@ export abstract class ManagementCenter<
      * and `Cog.commands` key and value must be the same command name
      *
      * This function will ensure that and should be called after all cogs are added
+     *
+     * **Note**: It is recommended to use `checkLogin()` instead for simplicity
      */
     validateCommands() {
+        if (this.validated)
+            console.log(
+                chalk.yellow(
+                    `[WARN ${this.centerType} Center] Validate should be called only once!`
+                )
+            );
+
         const cogNames = [];
         const cmdNames = [];
         for (const cog of this.cogs) {

@@ -3,16 +3,25 @@ import { ActivityOptions, Client, ExcludeEnum } from "discord.js";
 import { ActivityTypes } from "discord.js/typings/enums";
 import { readFile } from "fs/promises";
 
-import { Loader } from "./classes/loader";
+import { Loader } from "./loader";
 
-const _5min = 5 * 60 * 1000;
+const _min = 60 * 1000;
+const _defaultInterval = 10 * _min;
+
+function assertInterval(interval: number) {
+    if (interval < 1000) {
+        throw "Interval too small! This will cause Rate-Limit, do never mistake milliseconds for seconds!";
+    }
+}
 
 /** @important This function **must** be called **AFTER** client is ready */
 export async function useActivity(
     client: Client<true>,
     loader: Loader<ActivityOptions>,
-    interval = _5min
+    interval = _defaultInterval
 ) {
+    assertInterval(interval);
+
     await loader.initialPromise;
     client.user.setActivity(loader.getRandom());
     setInterval(() => {
@@ -24,8 +33,10 @@ export async function useActivity(
 export async function useActivityGroup(
     client: Client<true>,
     loader: ActivityGroupLoader,
-    interval = _5min
+    interval = _defaultInterval
 ) {
+    assertInterval(interval);
+
     await loader.initialPromise;
     client.user.setActivity(loader.getBuiltRandom());
     setInterval(() => {
