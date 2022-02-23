@@ -6,11 +6,15 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
-## [1.0.1] - 2022-02-2?
+## [1.1.0-pre.1] - 2022-02-23
 
 - Deprecated `createEmbedStyle` => new EmbedStyle(...);
 
 - Miscellanous Change (Text, Docs, Internal Typings)
+
+- Added `AutoBuilder` for `CogSlashClass`
+
+- Added "message" and "interaction" event for Message Center and Slash Center
 
 ## [1.0.0] - 2022-02-22
 

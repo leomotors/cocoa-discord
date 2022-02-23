@@ -8,6 +8,9 @@ Yet another Discord Bot Utility npm package
 
 This package contains many utilities that **made by me for me** to make my bots
 
+**Note**: If you are viewing this from `TypeDoc` see `meta/CocoaVersion` for
+version of the document you are viewing.
+
 ## 🛍️ Subpackages
 
 Many utilities are classified into many subpackages

@@ -4,6 +4,8 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 
 import { CommandInteraction } from "discord.js";
 
+import { replaceNameKeyword } from "../slash/class";
+
 /**
  * Basically `SlashCommandBuilder` but with name and description
  * @returns SlashCommandBuilder with given name and description set
@@ -12,6 +14,17 @@ export function CocoaBuilder(name: string, description?: string) {
     const c = new SlashCommandBuilder().setName(name);
     if (description) return c.setDescription(description);
     return c;
+}
+
+/**
+ * **NOTE**: Only usable with `CogSlashClass`
+ *
+ * Like `CocoaBuilder` but you don't need to specify name.
+ *
+ * @returns SlashCommandBuilder with given description set
+ */
+export function AutoBuilder(description?: string) {
+    return CocoaBuilder(replaceNameKeyword, description);
 }
 
 /**

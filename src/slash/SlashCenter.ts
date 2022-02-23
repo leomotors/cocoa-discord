@@ -15,6 +15,7 @@ export interface SlashEvents {
         error: unknown,
         ctx: CommandInteraction
     ) => Awaitable<void>;
+    interaction: (name: string, ctx: CommandInteraction) => Promise<void>;
 }
 
 export class SlashCenter extends ManagementCenter<
@@ -24,8 +25,15 @@ export class SlashCenter extends ManagementCenter<
 > {
     private readonly guild_ids: string[];
 
-    constructor(client: Client, guild_ids: string[]) {
-        super(client, "Slash", { error: [] });
+    /**
+     * @param client It is what it is
+     * @param guild_ids Array of Guild IDs, will *throw error* if is `undefined`
+     */
+    constructor(client: Client, guild_ids: string[] | undefined) {
+        super(client, "Slash", { error: [], interaction: [] });
+
+        if (!guild_ids || guild_ids.length < 1)
+            throw Error("guild_ids not exist");
         this.guild_ids = guild_ids;
 
         this.client.on("interactionCreate", (interaction: Interaction) => {
@@ -63,10 +71,17 @@ export class SlashCenter extends ManagementCenter<
 
     private async handleInteraction(interaction: CommandInteraction) {
         const cmdname = interaction.commandName;
+
         for (const cog of this.cogs) {
             if (cog.commands[cmdname]) {
                 try {
                     await cog.commands[cmdname].func(interaction);
+                    if (this.hasHandler("interaction"))
+                        await this.runAllHandler(
+                            "interaction",
+                            cmdname,
+                            interaction
+                        );
                 } catch (error) {
                     console.log(
                         chalk.red(

@@ -13,6 +13,7 @@ export type MessageCriteria =
 
 export interface MessageEvents {
     error: (name: string, error: unknown, msg: Message) => Awaitable<void>;
+    message: (name: string, msg: Message) => Promise<void>;
 }
 
 export class MessageCenter extends ManagementCenter<
@@ -35,7 +36,7 @@ export class MessageCenter extends ManagementCenter<
      * The prefixes can be anything as long as it is **not empty** string array
      */
     constructor(client: Client, criteria: MessageCriteria) {
-        super(client, "Message", { error: [] });
+        super(client, "Message", { error: [], message: [] });
         this.criteria = criteria;
 
         this.client.on("messageCreate", (message: Message) => {
@@ -78,7 +79,11 @@ export class MessageCenter extends ManagementCenter<
         const msgToken = strp.split(" ");
         const cmdName = msgToken[0];
 
+        let handled = "";
+
         for (const cog of this.cogs) {
+            if (handled) break;
+
             // * Call by Real Name
             if (cog.commands[cmdName]) {
                 try {
@@ -100,7 +105,8 @@ export class MessageCenter extends ManagementCenter<
                             message
                         );
                 }
-                return;
+                handled = cmdName;
+                break;
             }
 
             // * Call by Aliases
@@ -123,10 +129,14 @@ export class MessageCenter extends ManagementCenter<
                                 )
                             );
                     }
-                    return;
+                    handled = cmd.command.name;
+                    break;
                 }
             }
         }
+
+        if (this.hasHandler("message"))
+            await this.runAllHandler("message", handled, message);
     }
 
     override useHelpCommand(style?: EmbedStyle) {

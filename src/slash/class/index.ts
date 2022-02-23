@@ -29,6 +29,8 @@ export abstract class CogSlashClass implements CogSlash {
     }
 }
 
+export const replaceNameKeyword = "__replace_with_method_name__";
+
 /**
  * Example Usage
  * ```ts
@@ -47,6 +49,8 @@ export function SlashCommand(command: CocoaSlash["command"]) {
         desc: TypedPropertyDescriptor<CocoaSlash["func"]>
     ) => {
         const muck = (muckStorage[cog.constructor.name] ??= {});
+
+        if (command.name == replaceNameKeyword) command.name = key;
 
         if (muck[command.name]) {
             throw Error(`Duplicate Command Name: ${command.name}`);
