@@ -17,28 +17,27 @@ describe("Template Module", () => {
                 public required?: boolean
             ) {}
             setName(name: string) {
-                return new DummyEphemeral(
-                    name,
-                    this.description,
-                    this.required
-                );
+                this.name = name;
+                return this;
             }
             setDescription(desc: string) {
-                return new DummyEphemeral(this.name, desc, this.required);
+                this.description = desc;
+                return this;
             }
             setRequired(req: boolean) {
-                return new DummyEphemeral(this.name, this.description, req);
+                this.required = req;
+                return this;
             }
         }
 
-        let ep = new DummyEphemeral();
+        const ep = new DummyEphemeral();
 
-        ep = Ephemeral()(ep);
+        Ephemeral()(ep);
 
         assert.equal(ep.name, "ephemeral");
         assert.equal(ep.description, "Make your request ephemeral");
 
-        ep = Ephemeral("bruh")(ep);
+        Ephemeral("bruh")(ep);
 
         assert.equal(ep.description, "bruh");
         assert.strictEqual(ep.required, false);

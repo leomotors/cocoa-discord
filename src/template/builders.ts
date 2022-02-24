@@ -12,7 +12,7 @@ import { replaceNameKeyword } from "../slash/class";
  */
 export function CocoaBuilder(name: string, description?: string) {
     const c = new SlashCommandBuilder().setName(name);
-    if (description) return c.setDescription(description);
+    if (description) c.setDescription(description);
     return c;
 }
 

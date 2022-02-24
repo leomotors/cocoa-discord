@@ -6,6 +6,12 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.1.0-rc.1] - 2022-02-24
+
+- Some Interface Name has been changed
+
+- Miscellanous improvements
+
 ## [1.1.0-pre.1] - 2022-02-23
 
 - Deprecated `createEmbedStyle` => new EmbedStyle(...);

@@ -1,9 +1,9 @@
 import { assert } from "chai";
 
-import { createEmbedStyle } from "../src/main";
+import { EmbedStyle } from "../src/main";
 
 describe("Embed Style", () => {
-    const style = createEmbedStyle({
+    const style = new EmbedStyle({
         author: "invoker",
         color: 0x000000,
         footer: (_) => ({

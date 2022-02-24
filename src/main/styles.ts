@@ -13,7 +13,7 @@ export interface EmbedStyleBase {
     footer?: EmbedFooterData;
 }
 
-export type embedStyle = {
+export type EmbedStyleOptions = {
     [prop in keyof EmbedStyleBase]:
         | EmbedStyleBase[prop]
         | ((ctx: Context) => EmbedStyleBase[prop]);
@@ -38,9 +38,9 @@ export type embedStyle = {
  * You can also pass the function that recieves Command Context and return the option.
  * */
 export class EmbedStyle {
-    private style: embedStyle;
+    private style: EmbedStyleOptions;
 
-    constructor(style: embedStyle) {
+    constructor(style: EmbedStyleOptions) {
         this.style = style;
     }
 
@@ -102,7 +102,7 @@ export class EmbedStyle {
      *
      * @returns new EmbedStyle
      */
-    extends(style: Partial<embedStyle>) {
+    extends(style: Partial<EmbedStyleOptions>) {
         return new EmbedStyle({
             ...this.style,
             ...style,
@@ -113,6 +113,6 @@ export class EmbedStyle {
 /**
  * @deprecated Use `new EmbedStyle(opts)` to create Embed Style directly
  */
-export function createEmbedStyle(style: embedStyle) {
+export function createEmbedStyle(style: EmbedStyleOptions) {
     return new EmbedStyle(style);
 }

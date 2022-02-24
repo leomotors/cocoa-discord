@@ -3,14 +3,17 @@
 name: Documentation
 
 on:
-  release:
-    types: [released]
+  push:
+    branches:
+      - "main"
+    tags:
+      - "**"
 
 jobs:
   docs:
     strategy:
       matrix:
-        node: ['16']
+        node: ["16"]
 
     name: Documentation (Node v${{ matrix.node }})
     runs-on: ubuntu-latest

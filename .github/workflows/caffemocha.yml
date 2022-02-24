@@ -17,6 +17,8 @@ jobs:
         run: yarn install
       - name: Config Package
         run: yarn lm:config
+      - name: Build Test
+        run: yarn build
       - name: ESLint & Prettier Check
         run: yarn lint
       - name: Mocha Test
