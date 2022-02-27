@@ -78,9 +78,13 @@ export class ConsoleManager {
     }
 
     /** Template Command for Reloading with Loaders */
-    useReload(...loaders: Loader<unknown>[]) {
+    useReload(...loaders: Array<Loader<unknown> | (() => Awaitable<void>)>) {
         this.addCommand("reload", async () => {
-            await Promise.all(loaders.map((lod) => lod.reload()));
+            await Promise.all(
+                loaders.map((lod) =>
+                    typeof lod == "function" ? lod() : lod.reload()
+                )
+            );
             console.log(chalk.green("Successfully reloaded all Loaders"));
         });
         return this;
