@@ -6,6 +6,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.1.0] - 2022-03-07
+
+- `createEmbedStyle` is no longer deprecated, it do the same as creating new class
+
 ## [1.1.0-rc.2] - 2022-02-27
 
 - ConsoleManager's useReload supports function

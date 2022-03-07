@@ -100,7 +100,7 @@ export class EmbedStyle {
     /**
      * Extends (or Override) this style
      *
-     * @returns new EmbedStyle
+     * @returns new extended `EmbedStyle`
      */
     extends(style: Partial<EmbedStyleOptions>) {
         return new EmbedStyle({
@@ -111,7 +111,11 @@ export class EmbedStyle {
 }
 
 /**
- * @deprecated Use `new EmbedStyle(opts)` to create Embed Style directly
+ * Alternative to `new EmbedStyle(opts)` to create Embed Style directly
+ *
+ * ~~Just like discordjs create stuff~~
+ *
+ * See {@link EmbedStyle}
  */
 export function createEmbedStyle(style: EmbedStyleOptions) {
     return new EmbedStyle(style);
