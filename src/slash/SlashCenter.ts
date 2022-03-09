@@ -58,15 +58,22 @@ export class SlashCenter extends ManagementCenter<
                 )
             );
 
+        const commandSet = new Set<string>();
+
         const commandData: CommandsPack[] = [];
         for (const cog of this.cogs) {
             for (const commandName in cog.commands) {
                 const command = cog.commands[commandName];
-                commandData.push([command.command, command.guild_ids]);
+                command.guild_ids?.forEach((id) => commandSet.add(id));
+
+                commandData.push([
+                    command.command,
+                    command.guild_ids ?? this.guild_ids,
+                ]);
             }
         }
 
-        await syncCommands(commandData, this.client, this.guild_ids);
+        await syncCommands(commandData, this.client, [...commandSet]);
     }
 
     private async handleInteraction(interaction: CommandInteraction) {

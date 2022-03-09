@@ -12,10 +12,7 @@ import { getElapsed } from "../meta";
 
 type CAC = ChatInputApplicationCommandData;
 
-export type CommandsPack = [
-    ApplicationCommandDataResolvable,
-    string[] | undefined
-];
+export type CommandsPack = [ApplicationCommandDataResolvable, string[]];
 
 export async function syncCommands(
     commands: CommandsPack[],
@@ -36,7 +33,6 @@ export async function syncCommands(
         const guild = client.guilds.cache.get(guild_id);
         if (guild) {
             const usable = commands.filter((pack) => {
-                if (!pack[1]) return true;
                 return pack[1].includes(guild_id);
             });
             futures.push(

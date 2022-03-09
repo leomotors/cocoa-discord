@@ -6,7 +6,7 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
-## [1.2.0-pre.1] - 2022-03-??
+## [1.2.0-pre.1] - 2022-03-09
 
 - Each Slash Commands can target guilds independently
 
