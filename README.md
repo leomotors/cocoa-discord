@@ -6,10 +6,14 @@
 
 Yet another Discord Bot Utility npm package
 
-This package contains many utilities that **made by me for me** to make my bots
-
 **Note**: If you are viewing this from `TypeDoc` see `meta/CocoaVersion` for
 version of the document you are viewing.
+
+## ✨ Features
+
+- Many utilities that **made by me for me** to make my bots
+
+- Fully Type Safe for TypeScript (Also reason why this library's syntax is a bit strict)
 
 ## 🛍️ Subpackages
 
@@ -52,7 +56,8 @@ To use Class Cog (with Decorators like discord.py), import them from /message/cl
 or /slash/class.
 
 Note that Decorators are complex and I achieve this using *dark magic*,
-however, from testing, this is pretty stable. **TypeScript is required**.
+however, from testing, this is pretty stable.
+**TypeScript is required to use Decorators**.
 
 ## ✍️ Discord Bots that use this Package a.k.a. Examples
 
@@ -82,3 +87,6 @@ Cocoa may have many meanings, but the name `Cocoa / ココア` that is used in t
 *nigerundayo... Smokey!* — No one said
 
 Anime Name: [Is the Order a Rabbit?](https://myanimelist.net/anime/21273/Gochuumon_wa_Usagi_Desu_ka)
+
+PS. This library has nothing to do with Cocoa (besides targeting Cocoa Grader
+which is just Waifu Discord Bot)

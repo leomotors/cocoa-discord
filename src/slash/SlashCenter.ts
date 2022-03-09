@@ -5,7 +5,7 @@ import { Awaitable, ManagementCenter } from "../base";
 import { EmbedStyle } from "../main";
 import { CocoaBuilder, Ephemeral, getEphemeral } from "../template";
 
-import { CogSlashClass } from "./class";
+import { CogSlashClass, replaceNameKeyword } from "./class";
 import { CogSlash } from "./Interfaces";
 import { CommandsPack, syncCommands } from "./SlashSync";
 
@@ -64,6 +64,11 @@ export class SlashCenter extends ManagementCenter<
         for (const cog of this.cogs) {
             for (const commandName in cog.commands) {
                 const command = cog.commands[commandName];
+
+                if (command.command.name == replaceNameKeyword) {
+                    throw "You cannot use AutoBuilder with Object Cog";
+                }
+
                 command.guild_ids?.forEach((id) => commandSet.add(id));
 
                 commandData.push([
