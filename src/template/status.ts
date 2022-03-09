@@ -34,8 +34,8 @@ export async function getStatusFields(
         botUptime,
     } = overrideDefault ?? {};
 
-    let temp: string | number = await getTemp();
-    temp = temp == -273 ? "Unknown" : `${temp} °C`;
+    const temp = await getTemp();
+    const tempStr = temp ? `${temp} °C` : "Unknown";
     const ram = await getRAM();
 
     return [
@@ -51,12 +51,12 @@ export async function getStatusFields(
         },
         {
             name: temperature ?? "Temperature",
-            value: temp,
+            value: tempStr,
             inline,
         },
         {
             name: systemMemory ?? "System Memory",
-            value: `${ram[0] > 0 ? `${ram[0]}/${ram[1]} MB` : "Unknown"}`,
+            value: `${ram ? `${ram[0]}/${ram[1]} MB` : "Unknown"}`,
             inline,
         },
         {

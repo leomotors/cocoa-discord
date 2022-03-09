@@ -5,7 +5,7 @@ const exec = promisify(execCb);
 
 /**
  * @returns CPU Temperature of Raspberry Pi,
- * if fails to do so (ex. not Raspberry Pi) returns -273
+ * if fails to do so (ex. not Raspberry Pi) returns `null`
  * */
 export async function getTemp() {
     try {
@@ -14,12 +14,12 @@ export async function getTemp() {
         if (isNaN(pst)) throw 0;
         return pst;
     } catch (error) {
-        return -273;
+        return null;
     }
 }
 
-/** @returns [RAM Used, RAM Total] if available (Linux) otherwise [-1, -1]*/
-export async function getRAM(): Promise<[number, number]> {
+/** @returns [RAM Used, RAM Total] if available (Linux) otherwise `null` */
+export async function getRAM(): Promise<[number, number] | null> {
     try {
         const ram = await exec("free -m");
         const ln1 = ram.stdout
@@ -31,7 +31,7 @@ export async function getRAM(): Promise<[number, number]> {
         if (isNaN(ramUsed) || isNaN(ramCap)) throw 0;
         return [ramUsed, ramCap];
     } catch (error) {
-        return [-1, -1];
+        return null;
     }
 }
 
