@@ -12,8 +12,13 @@ import { getElapsed } from "../meta";
 
 type CAC = ChatInputApplicationCommandData;
 
+export type CommandsPack = [
+    ApplicationCommandDataResolvable,
+    string[] | undefined
+];
+
 export async function syncCommands(
-    commands: ApplicationCommandDataResolvable[],
+    commands: CommandsPack[],
     client: Client,
     guild_ids: string[]
 ) {
@@ -30,7 +35,17 @@ export async function syncCommands(
     for (const guild_id of guild_ids) {
         const guild = client.guilds.cache.get(guild_id);
         if (guild) {
-            futures.push(syncGuild(commands, client, guild));
+            const usable = commands.filter((pack) => {
+                if (!pack[1]) return true;
+                return pack[1].includes(guild_id);
+            });
+            futures.push(
+                syncGuild(
+                    usable.map((pack) => pack[0]),
+                    client,
+                    guild
+                )
+            );
         } else {
             console.log(
                 chalk.yellow(

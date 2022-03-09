@@ -9,6 +9,7 @@ import { Cog } from "../base";
 export interface CocoaSlash {
     command: ApplicationCommandDataResolvable;
     func: (interaction: CommandInteraction) => Promise<void>;
+    guild_ids?: string[];
 }
 
 export type CogSlash = Cog<CocoaSlash>;

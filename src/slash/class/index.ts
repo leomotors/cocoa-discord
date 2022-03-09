@@ -42,7 +42,10 @@ export const replaceNameKeyword = "__replace_with_method_name__";
  * **Note**: If syntax look broken, blame your IDE.
  * You may look at harunon.js to see this in action
  */
-export function SlashCommand(command: CocoaSlash["command"]) {
+export function SlashCommand(
+    command: CocoaSlash["command"],
+    guild_ids?: string[]
+) {
     return (
         cog: CogSlashClass,
         key: string,
@@ -57,7 +60,7 @@ export function SlashCommand(command: CocoaSlash["command"]) {
         }
 
         if (desc.value) {
-            muck[command.name] = { command, func: desc.value };
+            muck[command.name] = { command, func: desc.value, guild_ids };
         } else {
             throw Error(`Unexpected Error: ${key}'s value is undefined`);
         }

@@ -7,7 +7,7 @@ import { CocoaBuilder, Ephemeral, getEphemeral } from "../template";
 
 import { CogSlashClass } from "./class";
 import { CogSlash } from "./Interfaces";
-import { syncCommands } from "./SlashSync";
+import { CommandsPack, syncCommands } from "./SlashSync";
 
 export interface SlashEvents {
     error: (
@@ -58,11 +58,11 @@ export class SlashCenter extends ManagementCenter<
                 )
             );
 
-        const commandData = [];
+        const commandData: CommandsPack[] = [];
         for (const cog of this.cogs) {
             for (const commandName in cog.commands) {
                 const command = cog.commands[commandName];
-                commandData.push(command.command);
+                commandData.push([command.command, command.guild_ids]);
             }
         }
 
