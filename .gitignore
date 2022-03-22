@@ -107,5 +107,5 @@ dist
 
 docs
 
-# lm-config
-src/meta/generated.ts
+# Generated Files
+*.g.*

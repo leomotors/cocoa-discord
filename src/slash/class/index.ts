@@ -1,3 +1,5 @@
+import { SlashCommandBuilder } from "@discordjs/builders";
+
 import { CocoaSlash, CogSlash } from "..";
 import { commandsDict } from "../../base";
 
@@ -43,7 +45,10 @@ export const replaceNameKeyword = "__replace_with_method_name__";
  * You may look at harunon.js to see this in action
  */
 export function SlashCommand(
-    command: CocoaSlash["command"],
+    command:
+        | CocoaSlash["command"]
+        | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+        | SlashCommandBuilder,
     guild_ids?: string[]
 ) {
     return (
@@ -53,14 +58,24 @@ export function SlashCommand(
     ) => {
         const muck = (muckStorage[cog.constructor.name] ??= {});
 
-        if (command.name == replaceNameKeyword) command.name = key;
+        if (command instanceof SlashCommandBuilder) {
+            command = command.toJSON();
+        }
+
+        type m = CocoaSlash["command"];
+
+        if (command.name == replaceNameKeyword) (command as m).name = key;
 
         if (muck[command.name]) {
             throw Error(`Duplicate Command Name: ${command.name}`);
         }
 
         if (desc.value) {
-            muck[command.name] = { command, func: desc.value, guild_ids };
+            muck[command.name] = {
+                command: command as m,
+                func: desc.value,
+                guild_ids,
+            };
         } else {
             throw Error(`Unexpected Error: ${key}'s value is undefined`);
         }

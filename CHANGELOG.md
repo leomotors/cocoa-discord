@@ -6,9 +6,12 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
-## [1.2.0-pre.2] - 022-03-??
+## [1.2.0] - 2022-03-22
 
 - /meta: getTemp and getRAM now returns `null` if not applicable
+
+- You can now use SlashCommandBuidler without needing to call .toJSON()
+*this currently, only works on `CogSlashClass`*
 
 ## [1.2.0-pre.1] - 2022-03-09
 
