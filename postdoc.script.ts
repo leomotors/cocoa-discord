@@ -50,7 +50,10 @@ function workOn(file: string) {
         <article class="prose prose-lg sm:prose-xl lg:prose-2xl">
             <a href="${relroot}docs/index.html">Guide Index</a>
             <a href="${relroot}index.html">TypeDoc Index</a>
-            ${html.replace('.md">', '.html">')}
+            ${
+                //@ts-ignore
+                html.replaceAll('.md">', '.html">')
+            }
         </article>
     </body>
     <style>
