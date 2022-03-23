@@ -6,6 +6,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.3.0-pre.1] - 2022-03-23
+
+- Added new utility class `CocoaEmbed`
+
 ## [1.2.0] - 2022-03-22
 
 - /meta: getTemp and getRAM now returns `null` if not applicable

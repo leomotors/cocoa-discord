@@ -11,7 +11,19 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-/** On enter in console */
+/**
+ * On Enter in Console
+ *
+ * *The full implementation*
+ *
+ * ```ts
+ * export function setConsoleEvent(handler: (cmd: string) => void) {
+ * rl.on("line", (cmd: string) => {
+ *     handler(cmd);
+ *  });
+ * }
+ * ```
+ */
 export function setConsoleEvent(handler: (cmd: string) => void) {
     rl.on("line", (cmd: string) => {
         handler(cmd);

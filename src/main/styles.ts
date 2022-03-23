@@ -5,6 +5,8 @@ import { CommandInteraction, EmbedFooterData, Message } from "discord.js";
 import { valueOf } from "../base";
 import { Author } from "../template";
 
+import { CocoaEmbed } from "./embed";
+
 export type Context = CommandInteraction | Message;
 
 export interface EmbedStyleBase {
@@ -70,9 +72,11 @@ export class EmbedStyle {
      * import { style } from "./where/you/export/yourStyle"
      * const emb = style.use(ctx).setTitle(...)
      * ```
+     *
+     * @returns CocoaEmbed, Derived Class of Embed
      */
     use(ctx: Context) {
-        return this.setStyle(ctx, new Embed());
+        return this.setStyle(ctx, new CocoaEmbed()) as CocoaEmbed;
     }
 
     /**
