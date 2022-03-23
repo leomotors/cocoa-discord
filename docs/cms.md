@@ -12,7 +12,7 @@ To understand this guide, you need to know:
 
 - discord.js
 
-- SlashCommandBuilder or JSON Structure of Slash Command
+- SlashCommandBuilder (@discordjs/builders) or JSON Structure of Slash Command
 
 ## Understand the Concept
 
@@ -103,11 +103,12 @@ to ensure that the condition mentioned above is met.
 
 ## Class Cog
 
-**Note**: This feature is achieved using dark magic. (See source code [here](../src/slash/class/index.ts))
+*This syntax is inspired by discord.py*
 
-However, it is working great ~~and is as stable as [S-Bot Framework](https://www.npmjs.com/package/s-bot-framework)~~.
-
-It is marked as `stable` now.
+Just to let you know that behind this beautiful syntax, it is achieved using
+dark magic. (See source code [here](../src/slash/class/index.ts)).
+But nothing to worry about it! Based on testing, it never break.
+So, it is marked as `stable` now.
 
 **To use Class Cog**, We will need to extend the base class given,
 and implement methods/commands with decorator.
@@ -129,20 +130,36 @@ export class MainCog extends CogSlashClass {
         super("Main Cog", "This is the main cog");
     }
 
+    // Normal Way
     @SlashCommand(CocoaBuilder("ping", "pong!").toJSON())
     async ping(ctx: CommandInteraction) {
         await ctx.reply("pong!");
     }
+
+    // NEW!
+    @SlashCommand(AutoBuilder("pong!"))
+    async ping(ctx: CommandInteraction) {
+        ...
+    }
+    // With AutoBuilder, you can omit the name field,
+    // it will take the name from the method name
+    // From 1.2.0, with CogSlashClass, you can omit .toJSON()
+
+    // Always note that there is limitation on how you can name command
+    // But discord.js will throw error at start time, so nothing to worry about
 }
 ```
 
-And to add it to Slash Center
+The library will automatically bind your method to an instance, so you can use
+it like a class. Like, add some methods or properties!
+
+And to add it to Slash Center just like Object Cog
 
 ```ts
 center.addCogs(new MainCog());
 ```
 
-As CogSlashClass implements CogSlash, we can add it to Slash Center and even mix it with Object Cog.
+Because CogSlashClass implements CogSlash, we can add it to Slash Center and even mix it with Object Cog.
 
 **Note**: Due to some TypeScript mumbo jumbo, you are required to explicitly 
 specify type in your method arguments.

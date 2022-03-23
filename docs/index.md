@@ -5,9 +5,9 @@ for frequently used item. Made by me for me (and maybe friends) to make our bots
 
 ## Note
 
-- The API of this library is not stable yet
+- Because no one use this library (right?), breaking changes are likely to be made. Please be aware of it.
 
-- Currently, only few of the features in library are noted here. When I have time, I will add more.
+- Currently, only few of the features in library are noted in the guide here. When I have time, I will add more.
 
 ## 📖 Table
 

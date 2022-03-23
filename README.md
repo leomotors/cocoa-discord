@@ -6,6 +6,7 @@
 
 Yet another Discord Bot Utility npm package
 
+<!-- This component will be replace when building TypeDoc -->
 <TypeDoc />
 
 ## ✨ Features
@@ -21,7 +22,7 @@ Many utilities are classified into many subpackages
 **NOTE**: You need to use the very new version of node.js (16.9+) as it is requirement
 of discord.js
 
-### / (index)
+### /
 
 Miscellanous, consists of many utility classes
 
@@ -45,24 +46,24 @@ Frequently used stuff
 
 As the name suggests, you should avoid touching this subpackage
 
-**Note**: Command Management is inspired by discord.py's cogs system. 
-There are two implementations, one that are different, focuses on concept of
-one function per file. And the other one, that is more like discord.py's cogs.
-
-### /\<message|slash\>/class
+### /message/class & /slash/class
 
 To use Class Cog (with Decorators like discord.py), import them from /message/class
 or /slash/class.
 
-Note that Decorators are complex and I achieve this using *dark magic*,
-however, from testing, this is pretty stable.
 **TypeScript is required to use Decorators**.
+
+**Note**: Command Management is inspired by discord.py's cogs system. 
+There are two implementations, one that are different, focuses on concept of
+one function per file. And the other one, that is more like discord.py's cogs.
 
 ## ✍️ Discord Bots that use this Package a.k.a. Examples
 
 - [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
 
 - [Harunon JS](https://github.com/CarelessDev/harunon.js)
+
+- [Bots Gulag](https://github.com/CarelessDev/bots-gulag)
 
 If you wish for examples, see above repositories
 
@@ -73,10 +74,11 @@ or [Markdown in Fancy Website](https://leomotors.github.io/cocoa-discord-utils/d
 
 - See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
 
-**Note**: There is no Type Check in this package. To avoid unexpected behavior,
-**please use TypeScript** or activate @ts-check on JavaScript.
+**Note**: For runtime safety, **please use TypeScript** or activate @ts-check on JavaScript.
 
-To use generic type, TypeScript is required.
+To use generic type and decorators (Cog Class Syntax), TypeScript is required.
+
+**Tips**: Always use *await* with any async methods, so try-catch works.
 
 ## 🍫 What is Cocoa?
 
