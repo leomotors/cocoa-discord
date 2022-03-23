@@ -105,7 +105,5 @@ dist
 
 .vscode
 
-docs
-
 # Generated Files
 *.g.*

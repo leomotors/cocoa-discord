@@ -33,6 +33,9 @@ jobs:
       - name: Run lm-config
         run: yarn lm:config
 
+      - name: Run pre-docs
+        run: yarn pre-docs
+
       - name: Build documentation
         run: yarn docs
 
@@ -40,4 +43,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: docs
+          folder: typedoc-out

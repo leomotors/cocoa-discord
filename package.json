@@ -18,7 +18,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src && prettier --check \"src/**/*.ts\"",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"resolveJsonModule\":true}' mocha -r ts-node/register --exit tests/index.spec.ts",
-    "ncu": "ncu -u !chalk"
+    "ncu": "ncu -u !chalk",
+    "pre-doc": "ts-node predoc.script.ts"
   },
   "keywords": [
     "discord-bot",

@@ -6,8 +6,7 @@
 
 Yet another Discord Bot Utility npm package
 
-**Note**: If you are viewing this from `TypeDoc` see `meta/CocoaVersion` for
-version of the document you are viewing.
+<TypeDoc />
 
 ## ✨ Features
 
