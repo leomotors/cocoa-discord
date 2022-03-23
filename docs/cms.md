@@ -4,7 +4,7 @@ ah muck, I wrote this file for so long and accidently delete it.
 
 *muck*
 
-Anyway, let's get into the rewritten one, hope I don't delete it agian.
+Anyway, let's get into the rewritten one, hope I don't delete it again.
 
 ## Prerequisite
 

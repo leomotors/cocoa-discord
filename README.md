@@ -68,7 +68,8 @@ If you wish for examples, see above repositories
 
 ## 📚 Documentation
 
-- Doc & Guide: [here](./doc/index.md)
+- Doc & Guide: [Markdown (GitHub)](./docs/index.md) 
+or [Markdown in Fancy Website](https://leomotors.github.io/cocoa-discord-utils/docs.html)
 
 - See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
 

@@ -10,7 +10,9 @@ readme = readme.replace(
 
 - You are viewing Documentation for Version ${Version}
 
-- This Document is generated at ${BuildTime}`
+- This Document is generated at ${BuildTime} (UTC+7)
+
+- You can read the fancy Guide [HERE](./docs/index.html)`
 );
 
-fs.writeFileSync("README.md", readme);
+fs.writeFileSync("README.g.md", readme);

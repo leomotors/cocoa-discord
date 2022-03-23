@@ -107,3 +107,6 @@ dist
 
 # Generated Files
 *.g.*
+
+# Output
+typedoc-out

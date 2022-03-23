@@ -1,4 +1,4 @@
-# * https://github.com/discordjs/voice/blob/main/.github/workflows/docs.yml
+# * Original: https://github.com/discordjs/voice/blob/main/.github/workflows/docs.yml
 
 name: Documentation
 
@@ -30,14 +30,8 @@ jobs:
       - name: Install Dependencies (Yarn)
         run: yarn install
 
-      - name: Run lm-config
-        run: yarn lm:config
-
-      - name: Run pre-doc
-        run: yarn pre-doc
-
       - name: Build documentation
-        run: yarn docs
+        run: yarn full-doc
 
       - name: Deploy documentation
         uses: JamesIves/github-pages-deploy-action@4.1.0
