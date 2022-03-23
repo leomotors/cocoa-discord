@@ -3,6 +3,19 @@ import * as fs from "fs";
 import globby from "globby";
 import hljs from "highlight.js";
 import { marked } from "marked";
+import path from "path";
+
+function convertLink(atag: string, file: string) {
+    const link = atag.split('"')[1];
+
+    if (!link.startsWith("..") || link.endsWith(".md")) {
+        return atag.replace(".md", ".html");
+    }
+
+    const root = path.join(file, "../" + link);
+
+    return `<a href="https://github.com/Leomotors/cocoa-discord-utils/blob/main/${root}">`;
+}
 
 function workOn(file: string) {
     const ftoken = file.split("/");
@@ -52,7 +65,9 @@ function workOn(file: string) {
             <a href="${relroot}index.html">TypeDoc Index</a>
             ${
                 //@ts-ignore
-                html.replaceAll('.md">', '.html">')
+                html.replaceAll(/<a\shref="[^\"]*">/g, (atag) =>
+                    convertLink(atag, file)
+                )
             }
         </article>
     </body>
