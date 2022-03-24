@@ -33,7 +33,7 @@ export abstract class CogMessageClass implements CogMessage {
  *   await ctx.reply("pong!");
  * }
  * ```
- * **Note**: If syntax look broken, blame your IDE.
+ * **Note**: If syntax highlight looks broken, blame your IDE.
  * You may look at harunon.js to see this in action
  */
 export function MessageCommand(
