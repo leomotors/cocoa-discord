@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "1.3.0",
+  "version": "1.4.0-dev",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -14,8 +14,8 @@
     "cb": "yarn clean && yarn build",
     "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
     "prepack": "yarn cb && yarn lint && yarn test",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src && prettier --check \"src/**/*.ts\"",
+    "format": "prettier --write \"{src,tests}/**/*.ts\"",
+    "lint": "eslint src && prettier --check \"{src,tests}/**/*.ts\"",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"resolveJsonModule\":true}' mocha -r ts-node/register --exit tests/index.spec.ts",
     "ncu": "ncu -u \"/^(?!.*chalk)(?!.*globby).*$/\"",
     "pre-doc": "ts-node predoc.script.ts",

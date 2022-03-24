@@ -18,6 +18,7 @@ export abstract class ManagementCenter<
     protected readonly client: Client;
     protected cogs: Cog[] = [];
     protected validated = false;
+    protected guild_ids?: string[];
 
     helpText = "";
     helpEmbed?: Embed;
@@ -29,10 +30,12 @@ export abstract class ManagementCenter<
         centerType: "Message" | "Slash",
         protected eventHandler: {
             [event in keyof Events]: Events[event][];
-        }
+        },
+        guild_ids?: string[]
     ) {
         this.client = client;
         this.centerType = centerType;
+        this.guild_ids = guild_ids;
 
         store.subscribe("login", this.validateCommands.bind(this));
     }
@@ -154,5 +157,19 @@ export abstract class ManagementCenter<
             .setDescription(this.helpText);
 
         return this.helpEmbed;
+    }
+
+    protected unionAllGuildIds() {
+        const guildIds = new Set<string>(this.guild_ids ?? []);
+
+        for (const cog of this.cogs) {
+            for (const [_, cmd] of Object.entries(cog.commands)) {
+                (cmd.guild_ids ?? []).forEach((guildId) =>
+                    guildIds.add(guildId)
+                );
+            }
+        }
+
+        return [...guildIds];
     }
 }

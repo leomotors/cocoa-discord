@@ -15,6 +15,7 @@ describe("CocoaEmbed Test", () => {
 
         assert.equal(emb.fields[0]?.name, "Hi");
         assert.equal(emb.fields[1]?.name, "Hi2");
+        assert.isNotTrue(emb.fields[0]?.inline);
         assert.isTrue(emb.fields[1]?.inline);
         assert.isTrue(emb.fields[2]?.inline);
         assert.isTrue(emb.fields[3]?.inline);

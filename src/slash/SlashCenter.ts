@@ -23,14 +23,12 @@ export class SlashCenter extends ManagementCenter<
     CogSlashClass,
     SlashEvents
 > {
-    private readonly guild_ids: string[];
-
     /**
      * @param client It is what it is
      * @param guild_ids Array of Guild IDs, will *throw error* if is `undefined`
      */
     constructor(client: Client, guild_ids: string[] | undefined) {
-        super(client, "Slash", { error: [], interaction: [] });
+        super(client, "Slash", { error: [], interaction: [] }, guild_ids);
 
         if (!guild_ids || guild_ids.length < 1)
             throw Error("guild_ids not exist");
@@ -73,7 +71,7 @@ export class SlashCenter extends ManagementCenter<
 
                 commandData.push([
                     command.command,
-                    command.guild_ids ?? this.guild_ids,
+                    command.guild_ids ?? this.guild_ids!,
                 ]);
             }
         }
@@ -134,6 +132,7 @@ export class SlashCenter extends ManagementCenter<
                             ephemeral,
                         });
                     },
+                    guild_ids: this.unionAllGuildIds(),
                 },
             },
         });

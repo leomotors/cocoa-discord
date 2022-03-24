@@ -36,7 +36,10 @@ export abstract class CogMessageClass implements CogMessage {
  * **Note**: If syntax look broken, blame your IDE.
  * You may look at harunon.js to see this in action
  */
-export function MessageCommand(command: Partial<CocoaMessage["command"]> = {}) {
+export function MessageCommand(
+    command: Partial<CocoaMessage["command"]> = {},
+    guild_ids?: string[]
+) {
     return (
         cog: CogMessageClass,
         key: string,
@@ -56,6 +59,7 @@ export function MessageCommand(command: Partial<CocoaMessage["command"]> = {}) {
             muck[command.name] = {
                 command: command as CocoaMessage["command"],
                 func: desc.value,
+                guild_ids,
             };
         } else {
             throw Error(`Unexpected Error: ${key}'s value is undefined`);

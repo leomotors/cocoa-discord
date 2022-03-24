@@ -12,6 +12,10 @@ import { getElapsed } from "../meta";
 
 type CAC = ChatInputApplicationCommandData;
 
+/**
+ * Represent the Command Data (discord.js-compatible interface)
+ * and list of guilds to sync to
+ */
 export type CommandsPack = [ApplicationCommandDataResolvable, string[]];
 
 export async function syncCommands(
