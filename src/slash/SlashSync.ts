@@ -61,7 +61,9 @@ async function syncGuild(
     // * Modified From https://github.com/Androz2091/discord-sync-commands
     try {
         const start = new Date().getTime();
-        console.log(`[Slash Sync] Begin syncing commands for ${guild.name}`);
+        console.log(
+            `[Slash Sync] Begin syncing commands for ${guild.name} (${commands.length} commands)`
+        );
         const currentCommands = await client.application.commands.fetch({
             guildId: guild.id,
         })!;

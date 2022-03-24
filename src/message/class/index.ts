@@ -4,11 +4,7 @@ import { commandsDict } from "../../base";
 const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 
 /**
- * **Note**: This feature is made possible with the existence of **Dark Magic**
- *
- * Or in normal people's word, This is ~~experimental~~ *stable*
- *
- * Equivalent to `CogMessage` for instance, you can use
+ * This class implements `CogMessage`, by OOP magic, you can use
  * ```js
  * addCog(new [your_extended_classname]())
  * ```

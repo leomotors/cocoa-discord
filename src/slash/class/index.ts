@@ -6,11 +6,7 @@ import { commandsDict } from "../../base";
 const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 
 /**
- * **Note**: This feature is made possible with the existence of **Dark Magic**
- *
- * Or in normal people's word, This is ~~experimental~~ *stable*
- *
- * Equivalent to `CogSlash` for instance, you can use
+ * This class implements `CogSlash`, by OOP magic, you can use
  * ```js
  * addCog(new [your_extended_classname]())
  * ```
