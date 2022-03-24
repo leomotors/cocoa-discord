@@ -65,7 +65,7 @@ function workOn(file: string) {
             <a href="${relroot}index.html">TypeDoc Index</a>
             ${
                 //@ts-ignore
-                html.replaceAll(/<a\shref="[^\"]*">/g, (atag) =>
+                html.replaceAll(/<a\shref="[^\"]*">/g, (atag: string) =>
                     convertLink(atag, file)
                 )
             }

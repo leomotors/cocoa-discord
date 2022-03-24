@@ -9,6 +9,14 @@ for frequently used item. Made by me for me (and maybe friends) to make our bots
 
 - Currently, only few of the features in library are noted in the guide here. When I have time, I will add more.
 
+### Please take a look at the following bots for example on uncovered topic
+
+- [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
+
+- [Harunon JS](https://github.com/CarelessDev/harunon.js)
+
+- [Bots Gulag](https://github.com/CarelessDev/bots-gulag)
+
 ## 📖 Table
 
 - [Command Management System](./cms.md)

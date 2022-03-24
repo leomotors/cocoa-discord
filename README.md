@@ -13,7 +13,18 @@ Yet another Discord Bot Utility npm package
 
 - Many utilities that **made by me for me** to make my bots
 
+- Utilities that will help you reducing lines of code
+
+- Automatic Activity Presence Management from Files
+
+- Command Management (Message and Slash) System
+
+- many more miscellanous utilities that my bots rely on
+
 - Fully Type Safe for TypeScript (Also reason why this library's syntax is a bit strict)
+
+- Flexible, because this is not a framework, part of your bot can be constructed
+using pure discord.js API
 
 ## 🛍️ Subpackages
 

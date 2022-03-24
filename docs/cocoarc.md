@@ -8,8 +8,11 @@
 
 ## Example CLI Usage
 
-```
-cocoadu create slash ping
+```bash
+# npm
+npx cocoadu create slash ping
+# yarn
+yarn cocoadu create slash ping
 ```
 
-For object cog only, will create a file template for command with that name
+For object cog only, will create a file template for a single command with that name
