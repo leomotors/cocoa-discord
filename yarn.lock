@@ -297,10 +297,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@leomotors/scripts@^3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@leomotors/scripts/-/scripts-3.0.7.tgz#8f5c1bc8d1f46a47531697b606ce54f5e4b9f0bd"
-  integrity sha512-P4+WartMVzqLLHR9PCH6UykBvlOz5b1ibttmpqPGWd/IDlIrrGEgBnb8CttD6EKhKCjjc3d3FWCdIjxCO+63Yg==
+"@leomotors/scripts@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@leomotors/scripts/-/scripts-3.1.0.tgz#0c3c2fc824d5d0f01a3940724ddb0de1fc08eb0b"
+  integrity sha512-zkT4bjETXxMlFXdzFAJ1r/hmMnupAYM8hkNBgimsyqhp9RZRdlLk3v1SgNNWYq/eSWJG9aWDWYH5IROxMSx5Tg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -517,10 +517,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.10.tgz#616f16e9d3a2a3d618136b1be244315d95bd7cab"
   integrity sha512-S/3xB4KzyFxYGCppyDt68yzBU9ysL88lSdIah4D6cptdcltc4NCPCAMc0+PCpg/lLIyC7IPvj2Z52OJWeIUkog==
 
-"@types/node@^17.0.22":
-  version "17.0.22"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.22.tgz#38b6c4b9b2f3ed9f2e376cce42a298fb2375251e"
-  integrity sha512-8FwbVoG4fy+ykY86XCAclKZDORttqE5/s7dyWZKLXTdv3vRy5HozBEinG5IqhvPXXzIZEcTVbuHlQEI6iuwcmw==
+"@types/node@^17.0.23":
+  version "17.0.23"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.23.tgz#3b41a6e643589ac6442bdbd7a4a3ded62f33f7da"
+  integrity sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==
 
 "@types/sinon@^10.0.11":
   version "10.0.11"
@@ -1165,10 +1165,10 @@ discord-api-types@^0.26.0, discord-api-types@^0.26.1:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.26.1.tgz#726f766ddc37d60da95740991d22cb6ef2ed787b"
   integrity sha512-T5PdMQ+Y1MEECYMV5wmyi9VEYPagEDEi4S0amgsszpWY0VB9JJ/hEvM6BgLhbdnKky4gfmZEXtEEtojN8ZKJQQ==
 
-discord-api-types@^0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.29.0.tgz#8346352b623ddd8d8eed386b6eb758e2d82d6005"
-  integrity sha512-Ekq1ICNpOTVajXKZguNFrsDeTmam+ZeA38txsNLZnANdXUjU6QBPIZLUQTC6MzigFGb0Tt8vk4xLnXmzv0shNg==
+discord-api-types@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.30.0.tgz#3050ff1f06b8bd4259bb2c2b1b67517268ea7188"
+  integrity sha512-wYst0jrT8EJs2tVlwUTQ2xT0oWMjUrRMpFTkNY3NMleWyQNHgWaKhqFfxdLPdC2im9IuR5EsxcEgjhf/npeftw==
 
 discord.js@^13.6.0:
   version "13.6.0"

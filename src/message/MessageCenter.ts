@@ -26,6 +26,7 @@ export class MessageCenter extends ManagementCenter<
     /**
      * @param client - You know what this is
      * @param criteria - this may look complex but it basically means either
+     * @param guild_ids - Specify guild_ids to enable guild-specific commands
      * ```js
      * { mention: true }
      * ```
@@ -35,9 +36,14 @@ export class MessageCenter extends ManagementCenter<
      * ```
      * The prefixes can be anything as long as it is **not empty** string array
      */
-    constructor(client: Client, criteria: MessageCriteria) {
-        super(client, "Message", { error: [], message: [] });
+    constructor(
+        client: Client,
+        criteria: MessageCriteria,
+        guild_ids?: string[]
+    ) {
+        super(client, "Message", { error: [], message: [] }, guild_ids);
         this.criteria = criteria;
+        this.guild_ids = guild_ids;
 
         this.client.on("messageCreate", (message: Message) => {
             if (message.author.bot) return;
@@ -86,6 +92,17 @@ export class MessageCenter extends ManagementCenter<
 
             // * Call by Real Name
             if (cog.commands[cmdName]) {
+                if (
+                    this.guild_ids &&
+                    !(
+                        cog.commands[cmdName].guild_ids ?? this.guild_ids
+                    ).includes(message.guildId ?? "bruh")
+                ) {
+                    // * If this.guild_ids => Enable Specific-Guild Command
+                    // * The Guild IDS of this guild is not in the list
+                    return;
+                }
+
                 try {
                     await cog.commands[cmdName].func(
                         message,
@@ -112,6 +129,17 @@ export class MessageCenter extends ManagementCenter<
             // * Call by Aliases
             for (const [fullName, cmd] of Object.entries(cog.commands)) {
                 if (cmd.command.aliases?.includes(cmdName)) {
+                    if (
+                        this.guild_ids &&
+                        !(cmd.guild_ids ?? this.guild_ids).includes(
+                            message.guildId ?? "bruh"
+                        )
+                    ) {
+                        // * If this.guild_ids => Enable Specific-Guild Command
+                        // * and the Guild IDS of this guild is not in the list
+                        return;
+                    }
+
                     try {
                         await cmd.func(message, msgToken.slice(1).join(" "));
                     } catch (error) {
@@ -156,6 +184,9 @@ export class MessageCenter extends ManagementCenter<
                             embeds: [style ? style.apply(msg, emb) : emb],
                         });
                     },
+                    guild_ids: this.guild_ids
+                        ? this.unionAllGuildIds()
+                        : undefined,
                 },
             },
         });

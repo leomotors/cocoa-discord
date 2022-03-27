@@ -32,12 +32,12 @@ export const replaceNameKeyword = "__replace_with_method_name__";
 /**
  * Example Usage
  * ```ts
- * @SlashCommand(new SlashCommandBuilder().setName("ping").setDescription("pong!").toJSON())
+ * @SlashCommand(new SlashCommandBuilder().setName("ping").setDescription("pong!"))
  * async ping(ctx: CommandInteraction) {
  *   await ctx.reply("pong!");
  * }
  * ```
- * **Note**: If syntax look broken, blame your IDE.
+ * **Note**: If syntax highlight looks broken, blame your IDE.
  * You may look at harunon.js to see this in action
  */
 export function SlashCommand(

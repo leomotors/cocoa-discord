@@ -6,7 +6,7 @@ import { CogSlash, SlashCenter } from "../src/slash";
 import { CogSlashClass, SlashCommand } from "../src/slash/class";
 
 const client = new Client({ intents: [] });
-const mcenter = new MessageCenter(client, { mention: true });
+const mcenter = new MessageCenter(client, { mention: true }, ["1", "2"]);
 const scenter = new SlashCenter(client, ["123"]);
 
 const CorrectMCog: CogMessage = {
@@ -17,12 +17,14 @@ const CorrectMCog: CogMessage = {
                 name: "test",
             },
             func: async (msg) => {},
+            guild_ids: ["3"]
         },
         play: {
             command: {
                 name: "play",
             },
             func: async (msg) => {},
+            guild_ids: ["1", "3"]
         },
     },
 };
@@ -54,6 +56,7 @@ const CorrectSCog: CogSlash = {
                 description: "bruh",
             },
             func: async (ctx) => {},
+            guild_ids: ["555"],
         },
         play: {
             command: {
@@ -96,6 +99,13 @@ function testMessage() {
     it("Validation should Pass", () => {
         mcenter.addCogs(CorrectMCog);
         mcenter.validateCommands();
+    });
+
+    it("Should be able to union guild_ids", ()=>{
+        // @ts-ignore yeet: Access protected property
+        const gids = mcenter.unionAllGuildIds();
+
+        assert.deepEqual(gids, ["1", "2", "3"]);
     });
 
     it("Validation should Fail (Illegal Cog: Command name mismatch)", () => {
@@ -143,6 +153,13 @@ function testSlash() {
         scenter.validateCommands();
     });
 
+    it("Should be able to union guild_ids", ()=>{
+        // @ts-ignore yeet: Access protected property
+        const gids = scenter.unionAllGuildIds();
+
+        assert.deepEqual(gids, ["123", "555"]);
+    });
+
     it("Validation should Fail (Illegal Cog: Command name mismatch)", () => {
         scenter.addCogs(WrongSCog);
         assert.throws(() => scenter.validateCommands());
@@ -157,13 +174,13 @@ function testSlash() {
 }
 
 function testClass() {
-    it("Should equivalent to CorrectSCog", ()=>{
+    it("Should equivalent to CorrectSCog, Decorator should resolve correctly", ()=>{
         class CSCog extends CogSlashClass {
             constructor() {
                 super("Cocoa");
             }
 
-            @SlashCommand({name: "test", description: "bruh"})
+            @SlashCommand({name: "test", description: "bruh"}, ["12345"])
             // @ts-ignore
             async test(ctx: CommandInteraction) {}
 
@@ -176,5 +193,6 @@ function testClass() {
         assert.equal(cog.description, CorrectSCog.description);
         assert.equal(cog.commands.test.command.name, CorrectSCog.commands.test.command.name);
         assert.equal(cog.commands.play.command.name, CorrectSCog.commands.play.command.name);
+        assert.deepEqual(cog.commands.test.guild_ids, ["12345"]);
     });
 }

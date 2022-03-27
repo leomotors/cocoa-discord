@@ -16,6 +16,7 @@ export interface CocoaMessage {
      * @param args - message.content with no mentions and prefixes (Stripped)
      */
     func: (message: Message, args: string) => Promise<void>;
+    guild_ids?: string[];
 }
 
 /** To silent decorators TypeScript warning, you don't need to use this */
