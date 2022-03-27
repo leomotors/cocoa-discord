@@ -6,10 +6,37 @@ import { Awaitable } from "../base";
 
 import { Loader } from "./loader";
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+let rl: readline.Interface;
+
+/**
+ * @returns Get readline interface used by `setConsoleEvent` and `ConsoleManager`.
+ * To prevent creating more than one interface in a program.
+ */
+export function getReadlineInterface() {
+    if (!rl)
+        rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
+
+    return rl;
+}
+
+/**
+ * For compatibility with other library, you can force `setConsoleEvent`
+ * and `ConsoleManager` to use your interface.
+ *
+ * You **must** call this function before `setConsoleEvent` and `ConsoleManager`!
+ */
+export function setReadlineInterface(int: readline.Interface) {
+    if (rl) {
+        console.log(
+            chalk.yellow("WARNING: Readline Interface is already created!")
+        );
+    }
+
+    rl = int;
+}
 
 /**
  * On Enter in Console
@@ -25,7 +52,7 @@ const rl = readline.createInterface({
  * ```
  */
 export function setConsoleEvent(handler: (cmd: string) => void) {
-    rl.on("line", (cmd: string) => {
+    getReadlineInterface().on("line", (cmd: string) => {
         handler(cmd);
     });
 }
@@ -48,7 +75,7 @@ export class ConsoleManager {
     private commands: { [name: string]: ConsoleFunction } = {};
 
     constructor() {
-        rl.on("line", this.handleCommands.bind(this));
+        getReadlineInterface().on("line", this.handleCommands.bind(this));
     }
 
     private async handleCommands(cmd: string) {

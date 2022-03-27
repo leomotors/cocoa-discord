@@ -6,6 +6,15 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.4.0] - 2022-03-27
+
+- Specfic-Guild Command for Message Center
+
+- This library nows only create Readline Interface when you use the function
+that require them. It also exports that interface for you in order to prevent
+more than one interface being created. In addition to that, you can also provide
+your interface.
+
 ## [1.3.0] - 2022-03-24
 
 - Now prints number of commands when begin syncing
