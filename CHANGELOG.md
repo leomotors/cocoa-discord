@@ -6,6 +6,11 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.4.1] - 2022-03-28
+
+- Fix fatal bug that will fail every command with embed style `author: invoker`
+when invoked by user with no avatar
+
 ## [1.4.0] - 2022-03-27
 
 - Specfic-Guild Command for Message Center

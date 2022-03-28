@@ -48,8 +48,11 @@ export const DJCocoaOptions: ClientOptions = {
 export function Author(ctx: CommandInteraction | Message) {
     // @ts-ignore instanceof does not work at runtime
     const user: User = ctx.user ?? ctx.author;
+
     return {
         name: user.username,
-        iconURL: user.avatarURL() ?? "",
+        iconURL:
+            user.avatarURL() ??
+            "https://cdn.discordapp.com/embed/avatars/1.png",
     };
 }
