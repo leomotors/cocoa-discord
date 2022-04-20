@@ -6,6 +6,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.4.2] - 2022-04-20
+
+- Fix an issues that will cause the bot to not sync commands if help command is not added
+
 ## [1.4.1] - 2022-03-28
 
 - Fix fatal bug that will fail every command with embed style `author: invoker`

@@ -56,7 +56,7 @@ export class SlashCenter extends ManagementCenter<
                 )
             );
 
-        const commandSet = new Set<string>();
+        const commandSet = new Set<string>(this.guild_ids!);
 
         const commandData: CommandsPack[] = [];
         for (const cog of this.cogs) {
