@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import { store } from "../src/base";
 
-describe("Store", () => {
+describe("[store] Store", () => {
     class Checker {
         value = 0;
         changeValue(num: number) {

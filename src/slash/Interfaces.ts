@@ -3,7 +3,7 @@ import {
     CommandInteraction,
 } from "discord.js";
 
-import { Cog } from "../base";
+import { Awaitable, Cog } from "../base";
 
 /** This interface represent a single slash command */
 export interface CocoaSlash {
@@ -12,4 +12,7 @@ export interface CocoaSlash {
     guild_ids?: string[];
 }
 
-export type CogSlash = Cog<CocoaSlash>;
+export interface CogSlash extends Cog<CocoaSlash> {
+    /** This hook should only be handled internally */
+    presync?: () => Awaitable<void>;
+}

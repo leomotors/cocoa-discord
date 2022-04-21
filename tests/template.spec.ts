@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import { CocoaBuilder, Ephemeral } from "../src/template";
 
-describe("Template Module", () => {
+describe("[template] Template Module", () => {
     it("Cocoa Builder", () => {
         const b = CocoaBuilder("test", "test");
         assert.equal(b.name, "test");

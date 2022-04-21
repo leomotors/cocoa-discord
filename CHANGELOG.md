@@ -6,6 +6,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.5.0] - 2022-04-21
+
+- Added @FutureSlash for Slash Command that cannot be resolve synchronously
+
 ## [1.4.2] - 2022-04-20
 
 - Fix an issues that will cause the bot to not sync commands if help command is not added

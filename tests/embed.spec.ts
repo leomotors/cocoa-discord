@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import { CocoaEmbed } from "../src/main";
 
-describe("CocoaEmbed Test", () => {
+describe("[embed] CocoaEmbed Test", () => {
     it("Can Initialize and use addField & addInlineField", () => {
         const emb = new CocoaEmbed();
 

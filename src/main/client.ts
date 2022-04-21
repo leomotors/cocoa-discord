@@ -22,5 +22,5 @@ export async function checkLogin(client: Client, token: string | undefined) {
 
     console.log(chalk.green("Checks done! Logging in..."));
 
-    client.login(token);
+    await client.login(token);
 }

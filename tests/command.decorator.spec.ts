@@ -1,4 +1,7 @@
-import { assert } from "chai";
+import { assert, expect, use as ChaiUse } from "chai";
+import ChaiProm from "chai-as-promised";
+ChaiUse(ChaiProm);
+
 import { Client, CommandInteraction } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";
@@ -89,7 +92,7 @@ const WrongSCog: CogSlash = {
 };
 
 
-describe("/message & /slash", () => {
+describe("[command] /message & /slash", () => {
     describe("Message Center", testMessage);
     describe("Slash Center", testSlash);
     describe("Slash Class Cog", testClass);
@@ -101,23 +104,23 @@ function testMessage() {
         mcenter.validateCommands();
     });
 
-    it("Should be able to union guild_ids", ()=>{
+    it("Should be able to union guild_ids", () => {
         // @ts-ignore yeet: Access protected property
         const gids = mcenter.unionAllGuildIds();
 
         assert.deepEqual(gids, ["1", "2", "3"]);
     });
 
-    it("Validation should Fail (Illegal Cog: Command name mismatch)", () => {
+    it("Validation should Fail (Illegal Cog: Command name mismatch)", async () => {
         mcenter.addCogs(WrongMCog);
-        assert.throws(() => mcenter.validateCommands());
+        await expect(mcenter.validateCommands()).to.be.rejected;
     });
 
-    it("Validation should Fail (Duplicate cog names)", () => {
+    it("Validation should Fail (Duplicate cog names)", async () => {
         // @ts-ignore to yeet all the cogs
         mcenter.cogs = [];
         mcenter.addCogs(CorrectMCog, CorrectMCog);
-        assert.throws(() => mcenter.validateCommands());
+        await expect(mcenter.validateCommands()).to.be.rejected;
     });
 
     it("Check Criteria: Mention", () => {
@@ -153,28 +156,28 @@ function testSlash() {
         scenter.validateCommands();
     });
 
-    it("Should be able to union guild_ids", ()=>{
+    it("Should be able to union guild_ids", () => {
         // @ts-ignore yeet: Access protected property
         const gids = scenter.unionAllGuildIds();
 
         assert.deepEqual(gids, ["123", "555"]);
     });
 
-    it("Validation should Fail (Illegal Cog: Command name mismatch)", () => {
+    it("Validation should Fail (Illegal Cog: Command name mismatch)", async () => {
         scenter.addCogs(WrongSCog);
-        assert.throws(() => scenter.validateCommands());
+        await expect(scenter.validateCommands()).to.be.rejected;
     });
 
-    it("Validation should Fail (Duplicate cog names)", () => {
+    it("Validation should Fail (Duplicate cog names)", async() => {
         // @ts-ignore to yeeeet all the cogs
         scenter.cogs = [];
         scenter.addCogs(CorrectSCog, CorrectSCog);
-        assert.throws(() => scenter.validateCommands());
+        await expect(scenter.validateCommands()).to.be.rejected;
     });
 }
 
 function testClass() {
-    it("Should equivalent to CorrectSCog, Decorator should resolve correctly", ()=>{
+    it("Should equivalent to CorrectSCog, Decorator should resolve correctly", async () => {
         class CSCog extends CogSlashClass {
             constructor() {
                 super("Cocoa");
@@ -189,6 +192,7 @@ function testClass() {
             async play(ctx: CommandInteraction) {}
         }
         const cog = new CSCog();
+        await cog.presync();
         assert.equal(cog.name, CorrectSCog.name);
         assert.equal(cog.description, CorrectSCog.description);
         assert.equal(cog.commands.test.command.name, CorrectSCog.commands.test.command.name);

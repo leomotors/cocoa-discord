@@ -99,7 +99,7 @@ export abstract class ManagementCenter<
      *
      * **Note**: It is recommended to use `checkLogin()` instead for simplicity
      */
-    validateCommands() {
+    async validateCommands() {
         if (this.validated)
             console.log(
                 chalk.yellow(

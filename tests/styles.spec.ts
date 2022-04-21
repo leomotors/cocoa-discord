@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import { EmbedStyle } from "../src/main";
 
-describe("Embed Style", () => {
+describe("[styles] Embed Style", () => {
     const style = new EmbedStyle({
         author: "invoker",
         color: 0x000000,

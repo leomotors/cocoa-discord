@@ -15,7 +15,7 @@ export interface SlashEvents {
         error: unknown,
         ctx: CommandInteraction
     ) => Awaitable<void>;
-    interaction: (name: string, ctx: CommandInteraction) => Promise<void>;
+    interaction: (name: string, ctx: CommandInteraction) => Awaitable<void>;
 }
 
 export class SlashCenter extends ManagementCenter<
@@ -39,6 +39,11 @@ export class SlashCenter extends ManagementCenter<
 
             this.handleInteraction(interaction);
         });
+    }
+
+    override async validateCommands() {
+        await Promise.all(this.cogs.map((cog) => cog.presync?.()));
+        await super.validateCommands();
     }
 
     /** Sync Slash Commands, Call this **ONLY** after client is ready */

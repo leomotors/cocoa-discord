@@ -1,9 +1,12 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 
 import { CocoaSlash, CogSlash } from "..";
-import { commandsDict } from "../../base";
+import { Awaitable, commandsDict } from "../../base";
 
 const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
+const muckFuture: {
+    [cogName: string]: Array<Promise<void>>;
+} = {};
 
 /**
  * This class implements `CogSlash`, by OOP magic, you can use
@@ -14,16 +17,24 @@ const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 export abstract class CogSlashClass implements CogSlash {
     name: string;
     description?: string;
-    commands: commandsDict<CocoaSlash>;
+    commands: commandsDict<CocoaSlash> = {};
+    presync: () => Awaitable<void>;
 
     constructor(name: string, description?: string) {
         this.name = name;
         this.description = description;
-        this.commands = muckStorage[this.constructor.name] ?? {};
 
-        for (const [_, cmd] of Object.entries(this.commands)) {
-            cmd.func = cmd.func.bind(this);
-        }
+        const presyncprom = (async () => {
+            await Promise.all(muckFuture[this.constructor.name] ?? []);
+            this.commands = muckStorage[this.constructor.name] ?? {};
+            for (const [_, cmd] of Object.entries(this.commands)) {
+                cmd.func = cmd.func.bind(this);
+            }
+        })();
+
+        this.presync = async () => {
+            await presyncprom;
+        };
     }
 }
 
@@ -75,5 +86,47 @@ export function SlashCommand(
         } else {
             throw Error(`Unexpected Error: ${key}'s value is undefined`);
         }
+    };
+}
+
+export function FutureSlash(
+    resolver: () => Promise<
+        | SlashCommandBuilder
+        | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+    >,
+    guild_ids?: string[]
+) {
+    return (
+        cog: CogSlashClass,
+        key: string,
+        desc: TypedPropertyDescriptor<CocoaSlash["func"]>
+    ) => {
+        const muckF = (muckFuture[cog.constructor.name] ??= []);
+        muckF.push(
+            (async () => {
+                const command = (await resolver()).toJSON();
+                type m = CocoaSlash["command"];
+
+                if (command.name == replaceNameKeyword)
+                    (command as m).name = key;
+
+                const muck = (muckStorage[cog.constructor.name] ??= {});
+                if (muck[command.name]) {
+                    throw Error(`Duplicate Command Name: ${command.name}`);
+                }
+
+                if (desc.value) {
+                    muck[command.name] = {
+                        command,
+                        func: desc.value,
+                        guild_ids,
+                    };
+                } else {
+                    throw Error(
+                        `Unexpected Error: ${key}'s value is undefined`
+                    );
+                }
+            })()
+        );
     };
 }

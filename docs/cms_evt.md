@@ -32,9 +32,10 @@ center.on("message", (name, msg) => {
 });
 ```
 
-This will be call after the message is handled by command if it exists.
+This will be call after a message is handled by command if it exists.
+Otherwise after it has been checked that this command does not exist.
 
-`name` - The name of function handled, Empty String if none.
+`name` - The name of function handled, Empty String if is not handled (Not a command).
 
 `msg` - Original Message Unmodified
 

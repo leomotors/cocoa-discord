@@ -13,7 +13,7 @@ export type MessageCriteria =
 
 export interface MessageEvents {
     error: (name: string, error: unknown, msg: Message) => Awaitable<void>;
-    message: (name: string, msg: Message) => Promise<void>;
+    message: (name: string, msg: Message) => Awaitable<void>;
 }
 
 export class MessageCenter extends ManagementCenter<
