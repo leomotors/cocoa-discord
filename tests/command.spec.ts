@@ -1,12 +1,12 @@
 import { assert, expect, use as ChaiUse } from "chai";
 import ChaiProm from "chai-as-promised";
-ChaiUse(ChaiProm);
-
 import { Client, CommandInteraction } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";
 import { CogSlash, SlashCenter } from "../src/slash";
 import { CogSlashClass, SlashCommand } from "../src/slash/class";
+
+ChaiUse(ChaiProm);
 
 const client = new Client({ intents: [] });
 const mcenter = new MessageCenter(client, { mention: true }, ["1", "2"]);
@@ -20,14 +20,14 @@ const CorrectMCog: CogMessage = {
                 name: "test",
             },
             func: async (msg) => {},
-            guild_ids: ["3"]
+            guild_ids: ["3"],
         },
         play: {
             command: {
                 name: "play",
             },
             func: async (msg) => {},
-            guild_ids: ["1", "3"]
+            guild_ids: ["1", "3"],
         },
     },
 };
@@ -90,7 +90,6 @@ const WrongSCog: CogSlash = {
         },
     },
 };
-
 
 describe("[command] /message & /slash", () => {
     describe("Message Center", testMessage);
@@ -168,7 +167,7 @@ function testSlash() {
         await expect(scenter.validateCommands()).to.be.rejected;
     });
 
-    it("Validation should Fail (Duplicate cog names)", async() => {
+    it("Validation should Fail (Duplicate cog names)", async () => {
         // @ts-ignore to yeeeet all the cogs
         scenter.cogs = [];
         scenter.addCogs(CorrectSCog, CorrectSCog);
@@ -183,11 +182,11 @@ function testClass() {
                 super("Cocoa");
             }
 
-            @SlashCommand({name: "test", description: "bruh"}, ["12345"])
+            @SlashCommand({ name: "test", description: "bruh" }, ["12345"])
             // @ts-ignore
             async test(ctx: CommandInteraction) {}
 
-            @SlashCommand({name: "play", description: "bruh"})
+            @SlashCommand({ name: "play", description: "bruh" })
             // @ts-ignore
             async play(ctx: CommandInteraction) {}
         }
@@ -195,8 +194,14 @@ function testClass() {
         await cog.presync();
         assert.equal(cog.name, CorrectSCog.name);
         assert.equal(cog.description, CorrectSCog.description);
-        assert.equal(cog.commands.test.command.name, CorrectSCog.commands.test.command.name);
-        assert.equal(cog.commands.play.command.name, CorrectSCog.commands.play.command.name);
+        assert.equal(
+            cog.commands.test.command.name,
+            CorrectSCog.commands.test.command.name
+        );
+        assert.equal(
+            cog.commands.play.command.name,
+            CorrectSCog.commands.play.command.name
+        );
         assert.deepEqual(cog.commands.test.guild_ids, ["12345"]);
     });
 }

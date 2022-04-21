@@ -2,7 +2,7 @@ import sinon from "sinon";
 sinon.stub(console, "log");
 
 import "./activity.spec";
-import "./command.decorator.spec";
+import "./command.spec";
 import "./embed.spec";
 import "./loader.spec";
 import "./meta.spec";

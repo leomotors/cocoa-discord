@@ -166,6 +166,8 @@ specify type in your method arguments.
 
 *Argument Name can be changed, but must specify the correct type*
 
+**Warning**: Extending Cog Class is not supported, decorators may behave unexpectly
+
 ## Message Command
 
 To invoke a message command, user need to meets two criteria.

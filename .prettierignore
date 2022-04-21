@@ -1,4 +1,3 @@
 *.yml
 *.md
 tests/index.spec.ts
-*.decorator.*

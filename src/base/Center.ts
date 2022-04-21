@@ -88,7 +88,7 @@ export abstract class ManagementCenter<
      * Make sure to **NOT** name any cog `Help` or any command `help`
      */
     useHelpCommand(_?: EmbedStyle) {
-        throw "ManagementCenter is Abstract and also Private class, it's method is called";
+        throw "ManagementCenter is Abstract class but this method is called";
     }
 
     /**

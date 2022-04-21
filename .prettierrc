@@ -11,5 +11,9 @@
         "^[.]"
     ],
     "importOrderCaseInsensitive": true,
-    "importOrderSeparation": true
+    "importOrderSeparation": true,
+    "importOrderParserPlugins": [
+        "typescript",
+        "decorators-legacy"
+    ]
 }

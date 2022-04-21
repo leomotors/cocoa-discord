@@ -43,6 +43,7 @@ export class SlashCenter extends ManagementCenter<
 
     override async validateCommands() {
         await Promise.all(this.cogs.map((cog) => cog.presync?.()));
+        if (this.useHelp) this._useHelpCommand(this.helpStyle);
         await super.validateCommands();
     }
 
@@ -55,10 +56,8 @@ export class SlashCenter extends ManagementCenter<
         }
 
         if (!this.validated)
-            console.log(
-                chalk.yellow(
-                    "[Slash Center WARN]: Please validate command by using checkLogin()"
-                )
+            throw new Error(
+                "Validate command by either calling this.validateCommands() or using checkLogin()"
             );
 
         const commandSet = new Set<string>(this.guild_ids!);
@@ -119,7 +118,15 @@ export class SlashCenter extends ManagementCenter<
         );
     }
 
+    private useHelp = false;
+    private helpStyle?: EmbedStyle;
+
     override useHelpCommand(style?: EmbedStyle) {
+        this.helpStyle = style;
+        this.useHelp = true;
+    }
+
+    private _useHelpCommand(style?: EmbedStyle) {
         this.validated = false;
         const emb = this.generateHelpCommandAsEmbed();
 
