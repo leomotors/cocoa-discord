@@ -84,7 +84,7 @@ export class MessageCenter extends ManagementCenter<
 
     private async handleMessage(message: Message, strp: string) {
         const msgToken = strp.split(" ");
-        const cmdName = msgToken[0];
+        const cmdName = msgToken[0]!;
 
         let handled = "";
 
@@ -96,7 +96,7 @@ export class MessageCenter extends ManagementCenter<
                 if (
                     this.guild_ids &&
                     !(
-                        cog.commands[cmdName].guild_ids ?? this.guild_ids
+                        cog.commands[cmdName]!.guild_ids ?? this.guild_ids
                     ).includes(message.guildId ?? "bruh")
                 ) {
                     // * If this.guild_ids => Enable Specific-Guild Command
@@ -105,7 +105,7 @@ export class MessageCenter extends ManagementCenter<
                 }
 
                 try {
-                    await cog.commands[cmdName].func(
+                    await cog.commands[cmdName]!.func(
                         message,
                         msgToken.slice(1).join(" ")
                     );

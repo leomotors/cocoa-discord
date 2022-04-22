@@ -132,13 +132,13 @@ export class MainCog extends CogSlashClass {
 
     // Normal Way
     @SlashCommand(CocoaBuilder("ping", "pong!").toJSON())
-    async ping(ctx: CommandInteraction) {
+    async ping(ctx: ChatInputCommandInteraction) {
         await ctx.reply("pong!");
     }
 
     // NEW!
     @SlashCommand(AutoBuilder("pong!"))
-    async ping(ctx: CommandInteraction) {
+    async ping(ctx: ChatInputCommandInteraction) {
         ...
     }
     // With AutoBuilder, you can omit the name field,

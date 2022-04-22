@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "2.0.0-dev",
+  "version": "2.0.0-beta.1",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -16,7 +16,7 @@
     "prepack": "yarn cb && yarn lint && yarn test",
     "format": "prettier --write \"{src,tests}/**/*.ts\"",
     "lint": "eslint src && prettier --check \"{src,tests}/**/*.ts\"",
-    "test": "TS_NODE_COMPILER_OPTIONS='{\"resolveJsonModule\":true}' mocha -r ts-node/register --exit tests/index.spec.ts",
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"resolveJsonModule\":true, \"noUncheckedIndexedAccess\": false}' mocha -r ts-node/register --exit tests/index.spec.ts",
     "ncu": "ncu -u \"/^(?!.*chalk)(?!.*globby).*$/\"",
     "pre-doc": "ts-node predoc.script.ts",
     "docs": "typedoc",

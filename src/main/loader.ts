@@ -12,7 +12,7 @@ export class Loader<T> {
         return this._data;
     }
 
-    getRandom(): T {
+    getRandom(): T | undefined {
         return this._data[Math.floor(Math.random() * this._data.length)];
     }
 

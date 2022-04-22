@@ -67,7 +67,7 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
         this.initialPromise = this.reload();
     }
 
-    getBuiltRandom(): ActivityOptions {
+    getBuiltRandom(): ActivityOptions | undefined {
         return this.builtData[
             Math.floor(Math.random() * this.builtData.length)
         ];

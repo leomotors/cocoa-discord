@@ -1,3 +1,5 @@
+import { ActivityType } from "discord.js";
+
 import { assert } from "chai";
 
 import { ActivityGroupLoader } from "../src/main";
@@ -7,10 +9,10 @@ import Activities from "./mock/activities.mock.json";
 describe("[activity] Activity Group Loader", () => {
     const loader = new ActivityGroupLoader("./tests/mock/activities.mock.json");
 
-    it("Loader has 8 Activities (no? check the file and count)", async () => {
+    it("Loader has 9 Activities (no? check the file and count)", async () => {
         await loader.initialPromise;
         // @ts-ignore or else we can't access *private* properties
-        assert.equal(loader.builtData.length, 8);
+        assert.equal(loader.builtData.length, 9);
     });
 
     it("Get Random Works and Correct (100 times)", async () => {
@@ -18,12 +20,21 @@ describe("[activity] Activity Group Loader", () => {
         for (let i = 0; i < 100; i++) {
             const item = loader.getBuiltRandom();
             assert.include(
-                ["PLAYING", "LISTENING", "WATCHING", "COMPETING"],
-                // @ts-ignore because I know what I am doing
-                item.type
+                [
+                    ActivityType.Playing,
+                    ActivityType.Streaming,
+                    ActivityType.Listening,
+                    ActivityType.Watching,
+                    ActivityType.Competing,
+                ],
+                item?.type
             );
-            // @ts-ignore because MUCK
-            assert.include(Activities[item.type], item.name);
+
+            assert.include(
+                // @ts-ignore
+                Activities[ActivityType[item?.type].toUpperCase()],
+                item?.name
+            );
         }
     });
 
@@ -34,7 +45,7 @@ describe("[activity] Activity Group Loader", () => {
             loader.builtData,
             {
                 name: "International Olympiad in Informatics",
-                type: "COMPETING",
+                type: ActivityType.Competing,
             }
         );
     });

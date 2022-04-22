@@ -8,6 +8,13 @@ import { EmbedBuilder } from "discord.js";
 export class CocoaEmbed extends EmbedBuilder {
     /** Adds fields to the embed (max 25), automatically set inline to true */
     addInlineFields(...fields: Array<Omit<APIEmbedField, "inline">>) {
-        return this.addFields(fields);
+        return this.addFields(
+            fields.map((field) => {
+                return {
+                    ...field,
+                    inline: true,
+                };
+            })
+        );
     }
 }
