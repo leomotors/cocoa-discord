@@ -6,7 +6,7 @@ import { marked } from "marked";
 import path from "path";
 
 function convertLink(atag: string, file: string) {
-    const link = atag.split('"')[1];
+    const link = atag.split('"')[1]!;
 
     if (!link.startsWith("..") || link.endsWith(".md")) {
         return atag.replace(".md", ".html");

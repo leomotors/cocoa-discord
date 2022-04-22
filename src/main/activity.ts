@@ -45,7 +45,7 @@ export async function useActivity(
     );
 }
 
-type UsableActivity = NonNullable<ActivityOptions["type"]>;
+export type UsableActivity = NonNullable<ActivityOptions["type"]>;
 
 export type ActivityGroup = {
     [type in UsableActivity]?: string[];

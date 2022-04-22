@@ -19,6 +19,8 @@ for frequently used item. Made by me for me (and maybe friends) to make our bots
 
 ## 📖 Table
 
+- ✨✨[Version 2 Migration Guide](./migratev2.md)
+
 - [Command Management System](./cms.md)
 
 - [Configuration File & CLI](./cocoarc.md)
