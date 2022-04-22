@@ -2,10 +2,11 @@ import {
     ClientOptions,
     CommandInteraction,
     GatewayIntentBits as I,
-    Partials as P,
     Message,
-    User,
+    Partials as P,
 } from "discord.js";
+
+import { Context } from "../main";
 
 /**
  * Basic Template Intents includes
@@ -44,9 +45,8 @@ export const DJCocoaOptions: ClientOptions = {
     partials: [P.Channel],
 };
 
-export function Author(ctx: CommandInteraction | Message) {
-    // @ts-ignore instanceof does not work at runtime
-    const user: User = ctx.user ?? ctx.author;
+export function Author(ctx: Context) {
+    const user = (ctx as CommandInteraction).user ?? (ctx as Message).author;
 
     return {
         name: user.username,

@@ -10,7 +10,8 @@ import { Author } from "../template";
 
 import { CocoaEmbed } from "./embed";
 
-export type Context = CommandInteraction | Message;
+/** Message | CommandInteraction */
+export type Context = Message | CommandInteraction;
 
 export interface EmbedStyleBase {
     author?: "invoker" | "bot";
