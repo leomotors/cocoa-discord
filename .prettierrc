@@ -6,6 +6,8 @@
     "semi": true,
     "printWidth": 80,
     "importOrder": [
+        "^discord[-.]",
+        "^@discordjs",
         "^[a-zA-Z]",
         "^[.][.]",
         "^[.]"

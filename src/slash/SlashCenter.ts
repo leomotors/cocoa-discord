@@ -1,5 +1,6 @@
+import { Client, ChatInputCommandInteraction, Interaction } from "discord.js";
+
 import chalk from "chalk";
-import { Client, CommandInteraction, Interaction } from "discord.js";
 
 import { Awaitable, ManagementCenter } from "../base";
 import { EmbedStyle } from "../main";
@@ -13,9 +14,12 @@ export interface SlashEvents {
     error: (
         name: string,
         error: unknown,
-        ctx: CommandInteraction
+        ctx: ChatInputCommandInteraction
     ) => Awaitable<void>;
-    interaction: (name: string, ctx: CommandInteraction) => Awaitable<void>;
+    interaction: (
+        name: string,
+        ctx: ChatInputCommandInteraction
+    ) => Awaitable<void>;
 }
 
 export class SlashCenter extends ManagementCenter<
@@ -35,7 +39,7 @@ export class SlashCenter extends ManagementCenter<
         this.guild_ids = guild_ids;
 
         this.client.on("interactionCreate", (interaction: Interaction) => {
-            if (!interaction.isCommand()) return;
+            if (!interaction.isChatInputCommand()) return;
 
             this.handleInteraction(interaction);
         });
@@ -83,7 +87,7 @@ export class SlashCenter extends ManagementCenter<
         await syncCommands(commandData, this.client, [...commandSet]);
     }
 
-    private async handleInteraction(interaction: CommandInteraction) {
+    private async handleInteraction(interaction: ChatInputCommandInteraction) {
         const cmdname = interaction.commandName;
 
         for (const cog of this.cogs) {

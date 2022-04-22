@@ -1,6 +1,7 @@
+import { Client, CommandInteraction } from "discord.js";
+
 import { assert, expect, use as ChaiUse } from "chai";
 import ChaiProm from "chai-as-promised";
-import { Client, CommandInteraction } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";
 import { CogSlash, SlashCenter } from "../src/slash";

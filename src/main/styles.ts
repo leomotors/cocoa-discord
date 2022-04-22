@@ -1,6 +1,9 @@
-import { Embed } from "@discordjs/builders";
-
-import { CommandInteraction, EmbedFooterData, Message } from "discord.js";
+import {
+    CommandInteraction,
+    EmbedBuilder,
+    EmbedFooterData,
+    Message,
+} from "discord.js";
 
 import { valueOf } from "../base";
 import { Author } from "../template";
@@ -46,7 +49,7 @@ export class EmbedStyle {
         this.style = style;
     }
 
-    private setStyle(ctx: Context, embed: Embed) {
+    private setStyle(ctx: Context, embed: EmbedBuilder) {
         const author = this.resolve(ctx, this.style.author);
         const color = this.resolve(ctx, this.style.color);
         const footer = this.resolve(ctx, this.style.footer);
@@ -87,7 +90,7 @@ export class EmbedStyle {
      * const embed = style.apply(ctx, generateHelpCommandAsEmbed())
      * ```
      */
-    apply(ctx: Context, embed: Embed) {
+    apply(ctx: Context, embed: EmbedBuilder) {
         return this.setStyle(ctx, embed);
     }
 

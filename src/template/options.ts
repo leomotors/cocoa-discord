@@ -1,12 +1,11 @@
 import {
     ClientOptions,
     CommandInteraction,
-    Intents,
+    GatewayIntentBits as I,
+    Partials as P,
     Message,
     User,
 } from "discord.js";
-
-const f = Intents.FLAGS;
 
 /**
  * Basic Template Intents includes
@@ -14,11 +13,11 @@ const f = Intents.FLAGS;
  * GUILDS, GUILD_MESSAGES, GUILD_MESSAGE_REACTIONS, DIRECT_MESSAGES, DIRECT_MESSAGE_REACTIONS
  */
 export const CocoaIntents: ClientOptions["intents"] = [
-    f.GUILDS,
-    f.GUILD_MESSAGES,
-    f.GUILD_MESSAGE_REACTIONS,
-    f.DIRECT_MESSAGES,
-    f.DIRECT_MESSAGE_REACTIONS,
+    I.Guilds,
+    I.GuildMessages,
+    I.GuildMessageReactions,
+    I.DirectMessages,
+    I.DirectMessageReactions,
 ];
 
 /**
@@ -28,21 +27,21 @@ export const CocoaIntents: ClientOptions["intents"] = [
  */
 export const DJCocoaIntents: ClientOptions["intents"] = [
     ...CocoaIntents,
-    f.GUILD_VOICE_STATES,
+    I.GuildVoiceStates,
 ];
 
 /** Template ClientOptions used in Cocoa Grader*/
 export const CocoaOptions: ClientOptions = {
     intents: CocoaIntents,
     // To Accept DM
-    partials: ["CHANNEL"],
+    partials: [P.Channel],
 };
 
 /** Template ClientOptions used in Harunon.js */
 export const DJCocoaOptions: ClientOptions = {
     intents: DJCocoaIntents,
     // To Accept DM
-    partials: ["CHANNEL"],
+    partials: [P.Channel],
 };
 
 export function Author(ctx: CommandInteraction | Message) {

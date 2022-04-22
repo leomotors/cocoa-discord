@@ -1,6 +1,7 @@
+import { ActivityType } from "discord-api-types/v10";
+import { ActivityOptions, Client } from "discord.js";
+
 import chalk from "chalk";
-import { ActivityOptions, Client, ExcludeEnum } from "discord.js";
-import { ActivityTypes } from "discord.js/typings/enums";
 import { readFile } from "fs/promises";
 
 import { Loader } from "./loader";
@@ -10,44 +11,52 @@ const _defaultInterval = 10 * _min;
 
 function assertInterval(interval: number) {
     if (interval < 1000) {
-        throw "Interval too small! This will cause Rate-Limit, do never mistake milliseconds for seconds!";
+        throw "Set Activity Interval too small! This will cause Rate-Limit and kill your bot, do never mistake milliseconds for seconds!";
     }
+}
+
+function doAndSetInterval(func: () => void, interval: number) {
+    func();
+    setInterval(func, interval);
+}
+
+function isGroupLoader(loader: Loader<unknown>): loader is ActivityGroupLoader {
+    return (loader as ActivityGroupLoader).getBuiltRandom != undefined;
 }
 
 /** @important This function **must** be called **AFTER** client is ready */
 export async function useActivity(
     client: Client<true>,
-    loader: Loader<ActivityOptions>,
+    loader: Loader<ActivityOptions> | ActivityGroupLoader,
     interval = _defaultInterval
 ) {
     assertInterval(interval);
 
     await loader.initialPromise;
-    client.user.setActivity(loader.getRandom());
-    setInterval(() => {
-        client.user.setActivity(loader.getRandom());
-    }, interval);
+    doAndSetInterval(
+        isGroupLoader(loader)
+            ? () => {
+                  client.user.setActivity(loader.getBuiltRandom());
+              }
+            : () => {
+                  client.user.setActivity(loader.getRandom());
+              },
+        interval
+    );
 }
 
-/** @important This function **must** be called **AFTER** client is ready */
-export async function useActivityGroup(
-    client: Client<true>,
-    loader: ActivityGroupLoader,
-    interval = _defaultInterval
-) {
-    assertInterval(interval);
-
-    await loader.initialPromise;
-    client.user.setActivity(loader.getBuiltRandom());
-    setInterval(() => {
-        client.user.setActivity(loader.getBuiltRandom());
-    }, interval);
-}
-
-export type usableActivityType = ExcludeEnum<typeof ActivityTypes, "CUSTOM">;
+type UsableActivity = NonNullable<ActivityOptions["type"]>;
 
 export type ActivityGroup = {
-    [type in usableActivityType]?: string[];
+    [type in UsableActivity]?: string[];
+};
+
+const activityToEnum: { [type: string]: UsableActivity } = {
+    playing: ActivityType.Playing,
+    streaming: ActivityType.Streaming,
+    listening: ActivityType.Listening,
+    watching: ActivityType.Watching,
+    competing: ActivityType.Competing,
 };
 
 export class ActivityGroupLoader extends Loader<ActivityGroup> {
@@ -78,9 +87,13 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
 
             const building: ActivityOptions[] = [];
             for (const [type, activities] of Object.entries(data)) {
-                for (const activity of activities) {
+                const t = activityToEnum[type.toLowerCase()];
+
+                if (typeof t == "undefined") continue;
+
+                for (const activity of activities ?? []) {
                     building.push({
-                        type: type as usableActivityType,
+                        type: t,
                         name: activity,
                     });
                 }

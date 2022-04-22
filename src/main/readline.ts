@@ -1,5 +1,6 @@
-import chalk from "chalk";
 import { Client } from "discord.js";
+
+import chalk from "chalk";
 import readline from "readline";
 
 import { Awaitable } from "../base";

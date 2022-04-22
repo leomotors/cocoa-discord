@@ -1,5 +1,5 @@
 /**
- * @param time time in milliseconds ex. from `new Date.getTime()`
+ * @param time_ms time in milliseconds ex. from `new Date.getTime() - anotherDate.getTime()`
  * @returns Time in format of `4d 20h 6m 9s`
  *  */
 export function parseTime(time_ms: number) {

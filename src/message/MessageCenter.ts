@@ -1,5 +1,6 @@
-import chalk from "chalk";
 import { Client, Message } from "discord.js";
+
+import chalk from "chalk";
 
 import { Awaitable, ManagementCenter, NonEmptyArray } from "../base";
 import { EmbedStyle } from "../main";

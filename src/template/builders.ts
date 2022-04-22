@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Disable no-explicit-any because I'm too lazy to write all possible types
-import { SlashCommandBuilder } from "@discordjs/builders";
-
-import { CommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 import { replaceNameKeyword } from "../slash/class";
 
@@ -80,6 +78,9 @@ export function Ephemeral(
  * **Note**: If you have override the `Ephemeral()` name's field,
  * pass that as the second argument to correctly retrieve parameters!
  */
-export function getEphemeral(ctx: CommandInteraction, override?: string) {
+export function getEphemeral(
+    ctx: ChatInputCommandInteraction,
+    override?: string
+) {
     return ctx.options.getBoolean(override ?? "ephemeral") ?? false;
 }
