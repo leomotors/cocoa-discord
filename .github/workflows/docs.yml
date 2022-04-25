@@ -13,6 +13,8 @@ jobs:
       matrix:
         node: ["16"]
 
+    if: github.event.base_ref == 'refs/heads/main'
+
     name: Documentation (Node v${{ matrix.node }})
     runs-on: ubuntu-latest
     steps:

@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 import { Awaitable, ManagementCenter } from "../base";
 import { EmbedStyle } from "../main";
-import { CocoaBuilder, Ephemeral, getEphemeral } from "../template";
+import { CocoaBuilderFull, Ephemeral, getEphemeral } from "../template";
 
 import { CogSlashClass, replaceNameKeyword } from "./class";
 import { CogSlash } from "./Interfaces";
@@ -136,7 +136,10 @@ export class SlashCenter extends ManagementCenter<
             name: "Help",
             commands: {
                 help: {
-                    command: CocoaBuilder("help", "Show help for all commands")
+                    command: CocoaBuilderFull(
+                        "help",
+                        "Show help for all commands"
+                    )
                         .addBooleanOption(Ephemeral())
                         .toJSON(),
                     func: async (ctx) => {

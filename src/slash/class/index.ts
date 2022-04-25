@@ -1,7 +1,10 @@
+import { ChatInputCommandInteraction } from "discord.js";
+
 import { SlashCommandBuilder } from "@discordjs/builders";
 
 import { CocoaSlash, CogSlash } from "..";
 import { Awaitable, commandsDict } from "../../base";
+import { Ephemeral, getEphemeral } from "../../template";
 
 const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 const muckFuture: {
@@ -89,13 +92,60 @@ export function SlashCommand(
     };
 }
 
-export function FutureSlash(
+/**
+ * Automatically add Ephemeral Options to your command
+ *
+ * Your method should accept 2 arguments (ctx, ephemeral)
+ */
+SlashCommand.Ephemeral = (
+    command:
+        | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+        | SlashCommandBuilder,
+    guild_ids?: string[]
+) => {
+    return (
+        cog: CogSlashClass,
+        key: string,
+        desc: TypedPropertyDescriptor<
+            (
+                ctx: ChatInputCommandInteraction,
+                ephemeral: boolean
+            ) => Promise<void>
+        >
+    ) => {
+        const muck = (muckStorage[cog.constructor.name] ??= {});
+
+        command.addBooleanOption(Ephemeral());
+
+        if (command.name == replaceNameKeyword) command.setName(key);
+
+        if (muck[command.name]) {
+            throw Error(`Duplicate Command Name: ${command.name}`);
+        }
+
+        if (desc.value) {
+            muck[command.name] = {
+                command: command.toJSON(),
+                func: async (ctx: ChatInputCommandInteraction) => {
+                    const eph = getEphemeral(ctx) ?? false;
+                    // todo check if .bind(this) is required
+                    await desc.value!.bind(this)(ctx, eph);
+                },
+                guild_ids,
+            };
+        } else {
+            throw Error(`Unexpected Error: ${key}'s value is undefined`);
+        }
+    };
+};
+
+SlashCommand.Future = (
     resolver: () => Promise<
         | SlashCommandBuilder
         | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
     >,
     guild_ids?: string[]
-) {
+) => {
     return (
         cog: CogSlashClass,
         key: string,
@@ -129,4 +179,4 @@ export function FutureSlash(
             })()
         );
     };
-}
+};
