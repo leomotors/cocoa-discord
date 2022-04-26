@@ -47,7 +47,11 @@ export async function useActivityGroup(
 export type usableActivityType = ExcludeEnum<typeof ActivityTypes, "CUSTOM">;
 
 export type ActivityGroup = {
-    [type in usableActivityType]?: string[];
+    [type in usableActivityType]?: Array<
+        type extends ActivityTypes.STREAMING | "STREAMING"
+            ? string | { name: string; url: string }
+            : string
+    >;
 };
 
 export class ActivityGroupLoader extends Loader<ActivityGroup> {
@@ -79,10 +83,18 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
             const building: ActivityOptions[] = [];
             for (const [type, activities] of Object.entries(data)) {
                 for (const activity of activities) {
-                    building.push({
-                        type: type as usableActivityType,
-                        name: activity,
-                    });
+                    building.push(
+                        typeof activity == "string"
+                            ? {
+                                  type: type as usableActivityType,
+                                  name: activity,
+                              }
+                            : {
+                                  type: type as usableActivityType,
+                                  name: activity.name,
+                                  url: activity.url,
+                              }
+                    );
                 }
             }
 
