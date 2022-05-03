@@ -13,7 +13,7 @@ export class Loader<T> {
     }
 
     getRandom(): T {
-        return this._data[Math.floor(Math.random() * this._data.length)];
+        return this._data[Math.floor(Math.random() * this._data.length)]!;
     }
 
     protected constructor(name: string, data: T[], filePath?: string) {

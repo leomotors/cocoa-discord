@@ -7,7 +7,7 @@ export class Store {
 
     subscribe(name: string, func: PureFunction) {
         this.store[name] ??= [];
-        this.store[name].push(func);
+        this.store[name]!.push(func);
     }
 
     notify(name: string) {
@@ -15,7 +15,7 @@ export class Store {
     }
 
     async notifyAwait(name: string) {
-        await Promise.all(this.notify(name));
+        await Promise.all(this.notify(name) ?? []);
     }
 }
 

@@ -82,8 +82,9 @@ export class ConsoleManager {
         cmd = cmd.trim();
 
         const tokens = cmd.split(" ");
-        if (this.commands[tokens[0]]) {
-            await this.commands[tokens[0]](tokens.slice(1).join(" ").trim());
+        const command = this.commands[tokens[0]!];
+        if (command) {
+            await command(tokens.slice(1).join(" ").trim());
             return;
         }
 

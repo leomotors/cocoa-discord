@@ -10,7 +10,8 @@
         "strict": true,
         "skipLibCheck": true,
         "moduleResolution": "node",
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "noUncheckedIndexedAccess": true
     },
     "include": ["./src/**/*"]
 }

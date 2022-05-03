@@ -5,6 +5,7 @@ import "./activity.spec";
 import "./command.spec";
 import "./embed.spec";
 import "./loader.spec";
+import "./logger.spec";
 import "./meta.spec";
 import "./store.spec";
 import "./styles.spec";

@@ -64,9 +64,7 @@ export class SlashCenter extends ManagementCenter<
 
         const commandData: CommandsPack[] = [];
         for (const cog of this.cogs) {
-            for (const commandName in cog.commands) {
-                const command = cog.commands[commandName];
-
+            for (const [_, command] of Object.entries(cog.commands)) {
                 if (command.command.name == replaceNameKeyword) {
                     throw "You cannot use AutoBuilder with Object Cog";
                 }
@@ -89,7 +87,7 @@ export class SlashCenter extends ManagementCenter<
         for (const cog of this.cogs) {
             if (cog.commands[cmdname]) {
                 try {
-                    await cog.commands[cmdname].func(interaction);
+                    await cog.commands[cmdname]!.func(interaction);
                     if (this.hasHandler("interaction"))
                         await this.runAllHandler(
                             "interaction",

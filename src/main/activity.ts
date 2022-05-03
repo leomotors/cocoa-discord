@@ -65,7 +65,7 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
     getBuiltRandom(): ActivityOptions {
         return this.builtData[
             Math.floor(Math.random() * this.builtData.length)
-        ];
+        ]!;
     }
 
     override async reload() {
