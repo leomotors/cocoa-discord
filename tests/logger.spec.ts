@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import { assert, expect } from "chai";
 
 import { Cocoa, LogStatus } from "../src/main";
 
@@ -13,6 +13,6 @@ describe("[logger] Logger", () => {
     it("Success should be Green", () => {
         const f = Cocoa.format("Hello World", LogStatus.Success);
 
-        assert.isTrue(f.startsWith("\u001b[32m"));
+        expect(f).to.match(/^\u001b\[32m/);
     });
 });
