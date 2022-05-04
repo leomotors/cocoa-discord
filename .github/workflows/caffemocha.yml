@@ -20,7 +20,7 @@ jobs:
         run: yarn build
       - name: ESLint & Prettier Check
         run: yarn lint
-      - name: Mocha Test
+      - name: Mocha Test, Actually it is now Jest
         run: yarn test
       - name: Generating Documents Test
         run: yarn docs

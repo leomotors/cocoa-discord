@@ -1,12 +1,10 @@
-import { assert } from "chai";
-
 import { CocoaBuilder, Ephemeral } from "../src/template";
 
 describe("[template] Template Module", () => {
     it("Cocoa Builder", () => {
         const b = CocoaBuilder("test", "test");
-        assert.equal(b.name, "test");
-        assert.equal(b.name, "test");
+        expect(b.name).toEqual("test");
+        expect(b.description).toEqual("test");
     });
 
     it("Ephemeral", () => {
@@ -34,12 +32,12 @@ describe("[template] Template Module", () => {
 
         Ephemeral()(ep);
 
-        assert.equal(ep.name, "ephemeral");
-        assert.equal(ep.description, "Make your request ephemeral");
+        expect(ep.name).toEqual("ephemeral");
+        expect(ep.description).toEqual("Make your request ephemeral");
 
         Ephemeral("bruh")(ep);
 
-        assert.equal(ep.description, "bruh");
-        assert.strictEqual(ep.required, false);
+        expect(ep.description).toEqual("bruh");
+        expect(ep.required).toStrictEqual(false);
     });
 });

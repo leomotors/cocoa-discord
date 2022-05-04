@@ -1,6 +1,6 @@
 import { Embed } from "@discordjs/builders";
 
-import { APIEmbedField } from "discord-api-types/v10";
+import { APIEmbedField } from "discord-api-types/v9";
 
 /**
  * Like Embed but has method addInlineField and addInlineFields,

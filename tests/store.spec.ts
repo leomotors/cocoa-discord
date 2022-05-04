@@ -1,5 +1,3 @@
-import { assert } from "chai";
-
 import { store } from "../src/base";
 
 describe("[store] Store", () => {
@@ -25,13 +23,13 @@ describe("[store] Store", () => {
 
         store.notify("bruh");
 
-        assert.equal(a.value, 2);
-        assert.equal(b.value, 0);
+        expect(a.value).toEqual(2);
+        expect(b.value).toEqual(0);
 
         store.notify("bruh2");
 
-        assert.equal(a.value, 2);
-        assert.equal(b.value, 3);
-        assert.equal(c.value, 0);
+        expect(a.value).toEqual(2);
+        expect(b.value).toEqual(3);
+        expect(c.value).toEqual(0);
     });
 });

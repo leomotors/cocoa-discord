@@ -1,5 +1,3 @@
-import { assert } from "chai";
-
 import { CocoaEmbed } from "../src/main";
 
 describe("[embed] CocoaEmbed Test", () => {
@@ -13,11 +11,11 @@ describe("[embed] CocoaEmbed Test", () => {
             { name: "Hi4", value: "Value4" }
         );
 
-        assert.equal(emb.fields[0]?.name, "Hi");
-        assert.equal(emb.fields[1]?.name, "Hi2");
-        assert.isNotTrue(emb.fields[0]?.inline);
-        assert.isTrue(emb.fields[1]?.inline);
-        assert.isTrue(emb.fields[2]?.inline);
-        assert.isTrue(emb.fields[3]?.inline);
+        expect(emb.fields[0]?.name).toEqual("Hi");
+        expect(emb.fields[1]?.name).toEqual("Hi2");
+        expect(emb.fields[0]?.inline).toBeFalsy();
+        expect(emb.fields[1]?.inline).toBeTruthy();
+        expect(emb.fields[2]?.inline).toBeTruthy();
+        expect(emb.fields[3]?.inline).toBeTruthy();
     });
 });
