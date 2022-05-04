@@ -35,11 +35,11 @@ export function getFormattedTime(simple = false) {
 }
 
 export namespace Cocoa {
-    export function format(s: string, status = LogStatus.Normal) {
-        return LogStatusMap[status]!(`[${getFormattedTime()}] ${s}`);
+    export function format(message: string, status = LogStatus.Normal) {
+        return LogStatusMap[status]!(`[${getFormattedTime()}] ${message}`);
     }
 
-    export function log(s: string, status = LogStatus.Normal) {
-        console.log(format(s, status));
+    export function log(message: string, status = LogStatus.Normal) {
+        console.log(format(message, status));
     }
 }
