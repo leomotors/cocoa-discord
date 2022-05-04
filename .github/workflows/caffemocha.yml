@@ -8,6 +8,8 @@ jobs:
     name: Iroiro na Test
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    env:
+      FORCE_COLOR: 2
 
     steps:
       - name: actions/checkout
@@ -24,3 +26,5 @@ jobs:
         run: yarn test
       - name: Generating Documents Test
         run: yarn docs
+      - name: CRLF Phobia
+        run: npx crlf-phobia *
