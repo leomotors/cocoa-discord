@@ -1,13 +1,10 @@
-import { Client, CommandInteraction } from "discord.js";
+import "./stub";
 
-import { assert, expect, use as ChaiUse } from "chai";
-import ChaiProm from "chai-as-promised";
+import { Client, CommandInteraction } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";
 import { CogSlash, SlashCenter } from "../src/slash";
 import { CogSlashClass, SlashCommand } from "../src/slash/class";
-
-ChaiUse(ChaiProm);
 
 const client = new Client({ intents: [] });
 const mcenter = new MessageCenter(client, { mention: true }, ["1", "2"]);
@@ -108,45 +105,47 @@ function testMessage() {
         // @ts-ignore yeet: Access protected property
         const gids = mcenter.unionAllGuildIds();
 
-        assert.deepEqual(gids, ["1", "2", "3"]);
+        expect(gids).toStrictEqual(["1", "2", "3"]);
     });
 
-    it("Validation should Fail (Illegal Cog: Command name mismatch)", async () => {
+    it("Validation should Fail (Illegal Cog: Command name mismatch)", () => {
+        // @ts-ignore to yeet all the cogs
+        mcenter.cogs = [];
         mcenter.addCogs(WrongMCog);
-        await expect(mcenter.validateCommands()).to.be.rejected;
+        return expect(mcenter.validateCommands()).rejects.toBeTruthy();
     });
 
-    it("Validation should Fail (Duplicate cog names)", async () => {
+    it("Validation should Fail (Duplicate cog names)", () => {
         // @ts-ignore to yeet all the cogs
         mcenter.cogs = [];
         mcenter.addCogs(CorrectMCog, CorrectMCog);
-        await expect(mcenter.validateCommands()).to.be.rejected;
+        return expect(mcenter.validateCommands()).rejects.toBeTruthy();
     });
 
     it("Check Criteria: Mention", () => {
         // @ts-ignore lol
         client.user = { id: "69420112116441112" };
-        assert.equal(
+        expect(
             // @ts-ignore yeeett
             mcenter.checkCriteria({
                 content: "Hello <@69420112116441112>, you are SIMP",
-            }),
-            "Hello , you are SIMP"
-        );
+            })
+        ).toEqual("Hello , you are SIMP");
     });
 
     it("Check Criteria: Prefixes", () => {
         // @ts-ignore lol
         mcenter.criteria = { prefixes: ["simp"] };
-        assert.equal(
+
+        expect(
             // @ts-ignore
-            mcenter.checkCriteria({ content: "simpplay daydream cafe" }),
-            "play daydream cafe"
-        );
-        assert.isUndefined(
+            mcenter.checkCriteria({ content: "simpplay daydream cafe" })
+        ).toEqual("play daydream cafe");
+
+        expect(
             // @ts-ignore
             mcenter.checkCriteria({ content: "play daydream cafe pls" })
-        );
+        ).toBeUndefined();
     });
 }
 
@@ -160,19 +159,19 @@ function testSlash() {
         // @ts-ignore yeet: Access protected property
         const gids = scenter.unionAllGuildIds();
 
-        assert.deepEqual(gids, ["123", "555"]);
+        expect(gids).toStrictEqual(["123", "555"]);
     });
 
     it("Validation should Fail (Illegal Cog: Command name mismatch)", async () => {
         scenter.addCogs(WrongSCog);
-        await expect(scenter.validateCommands()).to.be.rejected;
+        return expect(scenter.validateCommands()).rejects.toBeTruthy();
     });
 
     it("Validation should Fail (Duplicate cog names)", async () => {
         // @ts-ignore to yeeeet all the cogs
         scenter.cogs = [];
         scenter.addCogs(CorrectSCog, CorrectSCog);
-        await expect(scenter.validateCommands()).to.be.rejected;
+        return expect(scenter.validateCommands()).rejects.toBeTruthy();
     });
 }
 
@@ -193,16 +192,14 @@ function testClass() {
         }
         const cog = new CSCog();
         await cog.presync();
-        assert.equal(cog.name, CorrectSCog.name);
-        assert.equal(cog.description, CorrectSCog.description);
-        assert.equal(
-            cog.commands.test.command.name,
+        expect(cog.name).toEqual(CorrectSCog.name);
+        expect(cog.description).toEqual(CorrectSCog.description);
+        expect(cog.commands.test.command.name).toEqual(
             CorrectSCog.commands.test.command.name
         );
-        assert.equal(
-            cog.commands.play.command.name,
+        expect(cog.commands.play.command.name).toEqual(
             CorrectSCog.commands.play.command.name
         );
-        assert.deepEqual(cog.commands.test.guild_ids, ["12345"]);
+        expect(cog.commands.test.guild_ids).toStrictEqual(["12345"]);
     });
 }

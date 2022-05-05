@@ -1,5 +1,3 @@
-import { assert } from "chai";
-
 import { EmbedStyle } from "../src/main";
 
 describe("[styles] Embed Style", () => {
@@ -12,18 +10,29 @@ describe("[styles] Embed Style", () => {
     });
 
     it("Has Correct Properties", () => {
-        // @ts-ignore Private Props yeet
-        assert.equal(style.style.author, "invoker");
-        // @ts-ignore
-        assert.isFunction(style.style.footer);
+        expect(
+            // @ts-ignore Private Props yeet
+            style.style.author
+        ).toEqual("invoker");
+
+        expect(
+            // @ts-ignore
+            style.style.footer
+        ).toBeInstanceOf(Function);
     });
 
     it("resolve() method works", () => {
-        // @ts-ignore Private props yeet
-        assert.equal(style.resolve({}, style.style.author), style.style.author);
-        // @ts-ignore yeeett
-        assert.deepEqual(style.resolve({}, style.style.footer), {
-            text: "Hello",
-        });
+        expect(
+            // @ts-ignore Private props yeet
+            style.resolve({}, style.style.author)
+        ).toEqual(
+            // @ts-ignore
+            style.style.author
+        );
+
+        expect(
+            // @ts-ignore yeeett
+            style.resolve({}, style.style.footer)
+        ).toStrictEqual({ text: "Hello" });
     });
 });

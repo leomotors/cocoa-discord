@@ -78,6 +78,18 @@ one function per file. And the other one, that is more like discord.py's cogs.
 
 If you wish for examples, see above repositories
 
+## ✏️ Templates
+
+Templates are available at /templates
+
+You can use [degit](https://www.npmjs.com/package/degit) to clone the template
+
+Example:
+
+```bash
+npx degit leomotors/cocoa-discord-utils/templates/slash-only my-bot
+```
+
 ## 📚 Documentation
 
 - Doc & Guide: [Markdown (GitHub)](./docs/index.md) 

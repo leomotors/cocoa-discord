@@ -70,7 +70,7 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
     getBuiltRandom(): ActivityOptions | undefined {
         return this.builtData[
             Math.floor(Math.random() * this.builtData.length)
-        ];
+        ]!;
     }
 
     override async reload() {
@@ -87,6 +87,8 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
 
             const building: ActivityOptions[] = [];
             for (const [type, activities] of Object.entries(data)) {
+// TODO FIX THIS
+//<<<<<<< djs14
                 const t = activityToEnum[type.toLowerCase()];
 
                 if (typeof t == "undefined") continue;
@@ -96,6 +98,21 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
                         type: t,
                         name: activity,
                     });
+//=======
+                for (const activity of activities) {
+                    building.push(
+                        typeof activity == "string"
+                            ? {
+                                  type: type as usableActivityType,
+                                  name: activity,
+                              }
+                            : {
+                                  type: type as usableActivityType,
+                                  name: activity.name,
+                                  url: activity.url,
+                              }
+                    );
+//>>>>>>> main
                 }
             }
 

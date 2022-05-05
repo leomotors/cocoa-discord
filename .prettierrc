@@ -6,6 +6,7 @@
     "semi": true,
     "printWidth": 80,
     "importOrder": [
+        "^\\.\\/stub",
         "^discord[-.]",
         "^@discordjs",
         "^[a-zA-Z]",

@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import "./stub";
 
 import { Loader } from "../src/main";
 
@@ -14,17 +14,17 @@ function fromArray() {
     const loader = Loader.fromArray<string>(name, testData);
 
     it("Should have Correct Name", () => {
-        assert.equal(loader.name, name);
+        expect(loader.name).toEqual(name);
     });
 
     it("Should have Correct Data", () => {
-        assert.deepEqual(loader.data, testData);
+        expect(loader.data).toStrictEqual(testData);
     });
 
     it("Get Random Works and Correct (100 times)", () => {
         for (let i = 0; i < 100; i++) {
             const item = loader.getRandom();
-            assert.include(testData, item);
+            expect(testData).toContain(item);
         }
     });
 }
@@ -36,22 +36,22 @@ function fromFile() {
     const loader = Loader.fromFile<string>(name, "./tests/mock/usa.mock.json");
 
     it("Should have Correct Name", () => {
-        assert.equal(loader.name, name);
+        expect(loader.name).toEqual(name);
     });
 
     it("Should have Correct Data", async () => {
         await loader.initialPromise;
-        assert.deepEqual(loader.data, usaData);
+        expect(loader.data).toStrictEqual(usaData);
     });
 
     it("Get Random Works", async () => {
         await loader.initialPromise;
         const item = loader.getRandom();
-        assert.include(usaData, item);
+        expect(usaData).toContain(item);
     });
 
     it("Reload Works", async () => {
         await loader.reload();
-        assert.deepEqual(loader.data, usaData);
+        expect(loader.data).toStrictEqual(usaData);
     });
 }

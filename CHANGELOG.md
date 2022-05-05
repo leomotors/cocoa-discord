@@ -6,6 +6,15 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.8.0] - 2022-05-03
+
+- Add Log Function from [S-Bot-Framework](https://github.com/Leomotors/s-bot-framework)
+
+## [1.7.0] - 2022-04-26
+
+- (feat) ActivityGroup now supports URL field, note that only STREAMING type
+  will show the URL to people
+
 ## [1.6.0] - 2022-04-21
 
 - Fixed an issues that prevents help command from being generated for slash class
