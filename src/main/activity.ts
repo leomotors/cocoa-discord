@@ -48,7 +48,7 @@ export async function useActivity(
 export type UsableActivity = NonNullable<ActivityOptions["type"]>;
 
 export type ActivityGroup = {
-    [type in UsableActivity]?: string[];
+    [type in UsableActivity]?: Array<string | Exclude<ActivityOptions, "type">>;
 };
 
 const activityToEnum: { [type: string]: UsableActivity } = {
@@ -87,32 +87,25 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
 
             const building: ActivityOptions[] = [];
             for (const [type, activities] of Object.entries(data)) {
-// TODO FIX THIS
-//<<<<<<< djs14
                 const t = activityToEnum[type.toLowerCase()];
 
-                if (typeof t == "undefined") continue;
+                if (typeof t == "undefined") {
+                    throw Error(`Unknown Activity Type ${type}`);
+                }
 
                 for (const activity of activities ?? []) {
-                    building.push({
-                        type: t,
-                        name: activity,
-                    });
-//=======
-                for (const activity of activities) {
                     building.push(
                         typeof activity == "string"
                             ? {
-                                  type: type as usableActivityType,
+                                  type: t,
                                   name: activity,
                               }
                             : {
-                                  type: type as usableActivityType,
+                                  type: t,
                                   name: activity.name,
                                   url: activity.url,
                               }
                     );
-//>>>>>>> main
                 }
             }
 

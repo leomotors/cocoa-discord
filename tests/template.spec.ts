@@ -2,8 +2,7 @@ import { CocoaBuilder, Ephemeral } from "../src/template";
 
 describe("[template] Template Module", () => {
     it("Cocoa Builder", () => {
-        const b = CocoaBuilder("test", "test");
-        expect(b.name).toEqual("test");
+        const b = CocoaBuilder("test");
         expect(b.description).toEqual("test");
     });
 

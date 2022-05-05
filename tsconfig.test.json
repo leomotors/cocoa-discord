@@ -2,7 +2,8 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "resolveJsonModule": true,
-        "noUncheckedIndexedAccess": false
+        "noUncheckedIndexedAccess": false,
+        "strict": false
     },
     "include": ["./tests/**/*"]
 }

@@ -1,5 +1,7 @@
 import "./stub";
 
+import { ActivityType } from "discord-api-types/v10";
+
 import { ActivityGroupLoader } from "../src/main";
 
 import Activities from "./mock/activities.mock.json";
@@ -21,16 +23,20 @@ describe("[activity] Activity Group Loader", () => {
         for (let i = 0; i < 100; i++) {
             const item = loader.getBuiltRandom();
             expect([
-                "PLAYING",
-                "LISTENING",
-                "WATCHING",
-                "COMPETING",
-                "STREAMING",
+                ActivityType.Playing,
+                ActivityType.Streaming,
+                ActivityType.Listening,
+                ActivityType.Watching,
+                ActivityType.Competing,
             ]).toContain(item.type);
-            if (item.type != "STREAMING")
+
+            if (item.url)
                 expect(
-                    // @ts-ignore
-                    Activities[item.type]
+                    Activities[ActivityType[item.type].toUpperCase()]
+                ).toContainEqual({ name: item.name, url: item.url });
+            else
+                expect(
+                    Activities[ActivityType[item.type].toUpperCase()]
                 ).toContain(item.name);
         }
     });
@@ -43,17 +49,17 @@ describe("[activity] Activity Group Loader", () => {
 
         expect(yeet).toContainEqual({
             name: "International Olympiad in Informatics",
-            type: "COMPETING",
+            type: ActivityType.Competing,
         });
 
         expect(yeet).toContainEqual({
             name: "The Asian Pacific Informatics Olympiad",
-            type: "STREAMING",
+            type: ActivityType.Streaming,
         });
 
         expect(yeet).toContainEqual({
             name: "IPST Round 2",
-            type: "STREAMING",
+            type: ActivityType.Streaming,
             url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         });
     });
