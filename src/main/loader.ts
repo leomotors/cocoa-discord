@@ -3,33 +3,28 @@ import { readFile } from "fs/promises";
 
 export class Loader<T> {
     readonly name: string;
-    private _data: T[] = [];
+    protected _data: T;
     protected readonly filePath?: string;
     private reloadInterval?: NodeJS.Timer;
+
     initialPromise?: Promise<void>;
 
-    get data(): T[] {
+    get data() {
         return this._data;
     }
 
-    getRandom(): T | undefined {
-        return this._data[Math.floor(Math.random() * this._data.length)];
-    }
-
-    protected constructor(name: string, data: T[], filePath?: string) {
+    protected constructor(name: string, data: T, filePath?: string) {
         this.name = name;
         this._data = data;
         this.filePath = filePath;
     }
 
-    static fromArray<T>(name: string, data: T[]): Loader<T> {
-        const constructed = new Loader<T>(name, data);
-        return constructed;
+    static fromObject<T>(name: string, data: T) {
+        return new Loader<T>(name, data);
     }
 
-    /** Your json file **must be** array of object with type `T` */
-    static fromFile<T>(name: string, filePath: string): Loader<T> {
-        const constructed = new Loader<T>(name, [], filePath);
+    static fromJson<T>(name: string, filePath: string) {
+        const constructed = new Loader<T>(name, {} as T, filePath);
         constructed.initialPromise = constructed.reload();
         return constructed;
     }
@@ -44,9 +39,7 @@ export class Loader<T> {
             const buffer = await readFile(this.filePath);
             this._data = JSON.parse(buffer.toString());
             console.log(
-                chalk.green(
-                    `[LOADER ${this.name}] Successfully loaded ${this._data.length} items`
-                )
+                chalk.green(`[LOADER ${this.name}] Successfully loadeded`)
             );
         } catch (error) {
             console.log(chalk.red(`[LOADER ${this.name} ERROR] : ${error}`));
@@ -60,5 +53,22 @@ export class Loader<T> {
         if (this.reloadInterval) clearInterval(this.reloadInterval);
 
         this.reloadInterval = setInterval(this.reload.bind(this), interval);
+    }
+}
+
+export class ArrayLoader<T> extends Loader<T[]> {
+    getRandom(): T | undefined {
+        return this._data[Math.floor(Math.random() * this._data.length)];
+    }
+
+    static fromArray<T>(name: string, data: T[]) {
+        return new ArrayLoader<T>(name, data);
+    }
+
+    /** Your json file **must be** array of object with type `T` */
+    static fromFile<T>(name: string, filePath: string) {
+        const constructed = new ArrayLoader<T>(name, [], filePath);
+        constructed.initialPromise = constructed.reload();
+        return constructed;
     }
 }

@@ -4,45 +4,61 @@ import { ActivityOptions, Client } from "discord.js";
 import chalk from "chalk";
 import { readFile } from "fs/promises";
 
-import { Loader } from "./loader";
+import { ArrayLoader } from "./loader";
 
 const _min = 60 * 1000;
 const _defaultInterval = 10 * _min;
 
-function assertInterval(interval: number) {
-    if (interval < 1000) {
-        throw "Set Activity Interval too small! This will cause Rate-Limit and kill your bot, do never mistake milliseconds for seconds!";
-    }
-}
-
-function doAndSetInterval(func: () => void, interval: number) {
-    func();
-    setInterval(func, interval);
-}
-
-function isGroupLoader(loader: Loader<unknown>): loader is ActivityGroupLoader {
+function isGroupLoader(
+    loader: ArrayLoader<unknown>
+): loader is ActivityGroupLoader {
     return (loader as ActivityGroupLoader).getBuiltRandom != undefined;
 }
 
-/** @important This function **must** be called **AFTER** client is ready */
-export async function useActivity(
-    client: Client<true>,
-    loader: Loader<ActivityOptions> | ActivityGroupLoader,
-    interval = _defaultInterval
-) {
-    assertInterval(interval);
+export class ActivityManager<T extends ArrayLoader<ActivityOptions>> {
+    readonly loader: T;
+    private readonly getRandomFunc: () => ActivityOptions | undefined;
+    readonly client: Client;
 
-    await loader.initialPromise;
-    doAndSetInterval(
-        isGroupLoader(loader)
-            ? () => {
-                  client.user.setActivity(loader.getBuiltRandom());
-              }
-            : () => {
-                  client.user.setActivity(loader.getRandom());
-              },
-        interval
-    );
+    static assertInterval(interval: number) {
+        if (interval < 1000) {
+            throw "Set Activity Interval too small! This will cause Rate-Limit and kill your bot, do never mistake milliseconds for seconds!";
+        }
+    }
+
+    /**
+     * Set random activity periodically, note that you need to manually call
+     * `nextActivity` after client is ready to set activity after login
+     * otherwise you will need to wait `interval` for it to be set
+     *
+     * @param interval In milliseconds, if set to 0 will disable the periodic
+     */
+    constructor(loader: T, client: Client, interval = _defaultInterval) {
+        this.loader = loader;
+
+        this.getRandomFunc = isGroupLoader(loader)
+            ? loader.getBuiltRandom.bind(loader)
+            : loader.getRandom.bind(loader);
+
+        this.client = client;
+
+        if (interval) {
+            ActivityManager.assertInterval(interval);
+            setInterval(() => this.nextActivity(), interval);
+        }
+    }
+
+    /**
+     * Set random activity
+     *
+     * @returns `true` if set, `false` if client is not ready
+     */
+    nextActivity() {
+        if (!this.client.isReady()) return false;
+
+        this.client.user.setActivity(this.getRandomFunc());
+        return true;
+    }
 }
 
 export type UsableActivity = NonNullable<ActivityOptions["type"]>;
@@ -59,7 +75,7 @@ const activityToEnum: { [type: string]: UsableActivity } = {
     competing: ActivityType.Competing,
 };
 
-export class ActivityGroupLoader extends Loader<ActivityGroup> {
+export class ActivityGroupLoader extends ArrayLoader<ActivityGroup> {
     private builtData: ActivityOptions[] = [];
 
     constructor(filePath: string) {
@@ -94,18 +110,17 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
                 }
 
                 for (const activity of activities ?? []) {
-                    building.push(
-                        typeof activity == "string"
-                            ? {
-                                  type: t,
-                                  name: activity,
-                              }
-                            : {
-                                  type: t,
-                                  name: activity.name,
-                                  url: activity.url,
-                              }
-                    );
+                    if (typeof activity == "string")
+                        building.push({
+                            type: t,
+                            name: activity,
+                        });
+                    else
+                        building.push({
+                            type: t,
+                            name: activity.name,
+                            url: activity.url,
+                        });
                 }
             }
 

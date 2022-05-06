@@ -13,7 +13,7 @@ describe("[activity] Activity Group Loader", () => {
         await loader.initialPromise;
 
         expect(
-            // @ts-ignore or else we can't access *private* properties
+            // @ts-expect-error or else we can't access *private* properties
             loader.builtData.length
         ).toStrictEqual(10);
     });
@@ -44,7 +44,7 @@ describe("[activity] Activity Group Loader", () => {
     it("Has expected Data", async () => {
         await loader.initialPromise;
 
-        // @ts-ignore again so we can *yeet* its private properites
+        // @ts-expect-error again so we can *yeet* its private properites
         const yeet = loader.builtData;
 
         expect(yeet).toContainEqual({

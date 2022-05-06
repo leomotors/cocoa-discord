@@ -8,13 +8,17 @@ part of migration on your own.
 Cocoa Discord Utils has done many internal migration, however users still
 need actions in some changes.
 
-Aside from that, the V2 also has other few changes.
+Aside from that, the V2 also has other *few* breaking changes.
 
 ## Activity and Loader
 
-- `useActivityGroup()` is removed, please use `useActivity()`
+- `use Activity() useActivityGroup()` is removed, please use `ActivityManager`
 
 - loader's getRandom now returns `T | undefined`
+
+- `Loader` is renamed to `ArrayLoader`
+
+- `Loader` is added to handle Object
 
 ## CommandInteraction -> ChatInputCommandInteraction
 
