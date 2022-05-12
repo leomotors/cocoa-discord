@@ -50,8 +50,6 @@ export function Author(ctx: Context) {
 
     return {
         name: user.username,
-        iconURL:
-            user.avatarURL() ??
-            "https://cdn.discordapp.com/embed/avatars/1.png",
+        iconURL: user.avatarURL() ?? user.defaultAvatarURL,
     };
 }
