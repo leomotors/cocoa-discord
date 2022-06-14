@@ -1,4 +1,4 @@
-import { Embed } from "@discordjs/builders";
+import { EmbedBuilder } from "@discordjs/builders";
 
 import chalk from "chalk";
 import { Client } from "discord.js";
@@ -21,7 +21,7 @@ export abstract class ManagementCenter<
     protected guild_ids?: string[];
 
     helpText = "";
-    helpEmbed?: Embed;
+    helpEmbed?: EmbedBuilder;
 
     private centerType: "Message" | "Slash";
 
@@ -152,7 +152,7 @@ export abstract class ManagementCenter<
 
         this.generateHelpCommand();
 
-        this.helpEmbed = new Embed()
+        this.helpEmbed = new EmbedBuilder()
             .setTitle(`Help for ${this.centerType} Command`)
             .setDescription(this.helpText);
 

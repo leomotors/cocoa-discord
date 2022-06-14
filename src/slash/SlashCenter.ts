@@ -132,13 +132,17 @@ export class SlashCenter extends ManagementCenter<
             name: "Help",
             commands: {
                 help: {
-                    command: CocoaBuilder("help", "Show help for all commands")
-                        .addBooleanOption(Ephemeral())
-                        .toJSON(),
+                    // @ts-ignore
+                    command: CocoaBuilder(
+                        "help",
+                        "Show help for all commands"
+                    ).addBooleanOption(Ephemeral()),
                     func: async (ctx) => {
                         const ephemeral = getEphemeral(ctx);
                         await ctx.reply({
-                            embeds: [style ? style.apply(ctx, emb) : emb],
+                            embeds: [
+                                (style ? style.apply(ctx, emb) : emb).toJSON(),
+                            ],
                             ephemeral,
                         });
                     },
