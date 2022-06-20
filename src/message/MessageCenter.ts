@@ -182,7 +182,9 @@ export class MessageCenter extends ManagementCenter<
                     },
                     func: async (msg) => {
                         await msg.reply({
-                            embeds: [style ? style.apply(msg, emb) : emb],
+                            embeds: [
+                                (style ? style.apply(msg, emb) : emb).toJSON(),
+                            ],
                         });
                     },
                     guild_ids: this.guild_ids

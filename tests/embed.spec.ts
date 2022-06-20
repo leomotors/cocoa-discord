@@ -11,11 +11,11 @@ describe("[embed] CocoaEmbed Test", () => {
             { name: "Hi4", value: "Value4" }
         );
 
-        expect(emb.data.fields[0]?.name).toEqual("Hi");
-        expect(emb.data.fields[1]?.name).toEqual("Hi2");
-        expect(emb.data.fields[0]?.inline).toBeFalsy();
-        expect(emb.data.fields[1]?.inline).toBeTruthy();
-        expect(emb.data.fields[2]?.inline).toBeTruthy();
-        expect(emb.data.fields[3]?.inline).toBeTruthy();
+        expect(emb.data.fields![0]?.name).toEqual("Hi");
+        expect(emb.data.fields![1]?.name).toEqual("Hi2");
+        expect(emb.data.fields![0]?.inline).toBeFalsy();
+        expect(emb.data.fields![1]?.inline).toBeTruthy();
+        expect(emb.data.fields![2]?.inline).toBeTruthy();
+        expect(emb.data.fields![3]?.inline).toBeTruthy();
     });
 });

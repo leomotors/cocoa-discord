@@ -6,6 +6,12 @@ All notables change for Cocoa Discord Utils will be noted here
 
 **Note 2**: Not all change will be noted, see commits for *full* changelog
 
+## [1.9.0] - 2022-06-20
+
+- Bump Deps
+
+- Add support for discord.js 13.8 (ex. Attachments in Slash Command)
+
 ## [1.8.0] - 2022-05-03
 
 - Add Log Function from [S-Bot-Framework](https://github.com/Leomotors/s-bot-framework)

@@ -69,6 +69,7 @@ export function SlashCommand(
         const muck = (muckStorage[cog.constructor.name] ??= {});
 
         if (command instanceof SlashCommandBuilder) {
+            // @ts-ignore
             command = command.toJSON();
         }
 
@@ -167,6 +168,7 @@ SlashCommand.Future = (
 
                 if (desc.value) {
                     muck[command.name] = {
+                        // @ts-ignore
                         command,
                         func: desc.value,
                         guild_ids,

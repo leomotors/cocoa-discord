@@ -145,7 +145,9 @@ export class SlashCenter extends ManagementCenter<
                     func: async (ctx) => {
                         const ephemeral = getEphemeral(ctx);
                         await ctx.reply({
-                            embeds: [style ? style.apply(ctx, emb) : emb],
+                            embeds: [
+                                (style ? style.apply(ctx, emb) : emb).toJSON(),
+                            ],
                             ephemeral,
                         });
                     },
