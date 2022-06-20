@@ -28,16 +28,16 @@ describe("[activity] Activity Group Loader", () => {
                 ActivityType.Listening,
                 ActivityType.Watching,
                 ActivityType.Competing,
-            ]).toContain(item.type);
+            ]).toContain(item!.type);
 
-            if (item.url)
+            if (item!.url)
                 expect(
-                    Activities[ActivityType[item.type].toUpperCase()]
-                ).toContainEqual({ name: item.name, url: item.url });
+                    Activities[ActivityType[item!.type!].toUpperCase()]
+                ).toContainEqual({ name: item!.name, url: item!.url });
             else
                 expect(
-                    Activities[ActivityType[item.type].toUpperCase()]
-                ).toContain(item.name);
+                    Activities[ActivityType[item!.type!].toUpperCase()]
+                ).toContain(item!.name);
         }
     });
 

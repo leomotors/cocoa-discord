@@ -5,11 +5,10 @@ name: Documentation
 on:
   push:
     tags:
-      - "*.*"
+      - "[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
   docs:
-    if: github.event.base_ref == 'refs/heads/main'
     name: Documentation
     runs-on: ubuntu-latest
     steps:
