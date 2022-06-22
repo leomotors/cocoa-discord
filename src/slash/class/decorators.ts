@@ -1,4 +1,5 @@
 import { APIApplicationCommandOptionChoice } from "discord-api-types/v10";
+import { User as TypeUser } from "discord.js";
 
 import { CogSlashClass } from "./legacy";
 
@@ -49,7 +50,14 @@ export namespace Args {
     type ArgumentOptions = { required?: boolean; autocomplete?: boolean };
 
     export const String = argumentsFactory("string");
+    export namespace String {
+        export type Type = string;
+    }
+
     export const User = argumentsFactory("user");
+    export namespace User {
+        export type Type = TypeUser;
+    }
 
     export function Choices(
         choices: APIApplicationCommandOptionChoice[] | string[]
@@ -75,8 +83,6 @@ export namespace Args {
     ) {
         const { required = true, autocomplete = false } = option ?? {};
 
-        if (typeof option === "string") {
-        }
         return (
             cog: CogSlashClass,
             propertyKey: string,

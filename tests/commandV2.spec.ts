@@ -17,8 +17,8 @@ class V2Test extends CogSlashClass {
         ctx: ChatInputCommandInteraction,
         @Args.String("Message to say")
         @Args.Choices(["Gay", "Bruh"])
-        msg: string,
-        @Args.User("User to greet") user: User
+        msg: Args.String.Type,
+        @Args.User("User to greet") user: Args.User.Type
     ) {}
 }
 
