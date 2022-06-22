@@ -1,6 +1,6 @@
 import "./stub";
 
-import { Client, CommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction, Client } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";
 import { CogSlash, SlashCenter } from "../src/slash";
@@ -183,12 +183,10 @@ function testClass() {
             }
 
             @SlashCommand({ name: "test", description: "bruh" }, ["12345"])
-            // @ts-ignore
-            async test(ctx: CommandInteraction) {}
+            async test(ctx: ChatInputCommandInteraction) {}
 
             @SlashCommand({ name: "play", description: "bruh" })
-            // @ts-ignore
-            async play(ctx: CommandInteraction) {}
+            async play(ctx: ChatInputCommandInteraction) {}
         }
         const cog = new CSCog();
         await cog.presync();

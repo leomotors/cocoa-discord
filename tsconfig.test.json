@@ -4,7 +4,8 @@
         "resolveJsonModule": true,
         "noUncheckedIndexedAccess": false,
         "strict": false,
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "experimentalDecorators": true
     },
     "include": ["./tests/**/*"]
 }

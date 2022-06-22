@@ -11,8 +11,7 @@
         "skipLibCheck": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
-        "noUncheckedIndexedAccess": true,
-        "sourceMap": true
+        "noUncheckedIndexedAccess": true
     },
     "include": ["./src/**/*"]
 }
