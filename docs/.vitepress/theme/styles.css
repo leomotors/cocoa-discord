@@ -1,0 +1,9 @@
+:root {
+    --vp-c-brand: #f7c6aa;
+    --vp-c-brand-light: #f7c6aa;
+    --vp-c-brand-dark: #775f51;
+}
+
+.dark {
+    --vp-c-bg-alt: #27171f;
+}

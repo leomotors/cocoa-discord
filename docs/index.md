@@ -1,30 +1,26 @@
-# Documentation for Cocoa Discord Utils
+---
+layout: home
 
-*Remark*: This package is utility for building Discord Bot by offering utilities
-for frequently used item. Made by me for me (and maybe friends) to make our bots.
+hero:
+  name: Cocoa Discord Utils
+  text: For discord.js
+  tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨
+  actions:
+  - theme: brand
+    text: Get Started
+    link: /introduction/overview
+  - theme: alt
+    text: View on GitHub
+    link: https://github.com/Leomotors/cocoa-discord-utils
+  - theme: alt
+    text: View TypeDoc
+    link: /typedoc/index
 
-## Note
-
-- Because no one use this library (right?), breaking changes are likely to be made. Please be aware of it.
-
-- Currently, only few of the features in library are noted in the guide here. When I have time, I will add more.
-
-### Please take a look at the following bots for example on uncovered topic
-
-- [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
-
-- [Harunon JS](https://github.com/CarelessDev/harunon.js)
-
-- [Bots Gulag](https://github.com/CarelessDev/bots-gulag)
-
-## 📖 Table
-
-- ✨✨[Version 2 Migration Guide](./migratev2.md)
-
-- [Command Management System](./cms.md)
-
-- [Configuration File & CLI](./cocoarc.md)
-
-## 🏗️ By Submodule
-
-- [main](./main.md)
+features:
+  - title: Build by me, for me
+    details: It is used in all of my Discord Bots, most popular 'useful' ones are Harunon https://github.com/CarelessDev/harunon.js
+  - title: Build with TypeScript
+    details: Fully Type Safe and power your discord bot development with IntelliSense
+  - title: Cog System inspired by discord.py
+    details: Get some fancy decorators on your functions and now it represents a slash command! (Message command also supported)
+---

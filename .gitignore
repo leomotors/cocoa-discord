@@ -107,4 +107,5 @@ dist
 *.g.*
 
 # Output
+docs-dist
 typedoc-out

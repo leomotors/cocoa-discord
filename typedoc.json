@@ -9,6 +9,7 @@
         "./src/template/index.ts",
         "./src/base/index.ts"
     ],
-    "out": "typedoc-out",
+    "out": "docs-dist/typedoc",
+    "includeVersion": true,
     "readme": "README.g.md"
 }

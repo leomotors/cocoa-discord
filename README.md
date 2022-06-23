@@ -6,9 +6,6 @@
 
 Yet another Discord Bot Utility npm package
 
-<!-- This component will be replace when building TypeDoc -->
-<TypeDoc />
-
 ## ✨ Features
 
 - Many utilities that **made by me for me** to make my bots
