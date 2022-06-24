@@ -4,6 +4,8 @@ export default defineConfig({
     title: "Cocoa Discord Utils",
     description:
         "Documentation for Cocoa Discord Utils, Library to simplify creating discord bots",
+    lastUpdated: true,
+    base: "/cocoa-discord-utils",
 
     themeConfig: {
         footer: {
@@ -24,15 +26,25 @@ export default defineConfig({
 
         sidebar: [
             {
+                collapsible: true,
                 text: "Introduction",
                 items: [
                     {
                         text: "Overview",
                         link: "/introduction/overview",
                     },
+                    {
+                        text: "Examples",
+                        link: "/introduction/examples",
+                    },
+                    {
+                        text: "TypeDoc",
+                        link: "/typedoc",
+                    },
                 ],
             },
             {
+                collapsible: true,
                 text: "Configuration",
                 items: [
                     {
@@ -42,24 +54,39 @@ export default defineConfig({
                 ],
             },
             {
-                text: "Main",
+                collapsible: true,
+                text: "Modules",
                 items: [
                     {
-                        text: "Main Utilities",
-                        link: "/main",
+                        text: "Main",
+                        link: "/modules/main",
                     },
                 ],
             },
             {
+                collapsible: true,
                 text: "Command Management System",
                 items: [
                     {
                         text: "Basic Concept",
-                        link: "/cms",
+                        link: "/cms/basic",
                     },
                     {
+                        text: "Advanced Decorator Syntax",
+                        link: "/cms/decorator",
+                    },
+                    {
+                        text: "Message Commands",
+                        link: "/cms/message",
+                    },
+                    {
+                        text: "Other Utilities",
+                        link: "/cms/other",
+                    },
+
+                    {
                         text: "Event Handling",
-                        link: "/cms_evt",
+                        link: "/cms/event",
                     },
                 ],
             },

@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, User } from "discord.js";
 
 import {
-    Args,
+    Param,
     CogSlashClass,
     SlashCommandV2 as SlashCommand,
     V2Stores,
@@ -14,11 +14,11 @@ class V2Test extends CogSlashClass {
 
     @SlashCommand("The command that say hi to specific person")
     async sayhi(
-        ctx: ChatInputCommandInteraction,
-        @Args.String("Message to say")
-        @Args.Choices(["Gay", "Bruh"])
-        msg: Args.String.Type,
-        @Args.User("User to greet") user: Args.User.Type
+        ctx: SlashCommand.Context,
+        @Param.String("Message to say")
+        @Param.Choices(["Gay", "Bruh"])
+        msg: Param.String.Type,
+        @Param.User("User to greet") user: Param.User.Type
     ) {}
 }
 

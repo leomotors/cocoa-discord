@@ -1,10 +1,16 @@
 # Main
 
+Can be imported from /
+
 ```ts
 import { ... } from "cocoa-discord-utils";
 ```
 
 *Note*: This documentation/guide is partially done.
+
+## Table of Contents
+
+[[toc]]
 
 ## [Class] CocoaEmbed
 

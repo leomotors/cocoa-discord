@@ -1,10 +1,10 @@
 import { APIApplicationCommandOptionChoice } from "discord-api-types/v10";
-import { User as TypeUser } from "discord.js";
+import { ChatInputCommandInteraction, User as TypeUser } from "discord.js";
 
 import { CogSlashClass } from "./legacy";
 
 namespace V2Decorators {
-    export interface Args<T = string | number> {
+    export interface Params<T = string | number> {
         type?: string;
         description?: string;
         required?: boolean;
@@ -15,7 +15,7 @@ namespace V2Decorators {
     export interface Data {
         name?: string;
         description?: string;
-        args?: Record<number, Args>;
+        params?: Record<number, Params>;
     }
 }
 
@@ -35,26 +35,30 @@ export function SlashCommandV2(description?: string) {
     };
 }
 
-export function getArgumentStore(cog: CogSlashClass, propertyKey: string) {
-    const cogStore = (V2Stores[cog.constructor.name] ??= {});
-    const argsStore = ((cogStore[propertyKey] ??= {}).args ??= {});
-    return argsStore;
+export namespace SlashCommandV2 {
+    export type Context = ChatInputCommandInteraction;
 }
 
-export namespace Args {
-    function argumentsFactory(type: string) {
-        return (description?: string, option?: ArgumentOptions) =>
-            argumentsDecorator(type, description, option);
+export function getArgumentStore(cog: CogSlashClass, propertyKey: string) {
+    const cogStore = (V2Stores[cog.constructor.name] ??= {});
+    const paramsStore = ((cogStore[propertyKey] ??= {}).params ??= {});
+    return paramsStore;
+}
+
+export namespace Param {
+    function paramsFactory(type: string) {
+        return (description?: string, option?: ParamOptions) =>
+            paramsDecorator(type, description, option);
     }
 
-    type ArgumentOptions = { required?: boolean; autocomplete?: boolean };
+    type ParamOptions = { required?: boolean; autocomplete?: boolean };
 
-    export const String = argumentsFactory("string");
+    export const String = paramsFactory("string");
     export namespace String {
         export type Type = string;
     }
 
-    export const User = argumentsFactory("user");
+    export const User = paramsFactory("user");
     export namespace User {
         export type Type = TypeUser;
     }
@@ -76,10 +80,10 @@ export namespace Args {
         };
     }
 
-    export function argumentsDecorator(
+    export function paramsDecorator(
         type: string,
         description: string | undefined,
-        option?: ArgumentOptions
+        option?: ParamOptions
     ) {
         const { required = true, autocomplete = false } = option ?? {};
 
