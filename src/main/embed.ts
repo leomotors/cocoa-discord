@@ -1,6 +1,5 @@
-import { EmbedBuilder } from "@discordjs/builders";
-
-import { APIEmbedField } from "discord-api-types/v9";
+import { APIEmbedField } from "discord-api-types/v10";
+import { EmbedBuilder } from "discord.js";
 
 /**
  * Like Embed but has method addField, addInlineField and addInlineFields,
@@ -20,7 +19,13 @@ export class CocoaEmbed extends EmbedBuilder {
 
     /** Adds fields to the embed (max 25), automatically set inline to true */
     addInlineFields(...fields: Array<Omit<APIEmbedField, "inline">>) {
-        fields.map((field) => this.addInlineField(field));
-        return this;
+        return this.addFields(
+            fields.map((field) => {
+                return {
+                    ...field,
+                    inline: true,
+                };
+            })
+        );
     }
 }

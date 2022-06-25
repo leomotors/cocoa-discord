@@ -1,13 +1,17 @@
-import { EmbedBuilder } from "@discordjs/builders";
-
-import { CommandInteraction, EmbedFooterData, Message } from "discord.js";
+import {
+    ChatInputCommandInteraction,
+    EmbedBuilder,
+    EmbedFooterData,
+    Message,
+} from "discord.js";
 
 import { valueOf } from "../base";
 import { Author } from "../template";
 
 import { CocoaEmbed } from "./embed";
 
-export type Context = CommandInteraction | Message;
+/** Message | CommandInteraction */
+export type Context = Message | ChatInputCommandInteraction;
 
 export interface EmbedStyleBase {
     author?: "invoker" | "bot";

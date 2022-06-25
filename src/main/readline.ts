@@ -1,5 +1,6 @@
-import chalk from "chalk";
 import { Client } from "discord.js";
+
+import chalk from "chalk";
 import readline from "readline";
 
 import { Awaitable } from "../base";
@@ -82,9 +83,9 @@ export class ConsoleManager {
         cmd = cmd.trim();
 
         const tokens = cmd.split(" ");
-        const command = this.commands[tokens[0]!];
-        if (command) {
-            await command(tokens.slice(1).join(" ").trim());
+        const cmdf = this.commands[tokens[0]!];
+        if (cmdf) {
+            await cmdf(tokens.slice(1).join(" ").trim());
             return;
         }
 

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Disable no-explicit-any because I'm too lazy to write all possible types
-import { SlashCommandBuilder } from "@discordjs/builders";
-
-import { CommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 import { replaceNameKeyword } from "../slash/class";
 
@@ -10,7 +8,7 @@ import { replaceNameKeyword } from "../slash/class";
  * Basically `SlashCommandBuilder` but with name and description
  * @returns SlashCommandBuilder with given name and description set
  */
-export function CocoaBuilder(name: string, description?: string) {
+export function CocoaBuilderFull(name: string, description?: string) {
     const c = new SlashCommandBuilder().setName(name);
     if (description) c.setDescription(description);
     return c;
@@ -19,12 +17,12 @@ export function CocoaBuilder(name: string, description?: string) {
 /**
  * **NOTE**: Only usable with `CogSlashClass`
  *
- * Like `CocoaBuilder` but you don't need to specify name.
+ * Like `CocoaBuilderFull` but you don't need to specify name.
  *
  * @returns SlashCommandBuilder with given description set
  */
-export function AutoBuilder(description?: string) {
-    return CocoaBuilder(replaceNameKeyword, description);
+export function CocoaBuilder(description?: string) {
+    return CocoaBuilderFull(replaceNameKeyword, description);
 }
 
 /**
@@ -80,6 +78,9 @@ export function Ephemeral(
  * **Note**: If you have override the `Ephemeral()` name's field,
  * pass that as the second argument to correctly retrieve parameters!
  */
-export function getEphemeral(ctx: CommandInteraction, override?: string) {
+export function getEphemeral(
+    ctx: ChatInputCommandInteraction,
+    override?: string
+) {
     return ctx.options.getBoolean(override ?? "ephemeral") ?? false;
 }

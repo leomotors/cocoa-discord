@@ -1,4 +1,3 @@
-import chalk from "chalk";
 import {
     ApplicationCommand,
     ApplicationCommandData,
@@ -7,6 +6,8 @@ import {
     Client,
     Guild,
 } from "discord.js";
+
+import chalk from "chalk";
 
 import { getElapsed } from "../meta";
 

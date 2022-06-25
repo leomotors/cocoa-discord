@@ -1,7 +1,6 @@
-import { EmbedBuilder } from "@discordjs/builders";
+import { Client, EmbedBuilder } from "discord.js";
 
 import chalk from "chalk";
-import { Client } from "discord.js";
 
 import { EmbedStyle } from "../main";
 import { MessageEvents } from "../message";

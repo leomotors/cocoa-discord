@@ -12,7 +12,7 @@ describe("[store] Store", () => {
     const b = new Checker();
     const c = new Checker();
 
-    it("Subscribe and Notify should work", () => {
+    it("Subscribe and Notify should work", async () => {
         store.subscribe("bruh", () => {
             a.changeValue(2);
         });
@@ -26,7 +26,7 @@ describe("[store] Store", () => {
         expect(a.value).toEqual(2);
         expect(b.value).toEqual(0);
 
-        store.notify("bruh2");
+        await store.notifyAwait("bruh2");
 
         expect(a.value).toEqual(2);
         expect(b.value).toEqual(3);

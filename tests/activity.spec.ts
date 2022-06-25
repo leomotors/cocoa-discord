@@ -1,5 +1,7 @@
 import "./stub";
 
+import { ActivityType } from "discord-api-types/v10";
+
 import { ActivityGroupLoader } from "../src/main";
 
 import Activities from "./mock/activities.mock.json";
@@ -11,7 +13,7 @@ describe("[activity] Activity Group Loader", () => {
         await loader.initialPromise;
 
         expect(
-            // @ts-ignore or else we can't access *private* properties
+            // @ts-expect-error or else we can't access *private* properties
             loader.builtData.length
         ).toStrictEqual(10);
     });
@@ -21,39 +23,43 @@ describe("[activity] Activity Group Loader", () => {
         for (let i = 0; i < 100; i++) {
             const item = loader.getBuiltRandom();
             expect([
-                "PLAYING",
-                "LISTENING",
-                "WATCHING",
-                "COMPETING",
-                "STREAMING",
-            ]).toContain(item.type);
-            if (item.type != "STREAMING")
+                ActivityType.Playing,
+                ActivityType.Streaming,
+                ActivityType.Listening,
+                ActivityType.Watching,
+                ActivityType.Competing,
+            ]).toContain(item!.type);
+
+            if (item!.url)
                 expect(
-                    // @ts-ignore
-                    Activities[item.type]
-                ).toContain(item.name);
+                    Activities[ActivityType[item!.type!].toUpperCase()]
+                ).toContainEqual({ name: item!.name, url: item!.url });
+            else
+                expect(
+                    Activities[ActivityType[item!.type!].toUpperCase()]
+                ).toContain(item!.name);
         }
     });
 
     it("Has expected Data", async () => {
         await loader.initialPromise;
 
-        // @ts-ignore again so we can *yeet* its private properites
+        // @ts-expect-error again so we can *yeet* its private properites
         const yeet = loader.builtData;
 
         expect(yeet).toContainEqual({
             name: "International Olympiad in Informatics",
-            type: "COMPETING",
+            type: ActivityType.Competing,
         });
 
         expect(yeet).toContainEqual({
             name: "The Asian Pacific Informatics Olympiad",
-            type: "STREAMING",
+            type: ActivityType.Streaming,
         });
 
         expect(yeet).toContainEqual({
             name: "IPST Round 2",
-            type: "STREAMING",
+            type: ActivityType.Streaming,
             url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         });
     });

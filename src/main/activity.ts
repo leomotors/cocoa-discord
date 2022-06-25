@@ -1,60 +1,81 @@
+import { ActivityType } from "discord-api-types/v10";
+import { ActivityOptions, Client } from "discord.js";
+
 import chalk from "chalk";
-import { ActivityOptions, Client, ExcludeEnum } from "discord.js";
-import { ActivityTypes } from "discord.js/typings/enums";
 import { readFile } from "fs/promises";
 
-import { Loader } from "./loader";
+import { ArrayLoader } from "./loader";
 
 const _min = 60 * 1000;
 const _defaultInterval = 10 * _min;
 
-function assertInterval(interval: number) {
-    if (interval < 1000) {
-        throw "Interval too small! This will cause Rate-Limit, do never mistake milliseconds for seconds!";
+function isGroupLoader(
+    loader: ArrayLoader<unknown>
+): loader is ActivityGroupLoader {
+    return (loader as ActivityGroupLoader).getBuiltRandom != undefined;
+}
+
+export class ActivityManager<T extends ArrayLoader<ActivityOptions>> {
+    readonly loader: T;
+    private readonly getRandomFunc: () => ActivityOptions | undefined;
+    readonly client: Client;
+
+    static assertInterval(interval: number) {
+        if (interval < 1000) {
+            throw "Set Activity Interval too small! This will cause Rate-Limit and kill your bot, do never mistake milliseconds for seconds!";
+        }
+    }
+
+    /**
+     * Set random activity periodically, note that you need to manually call
+     * `nextActivity` after client is ready to set activity after login
+     * otherwise you will need to wait `interval` for it to be set
+     *
+     * @param interval In milliseconds, if set to 0 will disable the periodic
+     */
+    constructor(loader: T, client: Client, interval = _defaultInterval) {
+        this.loader = loader;
+
+        this.getRandomFunc = isGroupLoader(loader)
+            ? loader.getBuiltRandom.bind(loader)
+            : loader.getRandom.bind(loader);
+
+        this.client = client;
+
+        if (interval) {
+            ActivityManager.assertInterval(interval);
+            setInterval(() => this.nextActivity(), interval);
+        }
+    }
+
+    /**
+     * Set random activity
+     *
+     * @returns `true` if set, `false` if client is not ready
+     */
+    nextActivity() {
+        if (!this.client.isReady()) return false;
+
+        this.client.user.setActivity(this.getRandomFunc());
+        return true;
     }
 }
 
-/** @important This function **must** be called **AFTER** client is ready */
-export async function useActivity(
-    client: Client<true>,
-    loader: Loader<ActivityOptions>,
-    interval = _defaultInterval
-) {
-    assertInterval(interval);
-
-    await loader.initialPromise;
-    client.user.setActivity(loader.getRandom());
-    setInterval(() => {
-        client.user.setActivity(loader.getRandom());
-    }, interval);
-}
-
-/** @important This function **must** be called **AFTER** client is ready */
-export async function useActivityGroup(
-    client: Client<true>,
-    loader: ActivityGroupLoader,
-    interval = _defaultInterval
-) {
-    assertInterval(interval);
-
-    await loader.initialPromise;
-    client.user.setActivity(loader.getBuiltRandom());
-    setInterval(() => {
-        client.user.setActivity(loader.getBuiltRandom());
-    }, interval);
-}
-
-export type usableActivityType = ExcludeEnum<typeof ActivityTypes, "CUSTOM">;
+export type UsableActivity = NonNullable<ActivityOptions["type"]>;
 
 export type ActivityGroup = {
-    [type in usableActivityType]?: Array<
-        type extends ActivityTypes.STREAMING | "STREAMING"
-            ? string | { name: string; url: string }
-            : string
-    >;
+    [type in UsableActivity]?: Array<string | Exclude<ActivityOptions, "type">>;
 };
 
-export class ActivityGroupLoader extends Loader<ActivityGroup> {
+const activityToEnum: { [type: string]: UsableActivity } = {
+    playing: ActivityType.Playing,
+    streaming: ActivityType.Streaming,
+    listening: ActivityType.Listening,
+    watching: ActivityType.Watching,
+    competing: ActivityType.Competing,
+};
+
+export class ActivityGroupLoader extends ArrayLoader<ActivityGroup> {
     private builtData: ActivityOptions[] = [];
 
     constructor(filePath: string) {
@@ -62,7 +83,7 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
         this.initialPromise = this.reload();
     }
 
-    getBuiltRandom(): ActivityOptions {
+    getBuiltRandom(): ActivityOptions | undefined {
         return this.builtData[
             Math.floor(Math.random() * this.builtData.length)
         ]!;
@@ -82,19 +103,24 @@ export class ActivityGroupLoader extends Loader<ActivityGroup> {
 
             const building: ActivityOptions[] = [];
             for (const [type, activities] of Object.entries(data)) {
-                for (const activity of activities) {
-                    building.push(
-                        typeof activity == "string"
-                            ? {
-                                  type: type as usableActivityType,
-                                  name: activity,
-                              }
-                            : {
-                                  type: type as usableActivityType,
-                                  name: activity.name,
-                                  url: activity.url,
-                              }
-                    );
+                const t = activityToEnum[type.toLowerCase()];
+
+                if (typeof t == "undefined") {
+                    throw Error(`Unknown Activity Type ${type}`);
+                }
+
+                for (const activity of activities ?? []) {
+                    if (typeof activity == "string")
+                        building.push({
+                            type: t,
+                            name: activity,
+                        });
+                    else
+                        building.push({
+                            type: t,
+                            name: activity.name,
+                            url: activity.url,
+                        });
                 }
             }
 

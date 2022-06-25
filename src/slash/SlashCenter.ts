@@ -1,9 +1,10 @@
+import { Client, ChatInputCommandInteraction, Interaction } from "discord.js";
+
 import chalk from "chalk";
-import { Client, CommandInteraction, Interaction } from "discord.js";
 
 import { Awaitable, ManagementCenter } from "../base";
 import { EmbedStyle } from "../main";
-import { CocoaBuilder, Ephemeral, getEphemeral } from "../template";
+import { CocoaBuilderFull, Ephemeral, getEphemeral } from "../template";
 
 import { CogSlashClass, replaceNameKeyword } from "./class";
 import { CogSlash } from "./Interfaces";
@@ -13,9 +14,12 @@ export interface SlashEvents {
     error: (
         name: string,
         error: unknown,
-        ctx: CommandInteraction
+        ctx: ChatInputCommandInteraction
     ) => Awaitable<void>;
-    interaction: (name: string, ctx: CommandInteraction) => Awaitable<void>;
+    interaction: (
+        name: string,
+        ctx: ChatInputCommandInteraction
+    ) => Awaitable<void>;
 }
 
 export class SlashCenter extends ManagementCenter<
@@ -35,7 +39,7 @@ export class SlashCenter extends ManagementCenter<
         this.guild_ids = guild_ids;
 
         this.client.on("interactionCreate", (interaction: Interaction) => {
-            if (!interaction.isCommand()) return;
+            if (!interaction.isChatInputCommand()) return;
 
             this.handleInteraction(interaction);
         });
@@ -81,7 +85,7 @@ export class SlashCenter extends ManagementCenter<
         await syncCommands(commandData, this.client, [...commandSet]);
     }
 
-    private async handleInteraction(interaction: CommandInteraction) {
+    private async handleInteraction(interaction: ChatInputCommandInteraction) {
         const cmdname = interaction.commandName;
 
         for (const cog of this.cogs) {
@@ -132,11 +136,12 @@ export class SlashCenter extends ManagementCenter<
             name: "Help",
             commands: {
                 help: {
-                    // @ts-ignore
-                    command: CocoaBuilder(
+                    command: CocoaBuilderFull(
                         "help",
                         "Show help for all commands"
-                    ).addBooleanOption(Ephemeral()),
+                    )
+                        .addBooleanOption(Ephemeral())
+                        .toJSON(),
                     func: async (ctx) => {
                         const ephemeral = getEphemeral(ctx);
                         await ctx.reply({

@@ -1,10 +1,10 @@
 import "./stub";
 
-import { Client, CommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction, Client } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";
 import { CogSlash, SlashCenter } from "../src/slash";
-import { CogSlashClass, SlashCommand } from "../src/slash/class";
+import { CogSlashClass, SlashFull } from "../src/slash/class";
 
 const client = new Client({ intents: [] });
 const mcenter = new MessageCenter(client, { mention: true }, ["1", "2"]);
@@ -182,13 +182,11 @@ function testClass() {
                 super("Cocoa");
             }
 
-            @SlashCommand({ name: "test", description: "bruh" }, ["12345"])
-            // @ts-ignore
-            async test(ctx: CommandInteraction) {}
+            @SlashFull({ name: "test", description: "bruh" }, ["12345"])
+            async test(ctx: ChatInputCommandInteraction) {}
 
-            @SlashCommand({ name: "play", description: "bruh" })
-            // @ts-ignore
-            async play(ctx: CommandInteraction) {}
+            @SlashFull({ name: "play", description: "bruh" })
+            async play(ctx: ChatInputCommandInteraction) {}
         }
         const cog = new CSCog();
         await cog.presync();

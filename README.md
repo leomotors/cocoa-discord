@@ -6,9 +6,6 @@
 
 Yet another Discord Bot Utility npm package
 
-<!-- This component will be replace when building TypeDoc -->
-<TypeDoc />
-
 ## ✨ Features
 
 - Many utilities that **made by me for me** to make my bots
@@ -92,10 +89,7 @@ npx degit leomotors/cocoa-discord-utils/templates/slash-only my-bot
 
 ## 📚 Documentation
 
-- Doc & Guide: [Markdown (GitHub)](./docs/index.md) 
-or [Markdown in Fancy Website](https://leomotors.github.io/cocoa-discord-utils/docs.html)
-
-- See all type definitions/api at [TypeDoc](https://leomotors.github.io/cocoa-discord-utils/)
+- Doc & Guide: [LINK](https://leomotors.github.io/cocoa-discord-utils)
 
 **Note**: For runtime safety, **please use TypeScript** or activate @ts-check on JavaScript.
 

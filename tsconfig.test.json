@@ -3,7 +3,9 @@
     "compilerOptions": {
         "resolveJsonModule": true,
         "noUncheckedIndexedAccess": false,
-        "strict": false
+        "strict": false,
+        "strictNullChecks": false,
+        "experimentalDecorators": true
     },
     "include": ["./tests/**/*"]
 }
