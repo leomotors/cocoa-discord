@@ -64,4 +64,4 @@ Allow you to add command into console, the class also provide template for
 new ConsoleManager().useLogout(client).useReload(activity);
 ```
 
-For full list of functions, please look at [TypeDoc](/typedoc/)
+For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)

@@ -10,4 +10,4 @@ import { ... } from "cocoa-discord-utils/meta";
 - Some utilities function that can save lines of code
 - `getStatusFields` that returns fancy embed fields showing the status of the bot
 
-For full list of functions, please look at [TypeDoc](/typedoc/)
+For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)

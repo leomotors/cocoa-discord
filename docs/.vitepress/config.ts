@@ -40,7 +40,7 @@ export default defineConfig({
                     },
                     {
                         text: "TypeDoc",
-                        link: "/typedoc/",
+                        link: "https://leomotors.me/cocoa-discord-utils/typedoc/",
                     },
                     {
                         text: "Migrate from V1",

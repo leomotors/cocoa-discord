@@ -14,4 +14,4 @@ It also contains a few utilities function
 - sysinfo - Get information about CPU Temperature (For Raspberry Pi),
   System RAM Usage (Linux Only) and Bot's RAM Usage
 
-For full list of functions, please look at [TypeDoc](/typedoc/)
+For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)
