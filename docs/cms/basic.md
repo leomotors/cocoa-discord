@@ -69,17 +69,17 @@ This is the preliminary approaches to this library. Focuses on concept of 'one f
 
 ```ts
 export const ping: CocoaSlash = {
-    command: CocoaBuilder("ping", "pong!").toJSON(),
+    command: CocoaBuilderFull("ping", "pong!").toJSON(),
     func: async (ctx) => {
         await ctx.reply("pong!");
     },
 }
 ```
 
-**Note**: CocoaSlash is a utility function that returns SlashCommandBuilder
+**Note**: CocoaBuilderFull is a utility function that returns SlashCommandBuilder
 
 ```ts
-CocoaBuilder("ping", "pong!")
+CocoaBuilderFull("ping", "pong!")
 // Returns
 new SlashCommandBuilder().setName("ping").setDescription("pong!")
 // You can continue extend the SlashCommandBuilder normally

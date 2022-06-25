@@ -2,44 +2,16 @@ import { ChatInputCommandInteraction } from "discord.js";
 
 import { SlashCommandBuilder } from "@discordjs/builders";
 
-import { CocoaSlash, CogSlash } from "..";
-import { Awaitable, commandsDict } from "../../base";
+import { CocoaSlash } from "..";
+import { commandsDict } from "../../base";
 import { Ephemeral, getEphemeral } from "../../template";
 
-const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
-const muckFuture: {
+import { CogSlashClass } from "./cog";
+
+export const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
+export const muckFuture: {
     [cogName: string]: Array<Promise<void>>;
 } = {};
-
-/**
- * This class implements `CogSlash`, by OOP magic, you can use
- * ```js
- * addCog(new [your_extended_classname]())
- * ```
- */
-export abstract class CogSlashClass implements CogSlash {
-    name: string;
-    description?: string;
-    commands: commandsDict<CocoaSlash> = {};
-    presync: () => Awaitable<void>;
-
-    constructor(name: string, description?: string) {
-        this.name = name;
-        this.description = description;
-
-        const presyncprom = (async () => {
-            await Promise.all(muckFuture[this.constructor.name] ?? []);
-            this.commands = muckStorage[this.constructor.name] ?? {};
-            for (const [_, cmd] of Object.entries(this.commands)) {
-                cmd.func = cmd.func.bind(this);
-            }
-        })();
-
-        this.presync = async () => {
-            await presyncprom;
-        };
-    }
-}
 
 export const replaceNameKeyword = "__replace_with_method_name__";
 
@@ -54,7 +26,7 @@ export const replaceNameKeyword = "__replace_with_method_name__";
  * **Note**: If syntax highlight looks broken, blame your IDE.
  * You may look at harunon.js to see this in action
  */
-export function SlashCommand(
+export function SlashFull(
     command:
         | CocoaSlash["command"]
         | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
@@ -64,7 +36,7 @@ export function SlashCommand(
     return (
         cog: CogSlashClass,
         key: string,
-        desc: TypedPropertyDescriptor<CocoaSlash["func"]>
+        desc: TypedPropertyDescriptor<CocoaSlash["func"]> | undefined
     ) => {
         const muck = (muckStorage[cog.constructor.name] ??= {});
 
@@ -81,10 +53,10 @@ export function SlashCommand(
             throw Error(`Duplicate Command Name: ${command.name}`);
         }
 
-        if (desc.value) {
+        if (desc!.value) {
             muck[command.name] = {
                 command: command as m,
-                func: desc.value,
+                func: desc!.value,
                 guild_ids,
             };
         } else {
@@ -98,7 +70,7 @@ export function SlashCommand(
  *
  * Your method should accept 2 arguments (ctx, ephemeral)
  */
-SlashCommand.Ephemeral = (
+SlashFull.Ephemeral = (
     command:
         | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
         | SlashCommandBuilder,
@@ -140,7 +112,7 @@ SlashCommand.Ephemeral = (
     };
 };
 
-SlashCommand.Future = (
+SlashFull.Future = (
     resolver: () => Promise<
         | SlashCommandBuilder
         | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">

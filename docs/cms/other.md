@@ -18,7 +18,7 @@ scenter.on("error", /* if you wanna set */);
 
 ## Event Handler
 
-[Event Handler for Management Center](./cms_evt.md)
+[Event Handler for Management Center](./event.md)
 
 ## PS
 

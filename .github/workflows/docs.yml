@@ -5,7 +5,8 @@ name: Documentation
 on:
   push:
     tags:
-      - "[0-9]+.[0-9]+.[0-9]+"
+      # - "[0-9]+.[0-9]+.[0-9]+" (After 2.0 is released, will switch to this)
+      - "*.*"
 
 jobs:
   docs:
@@ -27,10 +28,10 @@ jobs:
         run: yarn install
 
       - name: Build documentation
-        run: yarn full-doc
+        run: yarn docs
 
       - name: Deploy documentation
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: typedoc-out
+          folder: docs-dist

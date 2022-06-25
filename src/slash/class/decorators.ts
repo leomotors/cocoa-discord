@@ -1,14 +1,17 @@
 import { APIApplicationCommandOptionChoice } from "discord-api-types/v10";
-import { ChatInputCommandInteraction, User as TypeUser } from "discord.js";
+import Discord, { ChatInputCommandInteraction } from "discord.js";
 
-import { CogSlashClass } from "./legacy";
+import { ResolvesTo } from "../../base";
+
+import { CogSlashClass } from "./cog";
 
 namespace V2Decorators {
-    export interface Params<T = string | number> {
-        type?: string;
+    export interface Params {
+        type?: keyof Param.Types;
+        name?: string;
         description?: string;
         required?: boolean;
-        choices?: APIApplicationCommandOptionChoice<T>[];
+        choices?: ResolvesTo<APIApplicationCommandOptionChoice[] | string[]>;
         autocomplete?: boolean;
     }
 
@@ -16,26 +19,26 @@ namespace V2Decorators {
         name?: string;
         description?: string;
         params?: Record<number, Params>;
+        guild_ids?: string[];
     }
 }
 
 export const V2Stores = {} as Record<string, Record<string, V2Decorators.Data>>;
 
-export function SlashCommandV2(description?: string) {
+export function SlashCommand(description: string, guild_ids?: string[]) {
     return (cog: CogSlashClass, key: string, _: unknown) => {
         const cogStore = (V2Stores[cog.constructor.name] ??= {});
-
-        console.log(`SlashCommand has been called for ${key}`);
 
         cogStore[key] = {
             ...cogStore[key],
             name: key,
             description,
+            guild_ids,
         };
     };
 }
 
-export namespace SlashCommandV2 {
+export namespace SlashCommand {
     export type Context = ChatInputCommandInteraction;
 }
 
@@ -46,25 +49,24 @@ export function getArgumentStore(cog: CogSlashClass, propertyKey: string) {
 }
 
 export namespace Param {
-    function paramsFactory(type: string) {
-        return (description?: string, option?: ParamOptions) =>
+    export function paramsFactory(type: keyof Types) {
+        return (description: string, option?: ParamOptions) =>
             paramsDecorator(type, description, option);
     }
 
     type ParamOptions = { required?: boolean; autocomplete?: boolean };
 
-    export const String = paramsFactory("string");
-    export namespace String {
-        export type Type = string;
-    }
-
-    export const User = paramsFactory("user");
-    export namespace User {
-        export type Type = TypeUser;
+    export const Ephemeral = paramsDecorator(
+        "boolean",
+        "Make the response ephemeral and only visible to you",
+        { required: false }
+    );
+    export namespace Ephemeral {
+        export type Type = boolean;
     }
 
     export function Choices(
-        choices: APIApplicationCommandOptionChoice[] | string[]
+        choices: ResolvesTo<APIApplicationCommandOptionChoice[] | string[]>
     ) {
         return (
             cog: CogSlashClass,
@@ -72,16 +74,12 @@ export namespace Param {
             parameterIndex: number
         ) => {
             const argsStore = getArgumentStore(cog, propertyKey);
-            (argsStore[parameterIndex] ??= {}).choices = (
-                typeof choices[0] === "string"
-                    ? choices.map((c) => ({ name: c, value: c }))
-                    : choices
-            ) as APIApplicationCommandOptionChoice[];
+            (argsStore[parameterIndex] ??= {}).choices = choices;
         };
     }
 
     export function paramsDecorator(
-        type: string,
+        type: keyof Types,
         description: string | undefined,
         option?: ParamOptions
     ) {
@@ -106,5 +104,69 @@ export namespace Param {
                 autocomplete,
             };
         };
+    }
+
+    export type Types = {
+        attachment: Discord.Attachment;
+        boolean: boolean;
+        channel:
+            | Discord.APIInteractionDataResolvedChannel
+            | Discord.GuildBasedChannel;
+        integer: number;
+        mentionable:
+            | Discord.GuildMember
+            | Discord.APIInteractionDataResolvedGuildMember
+            | Discord.Role
+            | Discord.APIRole
+            | Discord.User;
+        number: number;
+        role: Discord.Role | Discord.APIRole;
+        string: string;
+        user: Discord.User;
+    };
+
+    export const Attachment = paramsFactory("attachment");
+    export namespace Attachment {
+        export type Type = Types["attachment"];
+    }
+
+    export const Boolean = paramsFactory("boolean");
+    export namespace Boolean {
+        export type Type = Types["boolean"];
+    }
+
+    export const Channel = paramsFactory("channel");
+    export namespace Channel {
+        export type Type = Types["channel"];
+    }
+
+    export const Integer = paramsFactory("integer");
+    export namespace Integer {
+        export type Type = Types["integer"];
+    }
+
+    export const Mentionable = paramsFactory("mentionable");
+    export namespace Mentionable {
+        export type Type = Types["mentionable"];
+    }
+
+    export const Number = paramsFactory("number");
+    export namespace Number {
+        export type Type = Types["number"];
+    }
+
+    export const Role = paramsFactory("role");
+    export namespace Role {
+        export type Type = Types["role"];
+    }
+
+    export const String = paramsFactory("string");
+    export namespace String {
+        export type Type = string;
+    }
+
+    export const User = paramsFactory("user");
+    export namespace User {
+        export type Type = Types["user"];
     }
 }

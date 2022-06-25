@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Cocoa Discord Utils
   text: For discord.js
-  tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨
+  tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨ (Version 2 is Work in Progress)
   actions:
   - theme: brand
     text: Get Started
@@ -13,8 +13,11 @@ hero:
     text: View on GitHub
     link: https://github.com/Leomotors/cocoa-discord-utils
   - theme: alt
+    text: View on NPM
+    link: https://www.npmjs.com/package/cocoa-discord-utils
+  - theme: alt
     text: View TypeDoc
-    link: /typedoc/index
+    link: /typedoc/
 
 features:
   - title: Build by me, for me

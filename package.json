@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.3",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -8,7 +8,7 @@
   "author": "Leomotors",
   "license": "MIT",
   "scripts": {
-    "build": "yarn lm:config && tsc && ts-node postbuild.script.ts dist/**/*.js && rimraf \"dist/cli/**/*.d.ts\"",
+    "build": "yarn lm:config && tsc && ts-node postbuild.script.ts dist/**/*.js dist/*/**/*.js && rimraf \"dist/cli/**/*.d.ts\"",
     "clean": "rimraf dist/*",
     "cb": "yarn clean && yarn build",
     "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
@@ -18,7 +18,7 @@
     "test": "jest",
     "ncu": "ncu -u \"/^(?!.*chalk)(?!.*globby).*$/\"",
     "docs:dev": "vitepress dev docs",
-    "docs": "yarn lm:config && vitepress build docs && typedoc"
+    "docs": "yarn lm:config && vitepress build docs && typedoc && touch docs-dist/.nojekyll"
   },
   "keywords": [
     "discord-bot",
@@ -54,7 +54,7 @@
   "dependencies": {
     "chalk": "4.1.2",
     "commander": "^9.3.0",
-    "discord.js": "^14.0.0-dev.1655899441-a3799f9"
+    "discord.js": "=14.0.0-dev.1656158629-c4653f9"
   },
   "exports": {
     ".": "./dist/main/index.js",

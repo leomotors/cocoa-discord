@@ -9,6 +9,9 @@
     --vp-c-brand-light: var(--cocoa);
     --vp-c-brand-dark: var(--cocoa-dark);
     --vp-c-bg-alt: var(--megu-pink);
+
+    --vp-button-brand-hover-border: var(--megu-pink);
+    --vp-button-brand-active-border: var(--megu-pink);
 }
 
 .dark {

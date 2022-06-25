@@ -1,10 +1,11 @@
 # Main
 
-Can be imported from /
-
 ```ts
 import { ... } from "cocoa-discord-utils";
 ```
+
+This module contains general utilities class and functions that will help you
+save time writing your bots
 
 *Note*: This documentation/guide is partially done.
 
@@ -18,14 +19,16 @@ import { ... } from "cocoa-discord-utils";
 
 [Guild for Embed from discord.js](https://discordjs.guide/popular-topics/embeds.html#embed-preview)
 
-*Part of implementation* [Full Code](../src/main/embed.ts)
+*Part of implementation* [Full Code](https://github.com/Leomotors/cocoa-discord-utils/blob/main/src/main/embed.ts)
 
 ```ts
 /**
- * Like Embed but has method addInlineField and addInlineFields,
- * these method allow you to save a line of `inline: true`
+ * Like Embed but has method addField, addInlineField and addInlineFields,
+ * 2rd and 3rd methods allow you to save a line of `inline: true`
  */
 export class CocoaEmbed extends Embed {
+    ...
+
     /** Adds a field to the embed (max 25), automatically set inline to true */
     addInlineField(field: Omit<APIEmbedField, "inline">) {
         (field as APIEmbedField).inline = true;
@@ -60,3 +63,5 @@ Allow you to add command into console, the class also provide template for
 ```ts
 new ConsoleManager().useLogout(client).useReload(activity);
 ```
+
+For full list of functions, please look at [TypeDoc](/typedoc/)

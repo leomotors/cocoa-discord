@@ -1,5 +1,5 @@
 import {
-    CommandInteraction,
+    ChatInputCommandInteraction,
     EmbedBuilder,
     EmbedFooterData,
     Message,
@@ -11,7 +11,7 @@ import { Author } from "../template";
 import { CocoaEmbed } from "./embed";
 
 /** Message | CommandInteraction */
-export type Context = Message | CommandInteraction;
+export type Context = Message | ChatInputCommandInteraction;
 
 export interface EmbedStyleBase {
     author?: "invoker" | "bot";
