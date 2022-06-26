@@ -211,3 +211,7 @@ specify type in your method arguments.
 
 **Warning**: Extending Cog Class is not supported, decorators may behave unexpectly
 
+## Miscellanous
+
+Syncing Commands: Your slash comamnd may not update when you only change fields such as localizations or permissions, those are not supported and never in consideration
+

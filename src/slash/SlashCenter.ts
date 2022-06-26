@@ -52,7 +52,7 @@ export class SlashCenter extends ManagementCenter<
     }
 
     /** Sync Slash Commands, Call this **ONLY** after client is ready */
-    async syncCommands() {
+    async syncCommands(verbose = false) {
         if (!this.client.isReady()) {
             throw Error(
                 "FATAL ERROR: SyncCommands must be called after Client is Ready"
@@ -82,7 +82,7 @@ export class SlashCenter extends ManagementCenter<
             }
         }
 
-        await syncCommands(commandData, this.client, [...commandSet]);
+        await syncCommands(commandData, this.client, [...commandSet], verbose);
     }
 
     private async handleInteraction(interaction: ChatInputCommandInteraction) {

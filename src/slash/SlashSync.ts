@@ -1,7 +1,8 @@
 import {
-    ApplicationCommand,
     ApplicationCommandData,
     ApplicationCommandDataResolvable,
+    ApplicationCommandOption,
+    ApplicationCommandOptionData,
     ChatInputApplicationCommandData,
     Client,
     Guild,
@@ -19,10 +20,12 @@ type CAC = ChatInputApplicationCommandData;
  */
 export type CommandsPack = [ApplicationCommandDataResolvable, string[]];
 
+/** @internal Should not be used */
 export async function syncCommands(
     commands: CommandsPack[],
     client: Client,
-    guild_ids: string[]
+    guild_ids: string[],
+    verbose = false
 ) {
     if (!client.isReady()) {
         console.log(
@@ -44,7 +47,8 @@ export async function syncCommands(
                 syncGuild(
                     usable.map((pack) => pack[0]),
                     client,
-                    guild
+                    guild,
+                    verbose
                 )
             );
         } else {
@@ -61,7 +65,8 @@ export async function syncCommands(
 async function syncGuild(
     commands: ApplicationCommandDataResolvable[],
     client: Client<true>,
-    guild: Guild
+    guild: Guild,
+    verbose = true
 ) {
     // * Modified From https://github.com/Androz2091/discord-sync-commands
     try {
@@ -84,6 +89,10 @@ async function syncGuild(
         );
         for (const newCommand of newCommands) {
             fetchCount.created++;
+            if (verbose)
+                console.log(
+                    `[Slash Sync VERBOSE] Created ${newCommand.name} in ${guild.name}`
+                );
             await client.application.commands.create(newCommand, guild.id);
         }
 
@@ -92,6 +101,10 @@ async function syncGuild(
             .toJSON();
         for (const deletedCommand of deletedCommands) {
             fetchCount.deleted++;
+            if (verbose)
+                console.log(
+                    `[Slash Sync VERBOSE] Deleted ${deletedCommand.name} in ${guild.name}`
+                );
             await deletedCommand.delete();
         }
 
@@ -111,15 +124,20 @@ async function syncGuild(
                 modified = true;
 
             if (
-                !ApplicationCommand.optionsEqual(
+                !isSameOption(
                     previousCommand.options ?? [],
                     (newCommand as CAC).options ?? []
                 )
-            )
+            ) {
                 modified = true;
+            }
 
             if (modified) {
                 fetchCount.updated++;
+                if (verbose)
+                    console.log(
+                        `[Slash Sync VERBOSE] Updated ${previousCommand.name} in ${guild.name}`
+                    );
                 await previousCommand.edit(
                     newCommand as ApplicationCommandData
                 );
@@ -142,4 +160,50 @@ async function syncGuild(
             )
         );
     }
+}
+
+/**
+ * Logic use by Slash Sync to check if the options are the same
+ */
+export function isSameOption(
+    oldOpt: ApplicationCommandOption[],
+    newOpt: ApplicationCommandOptionData[]
+) {
+    if (oldOpt.length != newOpt.length) {
+        return false;
+    }
+
+    for (let index = 0; index < oldOpt.length; index++) {
+        const a = oldOpt[index]!;
+        const b = newOpt[index]!;
+
+        if (a.name != b.name) return false;
+        if (a.description != b.description) return false;
+        if (a.type != b.type) return false;
+        // @ts-ignore
+        if ((a.required ?? false) != (b.required ?? false)) return false;
+        if ((a.autocomplete ?? false) != (b.autocomplete ?? false))
+            return false;
+        // @ts-ignore
+        if (a.choices?.length) {
+            // @ts-ignore
+            if (a.choices?.length != b.choices?.length) {
+                return false;
+            }
+
+            // @ts-ignore
+            for (let i = 0; i < a.choices.length; i++) {
+                if (
+                    // @ts-ignore
+                    a.choices[i].name != b.choices[i].name ||
+                    // @ts-ignore
+                    a.choices[i].value !== b.choices[i].value
+                ) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
 }

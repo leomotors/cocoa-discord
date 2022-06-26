@@ -5,7 +5,7 @@ import { ResolvesTo } from "../../base";
 
 import { CogSlashClass } from "./cog";
 
-namespace V2Decorators {
+export namespace V2Decorators {
     export interface Params {
         type?: keyof Param.Types;
         name?: string;
