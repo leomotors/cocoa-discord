@@ -65,6 +65,12 @@ async function syncGuild(
 ) {
     // * Modified From https://github.com/Androz2091/discord-sync-commands
     try {
+        const fetchCount = {
+            created: 0,
+            updated: 0,
+            deleted: 0,
+        };
+
         const start = new Date().getTime();
         console.log(
             `[Slash Sync] Begin syncing commands for ${guild.name} (${commands.length} commands)`
@@ -77,6 +83,7 @@ async function syncGuild(
             (command) => !currentCommands.some((c) => c.name === command.name)
         );
         for (const newCommand of newCommands) {
+            fetchCount.created++;
             await client.application.commands.create(newCommand, guild.id);
         }
 
@@ -84,6 +91,7 @@ async function syncGuild(
             .filter((command) => !commands.some((c) => c.name === command.name))
             .toJSON();
         for (const deletedCommand of deletedCommands) {
+            fetchCount.deleted++;
             await deletedCommand.delete();
         }
 
@@ -111,6 +119,7 @@ async function syncGuild(
                 modified = true;
 
             if (modified) {
+                fetchCount.updated++;
                 await previousCommand.edit(
                     newCommand as ApplicationCommandData
                 );
@@ -121,7 +130,9 @@ async function syncGuild(
             chalk.green(
                 `[Slash Sync DONE]: Syncing commands in ${
                     guild.name
-                } finished, used ${getElapsed(start)} ms`
+                } finished, used ${getElapsed(start)} ms, CDU = ${
+                    fetchCount.created
+                },${fetchCount.deleted},${fetchCount.deleted}`
             )
         );
     } catch (error) {
