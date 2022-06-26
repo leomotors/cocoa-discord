@@ -67,8 +67,8 @@ async function syncGuild(
     try {
         const fetchCount = {
             created: 0,
-            updated: 0,
             deleted: 0,
+            updated: 0,
         };
 
         const start = new Date().getTime();
@@ -132,7 +132,7 @@ async function syncGuild(
                     guild.name
                 } finished, used ${getElapsed(start)} ms, CDU = ${
                     fetchCount.created
-                },${fetchCount.deleted},${fetchCount.deleted}`
+                },${fetchCount.deleted},${fetchCount.updated}`
             )
         );
     } catch (error) {
