@@ -64,21 +64,21 @@ describe("Slash Command Class V2", () => {
         }).toThrowError(/First argument must be ctx/);
     });
 
-    it("Built in async choice resolver works", async () => {
-        class test extends CogSlashClass {
-            @SlashCommand("Pong!")
-            async ping(
-                ctx: SlashCommand.Context,
-                @Param.String("Message to say")
-                @Param.Choices<Param.String.Type>(async () => ["Gay", "Bruh"])
-                msg: Param.String.Type
-            ) {}
-        }
+    class test extends CogSlashClass {
+        @SlashCommand("Pong!")
+        async ping(
+            ctx: SlashCommand.Context,
+            @Param.String("Message to say")
+            @Param.Choices<Param.String.Type>(async () => ["Gay", "Bruh"])
+            msg: Param.String.Type
+        ) {}
+    }
 
+    it("Built in async choice resolver works", async () => {
         const inst = new test();
         await inst.presync();
-
-        const ping = inst.commands.ping.command as RESTPostAPIChatInputApplicationCommandsJSONBody;
+        const ping = inst.commands.ping
+            .command as RESTPostAPIChatInputApplicationCommandsJSONBody;
         // @ts-ignore
         expect(ping.options![0].choices).toStrictEqual([
             { name: "Gay", value: "Gay" },
