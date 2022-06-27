@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { isSameOption } from "../src/slash";
 
 describe("Slash Sync Utilities", () => {

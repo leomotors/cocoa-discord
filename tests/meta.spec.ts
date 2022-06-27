@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { CocoaBuildTime, CocoaVersion, getElapsed } from "../src/meta";
 
 const time = 1655640259 * 1000;

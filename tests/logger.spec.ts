@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { Cocoa, LogStatus } from "../src/main";
 
 describe("[logger] Logger", () => {

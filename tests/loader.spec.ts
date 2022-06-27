@@ -1,5 +1,7 @@
 import "./stub";
 
+import { describe, it, expect } from "vitest";
+
 import { Loader, ArrayLoader } from "../src/main";
 
 describe("[loader] Base Class Loader", () => {

@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { CocoaEmbed } from "../src/main";
 
 describe("[embed] CocoaEmbed Test", () => {

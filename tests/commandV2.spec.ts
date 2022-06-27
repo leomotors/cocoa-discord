@@ -1,4 +1,6 @@
 // import "./stub";
+import { describe, it, expect } from "vitest";
+
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,

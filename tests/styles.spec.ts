@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { EmbedStyle } from "../src/main";
 
 describe("[styles] Embed Style", () => {

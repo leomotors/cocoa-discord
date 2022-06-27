@@ -1,5 +1,7 @@
 import "./stub";
 
+import { describe, it, expect } from "vitest";
+
 import { ActivityType } from "discord-api-types/v10";
 
 import { ActivityGroupLoader } from "../src/main";

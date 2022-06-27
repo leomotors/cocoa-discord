@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { CocoaBuilder, Ephemeral } from "../src/template";
 
 describe("[template] Template Module", () => {

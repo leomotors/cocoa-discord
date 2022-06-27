@@ -1,5 +1,7 @@
 import "./stub";
 
+import { describe, it, expect } from "vitest";
+
 import { ChatInputCommandInteraction, Client } from "discord.js";
 
 import { CogMessage, MessageCenter } from "../src/message";

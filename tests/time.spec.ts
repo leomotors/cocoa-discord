@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { parseTime } from "../src/main";
 
 describe("[time] Main Utility: time.ts", () => {
