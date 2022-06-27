@@ -35,11 +35,9 @@ describe("Slash Sync Utilities", () => {
             },
         ];
 
-        // @ts-ignore
         expect(isSameOption(oldOpt, newOpt)).toBe(true);
 
         newOpt[0].required = false;
-        // @ts-ignore
         expect(isSameOption(oldOpt, newOpt)).toBe(false);
 
         const o2 = [
