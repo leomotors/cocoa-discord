@@ -1,8 +1,6 @@
 import {
     ApplicationCommandData,
     ApplicationCommandDataResolvable,
-    ApplicationCommandOption,
-    ApplicationCommandOptionData,
     ChatInputApplicationCommandData,
     Client,
     Guild,
@@ -125,8 +123,8 @@ async function syncGuild(
 
             if (
                 !isSameOption(
-                    previousCommand.options ?? [],
-                    (newCommand as CAC).options ?? []
+                    previousCommand.options,
+                    (newCommand as CAC).options
                 )
             ) {
                 modified = true;
@@ -162,13 +160,25 @@ async function syncGuild(
     }
 }
 
+interface IOptionCheck {
+    name: string;
+    description: string;
+    type: number;
+    required?: boolean;
+    autocomplete?: boolean;
+    choices?: Array<{ name: string; value: string | number }>;
+}
+
 /**
  * Logic use by Slash Sync to check if the options are the same
  */
 export function isSameOption(
-    oldOpt: ApplicationCommandOption[],
-    newOpt: ApplicationCommandOptionData[]
+    oldOpt: IOptionCheck[] | undefined,
+    newOpt: IOptionCheck[] | undefined
 ) {
+    oldOpt ??= [];
+    newOpt ??= [];
+
     if (oldOpt.length != newOpt.length) {
         return false;
     }
@@ -180,24 +190,19 @@ export function isSameOption(
         if (a.name != b.name) return false;
         if (a.description != b.description) return false;
         if (a.type != b.type) return false;
-        // @ts-ignore
         if ((a.required ?? false) != (b.required ?? false)) return false;
         if ((a.autocomplete ?? false) != (b.autocomplete ?? false))
             return false;
-        // @ts-ignore
+
         if (a.choices?.length) {
-            // @ts-ignore
             if (a.choices?.length != b.choices?.length) {
                 return false;
             }
 
-            // @ts-ignore
             for (let i = 0; i < a.choices.length; i++) {
                 if (
-                    // @ts-ignore
-                    a.choices[i].name != b.choices[i].name ||
-                    // @ts-ignore
-                    a.choices[i].value !== b.choices[i].value
+                    a.choices[i]!.name != b.choices[i]!.name ||
+                    a.choices[i]!.value !== b.choices[i]!.value
                 ) {
                     return false;
                 }

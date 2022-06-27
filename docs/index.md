@@ -17,7 +17,7 @@ hero:
     link: https://www.npmjs.com/package/cocoa-discord-utils
   - theme: alt
     text: View TypeDoc
-    link: /typedoc/
+    link: https://leomotors.github.io/cocoa-discord-utils/typedoc
 
 features:
   - title: Build by me, for me
