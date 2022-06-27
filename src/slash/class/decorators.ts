@@ -11,7 +11,9 @@ export namespace V2Decorators {
         name?: string;
         description?: string;
         required?: boolean;
-        choices?: ResolvesTo<APIApplicationCommandOptionChoice[] | string[]>;
+        choices?: ResolvesTo<
+            APIApplicationCommandOptionChoice[] | string[] | number[]
+        >;
         autocomplete?: boolean;
     }
 
@@ -57,7 +59,7 @@ export namespace Param {
     type ParamOptions = { required?: boolean; autocomplete?: boolean };
 
     export const Ephemeral = paramsDecorator(
-        "boolean",
+        "Boolean",
         "Make the response ephemeral and only visible to you",
         { required: false }
     );
@@ -65,8 +67,12 @@ export namespace Param {
         export type Type = boolean;
     }
 
-    export function Choices(
-        choices: ResolvesTo<APIApplicationCommandOptionChoice[] | string[]>
+    export function Choices<T>(
+        choices: T extends string
+            ? ResolvesTo<APIApplicationCommandOptionChoice[] | string[]>
+            : T extends number
+            ? ResolvesTo<APIApplicationCommandOptionChoice[] | number[]>
+            : never
     ) {
         return (
             cog: CogSlashClass,
@@ -107,66 +113,75 @@ export namespace Param {
     }
 
     export type Types = {
-        attachment: Discord.Attachment;
-        boolean: boolean;
-        channel:
+        Attachment: Discord.Attachment;
+        Boolean: boolean;
+        Channel:
             | Discord.APIInteractionDataResolvedChannel
             | Discord.GuildBasedChannel;
-        integer: number;
-        mentionable:
+        Integer: number;
+        Mentionable:
             | Discord.GuildMember
             | Discord.APIInteractionDataResolvedGuildMember
             | Discord.Role
             | Discord.APIRole
             | Discord.User;
-        number: number;
-        role: Discord.Role | Discord.APIRole;
-        string: string;
-        user: Discord.User;
+        Number: number;
+        Role: Discord.Role | Discord.APIRole;
+        String: string;
+        User: Discord.User;
     };
 
-    export const Attachment = paramsFactory("attachment");
+    export const Attachment = paramsFactory("Attachment");
     export namespace Attachment {
-        export type Type = Types["attachment"];
+        export type Type = Types["Attachment"];
+        export type Nullable = Type | null;
     }
 
-    export const Boolean = paramsFactory("boolean");
+    export const Boolean = paramsFactory("Boolean");
     export namespace Boolean {
-        export type Type = Types["boolean"];
+        export type Type = Types["Boolean"];
+        export type Nullable = Type | null;
     }
 
-    export const Channel = paramsFactory("channel");
+    export const Channel = paramsFactory("Channel");
     export namespace Channel {
-        export type Type = Types["channel"];
+        export type Type = Types["Channel"];
+        export type Nullable = Type | null;
     }
 
-    export const Integer = paramsFactory("integer");
+    export const Integer = paramsFactory("Integer");
     export namespace Integer {
-        export type Type = Types["integer"];
+        export type Type = Types["Integer"];
+        export type Nullable = Type | null;
     }
 
-    export const Mentionable = paramsFactory("mentionable");
+    export const Mentionable = paramsFactory("Mentionable");
     export namespace Mentionable {
-        export type Type = Types["mentionable"];
+        export type Type = Types["Mentionable"];
+        export type Nullable = Type | null;
     }
 
-    export const Number = paramsFactory("number");
+    export const Number = paramsFactory("Number");
     export namespace Number {
-        export type Type = Types["number"];
+        export type Type = Types["Number"];
+        export type Nullable = Type | null;
     }
 
-    export const Role = paramsFactory("role");
+    export const Role = paramsFactory("Role");
     export namespace Role {
-        export type Type = Types["role"];
+        export type Type = Types["Role"];
+        export type Nullable = Type | null;
     }
 
-    export const String = paramsFactory("string");
+    export const String = paramsFactory("String");
     export namespace String {
-        export type Type = string;
+        export type Type = Types["String"];
+        export type Nullable = Type | null;
     }
 
-    export const User = paramsFactory("user");
+    export const User = paramsFactory("User");
     export namespace User {
-        export type Type = Types["user"];
+        export type Type = Types["User"];
+        export type Nullable = Type | null;
     }
 }

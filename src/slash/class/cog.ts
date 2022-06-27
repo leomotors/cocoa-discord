@@ -89,14 +89,10 @@ export abstract class CogSlashClass implements CogSlash {
                     );
                 }
 
-                const paramType =
-                    param.type[0]!.toUpperCase() + param.type.slice(1);
                 param.name = paramNames[index];
 
                 const options = {
-                    type: ApplicationCommandOptionType[
-                        paramType as unknown as number
-                    ] as unknown as number,
+                    type: ApplicationCommandOptionType[param.type] as number,
                     name: paramNames[index]!,
                     description: param.description!,
                     required: param.required!,
@@ -139,47 +135,47 @@ export abstract class CogSlashClass implements CogSlash {
 
         for (const param of Object.values(paramInfo.params ?? [])) {
             switch (param.type!) {
-                case "attachment":
+                case "Attachment":
                     params.push(
                         ctx.options.getAttachment(param.name!, param.required!)
                     );
                     break;
-                case "boolean":
+                case "Boolean":
                     params.push(
                         ctx.options.getBoolean(param.name!, param.required!)
                     );
                     break;
-                case "channel":
+                case "Channel":
                     params.push(
                         ctx.options.getChannel(param.name!, param.required!)
                     );
                     break;
-                case "integer":
+                case "Integer":
                     params.push(
                         ctx.options.getInteger(param.name!, param.required!)
                     );
                     break;
-                case "mentionable":
+                case "Mentionable":
                     params.push(
                         ctx.options.getMentionable(param.name!, param.required!)
                     );
                     break;
-                case "number":
+                case "Number":
                     params.push(
                         ctx.options.getNumber(param.name!, param.required!)
                     );
                     break;
-                case "role":
+                case "Role":
                     params.push(
                         ctx.options.getRole(param.name!, param.required!)
                     );
                     break;
-                case "string":
+                case "String":
                     params.push(
                         ctx.options.getString(param.name!, param.required!)
                     );
                     break;
-                case "user":
+                case "User":
                     params.push(
                         ctx.options.getUser(param.name!, param.required!)
                     );

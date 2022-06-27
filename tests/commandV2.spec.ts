@@ -9,19 +9,19 @@ import {
 
 import { Param, CogSlashClass, SlashCommand } from "../src/slash/class";
 
-class V2Test extends CogSlashClass {
-    @SlashCommand("The command that say hi to specific person")
-    async sayhi(
-        ctx: SlashCommand.Context,
-        @Param.String("Message to say")
-        @Param.Choices(["Gay", "Bruh"])
-        msg: Param.String.Type,
-        @Param.User("User to greet") user: Param.User.Type
-    ) {}
-}
-
 describe("Slash Command Class V2", () => {
     it("Has Data as expected", async () => {
+        class V2Test extends CogSlashClass {
+            @SlashCommand("The command that say hi to specific person")
+            async sayhi(
+                ctx: SlashCommand.Context,
+                @Param.String("Message to say")
+                @Param.Choices<Param.String.Type>(["Gay", "Bruh"])
+                msg: Param.String.Type,
+                @Param.User("User to greet") user: Param.User.Type
+            ) {}
+        }
+
         const v2 = new V2Test();
         await v2.presync();
 
@@ -50,5 +50,39 @@ describe("Slash Command Class V2", () => {
         expect(sayhi.options![1].name).toBe("user");
         expect(sayhi.options![1].description).toBe("User to greet");
         expect(sayhi.options![1].type).toBe(ApplicationCommandOptionType.User);
+    });
+
+    it("Should throw error when using Param in wrong position", () => {
+        expect(() => {
+            class _ extends CogSlashClass {
+                @SlashCommand("Pong!")
+                async ping(
+                    @Param.String("Pong!")
+                    ctx: SlashCommand.Context
+                ) {}
+            }
+        }).toThrowError(/First argument must be ctx/);
+    });
+
+    it("Built in async choice resolver works", async () => {
+        class test extends CogSlashClass {
+            @SlashCommand("Pong!")
+            async ping(
+                ctx: SlashCommand.Context,
+                @Param.String("Message to say")
+                @Param.Choices<Param.String.Type>(async () => ["Gay", "Bruh"])
+                msg: Param.String.Type
+            ) {}
+        }
+
+        const inst = new test();
+        await inst.presync();
+
+        const ping = inst.commands.ping.command as RESTPostAPIChatInputApplicationCommandsJSONBody;
+        // @ts-ignore
+        expect(ping.options![0].choices).toStrictEqual([
+            { name: "Gay", value: "Gay" },
+            { name: "Bruh", value: "Bruh" },
+        ]);
     });
 });
