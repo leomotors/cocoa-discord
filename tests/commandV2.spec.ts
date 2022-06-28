@@ -85,4 +85,26 @@ describe("Slash Command Class V2", () => {
             { name: "Bruh", value: "Bruh" },
         ]);
     });
+
+    it("Resolver with number works", async () => {
+        class test2 extends CogSlashClass {
+            @SlashCommand("Pong!")
+            async ping(
+                ctx: SlashCommand.Context,
+                @Param.Number("Message to say")
+                @Param.Choices<Param.Number.Type>(async () => [69, 420])
+                msg: Param.Number.Type
+            ) {}
+        }
+        const inst = new test2();
+        await inst.presync();
+
+        const ping = inst.commands.ping
+            .command as RESTPostAPIChatInputApplicationCommandsJSONBody;
+        // @ts-ignore
+        expect(ping.options![0].choices).toStrictEqual([
+            { name: "69", value: 69 },
+            { name: "420", value: 420 },
+        ]);
+    });
 });

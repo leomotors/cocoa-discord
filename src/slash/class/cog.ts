@@ -105,9 +105,11 @@ export abstract class CogSlashClass implements CogSlash {
                         choices = await param.choices();
                     }
 
-                    if (typeof (choices as string[])[0] === "string") {
-                        choices = (choices as string[]).map((x) => ({
-                            name: x,
+                    if (
+                        typeof (choices as string[] | number[])[0] !== "object"
+                    ) {
+                        choices = (choices as string[] | number[]).map((x) => ({
+                            name: x + "",
                             value: x,
                         }));
                     }

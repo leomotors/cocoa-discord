@@ -1,5 +1,5 @@
 import { APIApplicationCommandOptionChoice } from "discord-api-types/v10";
-import Discord, { ChatInputCommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction } from "discord.js";
 
 import { ResolvesTo } from "../../base";
 
@@ -67,11 +67,13 @@ export namespace Param {
         export type Type = boolean;
     }
 
+    type ACO<T> = ResolvesTo<APIApplicationCommandOptionChoice<T>[] | T[]>;
+
     export function Choices<T>(
         choices: T extends string
-            ? ResolvesTo<APIApplicationCommandOptionChoice[] | string[]>
+            ? ACO<string>
             : T extends number
-            ? ResolvesTo<APIApplicationCommandOptionChoice[] | number[]>
+            ? ACO<number>
             : never
     ) {
         return (
@@ -112,23 +114,20 @@ export namespace Param {
         };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    type NR<T extends (...args: any[]) => any> = NonNullable<ReturnType<T>>;
+    type CIO = ChatInputCommandInteraction["options"];
+
     export type Types = {
-        Attachment: Discord.Attachment;
-        Boolean: boolean;
-        Channel:
-            | Discord.APIInteractionDataResolvedChannel
-            | Discord.GuildBasedChannel;
-        Integer: number;
-        Mentionable:
-            | Discord.GuildMember
-            | Discord.APIInteractionDataResolvedGuildMember
-            | Discord.Role
-            | Discord.APIRole
-            | Discord.User;
-        Number: number;
-        Role: Discord.Role | Discord.APIRole;
-        String: string;
-        User: Discord.User;
+        Attachment: NR<CIO["getAttachment"]>;
+        Boolean: NR<CIO["getBoolean"]>;
+        Channel: NR<CIO["getChannel"]>;
+        Integer: NR<CIO["getInteger"]>;
+        Mentionable: NR<CIO["getMentionable"]>;
+        Number: NR<CIO["getNumber"]>;
+        Role: NR<CIO["getRole"]>;
+        String: NR<CIO["getString"]>;
+        User: NR<CIO["getUser"]>;
     };
 
     export const Attachment = paramsFactory("Attachment");
