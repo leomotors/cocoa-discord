@@ -1,4 +1,4 @@
-name: Caffe Mocha, Iroiro na Test
+name: Iroiro na Test
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
         run: npx crlf-phobia *
   
   docs:
-    name: Documentation Generating Test
+    name: Docs Gen Test
     runs-on: ubuntu-latest
 
     steps:
@@ -47,8 +47,6 @@ jobs:
         uses: c-hive/gha-yarn-cache@v2
       - name: Install Dependencies (Yarn)
         run: yarn install
-      - name: ESLint & Prettier Check
-        run: yarn lint
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
         run: yarn test --coverage
       - name: Upload coverage to Codecov
