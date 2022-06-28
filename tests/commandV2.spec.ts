@@ -64,6 +64,7 @@ describe("Slash Command Class V2", () => {
         }).toThrowError(/First argument must be ctx/);
     });
 
+    // * Classes need to be outside, otherwise prettier will break
     class test extends CogSlashClass {
         @SlashCommand("Pong!")
         async ping(
@@ -86,16 +87,17 @@ describe("Slash Command Class V2", () => {
         ]);
     });
 
+    class test2 extends CogSlashClass {
+        @SlashCommand("Pong!")
+        async ping(
+            ctx: SlashCommand.Context,
+            @Param.Number("Message to say")
+            @Param.Choices<Param.Number.Type>(async () => [69, 420])
+            msg: Param.Number.Type
+        ) {}
+    }
+
     it("Resolver with number works", async () => {
-        class test2 extends CogSlashClass {
-            @SlashCommand("Pong!")
-            async ping(
-                ctx: SlashCommand.Context,
-                @Param.Number("Message to say")
-                @Param.Choices<Param.Number.Type>(async () => [69, 420])
-                msg: Param.Number.Type
-            ) {}
-        }
         const inst = new test2();
         await inst.presync();
 

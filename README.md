@@ -3,8 +3,11 @@
 [![](https://img.shields.io/npm/v/cocoa-discord-utils.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord-utils)
 [![](https://img.shields.io/npm/dt/cocoa-discord-utils.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord-utils)
 [![](https://github.com/Leomotors/cocoa-discord-utils/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/Leomotors/cocoa-discord-utils/actions)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/Leomotors/cocoa-discord-utils/main.svg?style=flat-square)](https://codecov.io/gh/Leomotors/cocoa-discord-utils/)
 
 Yet another Discord Bot Utility npm package
+
+*NOTE*: This Branch is for Version 2 which is currently under Beta and use discord.js 14 dev version, visit branch `v1` for stable version (which uses discord.js 13)
 
 ## ✨ Features
 
@@ -18,7 +21,7 @@ Yet another Discord Bot Utility npm package
 
 - many more miscellanous utilities that my bots rely on
 
-- Fully Type Safe for TypeScript (Also reason why this library's syntax is a bit strict)
+- Made for TypeScript
 
 - Flexible, because this is not a framework, part of your bot can be constructed
 using pure discord.js API
