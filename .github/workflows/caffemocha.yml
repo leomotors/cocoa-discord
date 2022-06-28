@@ -1,11 +1,41 @@
-name: Caffe Mocha
+name: Caffe Mocha, Iroiro na Test
 
 on:
   push:
 
 jobs:
-  main:
-    name: Iroiro na Test
+  lint:
+    name: Linting Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: actions/checkout
+        uses: actions/checkout@v2
+      - name: Yarn Cache
+        uses: c-hive/gha-yarn-cache@v2
+      - name: Install Dependencies (Yarn)
+        run: yarn install
+      - name: ESLint & Prettier Check
+        run: yarn lint
+      - name: CRLF Phobia
+        run: npx crlf-phobia *
+  
+  docs:
+    name: Documentation Generating Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: actions/checkout
+        uses: actions/checkout@v2
+      - name: Yarn Cache
+        uses: c-hive/gha-yarn-cache@v2
+      - name: Install Dependencies (Yarn)
+        run: yarn install
+      - name: Generating Documents Test
+        run: yarn docs
+
+  caffe-mocha:
+    name: Caffe Mocha Test
     runs-on: ubuntu-latest
     env:
       FORCE_COLOR: 2
@@ -17,13 +47,9 @@ jobs:
         uses: c-hive/gha-yarn-cache@v2
       - name: Install Dependencies (Yarn)
         run: yarn install
-      - name: Build Test
-        run: yarn build
       - name: ESLint & Prettier Check
         run: yarn lint
-      - name: Mocha Test, Actually it is now Jest
-        run: yarn test
-      - name: Generating Documents Test
-        run: yarn docs
-      - name: CRLF Phobia
-        run: npx crlf-phobia *
+      - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
+        run: yarn test --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
