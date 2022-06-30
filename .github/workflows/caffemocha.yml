@@ -47,8 +47,8 @@ jobs:
         uses: c-hive/gha-yarn-cache@v2
       - name: Install Dependencies (Yarn)
         run: yarn install
-      - name: Run Pre-Build Tasks
-        run: yarn lm:config
+      - name: Build Package
+        run: yarn build
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
         run: yarn test --coverage
       - name: Upload coverage to Codecov
