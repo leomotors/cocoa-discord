@@ -6,8 +6,8 @@ import { EmbedStyle } from "../main";
 import { MessageEvents } from "../message";
 import { SlashEvents } from "../slash";
 
-import { BaseCommand, Cog as BaseCog, NonEmptyArray } from "./Interface";
 import { store } from "./store";
+import { BaseCommand, Cog as BaseCog, NonEmptyArray } from "./types";
 
 export abstract class ManagementCenter<
     Cog extends BaseCog<BaseCommand>,

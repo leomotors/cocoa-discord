@@ -1,4 +1,4 @@
-import { Awaitable } from "./Interface";
+import { Awaitable } from "./types";
 
 export type PureFunction = () => Awaitable<void>;
 

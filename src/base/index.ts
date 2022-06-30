@@ -4,5 +4,5 @@
  */
 
 export * from "./Center";
-export * from "./Interface";
+export * from "./types";
 export * from "./store";
