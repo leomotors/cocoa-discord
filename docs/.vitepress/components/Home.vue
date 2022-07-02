@@ -1,7 +1,13 @@
 <script setup lang="ts">
-let world = "World";
+import ExampleCode from "$components/ExampleCode.md";
 </script>
 
 <template>
-    <h1 class="text-6xl font-bold text-center">Hello {{ world }}</h1>
+    <div class="flex flex-col items-center my-8 gap-4">
+        <p class="text-2xl w-1/2 text-center font-bold">Example Code</p>
+
+        <div class="bg-slate-700 rounded-2xl p-2">
+            <ExampleCode />
+        </div>
+    </div>
 </template>

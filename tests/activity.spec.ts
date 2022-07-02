@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 
 import { ActivityType } from "discord-api-types/v10";
 
-import { ActivityGroupLoader } from "../src/main";
+import { ActivityGroupLoader, ActivityManager } from "../src/main";
 
 import Activities from "./mock/activities.mock.json";
 
@@ -64,5 +64,11 @@ describe("[activity] Activity Group Loader", () => {
             type: ActivityType.Streaming,
             url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         });
+    });
+
+    it("assertInterval works", () => {
+        expect(() => ActivityManager.assertInterval(500)).toThrowError();
+
+        ActivityManager.assertInterval(6969);
     });
 });

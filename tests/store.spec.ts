@@ -34,4 +34,8 @@ describe("[store] Store", () => {
         expect(b.value).toEqual(3);
         expect(c.value).toEqual(0);
     });
+
+    it("Notify invalid name should do nothing, peacefully", async () => {
+        await store.notifyAwait("bruh-wtf");
+    });
 });
