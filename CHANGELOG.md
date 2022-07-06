@@ -2,9 +2,17 @@
 
 All notables change for Cocoa Discord Utils will be noted here
 
-**Note**: Changelog before 1.0.0-pre is not available here
+## Note
 
-**Note 2**: Not all change will be noted, see commits for *full* changelog
+- Changelog before 1.0.0-pre is not available here
+
+- Not all change will be noted, see commits for *full* changelog
+
+- Some pre-release build may not appear here
+
+## [2.0.0-pre.1] - 2022-07-06
+
+- The first pre-release of Version 2 is here!
 
 ## [1.9.0] - 2022-06-20
 

@@ -1,5 +1,8 @@
 # Examples
 
+Because I could not cover all topics in this library, a good way to learn
+how I use this library is to see the source code of my bots.
+
 Discord Bots that use Cocoa Discord Utils
 
 - [Harunon](https://github.com/CarelessDev/harunon.js)

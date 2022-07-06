@@ -56,6 +56,10 @@ export default defineConfig({
                         text: "Migrate from V1",
                         link: "/introduction/migrate",
                     },
+                    {
+                        text: "Release Changelog",
+                        link: "/changelog",
+                    },
                 ],
             },
             {

@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Cocoa Discord Utils
   text: For discord.js
-  tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨ (Version 2 is Work in Progress)
+  tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨
   actions:
   - theme: brand
     text: Get Started
@@ -21,7 +21,7 @@ hero:
 
 features:
   - title: Build by me, for me
-    details: It is used in all of my Discord Bots, most popular 'useful' one is Harunon (CarelessDev/harunon.js)
+    details: It is used in all of my Discord Bots, most popular 'useful' one is Harunon (CarelessDev/waifu-bot)
   - title: Build with TypeScript
     details: Fully Type Safe and power your discord bot development with IntelliSense
   - title: Cog System inspired by discord.py

@@ -1,19 +1,25 @@
 import "./stub";
 
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 
 import { ActivityType } from "discord-api-types/v10";
 
-import { ActivityGroupLoader, ActivityManager } from "../src/main";
+import {
+    ActivityGroupLoader,
+    ActivityManager,
+    isGroupLoader,
+} from "../src/main";
 
 import Activities from "./mock/activities.mock.json";
 
 describe("[activity] Activity Group Loader", () => {
     const loader = new ActivityGroupLoader("./tests/mock/activities.mock.json");
 
-    it("Loader has 10 Activities (no? check the file and count)", async () => {
+    beforeEach(async () => {
         await loader.initialPromise;
+    });
 
+    it("Loader has 10 Activities (no? check the file and count)", async () => {
         expect(
             // @ts-expect-error or else we can't access *private* properties
             loader.builtData.length
@@ -21,7 +27,6 @@ describe("[activity] Activity Group Loader", () => {
     });
 
     it("Get Random Works and Correct (100 times)", async () => {
-        await loader.initialPromise;
         for (let i = 0; i < 100; i++) {
             const item = loader.getBuiltRandom();
             expect([
@@ -44,8 +49,6 @@ describe("[activity] Activity Group Loader", () => {
     });
 
     it("Has expected Data", async () => {
-        await loader.initialPromise;
-
         // @ts-expect-error again so we can *yeet* its private properites
         const yeet = loader.builtData;
 
@@ -68,7 +71,10 @@ describe("[activity] Activity Group Loader", () => {
 
     it("assertInterval works", () => {
         expect(() => ActivityManager.assertInterval(500)).toThrowError();
-
         ActivityManager.assertInterval(6969);
+    });
+
+    it("Typeguard works", () => {
+        expect(isGroupLoader(loader)).toBe(true);
     });
 });

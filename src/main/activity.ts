@@ -9,7 +9,7 @@ import { ArrayLoader } from "./loader";
 const _min = 60 * 1000;
 const _defaultInterval = 10 * _min;
 
-function isGroupLoader(
+export function isGroupLoader(
     loader: ArrayLoader<unknown>
 ): loader is ActivityGroupLoader {
     return (loader as ActivityGroupLoader).getBuiltRandom != undefined;

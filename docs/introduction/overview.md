@@ -15,7 +15,9 @@ The Cocoa Discord Utils contains a set of utilities seperated into multiple subp
 - nodejs 16.9+ (discord.js requirements, 16.15 recommended)
 - Both CommonJS and ESM, TypeScript recommended (Decorators require TypeScript)
 
-## NOTE
+## Version 2 Status
 
-The Version 2 of this library is under development, breaking changes can be made
-and some of them is still not noted here
+Version 2 is now in pre-release phase. However, because no one uses this library.
+Any breaking changes can still be made at anytime.
+
+This document also lacks lot of documentation.

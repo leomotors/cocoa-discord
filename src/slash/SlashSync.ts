@@ -1,9 +1,9 @@
 import {
     ApplicationCommandData,
-    ApplicationCommandDataResolvable,
     ChatInputApplicationCommandData,
     Client,
     Guild,
+    RESTPostAPIApplicationCommandsJSONBody,
 } from "discord.js";
 
 import chalk from "chalk";
@@ -16,7 +16,7 @@ type CAC = ChatInputApplicationCommandData;
  * Represent the Command Data (discord.js-compatible interface)
  * and list of guilds to sync to
  */
-export type CommandsPack = [ApplicationCommandDataResolvable, string[]];
+export type CommandsPack = [RESTPostAPIApplicationCommandsJSONBody, string[]];
 
 /** @internal Should not be used */
 export async function syncCommands(
@@ -61,7 +61,7 @@ export async function syncCommands(
 }
 
 async function syncGuild(
-    commands: ApplicationCommandDataResolvable[],
+    commands: RESTPostAPIApplicationCommandsJSONBody[],
     client: Client<true>,
     guild: Guild,
     verbose = true

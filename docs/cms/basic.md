@@ -149,6 +149,9 @@ eventually compiled down to Object Cog.
 
 ## Class Cog V1
 
+*Note*: The following syntax will still be available in Version 2, but it is recommended
+to use newer syntax where possible.
+
 **To use Class Cog**, We will need to extend the base class given,
 and implement methods/commands with decorator.
 
@@ -174,17 +177,18 @@ export class MainCog extends CogSlashClass {
     }
 
     // Normal Way
-    @SlashCommand(CocoaBuilder("ping", "pong!").toJSON())
+    @SlashCommand(CocoaBuilderFull("ping", "pong!").toJSON())
     async ping(ctx: ChatInputCommandInteraction) {
         await ctx.reply("pong!");
     }
+    // CocoaBuilderFull was named CocoaBuilder
 
     // NEW!
-    @SlashCommand(AutoBuilder("pong!"))
+    @SlashCommand(CocoaBuilder("pong!"))
     async ping(ctx: ChatInputCommandInteraction) {
         ...
     }
-    // With AutoBuilder, you can omit the name field,
+    // With CocoaBuilder (Old name: AutoBuilder), you can omit the name field,
     // it will take the name from the method name
     // From 1.2.0, with CogSlashClass, you can omit .toJSON()
 

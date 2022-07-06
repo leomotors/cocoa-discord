@@ -95,6 +95,7 @@ describe("[command] /message & /slash", () => {
     describe("Message Center", testMessage);
     describe("Slash Center", testSlash);
     describe("Slash Class Cog", testClass);
+    describe("Help Command", helpCommand);
 });
 
 function testMessage() {
@@ -201,5 +202,22 @@ function testClass() {
             CorrectSCog.commands.play.command.name
         );
         expect(cog.commands.test.guild_ids).toStrictEqual(["12345"]);
+    });
+}
+
+function helpCommand() {
+    it("Should generate fine", () => {
+        const center = new MessageCenter(client, { prefixes: ["!"] });
+        center.addCog(CorrectMCog);
+        center.useHelpCommand();
+
+        // @ts-ignore
+        expect(center.cogs.length).toBe(2);
+
+        // @ts-ignore
+        const help = center.cogs[1];
+        expect(help.name).toBe("Help");
+        expect(Object.keys(help.commands).length).toBe(1);
+        expect(help.commands.help?.command.name).toBe("help");
     });
 }

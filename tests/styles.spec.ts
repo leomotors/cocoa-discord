@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { EmbedStyle } from "../src/main";
+import { createEmbedStyle, EmbedStyle } from "../src/main";
 
 describe("[styles] Embed Style", () => {
     const style = new EmbedStyle({
@@ -36,5 +36,9 @@ describe("[styles] Embed Style", () => {
             // @ts-ignore yeeett
             style.resolve({}, style.style.footer)
         ).toStrictEqual({ text: "Hello" });
+    });
+
+    it("create function works", () => {
+        expect(createEmbedStyle({}) instanceof EmbedStyle).toBeTruthy();
     });
 });

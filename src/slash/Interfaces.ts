@@ -1,13 +1,13 @@
 import {
-    ApplicationCommandDataResolvable,
     ChatInputCommandInteraction,
+    RESTPostAPIApplicationCommandsJSONBody,
 } from "discord.js";
 
 import { Awaitable, Cog } from "../base";
 
 /** This interface represent a single slash command */
 export interface CocoaSlash {
-    command: ApplicationCommandDataResolvable;
+    command: RESTPostAPIApplicationCommandsJSONBody;
     func: (interaction: ChatInputCommandInteraction) => Promise<void>;
     guild_ids?: string[];
 }
