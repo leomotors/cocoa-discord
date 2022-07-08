@@ -15,8 +15,8 @@ export function isGroupLoader(
     return (loader as ActivityGroupLoader).getBuiltRandom != undefined;
 }
 
-export class ActivityManager<T extends ArrayLoader<ActivityOptions>> {
-    readonly loader: T;
+export class ActivityManager {
+    readonly loader: ArrayLoader<ActivityOptions> | ActivityGroupLoader;
     private readonly getRandomFunc: () => ActivityOptions | undefined;
     readonly client: Client;
 
@@ -33,7 +33,11 @@ export class ActivityManager<T extends ArrayLoader<ActivityOptions>> {
      *
      * @param interval In milliseconds, if set to 0 will disable the periodic
      */
-    constructor(loader: T, client: Client, interval = _defaultInterval) {
+    constructor(
+        loader: ArrayLoader<ActivityOptions> | ActivityGroupLoader,
+        client: Client,
+        interval = _defaultInterval
+    ) {
         this.loader = loader;
 
         this.getRandomFunc = isGroupLoader(loader)
@@ -86,7 +90,7 @@ export class ActivityGroupLoader extends ArrayLoader<ActivityGroup> {
     getBuiltRandom(): ActivityOptions | undefined {
         return this.builtData[
             Math.floor(Math.random() * this.builtData.length)
-        ]!;
+        ];
     }
 
     override async reload() {

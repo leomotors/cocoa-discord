@@ -64,7 +64,7 @@ export namespace Param {
         { required: false }
     );
     export namespace Ephemeral {
-        export type Type = boolean;
+        export type Type = Types["Boolean"] | null;
     }
 
     type ACO<T> = ResolvesTo<APIApplicationCommandOptionChoice<T>[] | T[]>;
