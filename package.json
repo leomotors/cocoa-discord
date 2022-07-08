@@ -9,10 +9,10 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn lm:config && tsc && ts-node postbuild.script.ts dist/**/*.js dist/*/**/*.js && rimraf \"dist/cli/**/*.d.ts\"",
-    "clean": "rimraf dist/* coverage docs-dist typedoc-out",
+    "clean": "rimraf dist coverage docs-dist typedoc-out",
     "cb": "yarn clean && yarn build",
     "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
-    "prepack": "yarn cb && yarn lint && yarn test",
+    "prepack": "yarn cb && yarn lint && IGNORE_COLOR=1 yarn test",
     "format": "prettier --write \"*.{js,ts}\" && prettier --write \"{docs,src,tests}/**/*.{ts,vue,css}\"",
     "lint": "eslint src && prettier --check \"*.{js,ts}\" && prettier --check \"{docs,src,tests}/**/*.{ts,vue,css}\"",
     "test": "vitest run",

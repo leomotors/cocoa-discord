@@ -2,9 +2,9 @@ import "dotenv/config";
 
 import {
     ActivityGroupLoader,
+    ActivityManager,
     checkLogin,
     Cocoa,
-    useActivityGroup,
 } from "cocoa-discord-utils";
 import { MessageCenter } from "cocoa-discord-utils/message";
 import { SlashCenter } from "cocoa-discord-utils/slash";
@@ -12,13 +12,14 @@ import { CocoaOptions } from "cocoa-discord-utils/template";
 
 import { Client } from "discord.js";
 
-import { MainMessageCog } from "./commands/message";
-import { style } from "./commands/shared";
-import { MainSlashCog } from "./commands/slash";
+import { MainMessageCog } from "./commands/main.message";
+import { MainSlashCog } from "./commands/main.slash";
+import { style } from "./commands/styles";
 
 const client = new Client(CocoaOptions);
 const mcenter = new MessageCenter(client, { prefixes: ["!"] });
 const scenter = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
+
 // ? Edit data/activites.json to customize, or delete this line to not use activities
 const activity = new ActivityGroupLoader("data/activities.json");
 
@@ -40,6 +41,8 @@ scenter.on("error", async (name, err, ctx) => {
     await ctx.channel?.send(`Sorry, error occured: ${err}`);
 });
 
+const activityManager = new ActivityManager(activity, client);
+
 client.on("ready", (cli) => {
     console.log(
         `Logged in as ${cli.user.tag}, took ${process
@@ -47,7 +50,7 @@ client.on("ready", (cli) => {
             .toFixed(3)} seconds`
     );
     scenter.syncCommands();
-    useActivityGroup(client, activity);
+    activityManager.nextActivity();
 });
 
 checkLogin(client, process.env.DISCORD_TOKEN);

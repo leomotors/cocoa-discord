@@ -2,19 +2,20 @@ import "dotenv/config";
 
 import {
     ActivityGroupLoader,
+    ActivityManager,
     checkLogin,
     Cocoa,
-    useActivityGroup,
 } from "cocoa-discord-utils";
 import { SlashCenter } from "cocoa-discord-utils/slash";
 import { CocoaOptions } from "cocoa-discord-utils/template";
 
 import { Client } from "discord.js";
 
-import { MainCog, style } from "./commands";
+import { MainCog, style } from "./commands/styles";
 
 const client = new Client(CocoaOptions);
 const center = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
+
 // ? Edit data/activites.json to customize, or delete this line to not use activities
 const activity = new ActivityGroupLoader("data/activities.json");
 
@@ -27,6 +28,8 @@ center.on("error", async (name, err, ctx) => {
     await ctx.channel?.send(`Sorry, error occured: ${err}`);
 });
 
+const activityManager = new ActivityManager(activity, client);
+
 client.on("ready", (cli) => {
     console.log(
         `Logged in as ${cli.user.tag}, took ${process
@@ -34,7 +37,7 @@ client.on("ready", (cli) => {
             .toFixed(3)} seconds`
     );
     center.syncCommands();
-    useActivityGroup(client, activity);
+    activityManager.nextActivity();
 });
 
 checkLogin(client, process.env.DISCORD_TOKEN);

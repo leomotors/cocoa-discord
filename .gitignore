@@ -112,4 +112,4 @@ typedoc-out
 
 # Yarn
 cache
-.yarn/install-state.gz
+install-state.gz
