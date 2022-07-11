@@ -1,13 +1,24 @@
-import { Client, ChatInputCommandInteraction, Interaction } from "discord.js";
+import {
+    Client,
+    ChatInputCommandInteraction,
+    Interaction,
+    RESTPostAPIChatInputApplicationCommandsJSONBody,
+    ApplicationCommandType,
+} from "discord.js";
 
 import chalk from "chalk";
 
 import { Awaitable, ManagementCenter } from "../base";
 import { EmbedStyle } from "../main";
-import { CocoaBuilderFull, Ephemeral, getEphemeral } from "../template";
+import {
+    CocoaBuilderFull,
+    CocoaOption,
+    Ephemeral,
+    getEphemeral,
+} from "../template";
 
 import { CogSlashClass, replaceNameKeyword } from "./class";
-import { CogSlash } from "./Interfaces";
+import { CocoaSlash, CogSlash } from "./Interfaces";
 import { CommandsPack, syncCommands } from "./SlashSync";
 
 export interface SlashEvents {
@@ -130,7 +141,7 @@ export class SlashCenter extends ManagementCenter<
 
     private _useHelpCommand(style?: EmbedStyle) {
         this.validated = false;
-        const emb = this.generateHelpCommandAsEmbed();
+        const allEmb = this.generateHelpCommandAsEmbed();
 
         this.addCog({
             name: "Help",
@@ -140,14 +151,24 @@ export class SlashCenter extends ManagementCenter<
                         "help",
                         "Show help for all commands"
                     )
+                        .addStringOption(
+                            CocoaOption(
+                                "command",
+                                "Command name to get detailed help"
+                            )
+                        )
                         .addBooleanOption(Ephemeral())
                         .toJSON(),
                     func: async (ctx) => {
+                        const command = ctx.options.getString("command");
+                        const emb = command
+                            ? this.commandHelp(command, ctx, style)
+                            : style
+                            ? style.apply(ctx, allEmb)
+                            : allEmb;
                         const ephemeral = getEphemeral(ctx);
                         await ctx.reply({
-                            embeds: [
-                                (style ? style.apply(ctx, emb) : emb).toJSON(),
-                            ],
+                            embeds: [emb],
                             ephemeral,
                         });
                     },
@@ -155,5 +176,43 @@ export class SlashCenter extends ManagementCenter<
                 },
             },
         });
+    }
+
+    private commandHelp(
+        command: string,
+        ctx: ChatInputCommandInteraction,
+        style = new EmbedStyle({})
+    ) {
+        const cmd = this.getAllCommands().find(
+            (cmd) => cmd.command.name === command
+        ) as CocoaSlash & {
+            command: RESTPostAPIChatInputApplicationCommandsJSONBody;
+        };
+
+        if (!cmd) {
+            return style
+                .use(ctx)
+                .setTitle(`Error: Command ${command} not found`);
+        }
+
+        return style
+            .use(ctx)
+            .setTitle(`Help for Slash Command: ${command}`)
+            .setDescription(
+                `${cmd.command.description}${
+                    cmd.long_description ? `\n\n${cmd.long_description}` : ""
+                }\n\n${
+                    cmd.command.options
+                        ?.map(
+                            (opt) =>
+                                `${opt.name} (${
+                                    ApplicationCommandType[opt.type]
+                                }): ${opt.description}${
+                                    opt.required ? " **REQUIRED**" : ""
+                                }`
+                        )
+                        .join("\n") ?? ""
+                }`
+            );
     }
 }

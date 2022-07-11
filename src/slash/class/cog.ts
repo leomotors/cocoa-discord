@@ -126,6 +126,7 @@ export abstract class CogSlashClass implements CogSlash {
                 command,
                 func: this.runCommands.bind(this),
                 guild_ids: cmd.guild_ids,
+                long_description: cmd.long_description,
             };
         }
     }

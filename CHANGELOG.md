@@ -10,6 +10,10 @@ All notables change for Cocoa Discord Utils will be noted here
 
 - Some pre-release build may not appear here
 
+## [2.0.0-???] - ???
+
+- feat(Help): Help by Command Name and Long Description
+
 ## [2.0.0-pre.2] - 2022-07-08
 
 - Fix type incompatibility with Activity Manager

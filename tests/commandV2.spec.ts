@@ -7,7 +7,7 @@ import {
     RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { Param, CogSlashClass, SlashCommand } from "../src/slash/class";
+import { Param, CogSlashClass, SlashCommand, Help } from "../src/slash/class";
 
 describe("Slash Command Class V2", () => {
     it("Has Data as expected", async () => {
@@ -108,5 +108,18 @@ describe("Slash Command Class V2", () => {
             { name: "69", value: 69 },
             { name: "420", value: 420 },
         ]);
+    });
+
+    class withHelp extends CogSlashClass {
+        @SlashCommand("Pong!")
+        @Help("Pong Tai!")
+        async ping(ctx: SlashCommand.Context) {}
+    }
+
+    it("@Help resolves correctly", async () => {
+        const inst = new withHelp();
+        await inst.presync();
+
+        expect(inst.commands.ping.long_description).toBe("Pong Tai!");
     });
 });

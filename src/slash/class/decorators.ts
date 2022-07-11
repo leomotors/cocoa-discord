@@ -20,6 +20,7 @@ export namespace V2Decorators {
     export interface Data {
         name?: string;
         description?: string;
+        long_description?: string;
         params?: Record<number, Params>;
         guild_ids?: string[];
     }
@@ -36,6 +37,17 @@ export function SlashCommand(description: string, guild_ids?: string[]) {
             name: key,
             description,
             guild_ids,
+        };
+    };
+}
+
+export function Help(long_description: string) {
+    return (cog: CogSlashClass, key: string, _: unknown) => {
+        const cogStore = (V2Stores[cog.constructor.name] ??= {});
+
+        cogStore[key] = {
+            ...cogStore[key],
+            long_description,
         };
     };
 }

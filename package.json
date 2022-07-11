@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord-utils",
-  "version": "2.0.0-pre.2",
+  "version": "2.0.0-pre.3",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "repository": "https://github.com/Leomotors/cocoa-discord-utils",
@@ -16,7 +16,7 @@
     "format": "prettier --write \"*.{js,ts}\" && prettier --write \"{docs,src,tests}/**/*.{ts,vue,css}\"",
     "lint": "eslint src && prettier --check \"*.{js,ts}\" && prettier --check \"{docs,src,tests}/**/*.{ts,vue,css}\"",
     "test": "vitest run",
-    "ncu": "ncu -u \"/^(?!.*chalk)(?!.*globby).*$/\"",
+    "ncu": "ncu -u !chalk",
     "docs:dev": "vitepress dev docs",
     "docs": "yarn lm:config && vitepress build docs && typedoc && touch docs-dist/.nojekyll"
   },
@@ -41,18 +41,18 @@
     "autoprefixer": "^10.4.7",
     "c8": "^7.11.3",
     "eslint": "^8.19.0",
-    "npm-check-updates": "^15.2.1",
+    "npm-check-updates": "^15.2.6",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "sinon": "^14.0.0",
     "tailwindcss": "^3.1.5",
     "ts-node": "^10.8.2",
-    "typedoc": "^0.23.6",
+    "typedoc": "^0.23.7",
     "typescript": "^4.7.4",
     "uglify-js": "^3.16.2",
     "vitepress": "^1.0.0-alpha.4",
-    "vitest": "^0.17.1",
+    "vitest": "^0.18.0",
     "vue": "^3.2.37"
   },
   "dependencies": {

@@ -171,4 +171,12 @@ export abstract class ManagementCenter<
 
         return [...guildIds];
     }
+
+    protected allCommands?: BaseCommand[];
+    protected getAllCommands() {
+        return (this.allCommands ??= this.cogs.reduce<BaseCommand[]>(
+            (prev, curr) => prev.concat(Object.values(curr.commands)),
+            []
+        ));
+    }
 }

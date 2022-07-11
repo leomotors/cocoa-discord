@@ -10,6 +10,7 @@ export interface CocoaSlash {
     command: RESTPostAPIApplicationCommandsJSONBody;
     func: (interaction: ChatInputCommandInteraction) => Promise<void>;
     guild_ids?: string[];
+    long_description?: string;
 }
 
 export interface CogSlash extends Cog<CocoaSlash> {
