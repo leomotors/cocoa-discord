@@ -12,15 +12,15 @@
     "lint": "eslint src && prettier --check \"src/**/*.ts\""
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "eslint": "^8.19.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.20.0",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "cocoa-discord-utils": "^2.0.0-pre.2",
+    "cocoa-discord-utils": "^2.0.0",
     "dotenv": "^16.0.1"
   }
 }
