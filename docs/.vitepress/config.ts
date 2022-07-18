@@ -22,7 +22,7 @@ export default defineConfig({
         editLink: {
             pattern:
                 "https://github.com/Leomotors/cocoa-discord-utils/edit/main/docs/:path",
-            text: "Edit this page on GitHub",
+            text: "Suggest or contribute changes to this page",
         },
 
         nav: [
@@ -53,12 +53,22 @@ export default defineConfig({
                         link: "https://leomotors.github.io/cocoa-discord-utils/typedoc",
                     },
                     {
-                        text: "Migrate from V1",
+                        text: "Migrate from V1 -> V2",
                         link: "/introduction/migrate",
                     },
                     {
                         text: "Release Changelog",
                         link: "/changelog",
+                    },
+                ],
+            },
+            {
+                collapsible: true,
+                text: "Blog",
+                items: [
+                    {
+                        text: "Introducing V2",
+                        link: "/blog/introducing-v2",
                     },
                 ],
             },

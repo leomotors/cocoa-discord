@@ -5,8 +5,7 @@ name: Documentation
 on:
   push:
     tags:
-      # - "[0-9]+.[0-9]+.[0-9]+" (After 2.0 is released, will switch to this)
-      - "*.*"
+      - "[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
   docs:
@@ -15,11 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
 
       - name: Yarn Cache
         uses: c-hive/gha-yarn-cache@v2

@@ -36,3 +36,9 @@ async sayhi(
 
 This can now help you get rids of calling multiple functions to get the parameters
 and avoid you from messing with `SlashCommandBuilder`
+
+::: Warning
+
+RTeww
+
+:::

@@ -10,11 +10,9 @@ describe("[logger] Logger", () => {
         expect(f).toMatch(/World$/);
     });
 
-    if (!process.env.IGNORE_COLOR) {
-        it("Success should be Green", () => {
-            const f = Cocoa.format("Hello World", LogStatus.Success);
+    it("Success should be Green", () => {
+        const f = Cocoa.format("Hello World", LogStatus.Success);
 
-            expect(f).toMatch(/^\u001b\[32m/);
-        });
-    }
+        expect(f).toMatch(/^\u001b\[32m/);
+    });
 });

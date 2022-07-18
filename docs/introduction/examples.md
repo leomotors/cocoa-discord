@@ -5,7 +5,7 @@ how I use this library is to see the source code of my bots.
 
 Discord Bots that use Cocoa Discord Utils
 
-- [Harunon](https://github.com/CarelessDev/harunon.js)
+- [Waifu Bot](https://github.com/Leomotors/waifu-bot)
 - [cminusminus](https://github.com/Leomotors/cminusminus)
 - [Salim Bot](https://github.com/Leomotors/Salim-Bot)
 - [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)

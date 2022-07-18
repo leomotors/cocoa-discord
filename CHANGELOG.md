@@ -8,10 +8,11 @@ All notables change for Cocoa Discord Utils will be noted here
 
 - Not all change will be noted, see commits for *full* changelog
 
-- Some pre-release build may not appear here
+- Some pre-release or beta build may not appear here
 
-## [2.0.0-???] - ???
+## [2.0.0] - 2022-07-18
 
+- Bump deps to discord.js v~~14.0.0~~14.0.1 !!!
 - feat(Help): Help by Command Name and Long Description
 
 ## [2.0.0-pre.2] - 2022-07-08

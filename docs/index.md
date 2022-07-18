@@ -1,6 +1,10 @@
 ---
 layout: home
 
+
+title: Cocoa Discord Utils
+titleTemplate: Simplify creating Discord Bots
+
 hero:
   name: Cocoa Discord Utils
   text: For discord.js
