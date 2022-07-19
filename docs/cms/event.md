@@ -20,9 +20,13 @@ Use case is the case given above, the bot can reply to the user telling them dir
 
 The error handler is under try catch, as long as you await the potential harmful async function. It will be fine. Please note that we don't provide `on error error` event handler. That is too much.
 
-**Tips**: It is always best practice to use `await` on every expression that is async including `message.reply` `message.channel.send` `ctx.reply` etc.
+:::tip TIPS
+
+It is always best practice to use `await` on every expression that is async including `message.reply` `message.channel.send` `ctx.reply` etc.
 
 Otherwise, the try-catch might not be able to catch and your bot will *boom*
+
+:::
 
 ## Message Center: "message"
 

@@ -13,4 +13,8 @@ Which should open door to lots of fun stuff.
 
 For migration, please refer to [Migration Guide](/introduction/migrate)
 
-*Note that not all changes are noted because I'm lazy and no one really use this library anyway other than me.*
+:::info Note
+
+Not all changes are noted because I'm lazy and no one really use this library anyway other than me.
+
+:::

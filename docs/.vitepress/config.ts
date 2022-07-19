@@ -28,7 +28,7 @@ export default defineConfig({
         nav: [
             {
                 text: "Changelog",
-                link: "https://github.com/Leomotors/cocoa-discord-utils/releases",
+                link: "/changelog",
             },
             {
                 text: "TypeDoc",

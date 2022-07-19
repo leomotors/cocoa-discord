@@ -29,6 +29,9 @@ async sayhi(
 
     @Param.User("User to greet")
     user: Param.User.Type
+
+    @Param.Integer("Optional Parameter")
+    opt: Param.Integer.Nullable
 ) {
     // handle the interaction
 }
@@ -37,8 +40,9 @@ async sayhi(
 This can now help you get rids of calling multiple functions to get the parameters
 and avoid you from messing with `SlashCommandBuilder`
 
-::: Warning
+::: danger
 
-RTeww
+Parameter Decorators are not type safe, meaning TypeScript will not complain
+if you put in the wrong type. Make sure to annotate it with the correct type!
 
 :::

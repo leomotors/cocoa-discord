@@ -17,7 +17,7 @@
     "lint": "eslint src && prettier --check \"*.{js,ts}\" && prettier --check \"{docs,src,tests}/**/*.{ts,vue,css}\"",
     "test": "FORCE_COLOR=2 vitest run",
     "deps": "ncu -u !chalk",
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --port=3186",
     "docs": "yarn lm:config && vitepress build docs && typedoc && touch docs-dist/.nojekyll"
   },
   "packageManager": "yarn@3.2.1",

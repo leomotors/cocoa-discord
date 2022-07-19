@@ -1,6 +1,6 @@
 # Overview
 
-The Cocoa Discord Utils contains a set of utilities seperated into multiple subpackages,
+The Cocoa Discord Utils contains a set of utilities seperated into multiple subpackages:
 
 - main (/)
 - /message
@@ -12,7 +12,7 @@ The Cocoa Discord Utils contains a set of utilities seperated into multiple subp
 
 ## Supports
 
-- nodejs 16.9+ (discord.js requirements, 16.15 recommended)
+- nodejs 16.9+ (discord.js requirements, 16.15-16.16 recommended)
 - Both CommonJS and ESM, TypeScript recommended (Decorators require TypeScript)
 
 ## Installation
@@ -25,6 +25,8 @@ or others up to your package manager.
 
 It is recommended to not add discord.js as dependencies to avoid version conflict. (having more than one version)
 
-## Note
+::: warning Note
 
 This document still lacks lot of documentation.
+
+:::
