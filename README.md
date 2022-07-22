@@ -7,7 +7,7 @@
 
 Yet another Discord Bot Utility npm package
 
-*NOTE*: This Branch is for Version 2 which is currently under Beta and use discord.js 14 dev version, visit branch `v1` for stable version (which uses discord.js 13)
+*NOTE*: The current version (v2) uses discord.js 14, for discord.js 13, please visit branch `v1`
 
 ## ✨ Features
 

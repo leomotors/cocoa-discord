@@ -38,6 +38,16 @@ export default defineConfig({
         sidebar: [
             {
                 collapsible: true,
+                text: "Blog",
+                items: [
+                    {
+                        text: "Introducing V2",
+                        link: "/blog/introducing-v2",
+                    },
+                ],
+            },
+            {
+                collapsible: true,
                 text: "Introduction",
                 items: [
                     {
@@ -59,16 +69,6 @@ export default defineConfig({
                     {
                         text: "Release Changelog",
                         link: "/changelog",
-                    },
-                ],
-            },
-            {
-                collapsible: true,
-                text: "Blog",
-                items: [
-                    {
-                        text: "Introducing V2",
-                        link: "/blog/introducing-v2",
                     },
                 ],
             },

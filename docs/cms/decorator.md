@@ -1,17 +1,19 @@
 # Class Cog V2
 
-**Note**: Class Cog V2 is currently only available for Slash Command Only
+Class Cog V2 is a new feature that is introduced along Cocoa Discord Utils V2
 
-## Table of Contents
+::: info NOTE
 
-[[toc]]
+Class Cog V2 is currently only available for Slash Command only
+
+:::
 
 ## Overview
 
-In Class Cog V1, I have not take use of decorators that much. In V2 we are redesigning
+In Class Cog V1, I have not take use of decorators that much. In V2 I am redesigning
 the syntax of it. Yet, it will still eventually be compiled down to Object Cog for few main reasons
 
-- For compatibility with other type of commands.
+- Object Code is closest to Discord API Format. Also for compatibility with other type of commands.
 - For cases where the new syntax does not support some types of command, you can
   still use older syntax to accomplish that with zero conflict.
 - I'm lazy to rewrite them
@@ -30,15 +32,24 @@ async sayhi(
     @Param.User("User to greet")
     user: Param.User.Type
 
-    @Param.Integer("Optional Parameter")
+    @Param.Integer("Optional Parameter", { required: false })
     opt: Param.Integer.Nullable
 ) {
     // handle the interaction
 }
 ```
 
+::: tip
+
+`required` is default to `true`, while `autocomplete` is default to `false`
+
+Use `Param.[Type].Nullable` if you have set `required` to `false`
+
+:::
+
 This can now help you get rids of calling multiple functions to get the parameters
-and avoid you from messing with `SlashCommandBuilder`
+and avoid you from messing with `SlashCommandBuilder`, keep your code declarative,
+easy and fin to read.
 
 ::: danger
 

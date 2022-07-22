@@ -200,7 +200,7 @@ export class MainCog extends CogSlashClass {
 The library will automatically bind your method to an instance, so you can use
 it like a class. Like, add some methods or properties!
 
-And to add it to Slash Center just like Object Cog
+And add it to Slash Center just like Object Cog
 
 ```ts
 center.addCogs(new MainCog());
@@ -213,9 +213,10 @@ specify type in your method arguments.
 
 *Argument Name can be changed, but must specify the correct type*
 
-**Warning**: Extending Cog Class is not supported, decorators may behave unexpectly
+**Warning**: Extending Cog Class is not recommended, decorators may behave unexpectly
 
-## Miscellanous
+::: warning
 
 Syncing Commands: Your slash comamnd may not update when you only change fields such as localizations or permissions, those are not supported and never in consideration
 
+:::

@@ -12,6 +12,10 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord-utils/rel
 
 - Some pre-release or beta build may not appear here
 
+## [2.1.0] - 2022-07-22
+
+- Added new `CocoaIntent` class, CocoaOptions are all deprecated
+
 ## [2.0.0] - 2022-07-18
 
 - Bump deps to discord.js v~~14.0.0~~14.0.1 !!!

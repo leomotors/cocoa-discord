@@ -2,7 +2,8 @@
 
 ::: warning
 
-CLI Configurations and code generator does not support Class Cog (both V1 and V2) yet.
+CLI Configurations and code generator does not support Class Cog (both V1 and V2) yet.  
+Will be supported when I want it to
 
 :::
 

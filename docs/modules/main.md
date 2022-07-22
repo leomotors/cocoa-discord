@@ -19,37 +19,15 @@ save time writing your bots
 
 [Guild for Embed from discord.js](https://discordjs.guide/popular-topics/embeds.html#embed-preview)
 
-*Part of implementation* [Full Code](https://github.com/Leomotors/cocoa-discord-utils/blob/main/src/main/embed.ts)
+*Full implementation* [See Code](https://github.com/Leomotors/cocoa-discord-utils/blob/main/src/main/embed.ts)
 
-```ts
-/**
- * Like Embed but has method addField, addInlineField and addInlineFields,
- * 2rd and 3rd methods allow you to save a line of `inline: true`
- */
-export class CocoaEmbed extends Embed {
-    ...
-
-    /** Adds a field to the embed (max 25), automatically set inline to true */
-    addInlineField(field: Omit<APIEmbedField, "inline">) {
-        (field as APIEmbedField).inline = true;
-        return this.addField(field);
-    }
-    
-    ...
-}
-```
+<<< @/../src/main/embed.ts#CocoaEmbed
 
 ## [Function] setConsoleEvent
 
 *Full Implementation, does what it say*
 
-```ts
-export function setConsoleEvent(handler: (cmd: string) => void) {
-    rl.on("line", (cmd: string) => {
-        handler(cmd);
-    });
-}
-```
+<<< @/../src/main/readline.ts#setConsoleEvent
 
 Trigger handler everytime you press enter in the console
 
@@ -63,5 +41,7 @@ Allow you to add command into console, the class also provide template for
 ```ts
 new ConsoleManager().useLogout(client).useReload(activity);
 ```
+
+---
 
 For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)

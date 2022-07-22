@@ -1,7 +1,7 @@
 import {
-    ChatInputCommandInteraction,
     EmbedBuilder,
     EmbedFooterData,
+    Interaction,
     Message,
 } from "discord.js";
 
@@ -10,8 +10,8 @@ import { Author } from "../template";
 
 import { CocoaEmbed } from "./embed";
 
-/** Message | CommandInteraction */
-export type Context = Message | ChatInputCommandInteraction;
+/** Message | Interaction */
+export type Context = Message | Interaction;
 
 export interface EmbedStyleBase {
     author?: "invoker" | "bot";

@@ -10,6 +10,8 @@ The Cocoa Discord Utils contains a set of utilities seperated into multiple subp
 - /meta
 - /template
 
+Apart from miscellaneous utilities, it also come with powerful slash command (and message command) management system!
+
 ## Supports
 
 - nodejs 16.9+ (discord.js requirements, 16.15-16.16 recommended)
@@ -27,6 +29,6 @@ It is recommended to not add discord.js as dependencies to avoid version conflic
 
 ::: warning Note
 
-This document still lacks lot of documentation.
+This document still lacks lot of documentation. Mostly because I'm lazy, and no one use this library anyway.
 
 :::

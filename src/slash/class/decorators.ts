@@ -68,8 +68,9 @@ export namespace Param {
             paramsDecorator(type, description, option);
     }
 
-    type ParamOptions = { required?: boolean; autocomplete?: boolean };
+    export type ParamOptions = { required?: boolean; autocomplete?: boolean };
 
+    /** Add a Boolean Option with template description for ephmeral option */
     export const Ephemeral = paramsDecorator(
         "Boolean",
         "Make the response ephemeral and only visible to you",
@@ -79,7 +80,9 @@ export namespace Param {
         export type Type = Types["Boolean"] | null;
     }
 
-    type ACO<T> = ResolvesTo<APIApplicationCommandOptionChoice<T>[] | T[]>;
+    export type ACO<T> = ResolvesTo<
+        APIApplicationCommandOptionChoice<T>[] | T[]
+    >;
 
     export function Choices<T>(
         choices: T extends string
@@ -127,8 +130,10 @@ export namespace Param {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    type NR<T extends (...args: any[]) => any> = NonNullable<ReturnType<T>>;
-    type CIO = ChatInputCommandInteraction["options"];
+    export type NR<T extends (...args: any[]) => any> = NonNullable<
+        ReturnType<T>
+    >;
+    export type CIO = ChatInputCommandInteraction["options"];
 
     export type Types = {
         Attachment: NR<CIO["getAttachment"]>;

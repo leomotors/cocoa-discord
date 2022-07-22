@@ -16,6 +16,14 @@ const mcenter = new MessageCenter(client, { prefixes: ["simp"] });
 
 *In this example, our bot will only listen to message with prefix simp*
 
+You can also disable prefix and make the bot invoke everytime it is mentioned
+
+::: warning
+
+Appropriate Intents must be used, otherwise your bot won't give any reaction!
+
+:::
+
 ```ts
 class MainCog extends CogMessageClass {
     // constructor omitted

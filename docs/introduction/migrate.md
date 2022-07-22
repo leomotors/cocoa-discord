@@ -9,6 +9,8 @@ Not all changes are noted here
 
 :::
 
+See [discord.js 14 Migration Guide](https://discordjs.guide/additional-info/changes-in-v14.html)
+
 ## Summary
 
 - Type Name and Builders Stuff changed in discord.js

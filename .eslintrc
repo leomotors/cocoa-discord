@@ -1,9 +1,13 @@
 {
     "root": true,
-    "extends": ["plugin:@typescript-eslint/recommended"],
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
     "rules": {
+        "prettier/prettier": "warn",
         "indent": ["off", 4],
         "quotes": ["off", "double"],
         "semi": ["warn", "always"],

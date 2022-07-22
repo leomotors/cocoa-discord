@@ -10,8 +10,6 @@ import chalk from "chalk";
 
 import { getElapsed } from "../meta";
 
-type CAC = ChatInputApplicationCommandData;
-
 /**
  * Represent the Command Data (discord.js-compatible interface)
  * and list of guilds to sync to
@@ -118,24 +116,28 @@ async function syncGuild(
 
             let modified = false;
 
-            if (previousCommand.description !== (newCommand as CAC).description)
+            if (
+                previousCommand.description !=
+                (newCommand as ChatInputApplicationCommandData).description
+            ) {
                 modified = true;
+            }
 
             if (
-                !isSameOption(
-                    previousCommand.options,
-                    (newCommand as CAC).options
-                )
+                modified ||
+                !isSameOption(previousCommand.options, newCommand.options)
             ) {
                 modified = true;
             }
 
             if (modified) {
                 fetchCount.updated++;
-                if (verbose)
+                if (verbose) {
                     console.log(
                         `[Slash Sync VERBOSE] Updated ${previousCommand.name} in ${guild.name}`
                     );
+                }
+
                 await previousCommand.edit(
                     newCommand as ApplicationCommandData
                 );
@@ -160,7 +162,7 @@ async function syncGuild(
     }
 }
 
-interface IOptionCheck {
+export interface IOptionCheck {
     name: string;
     description: string;
     type: number;

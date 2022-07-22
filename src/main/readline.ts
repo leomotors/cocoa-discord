@@ -39,6 +39,7 @@ export function setReadlineInterface(int: readline.Interface) {
     rl = int;
 }
 
+// #region setConsoleEvent
 /**
  * On Enter in Console
  *
@@ -57,6 +58,7 @@ export function setConsoleEvent(handler: (cmd: string) => void) {
         handler(cmd);
     });
 }
+// #endregion setConsoleEvent
 
 export type ConsoleFunction = (arg: string) => Awaitable<void>;
 

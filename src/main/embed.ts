@@ -1,6 +1,7 @@
 import { APIEmbedField } from "discord-api-types/v10";
 import { EmbedBuilder } from "discord.js";
 
+// #region CocoaEmbed
 /**
  * Like Embed but has method addField, addInlineField and addInlineFields,
  * 2rd and 3rd methods allow you to save a line of `inline: true`
@@ -29,3 +30,4 @@ export class CocoaEmbed extends EmbedBuilder {
         );
     }
 }
+// #endregion CocoaEmbed
