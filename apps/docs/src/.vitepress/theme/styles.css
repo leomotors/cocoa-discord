@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark-pink: #27171f;
+  --megu-pink: #fedadf;
+  --cocoa: #f7c6aa;
+  --cocoa-dark: #c39d86;
+  --cocoa-dark-2: #e18b69;
+
+  --vp-c-brand: var(--cocoa-dark-2);
+  --vp-c-brand-light: var(--cocoa);
+  --vp-c-brand-dark: var(--cocoa-dark);
+  --vp-c-bg-alt: var(--megu-pink);
+
+  --vp-button-brand-hover-border: var(--megu-pink);
+  --vp-button-brand-active-border: var(--megu-pink);
+}
+
+.dark {
+  --vp-c-brand: var(--cocoa);
+  --vp-c-brand-light: var(--cocoa);
+  --vp-c-brand-dark: var(--cocoa-dark);
+  --vp-c-bg-alt: var(--dark-pink);
+}
+
+.VPContent.is-home {
+  background-color: var(--megu-pink);
+}
+
+.dark .VPContent.is-home {
+  background-color: var(--dark-pink);
+}

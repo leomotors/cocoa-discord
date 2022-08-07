@@ -1,0 +1,98 @@
+{
+  "name": "cocoa-discord-utils",
+  "version": "2.2.0",
+  "description": "Yet another Discord Bot Utility npm package",
+  "main": "dist/main/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Leomotors/cocoa-discord-utils"
+  },
+  "homepage": "https://leomotors.me/cocoa-discord-utils/",
+  "author": "Leomotors",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn lm:config && tsc && ts-node postbuild.script.ts dist/**/*.js dist/*/**/*.js && rimraf \"dist/cli/**/*.d.ts*\"",
+    "clean": "rimraf dist coverage docs-dist typedoc-out",
+    "cb": "yarn clean && yarn build",
+    "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
+    "prepack": "yarn cb && yarn lint && yarn test",
+    "lint": "eslint src *.{js,ts} --max-warnings=0",
+    "format": "eslint src *.{js,ts} --fix",
+    "test": "FORCE_COLOR=2 vitest run",
+    "deps": "ncu -u !chalk",
+    "docs": "yarn lm:config && typedoc"
+  },
+  "packageManager": "yarn@3.2.1",
+  "bin": {
+    "cocoadu": "dist/cli/index.js"
+  },
+  "keywords": [
+    "discord-bot",
+    "slash-commands",
+    "discordjs"
+  ],
+  "devDependencies": {
+    "@cocoa-discord-utils/config": "workspace:*",
+    "@leomotors/scripts": "^3.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/node": "^18.6.4",
+    "@types/sinon": "^10.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "c8": "^7.12.0",
+    "eslint": "^8.21.0",
+    "npm-check-updates": "^16.0.5",
+    "rimraf": "^3.0.2",
+    "sinon": "^14.0.0",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.23.10",
+    "typescript": "^4.7.4",
+    "uglify-js": "^3.16.3",
+    "vitest": "^0.21.0"
+  },
+  "dependencies": {
+    "chalk": "=4.1.2",
+    "commander": "^9.4.0",
+    "discord.js": "^14.1.2"
+  },
+  "exports": {
+    ".": "./dist/main/index.js",
+    "./message": "./dist/message/index.js",
+    "./message/class": "./dist/message/class/index.js",
+    "./meta": "./dist/meta/index.js",
+    "./slash": "./dist/slash/index.js",
+    "./slash/class": "./dist/slash/class/index.js",
+    "./template": "./dist/template/index.js",
+    "./internal/base": "./dist/base/index.js",
+    "./internal/SlashSync": "./dist/slash/SlashSync.js"
+  },
+  "typings": "./dist/main/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "message": [
+        "./dist/message/index.d.ts"
+      ],
+      "message/class": [
+        "./dist/message/class/index.d.ts"
+      ],
+      "meta": [
+        "./dist/meta/index.d.ts"
+      ],
+      "slash": [
+        "./dist/slash/index.d.ts"
+      ],
+      "slash/class": [
+        "./dist/slash/class/index.d.ts"
+      ],
+      "template": [
+        "./dist/template/index.d.ts"
+      ],
+      "internal/base": [
+        "./dist/base/index.d.ts"
+      ],
+      "internal/SlashSync": [
+        "./dist/slash/SlashSync.d.ts"
+      ]
+    }
+  }
+}

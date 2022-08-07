@@ -50,6 +50,7 @@ jobs:
       - name: Build Package
         run: yarn build
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
-        run: yarn test --coverage
+        run: yarn workspace cocoa-discord-utils test --coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        directory: ./packages/cocoa-discord-utils/coverage
