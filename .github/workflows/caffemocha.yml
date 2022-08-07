@@ -53,4 +53,5 @@ jobs:
         run: yarn workspace cocoa-discord-utils test --coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        directory: ./packages/cocoa-discord-utils/coverage
+        with:
+          directory: ./packages/cocoa-discord-utils/coverage

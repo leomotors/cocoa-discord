@@ -1,5 +1,5 @@
 import {
-    ApplicationCommandType,
+    ApplicationCommandOptionType,
     ChatInputCommandInteraction,
     Client,
     Interaction,
@@ -206,7 +206,7 @@ export class SlashCenter extends ManagementCenter<
                         ?.map(
                             (opt) =>
                                 `${opt.name} (${
-                                    ApplicationCommandType[opt.type]
+                                    ApplicationCommandOptionType[opt.type]
                                 }): ${opt.description}${
                                     opt.required ? " **REQUIRED**" : ""
                                 }`

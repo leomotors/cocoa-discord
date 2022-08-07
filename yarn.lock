@@ -2234,6 +2234,7 @@ __metadata:
     discord.js: ^14.1.2
     eslint: ^8.21.0
     npm-check-updates: ^16.0.5
+    prettier: ^2.7.1
     rimraf: ^3.0.2
     sinon: ^14.0.0
     ts-node: ^10.9.1
