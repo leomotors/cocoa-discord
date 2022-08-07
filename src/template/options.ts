@@ -79,6 +79,18 @@ export class CocoaIntent
     intents: number[] = [];
     partials: number[] = [];
 
+    /** Push elements to `intents` */
+    addIntents(...items: number[]) {
+        this.intents.push(...items);
+        return this;
+    }
+
+    /** Push elements to `partials` */
+    addPartials(...items: number[]) {
+        this.partials.push(...items);
+        return this;
+    }
+
     /**
      * Add `Guilds`
      *
@@ -135,6 +147,15 @@ export class CocoaIntent
 
         if (withTyping) this.intents.push(I.DirectMessageTyping);
 
+        return this;
+    }
+
+    /**
+     * Add `GUILD_VOICE_STATES`,
+     * this is required if you use `@leomotors/music-bot`
+     */
+    useGuildVoice() {
+        this.intents.push(I.GuildVoiceStates);
         return this;
     }
 }

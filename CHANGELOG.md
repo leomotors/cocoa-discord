@@ -12,6 +12,11 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord-utils/rel
 
 - Some pre-release or beta build may not appear here
 
+## [2.2.0] - 2022-08-07
+
+- Add methods into `CocoaIntent`
+- `useGuildVoice()` will fix playing music issues with `@leomotors/music-bot`
+
 ## [2.1.0] - 2022-07-22
 
 - Added new `CocoaIntent` class, CocoaOptions are all deprecated
