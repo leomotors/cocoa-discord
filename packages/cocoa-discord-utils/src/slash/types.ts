@@ -5,11 +5,14 @@ import {
 
 import { Awaitable, Cog } from "../base";
 
+export const GlobalCommand = "Global";
+export type GlobalCommand = typeof GlobalCommand;
+
 /** This interface represent a single slash command */
 export interface CocoaSlash {
     command: RESTPostAPIApplicationCommandsJSONBody;
     func: (interaction: ChatInputCommandInteraction) => Promise<void>;
-    guild_ids?: string[];
+    guild_ids?: string[] | GlobalCommand;
     long_description?: string;
 }
 

@@ -7,7 +7,7 @@ import {
 } from "discord.js";
 
 import { Awaitable, commandsDict } from "../../base";
-import { CocoaSlash, CogSlash } from "../Interfaces";
+import { CocoaSlash, CogSlash } from "../types";
 
 import { V2Stores } from "./decorators";
 import { muckFuture, muckStorage } from "./legacy";
@@ -54,7 +54,7 @@ export abstract class CogSlashClass implements CogSlash {
         if (!store) return;
 
         for (const [cmdName, cmd] of Object.entries(store)) {
-            if (cmdName != cmd.name) {
+            if (cmdName !== cmd.name) {
                 throw new Error(
                     "Unexpected Error while building Slash Commands V2: Name not match"
                 );
@@ -68,7 +68,10 @@ export abstract class CogSlashClass implements CogSlash {
             };
 
             const paramNames = this.getParamsName(cmdName);
-            if (paramNames.length - 1 != Object.keys(cmd.params ?? {}).length) {
+            if (
+                paramNames.length - 1 !==
+                Object.keys(cmd.params ?? {}).length
+            ) {
                 throw new Error(
                     `Unexpected Error while building parameters in ${cmdName}: The parameter count given does not match the function`
                 );

@@ -117,6 +117,10 @@ export default defineConfig({
             link: "/cms/decorator",
           },
           {
+            text: "Specific-Guild Command",
+            link: "/cms/guild",
+          },
+          {
             text: "Message Commands",
             link: "/cms/message",
           },

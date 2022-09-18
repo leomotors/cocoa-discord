@@ -10,11 +10,16 @@ import chalk from "chalk";
 
 import { getElapsed } from "../meta";
 
+import { GlobalCommand } from "./types";
+
 /**
  * Represent the Command Data (discord.js-compatible interface)
  * and list of guilds to sync to
  */
-export type CommandsPack = [RESTPostAPIApplicationCommandsJSONBody, string[]];
+export type CommandsPack = [
+    RESTPostAPIApplicationCommandsJSONBody,
+    string[] | GlobalCommand
+];
 
 /** @internal Should not be used */
 export async function syncCommands(
@@ -55,16 +60,32 @@ export async function syncCommands(
             );
         }
     }
+
+    const globalCommands = commands.filter((pack) => pack[1] === GlobalCommand);
+    if (globalCommands.length) {
+        futures.push(
+            syncGuild(
+                globalCommands.map((pack) => pack[0]),
+                client,
+                null,
+                verbose
+            )
+        );
+    }
+
     await Promise.all(futures);
 }
 
 async function syncGuild(
     commands: RESTPostAPIApplicationCommandsJSONBody[],
     client: Client<true>,
-    guild: Guild,
+    guild: Guild | null,
     verbose = true
 ) {
     // * Modified From https://github.com/Androz2091/discord-sync-commands
+
+    const guildName = guild?.name ?? chalk.magenta("Application");
+
     try {
         const fetchCount = {
             created: 0,
@@ -73,11 +94,13 @@ async function syncGuild(
         };
 
         const start = new Date().getTime();
+
         console.log(
-            `[Slash Sync] Begin syncing commands for ${guild.name} (${commands.length} commands)`
+            `[Slash Sync] Begin syncing commands for ${guildName} (${commands.length} commands)`
         );
+
         const currentCommands = await client.application.commands.fetch({
-            guildId: guild.id,
+            guildId: guild?.id,
         })!;
 
         const newCommands = commands.filter(
@@ -87,9 +110,9 @@ async function syncGuild(
             fetchCount.created++;
             if (verbose)
                 console.log(
-                    `[Slash Sync VERBOSE] Created ${newCommand.name} in ${guild.name}`
+                    `[Slash Sync VERBOSE] Created ${newCommand.name} in ${guildName}`
                 );
-            await client.application.commands.create(newCommand, guild.id);
+            await client.application.commands.create(newCommand, guild?.id);
         }
 
         const deletedCommands = currentCommands
@@ -99,7 +122,7 @@ async function syncGuild(
             fetchCount.deleted++;
             if (verbose)
                 console.log(
-                    `[Slash Sync VERBOSE] Deleted ${deletedCommand.name} in ${guild.name}`
+                    `[Slash Sync VERBOSE] Deleted ${deletedCommand.name} in ${guildName}`
                 );
             await deletedCommand.delete();
         }
@@ -117,7 +140,7 @@ async function syncGuild(
             let modified = false;
 
             if (
-                previousCommand.description !=
+                previousCommand.description !==
                 (newCommand as ChatInputApplicationCommandData).description
             ) {
                 modified = true;
@@ -134,7 +157,7 @@ async function syncGuild(
                 fetchCount.updated++;
                 if (verbose) {
                     console.log(
-                        `[Slash Sync VERBOSE] Updated ${previousCommand.name} in ${guild.name}`
+                        `[Slash Sync VERBOSE] Updated ${previousCommand.name} in ${guildName}`
                     );
                 }
 
@@ -146,17 +169,17 @@ async function syncGuild(
 
         console.log(
             chalk.green(
-                `[Slash Sync DONE]: Syncing commands in ${
-                    guild.name
-                } finished, used ${getElapsed(start)} ms, CDU = ${
-                    fetchCount.created
-                },${fetchCount.deleted},${fetchCount.updated}`
+                `[Slash Sync DONE]: Syncing commands in ${guildName} finished, used ${getElapsed(
+                    start
+                )} ms, CDU = ${fetchCount.created},${fetchCount.deleted},${
+                    fetchCount.updated
+                }`
             )
         );
     } catch (error) {
         console.log(
             chalk.red(
-                `[Slash Sync ERROR]: Failed to sync ${guild.name} with error ${error}`
+                `[Slash Sync ERROR]: Failed to sync ${guildName} with error ${error}`
             )
         );
     }
@@ -181,7 +204,7 @@ export function isSameOption(
     oldOpt ??= [];
     newOpt ??= [];
 
-    if (oldOpt.length != newOpt.length) {
+    if (oldOpt.length !== newOpt.length) {
         return false;
     }
 
@@ -189,21 +212,21 @@ export function isSameOption(
         const a = oldOpt[index]!;
         const b = newOpt[index]!;
 
-        if (a.name != b.name) return false;
-        if (a.description != b.description) return false;
-        if (a.type != b.type) return false;
-        if ((a.required ?? false) != (b.required ?? false)) return false;
-        if ((a.autocomplete ?? false) != (b.autocomplete ?? false))
+        if (a.name !== b.name) return false;
+        if (a.description !== b.description) return false;
+        if (a.type !== b.type) return false;
+        if ((a.required ?? false) !== (b.required ?? false)) return false;
+        if ((a.autocomplete ?? false) !== (b.autocomplete ?? false))
             return false;
 
         if (a.choices?.length) {
-            if (a.choices?.length != b.choices?.length) {
+            if (a.choices?.length !== b.choices?.length) {
                 return false;
             }
 
             for (let i = 0; i < a.choices.length; i++) {
                 if (
-                    a.choices[i]!.name != b.choices[i]!.name ||
+                    a.choices[i]!.name !== b.choices[i]!.name ||
                     a.choices[i]!.value !== b.choices[i]!.value
                 ) {
                     return false;

@@ -4,7 +4,8 @@
 const config = {
     ...require("@cocoa-discord-utils/config/prettier-app"),
     importOrder: [
-        "^\\.\\/stub",
+        "^[.]/stub",
+        "^[.][.]/stub",
         "^vitest",
         "^discord[-.]",
         "^@discordjs",

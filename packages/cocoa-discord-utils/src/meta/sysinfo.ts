@@ -1,5 +1,5 @@
-import { exec as execCb } from "child_process";
-import { promisify } from "util";
+import { exec as execCb } from "node:child_process";
+import { promisify } from "node:util";
 
 const exec = promisify(execCb);
 

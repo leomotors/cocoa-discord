@@ -2,7 +2,7 @@ import { ActivityType } from "discord-api-types/v10";
 import { ActivityOptions, Client } from "discord.js";
 
 import chalk from "chalk";
-import { readFile } from "fs/promises";
+import { readFile } from "node:fs/promises";
 
 import { ArrayLoader } from "./loader";
 
@@ -12,7 +12,7 @@ const _defaultInterval = 10 * _min;
 export function isGroupLoader(
     loader: ArrayLoader<unknown>
 ): loader is ActivityGroupLoader {
-    return (loader as ActivityGroupLoader).getBuiltRandom != undefined;
+    return (loader as ActivityGroupLoader).getBuiltRandom !== undefined;
 }
 
 export class ActivityManager {
@@ -109,12 +109,12 @@ export class ActivityGroupLoader extends ArrayLoader<ActivityGroup> {
             for (const [type, activities] of Object.entries(data)) {
                 const t = activityToEnum[type.toLowerCase()];
 
-                if (typeof t == "undefined") {
+                if (typeof t === "undefined") {
                     throw Error(`Unknown Activity Type ${type}`);
                 }
 
                 for (const activity of activities ?? []) {
-                    if (typeof activity == "string")
+                    if (typeof activity === "string")
                         building.push({
                             type: t,
                             name: activity,

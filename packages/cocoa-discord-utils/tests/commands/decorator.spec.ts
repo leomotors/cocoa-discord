@@ -1,4 +1,5 @@
-// import "./stub";
+import "../stub";
+
 import { describe, expect, it } from "vitest";
 
 import {
@@ -7,7 +8,12 @@ import {
     RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { CogSlashClass, Help, Param, SlashCommand } from "../src/slash/class";
+import {
+    CogSlashClass,
+    Help,
+    Param,
+    SlashCommand,
+} from "../../src/slash/class";
 
 describe("Slash Command Class V2", () => {
     it("Has Data as expected", async () => {

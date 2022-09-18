@@ -18,8 +18,8 @@ import {
 } from "../template";
 
 import { CogSlashClass, replaceNameKeyword } from "./class";
-import { CocoaSlash, CogSlash } from "./Interfaces";
 import { CommandsPack, syncCommands } from "./SlashSync";
+import { CocoaSlash, CogSlash, GlobalCommand } from "./types";
 
 export interface SlashEvents {
     error: (
@@ -40,9 +40,12 @@ export class SlashCenter extends ManagementCenter<
 > {
     /**
      * @param client It is what it is
-     * @param guild_ids Array of Guild IDs, will *throw error* if is `undefined`
+     * @param guild_ids Array of Guild IDs, will *throw error* if is `undefined, use "Global" if you are registering Global Command
      */
-    constructor(client: Client, guild_ids: string[] | undefined) {
+    constructor(
+        client: Client,
+        guild_ids: string[] | undefined | GlobalCommand
+    ) {
         super(client, "Slash", { error: [], interaction: [] }, guild_ids);
 
         if (!guild_ids || guild_ids.length < 1)
@@ -62,6 +65,31 @@ export class SlashCenter extends ManagementCenter<
         await super.validateCommands();
     }
 
+    private async buildCommandsPack() {
+        const guildIdsSet = new Set<string>(
+            this.guild_ids === GlobalCommand ? [] : this.guild_ids!
+        );
+
+        const commandData: CommandsPack[] = [];
+        for (const cog of this.cogs) {
+            for (const [_, command] of Object.entries(cog.commands)) {
+                if (command.command.name === replaceNameKeyword) {
+                    throw "You cannot use AutoBuilder with Object Cog";
+                }
+
+                if (command.guild_ids !== GlobalCommand)
+                    command.guild_ids?.forEach((id) => guildIdsSet.add(id));
+
+                commandData.push([
+                    command.command,
+                    command.guild_ids ?? this.guild_ids!,
+                ]);
+            }
+        }
+
+        return { guildIdsSet, commandData };
+    }
+
     /** Sync Slash Commands, Call this **ONLY** after client is ready */
     async syncCommands(verbose = false) {
         if (!this.client.isReady()) {
@@ -75,25 +103,9 @@ export class SlashCenter extends ManagementCenter<
                 "Validate command by either calling this.validateCommands() or using checkLogin()"
             );
 
-        const commandSet = new Set<string>(this.guild_ids!);
+        const { guildIdsSet, commandData } = await this.buildCommandsPack();
 
-        const commandData: CommandsPack[] = [];
-        for (const cog of this.cogs) {
-            for (const [_, command] of Object.entries(cog.commands)) {
-                if (command.command.name == replaceNameKeyword) {
-                    throw "You cannot use AutoBuilder with Object Cog";
-                }
-
-                command.guild_ids?.forEach((id) => commandSet.add(id));
-
-                commandData.push([
-                    command.command,
-                    command.guild_ids ?? this.guild_ids!,
-                ]);
-            }
-        }
-
-        await syncCommands(commandData, this.client, [...commandSet], verbose);
+        await syncCommands(commandData, this.client, [...guildIdsSet], verbose);
     }
 
     private async handleInteraction(interaction: ChatInputCommandInteraction) {
@@ -143,7 +155,7 @@ export class SlashCenter extends ManagementCenter<
         this.validated = false;
         const allEmb = this.generateHelpCommandAsEmbed();
 
-        this.addCog({
+        this.addCogs({
             name: "Help",
             commands: {
                 help: {
@@ -172,7 +184,7 @@ export class SlashCenter extends ManagementCenter<
                             ephemeral,
                         });
                     },
-                    guild_ids: this.unionAllGuildIds(),
+                    guild_ids: this.unionAllGuildIds<true>(),
                 },
             },
         });

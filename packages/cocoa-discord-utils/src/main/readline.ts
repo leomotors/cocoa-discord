@@ -125,7 +125,7 @@ export class ConsoleManager {
         this.addCommand("reload", async () => {
             await Promise.all(
                 loaders.map((lod) =>
-                    typeof lod == "function" ? lod() : lod.reload()
+                    typeof lod === "function" ? lod() : lod.reload()
                 )
             );
             console.log(chalk.green("Successfully reloaded all Loaders"));

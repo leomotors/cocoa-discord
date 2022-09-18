@@ -55,8 +55,8 @@ export class EmbedStyle {
         const color = this.resolve(ctx, this.style.color);
         const footer = this.resolve(ctx, this.style.footer);
 
-        if (author == "invoker") embed = embed.setAuthor(Author(ctx));
-        else if (author == "bot")
+        if (author === "invoker") embed = embed.setAuthor(Author(ctx));
+        else if (author === "bot")
             embed = embed.setAuthor({
                 name: ctx.client.user!.username,
                 iconURL: ctx.client.user!.avatarURL() ?? "",
@@ -99,7 +99,7 @@ export class EmbedStyle {
         ctx: Context,
         res?: T | ((ctx: Context) => T)
     ): T | undefined {
-        if (typeof res == "function") {
+        if (typeof res === "function") {
             return res(ctx);
         }
         return res;

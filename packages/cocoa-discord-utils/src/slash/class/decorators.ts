@@ -2,6 +2,7 @@ import { APIApplicationCommandOptionChoice } from "discord-api-types/v10";
 import { ChatInputCommandInteraction } from "discord.js";
 
 import { ResolvesTo } from "../../base";
+import { GlobalCommand } from "../types";
 
 import { CogSlashClass } from "./cog";
 
@@ -22,13 +23,39 @@ export namespace V2Decorators {
         description?: string;
         long_description?: string;
         params?: Record<number, Params>;
-        guild_ids?: string[];
+        guild_ids?: string[] | GlobalCommand;
     }
 }
 
 export const V2Stores = {} as Record<string, Record<string, V2Decorators.Data>>;
 
-export function SlashCommand(description: string, guild_ids?: string[]) {
+export function Guilds(guild_ids: string[] | GlobalCommand) {
+    return (cog: CogSlashClass, key: string, _: unknown) => {
+        const cogStore = (V2Stores[cog.constructor.name] ??= {});
+
+        cogStore[key] = {
+            ...cogStore[key],
+            guild_ids,
+        };
+    };
+}
+
+type SlashCommandReturnType = (
+    cog: CogSlashClass,
+    key: string,
+    descriptor: unknown
+) => void;
+
+export function SlashCommand(description: string): SlashCommandReturnType;
+/** @deprecated Use `@Guilds` instead */
+export function SlashCommand(
+    description: string,
+    guild_ids?: string[]
+): SlashCommandReturnType;
+export function SlashCommand(
+    description: string,
+    guild_ids?: string[]
+): SlashCommandReturnType {
     return (cog: CogSlashClass, key: string, _: unknown) => {
         const cogStore = (V2Stores[cog.constructor.name] ??= {});
 

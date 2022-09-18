@@ -5,6 +5,7 @@ import chalk from "chalk";
 import { EmbedStyle } from "../main";
 import { MessageEvents } from "../message";
 import { SlashEvents } from "../slash";
+import { GlobalCommand } from "../slash/types";
 
 import { store } from "./store";
 import { Cog as BaseCog, BaseCommand, NonEmptyArray } from "./types";
@@ -17,7 +18,7 @@ export abstract class ManagementCenter<
     protected readonly client: Client;
     protected cogs: Cog[] = [];
     protected validated = false;
-    protected guild_ids?: string[];
+    protected guild_ids?: string[] | GlobalCommand;
 
     helpText = "";
     helpEmbed?: EmbedBuilder;
@@ -30,7 +31,7 @@ export abstract class ManagementCenter<
         protected eventHandler: {
             [event in keyof Events]: Events[event][];
         },
-        guild_ids?: string[]
+        guild_ids?: string[] | GlobalCommand
     ) {
         this.client = client;
         this.centerType = centerType;
@@ -39,6 +40,7 @@ export abstract class ManagementCenter<
         store.subscribe("login", this.validateCommands.bind(this));
     }
 
+    /** @deprecated Use `addCogs` instead */
     addCog(cog: Cog | CogClass) {
         this.validated = false;
         this.cogs.push(cog);
@@ -112,7 +114,7 @@ export abstract class ManagementCenter<
             cogNames.push(cog.name);
             for (const [name, cmd] of Object.entries(cog.commands)) {
                 cmdNames.push(name);
-                if (name != cmd.command.name)
+                if (name !== cmd.command.name)
                     throw Error("Command name mismatch");
             }
         }
@@ -158,11 +160,19 @@ export abstract class ManagementCenter<
         return this.helpEmbed;
     }
 
-    protected unionAllGuildIds() {
+    protected unionAllGuildIds<
+        HasGlobal extends boolean = false
+    >(): HasGlobal extends true ? string[] | GlobalCommand : string[] {
+        if (this.guild_ids === GlobalCommand)
+            return GlobalCommand as unknown as string[];
+
         const guildIds = new Set<string>(this.guild_ids ?? []);
 
         for (const cog of this.cogs) {
             for (const [_, cmd] of Object.entries(cog.commands)) {
+                if (cmd.guild_ids === GlobalCommand)
+                    return GlobalCommand as unknown as string[];
+
                 (cmd.guild_ids ?? []).forEach((guildId) =>
                     guildIds.add(guildId)
                 );

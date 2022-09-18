@@ -6,7 +6,7 @@ import { Awaitable, ManagementCenter, NonEmptyArray } from "../base";
 import { EmbedStyle } from "../main";
 
 import { CogMessageClass } from "./class";
-import { CogMessage } from "./Interfaces";
+import { CogMessage } from "./types";
 
 export type MessageCriteria =
     | ({ prefixes: NonEmptyArray<string> } & { mention?: false })
@@ -69,7 +69,7 @@ export class MessageCenter extends ManagementCenter<
             const regex = new RegExp(`<@!*${this.client.user!.id}> *`, "g");
             const st = message.content.replace(regex, "");
             let sp = 0;
-            while (st[sp] == " ") sp++;
+            while (st[sp] === " ") sp++;
             return st.slice(sp);
         }
 
@@ -188,7 +188,7 @@ export class MessageCenter extends ManagementCenter<
                         });
                     },
                     guild_ids: this.guild_ids
-                        ? this.unionAllGuildIds()
+                        ? this.unionAllGuildIds<false>()
                         : undefined,
                 },
             },

@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import fs from "fs";
+import fs from "node:fs";
 
 import { getConfig } from "./cocoarc";
 import { messageTemplate } from "./template/message";

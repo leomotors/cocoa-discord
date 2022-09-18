@@ -12,6 +12,11 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord-utils/rel
 
 - Some pre-release or beta build may not appear here
 
+## [2.3.0] - 2022-09-18
+
+- Added Global Command
+- Deprecated some functions
+
 ## [2.2.0] - 2022-08-07
 
 - Add methods into `CocoaIntent`

@@ -46,7 +46,7 @@ export function SlashFull(
 
         type m = CocoaSlash["command"];
 
-        if (command.name == replaceNameKeyword) (command as m).name = key;
+        if (command.name === replaceNameKeyword) (command as m).name = key;
 
         if (muck[command.name]) {
             throw Error(`Duplicate Command Name: ${command.name}`);
@@ -89,7 +89,7 @@ SlashFull.Ephemeral = (
 
         command.addBooleanOption(Ephemeral());
 
-        if (command.name == replaceNameKeyword) command.setName(key);
+        if (command.name === replaceNameKeyword) command.setName(key);
 
         if (muck[command.name]) {
             throw Error(`Duplicate Command Name: ${command.name}`);
@@ -129,7 +129,7 @@ SlashFull.Future = (
                 const command = (await resolver()).toJSON();
                 type m = CocoaSlash["command"];
 
-                if (command.name == replaceNameKeyword)
+                if (command.name === replaceNameKeyword)
                     (command as m).name = key;
 
                 const muck = (muckStorage[cog.constructor.name] ??= {});

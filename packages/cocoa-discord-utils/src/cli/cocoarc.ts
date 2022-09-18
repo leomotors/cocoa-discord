@@ -1,5 +1,5 @@
 import { OptionValues, program } from "commander";
-import { readFileSync } from "fs";
+import { readFileSync } from "node:fs";
 
 let opts: OptionValues;
 

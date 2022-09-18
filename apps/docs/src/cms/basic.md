@@ -123,6 +123,7 @@ mentioned in the next section.
 const center = new SlashCenter(
     client,
     process.env.GUILD_IDS?.split(",") ?? []
+    // or use "Global" for Global Commands
 );
 // addCog for adding 1 Cog, addCogs for multiple Cogs
 // However, addCogs also works on adding 1 Cog
