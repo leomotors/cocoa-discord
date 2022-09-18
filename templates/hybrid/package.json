@@ -9,19 +9,19 @@
     "clean": "rm -rf dist/*",
     "start": "node --es-module-specifier-resolution=node dist/bot.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src && prettier --check \"src/**/*.ts\"",
-    "deps": "ncu -u"
+    "lint": "eslint src && prettier --check \"src/**/*.ts\""
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
-    "eslint": "^8.21.0",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "eslint": "^8.23.1",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.3"
   },
   "dependencies": {
-    "cocoa-discord-utils": "^2.2.0",
-    "dotenv": "^16.0.1"
+    "cocoa-discord-utils": "workspace:^2.3.0",
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.2"
   }
 }

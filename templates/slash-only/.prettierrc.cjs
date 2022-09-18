@@ -9,10 +9,18 @@ const config = {
     semi: true,
     printWidth: 80,
     plugins: ["@trivago/prettier-plugin-sort-imports"],
+    importOrder: [
+        "^dotenv",
+        "^cocoa-discord-utils",
+        "^discord.js",
+        "^@discordjs",
+        "^[a-zA-Z]",
+        "^[.][.]",
+        "^[.]",
+    ],
     importOrderCaseInsensitive: true,
     importOrderSeparation: true,
-    importOrderSortSpecifiers: true,
-    importOrderParserPlugins: ["typescript", "decorators-legacy", "jsx"],
+    importOrderParserPlugins: ["typescript", "decorators-legacy"],
 };
 
 module.exports = config;

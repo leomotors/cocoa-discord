@@ -11,12 +11,33 @@ jobs:
     steps:
       - name: actions/checkout
         uses: actions/checkout@v2
-      - name: Yarn Cache
-        uses: c-hive/gha-yarn-cache@v2
-      - name: Install Dependencies (Yarn)
-        run: yarn install
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: ESLint & Prettier Check
-        run: yarn lint
+        run: pnpm lint
+
       - name: CRLF Phobia
         run: npx crlf-phobia *
   
@@ -27,12 +48,32 @@ jobs:
     steps:
       - name: actions/checkout
         uses: actions/checkout@v2
-      - name: Yarn Cache
-        uses: c-hive/gha-yarn-cache@v2
-      - name: Install Dependencies (Yarn)
-        run: yarn install
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: Generating Documents Test
-        run: yarn docs
+        run: pnpm run docs
 
   caffe-mocha:
     name: Caffe Mocha Test
@@ -43,14 +84,36 @@ jobs:
     steps:
       - name: actions/checkout
         uses: actions/checkout@v2
-      - name: Yarn Cache
-        uses: c-hive/gha-yarn-cache@v2
-      - name: Install Dependencies (Yarn)
-        run: yarn install
-      - name: Build Package
-        run: yarn build
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Build all Package
+        run: pnpm turbo run --filter=cocoa-discord-utils build
+
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
-        run: yarn workspace cocoa-discord-utils test --coverage
+        run: pnpm --filter=cocoa-discord-utils test:coverage
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

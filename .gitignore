@@ -31,10 +31,6 @@ yarn-error.log*
 # turbo
 .turbo
 
-# Yarn
-cache
-install-state.gz
-
 # generated
 *.g.*
 *.tgz
