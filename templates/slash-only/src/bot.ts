@@ -12,9 +12,10 @@ import { CocoaIntent } from "cocoa-discord-utils/template";
 import { Client } from "discord.js";
 
 import { MainCog, style } from "./commands/styles";
+import { GuildIds } from "./environment";
 
 const client = new Client(new CocoaIntent().useGuildSlash());
-const center = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
+const center = new SlashCenter(client, GuildIds);
 
 // ? Edit data/activites.json to customize, or delete this line to not use activities
 const activity = new ActivityGroupLoader("data/activities.json");

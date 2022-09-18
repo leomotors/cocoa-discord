@@ -9,6 +9,7 @@ const config = {
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
     ],
+    ignorePatterns: ["dist/**/*"],
     rules: {
         "prettier/prettier": "warn",
         eqeqeq: "warn",

@@ -15,6 +15,7 @@ import { Client } from "discord.js";
 import { MainMessageCog } from "./commands/main.message";
 import { MainSlashCog } from "./commands/main.slash";
 import { style } from "./commands/styles";
+import { GuildIds } from "./environment";
 
 const client = new Client(
     new CocoaIntent()
@@ -25,7 +26,7 @@ const client = new Client(
 );
 
 const mcenter = new MessageCenter(client, { prefixes: ["!"] });
-const scenter = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
+const scenter = new SlashCenter(client, GuildIds);
 
 // ? Edit data/activites.json to customize, or delete this line to not use activities
 const activity = new ActivityGroupLoader("data/activities.json");
