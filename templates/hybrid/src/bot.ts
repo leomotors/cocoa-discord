@@ -57,7 +57,7 @@ client.on("ready", (cli) => {
             .uptime()
             .toFixed(3)} seconds`
     );
-    scenter.syncCommands();
+    scenter.syncCommands(true);
     activityManager.nextActivity();
 });
 

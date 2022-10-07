@@ -37,7 +37,7 @@ client.on("ready", (cli) => {
             .uptime()
             .toFixed(3)} seconds`
     );
-    center.syncCommands();
+    center.syncCommands(true);
     activityManager.nextActivity();
 });
 

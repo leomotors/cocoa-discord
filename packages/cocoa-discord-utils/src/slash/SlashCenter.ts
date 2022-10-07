@@ -40,7 +40,7 @@ export class SlashCenter extends ManagementCenter<
 > {
     /**
      * @param client It is what it is
-     * @param guild_ids Array of Guild IDs, will *throw error* if is `undefined, use "Global" if you are registering Global Command
+     * @param guild_ids Array of Guild IDs, will *throw error* if is `undefined`, use "Global" if you are registering Global Command
      */
     constructor(
         client: Client,
