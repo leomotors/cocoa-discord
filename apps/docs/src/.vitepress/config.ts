@@ -1,11 +1,11 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "Cocoa Discord Utils",
+  title: "Cocoa Discord",
   description:
-    "Documentation for Cocoa Discord Utils, Library to simplify creating discord bots",
+    "Documentation for Cocoa Discord, Library to simplify creating discord bots",
   lastUpdated: true,
-  base: "/cocoa-discord-utils",
+  base: "/cocoa-discord",
 
   themeConfig: {
     footer: {
@@ -16,12 +16,12 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/Leomotors/cocoa-discord-utils",
+        link: "https://github.com/Leomotors/cocoa-discord",
       },
     ],
     editLink: {
       pattern:
-        "https://github.com/Leomotors/cocoa-discord-utils/edit/main/docs/:path",
+        "https://github.com/Leomotors/cocoa-discord/edit/main/docs/:path",
       text: "Suggest or contribute changes to this page",
     },
 
@@ -32,7 +32,7 @@ export default defineConfig({
       },
       {
         text: "TypeDoc",
-        link: "https://leomotors.github.io/cocoa-discord-utils/typedoc",
+        link: "https://leomotors.github.io/cocoa-discord/typedoc",
       },
     ],
     sidebar: [
@@ -60,7 +60,7 @@ export default defineConfig({
           },
           {
             text: "TypeDoc",
-            link: "https://leomotors.github.io/cocoa-discord-utils/typedoc",
+            link: "https://leomotors.github.io/cocoa-discord/typedoc",
           },
           {
             text: "Migrate from V1 -> V2",

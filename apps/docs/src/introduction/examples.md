@@ -3,7 +3,7 @@
 Because I could not cover all topics in this library, a good way to learn
 how I use this library is to see the source code of my bots.
 
-Discord Bots that use Cocoa Discord Utils
+Discord Bots that use Cocoa Discord
 
 - [Music Bot](https://github.com/Leomotors/music-bot) - Bot fragment that is used in Waifu Bot and cminusminus
 - [Waifu Bot](https://github.com/Leomotors/waifu-bot)

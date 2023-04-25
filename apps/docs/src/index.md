@@ -2,11 +2,11 @@
 layout: home
 
 
-title: Cocoa Discord Utils
+title: Cocoa Discord
 titleTemplate: Simplify creating Discord Bots
 
 hero:
-  name: Cocoa Discord Utils
+  name: Cocoa Discord
   text: For discord.js
   tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨
   actions:

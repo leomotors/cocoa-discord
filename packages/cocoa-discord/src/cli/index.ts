@@ -8,7 +8,7 @@ import create from "./create";
 
 program
     .name("cocoadu")
-    .description("CLI for Cocoa Discord Utils (Preview)")
+    .description("CLI for Cocoa Discord (Preview)")
     .version(CocoaVersion);
 
 program
@@ -22,8 +22,8 @@ program
 program.option("-c, --cocoarc", "Configuration Files Path", "./.cocoarc");
 
 console.log(
-    chalk.rgb(224, 190, 171)`cocoadu, CLI for Cocoa Discord Utils
-Cocoa Discord Utils Version: ${CocoaVersion}\n`
+    chalk.rgb(224, 190, 171)`cocoadu, CLI for Cocoa Discord
+Cocoa Discord Version: ${CocoaVersion}\n`
 );
 
 program.parse();
