@@ -20,7 +20,7 @@ Apart from miscellaneous utilities, it also come with powerful slash command (an
 ## Installation
 
 ```bash
-yarn add cocoa-discord-utils
+pnpm add cocoa-discord-utils
 ```
 
 or others up to your package manager.

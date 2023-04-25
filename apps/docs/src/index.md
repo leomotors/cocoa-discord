@@ -14,13 +14,13 @@ hero:
       link: /introduction/overview
     - theme: alt
       text: View on GitHub
-      link: https://github.com/Leomotors/cocoa-discord-utils
+      link: https://github.com/Leomotors/cocoa-discord
     - theme: alt
       text: View on NPM
-      link: https://www.npmjs.com/package/cocoa-discord-utils
+      link: https://www.npmjs.com/package/cocoa-discord
     - theme: alt
       text: View TypeDoc
-      link: https://leomotors.github.io/cocoa-discord-utils/typedoc
+      link: https://leomotors.github.io/cocoa-discord/typedoc
 
 features:
   - icon: 🍫

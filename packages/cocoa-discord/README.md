@@ -87,7 +87,7 @@ You can use [degit](https://www.npmjs.com/package/degit) to clone the template
 Example:
 
 ```bash
-npx degit leomotors/cocoa-discord-utils/templates/slash-only my-bot
+npx degit leomotors/cocoa-discord/templates/slash-only my-bot
 ```
 
 ## 📚 Documentation

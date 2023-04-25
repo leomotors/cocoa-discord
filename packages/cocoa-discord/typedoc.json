@@ -11,5 +11,5 @@
   ],
   "out": "docs-dist/typedoc",
   "includeVersion": true,
-  "readme": "README.g.md"
+  "readme": "README.md"
 }

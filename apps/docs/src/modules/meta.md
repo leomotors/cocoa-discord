@@ -16,4 +16,4 @@ It also contains a few utilities function
 
 ---
 
-For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)
+For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord/typedoc/)
