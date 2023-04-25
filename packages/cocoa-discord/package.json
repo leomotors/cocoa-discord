@@ -17,8 +17,8 @@
     "cb": "pnpm clean && pnpm build",
     "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
     "prepack": "pnpm cb && pnpm lint && pnpm test",
-    "lint": "eslint src *.{cjs,ts} --max-warnings=0",
-    "format": "eslint src *.{cjs,ts} --fix",
+    "lint": "eslint src tests *.{cjs,ts} --max-warnings=0",
+    "format": "eslint src tests *.{cjs,ts} --fix",
     "test": "FORCE_COLOR=2 vitest run",
     "test:coverage": "FORCE_COLOR=2 vitest run --coverage",
     "docs": "pnpm lm:config && typedoc"
