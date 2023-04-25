@@ -1,101 +1,101 @@
 {
-  "name": "cocoa-discord",
-  "version": "2.4.0-dev",
-  "description": "Yet another Discord Bot Utility npm package",
-  "main": "dist/main/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Leomotors/cocoa-discord"
-  },
-  "homepage": "https://leomotors.github.io/cocoa-discord",
-  "author": "Leomotors",
-  "license": "MIT",
-  "scripts": {
-    "build": "pnpm lm:config && tsc && rimraf \"dist/cli/**/*.d.ts*\"",
-    "clean": "rimraf dist coverage docs-dist typedoc-out",
-    "cb": "pnpm clean && pnpm build",
-    "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
-    "prepack": "pnpm cb && pnpm lint && pnpm test",
-    "lint": "eslint src *.{js,ts} --max-warnings=0",
-    "format": "eslint src *.{js,ts} --fix",
-    "test": "FORCE_COLOR=2 vitest run",
-    "test:coverage": "FORCE_COLOR=2 vitest run --coverage",
-    "docs": "pnpm lm:config && typedoc"
-  },
-  "bin": {
-    "cocoadu": "dist/cli/index.js"
-  },
-  "keywords": [
-    "discord-bot",
-    "slash-commands",
-    "discordjs"
-  ],
-  "devDependencies": {
-    "@cocoa-discord/config": "workspace:0.0.0",
-    "@leomotors/scripts": "^3.1.0",
-    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
-    "@types/node": "^18.8.3",
-    "@types/sinon": "^10.0.13",
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "@vitest/coverage-c8": "^0.24.0",
-    "c8": "^7.12.0",
-    "discord.js": "^14.3.0",
-    "eslint": "^8.24.0",
-    "npm-check-updates": "^16.3.8",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "sinon": "^14.0.1",
-    "ts-node": "^10.9.1",
-    "typedoc": "^0.23.15",
-    "typescript": "^4.8.4",
-    "vitest": "^0.24.0"
-  },
-  "dependencies": {
-    "@discordjs/builders": "^1.2.0",
-    "chalk": "4.1.2",
-    "commander": "^9.4.1",
-    "discord-api-types": "^0.37.12",
-    "discord.js": "^14.5.0"
-  },
-  "exports": {
-    ".": "./dist/main/index.js",
-    "./message": "./dist/message/index.js",
-    "./message/class": "./dist/message/class/index.js",
-    "./meta": "./dist/meta/index.js",
-    "./slash": "./dist/slash/index.js",
-    "./slash/class": "./dist/slash/class/index.js",
-    "./template": "./dist/template/index.js",
-    "./internal/base": "./dist/base/index.js",
-    "./internal/SlashSync": "./dist/slash/SlashSync.js"
-  },
-  "typings": "./dist/main/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "message": [
-        "./dist/message/index.d.ts"
-      ],
-      "message/class": [
-        "./dist/message/class/index.d.ts"
-      ],
-      "meta": [
-        "./dist/meta/index.d.ts"
-      ],
-      "slash": [
-        "./dist/slash/index.d.ts"
-      ],
-      "slash/class": [
-        "./dist/slash/class/index.d.ts"
-      ],
-      "template": [
-        "./dist/template/index.d.ts"
-      ],
-      "internal/base": [
-        "./dist/base/index.d.ts"
-      ],
-      "internal/SlashSync": [
-        "./dist/slash/SlashSync.d.ts"
-      ]
+    "name": "cocoa-discord",
+    "version": "3.0.0-dev",
+    "description": "Yet another Discord Bot Utility npm package",
+    "main": "dist/main/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Leomotors/cocoa-discord"
+    },
+    "homepage": "https://leomotors.github.io/cocoa-discord",
+    "author": "Leomotors",
+    "license": "MIT",
+    "scripts": {
+        "build": "pnpm lm:config && tsc && rimraf \"dist/cli/**/*.d.ts*\"",
+        "clean": "rimraf dist coverage docs-dist typedoc-out",
+        "cb": "pnpm clean && pnpm build",
+        "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
+        "prepack": "pnpm cb && pnpm lint && pnpm test",
+        "lint": "eslint src *.{js,ts} --max-warnings=0",
+        "format": "eslint src *.{js,ts} --fix",
+        "test": "FORCE_COLOR=2 vitest run",
+        "test:coverage": "FORCE_COLOR=2 vitest run --coverage",
+        "docs": "pnpm lm:config && typedoc"
+    },
+    "bin": {
+        "cocoadu": "dist/cli/index.js"
+    },
+    "keywords": [
+        "discord-bot",
+        "slash-commands",
+        "discordjs"
+    ],
+    "devDependencies": {
+        "@cocoa-discord/config": "workspace:0.0.0",
+        "@leomotors/scripts": "^3.1.0",
+        "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+        "@types/node": "^18.16.0",
+        "@types/sinon": "^10.0.14",
+        "@typescript-eslint/eslint-plugin": "^5.59.1",
+        "@typescript-eslint/parser": "^5.59.1",
+        "@vitest/coverage-c8": "^0.30.1",
+        "c8": "^7.13.0",
+        "discord.js": "^14.3.0",
+        "eslint": "^8.39.0",
+        "npm-check-updates": "^16.10.9",
+        "prettier": "^2.8.8",
+        "rimraf": "^5.0.0",
+        "sinon": "^15.0.4",
+        "ts-node": "^10.9.1",
+        "typedoc": "^0.24.6",
+        "typescript": "^5.0.4",
+        "vitest": "^0.30.1"
+    },
+    "dependencies": {
+        "@discordjs/builders": "^1.6.1",
+        "chalk": "5.2.0",
+        "commander": "^10.0.1",
+        "discord-api-types": "^0.37.40",
+        "discord.js": "^14.9.0"
+    },
+    "exports": {
+        ".": "./dist/main/index.js",
+        "./message": "./dist/message/index.js",
+        "./message/class": "./dist/message/class/index.js",
+        "./meta": "./dist/meta/index.js",
+        "./slash": "./dist/slash/index.js",
+        "./slash/class": "./dist/slash/class/index.js",
+        "./template": "./dist/template/index.js",
+        "./internal/base": "./dist/base/index.js",
+        "./internal/SlashSync": "./dist/slash/SlashSync.js"
+    },
+    "typings": "./dist/main/index.d.ts",
+    "typesVersions": {
+        "*": {
+            "message": [
+                "./dist/message/index.d.ts"
+            ],
+            "message/class": [
+                "./dist/message/class/index.d.ts"
+            ],
+            "meta": [
+                "./dist/meta/index.d.ts"
+            ],
+            "slash": [
+                "./dist/slash/index.d.ts"
+            ],
+            "slash/class": [
+                "./dist/slash/class/index.d.ts"
+            ],
+            "template": [
+                "./dist/template/index.d.ts"
+            ],
+            "internal/base": [
+                "./dist/base/index.d.ts"
+            ],
+            "internal/SlashSync": [
+                "./dist/slash/SlashSync.d.ts"
+            ]
+        }
     }
-  }
 }

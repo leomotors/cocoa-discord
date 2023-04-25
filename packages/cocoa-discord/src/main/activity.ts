@@ -60,7 +60,8 @@ export class ActivityManager {
     nextActivity() {
         if (!this.client.isReady()) return false;
 
-        this.client.user.setActivity(this.getRandomFunc());
+        // TODO handle null
+        this.client.user!.setActivity(this.getRandomFunc());
         return true;
     }
 }
