@@ -5,13 +5,13 @@ import { parseTime } from "../main";
 import { getLinuxUptime, getRAM, getTemp } from "../meta";
 
 export interface GetStatusFieldsOption {
-    inline?: boolean;
-    runningOn?: string;
-    temperature?: string;
-    systemMemory?: string;
-    botMemory?: string;
-    systemUptime?: string;
-    botUptime?: string;
+  inline?: boolean;
+  runningOn?: string;
+  temperature?: string;
+  systemMemory?: string;
+  botMemory?: string;
+  systemUptime?: string;
+  botUptime?: string;
 }
 
 /**
@@ -21,58 +21,58 @@ export interface GetStatusFieldsOption {
  * Or pass `inline: false` to make all fields block
  */
 export async function getStatusFields(
-    ctx: CommandInteraction | Message,
-    overrideDefault?: GetStatusFieldsOption
+  ctx: CommandInteraction | Message,
+  overrideDefault?: GetStatusFieldsOption
 ): Promise<APIEmbedField[]> {
-    const {
-        inline = true,
-        runningOn,
-        temperature,
-        systemMemory,
-        botMemory,
-        systemUptime,
-        botUptime,
-    } = overrideDefault ?? {};
+  const {
+    botMemory,
+    botUptime,
+    inline = true,
+    runningOn,
+    systemMemory,
+    systemUptime,
+    temperature,
+  } = overrideDefault ?? {};
 
-    const temp = await getTemp();
-    const tempStr = temp ? `${temp} °C` : "Unknown";
-    const ram = await getRAM();
+  const temp = await getTemp();
+  const tempStr = temp ? `${temp} °C` : "Unknown";
+  const ram = await getRAM();
 
-    return [
-        {
-            name: runningOn ?? "Running On",
-            value: `${process.platform} ${process.arch}, Node.js ${process.version}`,
-            inline,
-        },
-        {
-            name: "Websocket Ping",
-            value: `${ctx.client.ws.ping}ms`,
-            inline,
-        },
-        {
-            name: temperature ?? "Temperature",
-            value: tempStr,
-            inline,
-        },
-        {
-            name: systemMemory ?? "System Memory",
-            value: `${ram ? `${ram[0]}/${ram[1]} MB` : "Unknown"}`,
-            inline,
-        },
-        {
-            name: botMemory ?? "Bot Memory Usage",
-            value: `${Math.round(process.memoryUsage().rss / 1e3) / 1000} MB`,
-            inline,
-        },
-        {
-            name: systemUptime ?? "System Uptime",
-            value: `${(await getLinuxUptime()) ?? "Unknown"}`,
-            inline,
-        },
-        {
-            name: botUptime ?? "Process Uptime",
-            value: `${parseTime(process.uptime() * 1000)}`,
-            inline,
-        },
-    ];
+  return [
+    {
+      name: runningOn ?? "Running On",
+      value: `${process.platform} ${process.arch}, Node.js ${process.version}`,
+      inline,
+    },
+    {
+      name: "Websocket Ping",
+      value: `${ctx.client.ws.ping}ms`,
+      inline,
+    },
+    {
+      name: temperature ?? "Temperature",
+      value: tempStr,
+      inline,
+    },
+    {
+      name: systemMemory ?? "System Memory",
+      value: `${ram ? `${ram[0]}/${ram[1]} MB` : "Unknown"}`,
+      inline,
+    },
+    {
+      name: botMemory ?? "Bot Memory Usage",
+      value: `${Math.round(process.memoryUsage().rss / 1e3) / 1000} MB`,
+      inline,
+    },
+    {
+      name: systemUptime ?? "System Uptime",
+      value: `${(await getLinuxUptime()) ?? "Unknown"}`,
+      inline,
+    },
+    {
+      name: botUptime ?? "Process Uptime",
+      value: `${parseTime(process.uptime() * 1000)}`,
+      inline,
+    },
+  ];
 }

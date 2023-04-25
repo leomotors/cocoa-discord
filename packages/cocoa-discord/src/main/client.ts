@@ -1,6 +1,5 @@
-import { Client } from "discord.js";
-
 import chalk from "chalk";
+import { Client } from "discord.js";
 
 import { store } from "../base";
 
@@ -15,13 +14,13 @@ import { store } from "../base";
  * if you will login the client with this function
  */
 export async function checkLogin(client: Client, token: string | undefined) {
-    if (!token) {
-        throw "Check Fail! Bot token is undefined!";
-    }
+  if (!token) {
+    throw "Check Fail! Bot token is undefined!";
+  }
 
-    await store.notifyAwait("login");
+  await store.notifyAwait("login");
 
-    console.log(chalk.green("Checks done! Logging in..."));
+  console.log(chalk.green("Checks done! Logging in..."));
 
-    await client.login(token);
+  await client.login(token);
 }

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vitepress dev src --port=3186",
     "docs": "vitepress build src",
-    "lint": "eslint src"
+    "lint": "eslint src && prettier --check **/*.md",
+    "format": "eslint src --fix && prettier --write **/*.md"
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^3.0.1",

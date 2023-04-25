@@ -7,7 +7,7 @@
 
 Yet another Discord Bot Utility npm package
 
-*NOTE*: The current version (v2) uses discord.js 14, for discord.js 13, please visit branch `v1`
+_NOTE_: The current version (v2) uses discord.js 14, for discord.js 13, please visit branch `v1`
 
 ## ✨ Features
 
@@ -24,7 +24,7 @@ Yet another Discord Bot Utility npm package
 - Made for TypeScript
 
 - Flexible, because this is not a framework, part of your bot can be constructed
-using pure discord.js API
+  using pure discord.js API
 
 ## 🛍️ Subpackages
 
@@ -64,7 +64,7 @@ or /slash/class.
 
 **TypeScript is required to use Decorators**.
 
-**Note**: Command Management is inspired by discord.py's cogs system. 
+**Note**: Command Management is inspired by discord.py's cogs system.
 There are two implementations, one that are different, focuses on concept of
 one function per file. And the other one, that is more like discord.py's cogs.
 
@@ -98,7 +98,7 @@ npx degit leomotors/cocoa-discord-utils/templates/slash-only my-bot
 
 To use generic type and decorators (Cog Class Syntax), TypeScript is required.
 
-**Tips**: Always use *await* with any async methods, so try-catch works.
+**Tips**: Always use _await_ with any async methods, so try-catch works.
 
 ## 🍫 What is Cocoa?
 
@@ -106,7 +106,7 @@ Cocoa may have many meanings, but the name `Cocoa / ココア` that is used in t
 
 ![](https://c.tenor.com/82-e-VM5qNwAAAAC/gochiusa-cocoa.gif)
 
-*nigerundayo... Smokey!* — No one said
+_nigerundayo... Smokey!_ — No one said
 
 Anime Name: [Is the Order a Rabbit?](https://myanimelist.net/anime/21273/Gochuumon_wa_Usagi_Desu_ka)
 

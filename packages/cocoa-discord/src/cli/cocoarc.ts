@@ -4,32 +4,34 @@ import { readFileSync } from "node:fs";
 let opts: OptionValues;
 
 export function getOpts() {
-    if (opts) return opts;
-    return (opts = program.opts());
+  if (opts) return opts;
+  return (opts = program.opts());
 }
 
 export interface cocoarcConfig {
-    messagePath: string;
-    slashPath: string;
+  messagePath: string;
+  slashPath: string;
 }
 
 let config: cocoarcConfig;
 
 export function loadConfig(): cocoarcConfig {
-    const cocoarc = getOpts().cocoarc;
+  const cocoarc = getOpts().cocoarc;
 
-    let rc: cocoarcConfig = {} as cocoarcConfig;
-    try {
-        rc = JSON.parse(readFileSync(cocoarc).toString());
-    } catch (error) {}
+  let rc: cocoarcConfig = {} as cocoarcConfig;
+  try {
+    rc = JSON.parse(readFileSync(cocoarc).toString());
+  } catch (error) {
+    // ignore
+  }
 
-    return {
-        messagePath: rc.messagePath ?? "./src/commands/message",
-        slashPath: rc.slashPath ?? "./src/commands/slash",
-    };
+  return {
+    messagePath: rc.messagePath ?? "./src/commands/message",
+    slashPath: rc.slashPath ?? "./src/commands/slash",
+  };
 }
 
 export function getConfig() {
-    if (config) return config;
-    return (config = loadConfig());
+  if (config) return config;
+  return (config = loadConfig());
 }

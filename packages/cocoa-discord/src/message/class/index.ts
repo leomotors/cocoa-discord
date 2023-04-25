@@ -10,19 +10,19 @@ const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
  * ```
  */
 export abstract class CogMessageClass implements CogMessage {
-    name: string;
-    description?: string;
-    commands: commandsDict<CocoaMessage>;
+  name: string;
+  description?: string;
+  commands: commandsDict<CocoaMessage>;
 
-    constructor(name: string, description?: string) {
-        this.name = name;
-        this.description = description;
-        this.commands = muckStorage[this.constructor.name] ?? {};
+  constructor(name: string, description?: string) {
+    this.name = name;
+    this.description = description;
+    this.commands = muckStorage[this.constructor.name] ?? {};
 
-        for (const [_, cmd] of Object.entries(this.commands)) {
-            cmd.func = cmd.func.bind(this);
-        }
+    for (const [_, cmd] of Object.entries(this.commands)) {
+      cmd.func = cmd.func.bind(this);
     }
+  }
 }
 
 /**
@@ -37,32 +37,32 @@ export abstract class CogMessageClass implements CogMessage {
  * You may look at harunon.js to see this in action
  */
 export function MessageCommand(
-    command: Partial<CocoaMessage["command"]> = {},
-    guild_ids?: string[]
+  command: Partial<CocoaMessage["command"]> = {},
+  guild_ids?: string[]
 ) {
-    return (
-        cog: CogMessageClass,
-        key: string,
-        desc:
-            | TypedPropertyDescriptor<CocoaMessage["func"]>
-            | TypedPropertyDescriptor<PartialCocoaMessageFunction>
-    ) => {
-        const muck = (muckStorage[cog.constructor.name] ??= {});
+  return (
+    cog: CogMessageClass,
+    key: string,
+    desc:
+      | TypedPropertyDescriptor<CocoaMessage["func"]>
+      | TypedPropertyDescriptor<PartialCocoaMessageFunction>
+  ) => {
+    const muck = (muckStorage[cog.constructor.name] ??= {});
 
-        command.name ||= key;
+    command.name ||= key;
 
-        if (muck[command.name]) {
-            throw Error(`Duplicate Command Name: ${command.name}`);
-        }
+    if (muck[command.name]) {
+      throw Error(`Duplicate Command Name: ${command.name}`);
+    }
 
-        if (desc.value) {
-            muck[command.name] = {
-                command: command as CocoaMessage["command"],
-                func: desc.value,
-                guild_ids,
-            };
-        } else {
-            throw Error(`Unexpected Error: ${key}'s value is undefined`);
-        }
-    };
+    if (desc.value) {
+      muck[command.name] = {
+        command: command as CocoaMessage["command"],
+        func: desc.value,
+        guild_ids,
+      };
+    } else {
+      throw Error(`Unexpected Error: ${key}'s value is undefined`);
+    }
+  };
 }

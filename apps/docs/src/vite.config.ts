@@ -1,4 +1,5 @@
 import vueJsx from "@vitejs/plugin-vue-jsx";
+
 import path from "node:path";
 import { defineConfig } from "vite";
 

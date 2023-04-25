@@ -1,1 +1,1 @@
-packages/cocoa-discord-utils/README.md
+packages/cocoa-discord/README.md
