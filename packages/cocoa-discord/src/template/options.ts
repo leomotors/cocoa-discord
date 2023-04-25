@@ -6,7 +6,7 @@ import {
   Partials as P,
 } from "discord.js";
 
-import { Context } from "../main";
+import { Context } from "../main/index.js";
 
 /**
  * Basic Template Intents includes

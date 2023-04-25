@@ -2,9 +2,9 @@
 import chalk from "chalk";
 import { program } from "commander";
 
-import { CocoaVersion } from "../meta";
+import { CocoaVersion } from "../meta/index.js";
 
-import create from "./create";
+import create from "./create.js";
 
 program
   .name("cocoadu")

@@ -1,13 +1,13 @@
 import chalk from "chalk";
 import { Client, EmbedBuilder } from "discord.js";
 
-import { EmbedStyle } from "../main";
-import { MessageEvents } from "../message";
-import { SlashEvents } from "../slash";
-import { GlobalCommand } from "../slash/types";
+import { EmbedStyle } from "../main/index.js";
+import { MessageEvents } from "../message/index.js";
+import { SlashEvents } from "../slash/index.js";
+import { GlobalCommand } from "../slash/types.js";
 
-import { store } from "./store";
-import { Cog as BaseCog, BaseCommand, NonEmptyArray } from "./types";
+import { store } from "./store.js";
+import { Cog as BaseCog, BaseCommand, NonEmptyArray } from "./types.js";
 
 export abstract class ManagementCenter<
   Cog extends BaseCog<BaseCommand>,

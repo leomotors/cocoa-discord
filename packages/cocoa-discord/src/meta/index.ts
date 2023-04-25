@@ -1,4 +1,4 @@
-import { BuildTime, Version } from "./cocoa_meta.g";
+import { BuildTime, Version } from "./cocoa_meta.g.js";
 
 /** Represents Current Version of Cocoa Discord */
 export const CocoaVersion = Version;
@@ -8,5 +8,5 @@ export const CocoaVersion = Version;
  */
 export const CocoaBuildTime = BuildTime;
 
-export * from "./perf";
-export * from "./sysinfo";
+export * from "./perf.js";
+export * from "./sysinfo.js";

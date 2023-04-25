@@ -7,9 +7,9 @@ import {
   RESTPostAPIApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { getElapsed } from "../meta";
+import { getElapsed } from "../meta/index.js";
 
-import { GlobalCommand } from "./types";
+import { GlobalCommand } from "./types.js";
 
 /**
  * Represent the Command Data (discord.js-compatible interface)

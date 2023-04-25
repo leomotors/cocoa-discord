@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { Client } from "discord.js";
 
-import { store } from "../base";
+import { store } from "../base/index.js";
 
 /**
  * Do all the checks before login

@@ -6,11 +6,11 @@ import {
   RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { Awaitable, commandsDict } from "../../base";
-import { CocoaSlash, CogSlash } from "../types";
+import { Awaitable, commandsDict } from "../../base/index.js";
+import { CocoaSlash, CogSlash } from "../types.js";
 
-import { V2Stores } from "./decorators";
-import { muckFuture, muckStorage } from "./legacy";
+import { V2Stores } from "./decorators.js";
+import { muckFuture, muckStorage } from "./legacy.js";
 
 /**
  * This class implements `CogSlash`, by OOP magic, you can use

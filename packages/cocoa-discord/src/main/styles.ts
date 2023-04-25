@@ -5,10 +5,10 @@ import {
   Message,
 } from "discord.js";
 
-import { valueOf } from "../base";
-import { Author } from "../template";
+import { valueOf } from "../base/index.js";
+import { Author } from "../template/index.js";
 
-import { CocoaEmbed } from "./embed";
+import { CocoaEmbed } from "./embed.js";
 
 /** Message | Interaction */
 export type Context = Message | Interaction;

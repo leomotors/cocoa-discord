@@ -3,6 +3,6 @@
  * * You should not directly use anything from this subpackage
  */
 
-export * from "./Center";
-export * from "./types";
-export * from "./store";
+export * from "./Center.js";
+export * from "./types.js";
+export * from "./store.js";

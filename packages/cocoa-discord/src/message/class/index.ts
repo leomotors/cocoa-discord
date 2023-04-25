@@ -1,5 +1,9 @@
-import { CocoaMessage, CogMessage, PartialCocoaMessageFunction } from "..";
-import { commandsDict } from "../../base";
+import { commandsDict } from "../../base/index.js";
+import {
+  CocoaMessage,
+  CogMessage,
+  PartialCocoaMessageFunction,
+} from "../index.js";
 
 const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 

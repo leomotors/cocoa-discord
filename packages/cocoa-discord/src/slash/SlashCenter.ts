@@ -7,18 +7,18 @@ import {
   RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { Awaitable, ManagementCenter } from "../base";
-import { EmbedStyle } from "../main";
+import { Awaitable, ManagementCenter } from "../base/index.js";
+import { EmbedStyle } from "../main/index.js";
 import {
   CocoaBuilderFull,
   CocoaOption,
   Ephemeral,
   getEphemeral,
-} from "../template";
+} from "../template/index.js";
 
-import { CommandsPack, syncCommands } from "./SlashSync";
-import { CogSlashClass, replaceNameKeyword } from "./class";
-import { CocoaSlash, CogSlash, GlobalCommand } from "./types";
+import { CommandsPack, syncCommands } from "./SlashSync.js";
+import { CogSlashClass, replaceNameKeyword } from "./class/index.js";
+import { CocoaSlash, CogSlash, GlobalCommand } from "./types.js";
 
 export interface SlashEvents {
   error: (

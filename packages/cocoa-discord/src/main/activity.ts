@@ -3,7 +3,7 @@ import { ActivityType } from "discord-api-types/v10";
 import { ActivityOptions, Client } from "discord.js";
 import { readFile } from "node:fs/promises";
 
-import { ArrayLoader } from "./loader";
+import { ArrayLoader } from "./loader.js";
 
 const _min = 60 * 1000;
 const _defaultInterval = 10 * _min;
