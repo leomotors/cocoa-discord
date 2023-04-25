@@ -1,5 +1,5 @@
 {
-  "name": "@cocoa-discord-utils/turborepo",
+  "name": "@cocoa-discord/turborepo",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "docs": "FORCE_COLOR=2 turbo run docs --parallel && bash postdoc.bash"
   },
   "devDependencies": {
-    "turbo": "^1.5.5",
+    "turbo": "1.9.3",
     "typescript": "^4.8.4",
     "vite": "^3.1.6",
     "vitest": "^0.24.0"

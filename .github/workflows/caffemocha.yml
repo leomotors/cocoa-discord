@@ -109,12 +109,12 @@ jobs:
         run: pnpm install
 
       - name: Build all Package
-        run: pnpm turbo run --filter=cocoa-discord-utils build
+        run: pnpm turbo run --filter=cocoa-discord build
 
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
-        run: pnpm --filter=cocoa-discord-utils test:coverage
+        run: pnpm --filter=cocoa-discord test:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          directory: ./packages/cocoa-discord-utils/coverage
+          directory: ./packages/cocoa-discord/coverage

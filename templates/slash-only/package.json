@@ -1,5 +1,5 @@
 {
-  "name": "@cocoa-discord-utils/template-slash-only",
+  "name": "@cocoa-discord/template-slash-only",
   "version": "1.0.0",
   "description": "Template Discord Bot using Cocoa Discord Utils (Slash Commands Only)",
   "main": "dist/bot.js",

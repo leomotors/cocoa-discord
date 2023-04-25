@@ -2,7 +2,7 @@
 
 /** @type {import("prettier").Config & Record<string, unknown>} */
 const config = {
-    ...require("@cocoa-discord-utils/config/prettier-app"),
+    ...require("@cocoa-discord/config/prettier-app"),
     importOrder: [
         "^[.]/stub",
         "^[.][.]/stub",
