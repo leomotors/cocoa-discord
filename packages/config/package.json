@@ -1,5 +1,5 @@
 {
-  "name": "@cocoa-discord-utils/config",
+  "name": "@cocoa-discord/config",
   "version": "0.0.0",
   "private": true,
   "scripts": {

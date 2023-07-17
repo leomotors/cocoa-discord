@@ -1,5 +1,5 @@
 {
-  "name": "@cocoa-discord-utils/docs",
+  "name": "@cocoa-discord/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@cocoa-discord-utils/config": "workspace:0.0.0",
+    "@cocoa-discord/config": "workspace:0.0.0",
     "@vitejs/plugin-vue-jsx": "3.0.1",
     "@vue/eslint-config-prettier": "7.1.0",
     "@vue/eslint-config-typescript": "11.0.3",

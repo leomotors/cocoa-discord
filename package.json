@@ -1,5 +1,5 @@
 {
-  "name": "@cocoa-discord-utils/turborepo",
+  "name": "@cocoa-discord/turborepo",
   "version": "0.0.0",
   "private": true,
   "scripts": {

@@ -1,0 +1,7 @@
+{
+  "extends": "@cocoa-discord/config/tsconfig-package.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["./src/**/*"]
+}

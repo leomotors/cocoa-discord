@@ -31,7 +31,7 @@
     "discordjs"
   ],
   "devDependencies": {
-    "@cocoa-discord-utils/config": "workspace:0.0.0",
+    "@cocoa-discord/config": "workspace:0.0.0",
     "@leomotors/scripts": "3.1.0",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "@types/node": "20.4.2",

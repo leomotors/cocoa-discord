@@ -23,7 +23,7 @@ importers:
 
   apps/docs:
     devDependencies:
-      '@cocoa-discord-utils/config':
+      '@cocoa-discord/config':
         specifier: workspace:0.0.0
         version: link:../../packages/config
       '@vitejs/plugin-vue-jsx':
@@ -66,7 +66,7 @@ importers:
         specifier: 3.3.4
         version: 3.3.4
 
-  packages/cocoa-discord-utils:
+  packages/cocoa-discord:
     dependencies:
       '@discordjs/builders':
         specifier: ^1.6.3
@@ -84,7 +84,7 @@ importers:
         specifier: ^14.11.0
         version: 14.11.0
     devDependencies:
-      '@cocoa-discord-utils/config':
+      '@cocoa-discord/config':
         specifier: workspace:0.0.0
         version: link:../config
       '@leomotors/scripts':

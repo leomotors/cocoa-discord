@@ -2,7 +2,7 @@
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  ...require("@cocoa-discord-utils/config/eslint-app"),
+  ...require("@cocoa-discord/config/eslint-app"),
   overrides: [
     {
       files: "./tests/**/*",
