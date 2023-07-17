@@ -1,6 +1,4 @@
-import { ChatInputCommandInteraction } from "discord.js";
-
-import { SlashCommandBuilder } from "@discordjs/builders";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 import { commandsDict } from "../../base/index.js";
 import { Ephemeral, getEphemeral } from "../../template/index.js";
