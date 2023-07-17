@@ -9,9 +9,9 @@ import { replaceNameKeyword } from "../slash/class";
  * @returns SlashCommandBuilder with given name and description set
  */
 export function CocoaBuilderFull(name: string, description?: string) {
-    const c = new SlashCommandBuilder().setName(name);
-    if (description) c.setDescription(description);
-    return c;
+  const c = new SlashCommandBuilder().setName(name);
+  if (description) c.setDescription(description);
+  return c;
 }
 
 /**
@@ -22,7 +22,7 @@ export function CocoaBuilderFull(name: string, description?: string) {
  * @returns SlashCommandBuilder with given description set
  */
 export function CocoaBuilder(description?: string) {
-    return CocoaBuilderFull(replaceNameKeyword, description);
+  return CocoaBuilderFull(replaceNameKeyword, description);
 }
 
 /**
@@ -35,17 +35,14 @@ export function CocoaBuilder(description?: string) {
  * description and required are optional, `required` is default to `false`
  */
 export function CocoaOption(
-    name: string,
-    description?: string,
-    required = false
+  name: string,
+  description?: string,
+  required = false,
 ) {
-    if (description)
-        return (option: any) =>
-            option
-                .setName(name)
-                .setDescription(description)
-                .setRequired(required);
-    return (option: any) => option.setName(name).setRequired(required);
+  if (description)
+    return (option: any) =>
+      option.setName(name).setDescription(description).setRequired(required);
+  return (option: any) => option.setName(name).setRequired(required);
 }
 
 /**
@@ -58,10 +55,10 @@ export function CocoaOption(
  * Description and Name are optional, specify them to override default
  */
 export function Ephemeral(
-    description = "Make your request ephemeral",
-    name = "ephemeral"
+  description = "Make your request ephemeral",
+  name = "ephemeral",
 ) {
-    return CocoaOption(name, description, false);
+  return CocoaOption(name, description, false);
 }
 
 /**
@@ -79,8 +76,8 @@ export function Ephemeral(
  * pass that as the second argument to correctly retrieve parameters!
  */
 export function getEphemeral(
-    ctx: ChatInputCommandInteraction,
-    override?: string
+  ctx: ChatInputCommandInteraction,
+  override?: string,
 ) {
-    return ctx.options.getBoolean(override ?? "ephemeral") ?? false;
+  return ctx.options.getBoolean(override ?? "ephemeral") ?? false;
 }

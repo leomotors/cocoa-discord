@@ -1,5 +1,5 @@
 export function messageTemplate(name: string) {
-    return `import { CocoaMessage } from "cocoa-discord-utils/message";
+  return `import { CocoaMessage } from "cocoa-discord-utils/message";
 
 export const ${name}: CocoaMessage = {
     command: {

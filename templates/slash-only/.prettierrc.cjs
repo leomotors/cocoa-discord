@@ -1,9 +1,9 @@
 // @ts-check
 
-/** @type {import("prettier").Config & Record<string, unknown>} */
+/** @satisfies {import("@trivago/prettier-plugin-sort-imports").PrettierConfig} */
 const config = {
     bracketSpacing: true,
-    tabWidth: 4,
+    tabWidth: 2,
     useTabs: false,
     singleQuote: false,
     semi: true,
