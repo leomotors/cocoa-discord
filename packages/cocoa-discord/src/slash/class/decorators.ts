@@ -131,7 +131,7 @@ export namespace Param {
     description: string | undefined,
     option?: ParamOptions,
   ) {
-    const { required = true, autocomplete = false } = option ?? {};
+    const { autocomplete = false, required = true } = option ?? {};
 
     return (
       cog: CogSlashClass,

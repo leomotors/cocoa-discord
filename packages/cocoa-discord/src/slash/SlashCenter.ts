@@ -17,8 +17,8 @@ import {
   getEphemeral,
 } from "../template";
 
-import { CogSlashClass, replaceNameKeyword } from "./class";
 import { CommandsPack, syncCommands } from "./SlashSync";
+import { CogSlashClass, replaceNameKeyword } from "./class";
 import { CocoaSlash, CogSlash, GlobalCommand } from "./types";
 
 export interface SlashEvents {
@@ -99,7 +99,7 @@ export class SlashCenter extends ManagementCenter<
         "Validate command by either calling this.validateCommands() or using checkLogin()",
       );
 
-    const { guildIdsSet, commandData } = await this.buildCommandsPack();
+    const { commandData, guildIdsSet } = await this.buildCommandsPack();
 
     await syncCommands(commandData, this.client, [...guildIdsSet], verbose);
   }

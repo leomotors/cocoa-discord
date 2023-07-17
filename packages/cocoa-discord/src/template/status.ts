@@ -25,13 +25,13 @@ export async function getStatusFields(
   overrideDefault?: GetStatusFieldsOption,
 ): Promise<APIEmbedField[]> {
   const {
+    botMemory,
+    botUptime,
     inline = true,
     runningOn,
-    temperature,
     systemMemory,
-    botMemory,
     systemUptime,
-    botUptime,
+    temperature,
   } = overrideDefault ?? {};
 
   const temp = await getTemp();

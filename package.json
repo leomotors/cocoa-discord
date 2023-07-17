@@ -11,6 +11,7 @@
     "docs": "FORCE_COLOR=2 turbo run docs --parallel && bash postdoc.bash"
   },
   "devDependencies": {
+    "@leomotors/config": "0.11.0",
     "turbo": "1.10.7",
     "typescript": "5.1.6",
     "vite": "4.4.4",

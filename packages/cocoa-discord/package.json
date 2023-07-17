@@ -3,6 +3,7 @@
   "version": "2.4.0",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/Leomotors/cocoa-discord-utils"
@@ -16,8 +17,8 @@
     "cb": "pnpm clean && pnpm build",
     "lm:config": "lm-config src/meta/cocoa_meta.g.ts",
     "prepack": "pnpm cb && pnpm lint && pnpm test",
-    "lint": "eslint src *.{js,ts} --max-warnings=0",
-    "format": "eslint src *.{js,ts} --fix",
+    "lint": "eslint src *.{cjs,ts} --max-warnings=0",
+    "format": "eslint src *.{cjs,ts} --fix",
     "test": "FORCE_COLOR=2 vitest run",
     "test:coverage": "FORCE_COLOR=2 vitest run --coverage",
     "docs": "pnpm lm:config && typedoc"
@@ -31,7 +32,6 @@
     "discordjs"
   ],
   "devDependencies": {
-    "@cocoa-discord/config": "workspace:0.0.0",
     "@leomotors/scripts": "3.1.0",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "@types/node": "20.4.2",
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@discordjs/builders": "^1.6.3",
-    "chalk": "5.3.0",
+    "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "discord-api-types": "^0.37.48",
     "discord.js": "^14.11.0"

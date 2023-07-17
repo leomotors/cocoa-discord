@@ -60,7 +60,7 @@ export class ActivityManager {
   nextActivity() {
     if (!this.client.isReady()) return false;
 
-    this.client.user.setActivity(this.getRandomFunc());
+    (this.client as Client<true>).user.setActivity(this.getRandomFunc());
     return true;
   }
 }

@@ -21,7 +21,9 @@ export function loadConfig(): cocoarcConfig {
   let rc: cocoarcConfig = {} as cocoarcConfig;
   try {
     rc = JSON.parse(readFileSync(cocoarc).toString());
-  } catch (error) {}
+  } catch (error) {
+    // do nothing
+  }
 
   return {
     messagePath: rc.messagePath ?? "./src/commands/message",

@@ -1,8 +1,6 @@
 // @ts-check
 
-/** @type {import("prettier").Config & Record<string, unknown>} */
-const config = {
-  ...require("@cocoa-discord/config/prettier-app"),
+module.exports = require("@leomotors/config/prettier").withSortImports({
   importOrder: [
     "^[.]/stub",
     "^[.][.]/stub",
@@ -13,6 +11,4 @@ const config = {
     "^[.][.]",
     "^[.]",
   ],
-};
-
-module.exports = config;
+});
