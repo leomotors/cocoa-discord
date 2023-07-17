@@ -1,10 +1,10 @@
 import { APIApplicationCommandOptionChoice } from "discord-api-types/v10";
 import { ChatInputCommandInteraction } from "discord.js";
 
-import { ResolvesTo } from "../../base";
-import { GlobalCommand } from "../types";
+import { ResolvesTo } from "../../base/index.js";
+import { GlobalCommand } from "../types.js";
 
-import { CogSlashClass } from "./cog";
+import { CogSlashClass } from "./cog.js";
 
 export namespace V2Decorators {
   export interface Params {

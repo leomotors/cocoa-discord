@@ -1,8 +1,8 @@
 import { APIEmbedField } from "discord-api-types/v10";
 import { CommandInteraction, Message } from "discord.js";
 
-import { parseTime } from "../main";
-import { getLinuxUptime, getRAM, getTemp } from "../meta";
+import { parseTime } from "../main/index.js";
+import { getLinuxUptime, getRAM, getTemp } from "../meta/index.js";
 
 export interface GetStatusFieldsOption {
   inline?: boolean;

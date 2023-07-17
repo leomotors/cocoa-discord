@@ -4,7 +4,7 @@ import { ActivityOptions, Client } from "discord.js";
 import chalk from "chalk";
 import { readFile } from "node:fs/promises";
 
-import { ArrayLoader } from "./loader";
+import { ArrayLoader } from "./loader.js";
 
 const _min = 60 * 1000;
 const _defaultInterval = 10 * _min;

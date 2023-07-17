@@ -1,9 +1,9 @@
 import chalk from "chalk";
 import fs from "node:fs";
 
-import { getConfig } from "./cocoarc";
-import { messageTemplate } from "./template/message";
-import { slashTemplate } from "./template/slash";
+import { getConfig } from "./cocoarc.js";
+import { messageTemplate } from "./template/message.js";
+import { slashTemplate } from "./template/slash.js";
 
 function writeTemplate(location: string, data: string) {
   if (fs.existsSync(location)) {

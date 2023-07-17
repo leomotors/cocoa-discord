@@ -2,11 +2,11 @@ import { ChatInputCommandInteraction } from "discord.js";
 
 import { SlashCommandBuilder } from "@discordjs/builders";
 
-import { CocoaSlash } from "..";
-import { commandsDict } from "../../base";
-import { Ephemeral, getEphemeral } from "../../template";
+import { commandsDict } from "../../base/index.js";
+import { Ephemeral, getEphemeral } from "../../template/index.js";
+import { CocoaSlash } from "../types.js";
 
-import { CogSlashClass } from "./cog";
+import { CogSlashClass } from "./cog.js";
 
 export const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 export const muckFuture: {

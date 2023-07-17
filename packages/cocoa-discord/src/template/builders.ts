@@ -2,7 +2,7 @@
 // Disable no-explicit-any because I'm too lazy to write all possible types
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
-import { replaceNameKeyword } from "../slash/class";
+import { replaceNameKeyword } from "../slash/class/index.js";
 
 /**
  * Basically `SlashCommandBuilder` but with name and description

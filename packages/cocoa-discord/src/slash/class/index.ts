@@ -1,3 +1,3 @@
-export * from "./cog";
-export * from "./legacy";
-export * from "./decorators";
+export * from "./cog.js";
+export * from "./legacy.js";
+export * from "./decorators.js";

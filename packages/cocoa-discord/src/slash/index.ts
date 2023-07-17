@@ -1,3 +1,3 @@
-export * from "./types";
-export * from "./SlashCenter";
-export * from "./SlashSync";
+export * from "./SlashCenter.js";
+export * from "./SlashSync.js";
+export * from "./types.js";

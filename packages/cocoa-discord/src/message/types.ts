@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 
-import { Cog, NonEmptyArray } from "../base";
+import { Cog, NonEmptyArray } from "../base/index.js";
 
 export interface CocoaMessageCommandOptions {
   name: string;

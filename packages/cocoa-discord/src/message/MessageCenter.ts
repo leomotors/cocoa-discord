@@ -2,11 +2,11 @@ import { Client, Message } from "discord.js";
 
 import chalk from "chalk";
 
-import { Awaitable, ManagementCenter, NonEmptyArray } from "../base";
-import { EmbedStyle } from "../main";
+import { Awaitable, ManagementCenter, NonEmptyArray } from "../base/index.js";
+import { EmbedStyle } from "../main/index.js";
 
-import { CogMessageClass } from "./class";
-import { CogMessage } from "./types";
+import { CogMessageClass } from "./class/index.js";
+import { CogMessage } from "./types.js";
 
 export type MessageCriteria =
   | ({ prefixes: NonEmptyArray<string> } & { mention?: false })

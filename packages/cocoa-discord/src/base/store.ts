@@ -1,4 +1,4 @@
-import { Awaitable } from "./types";
+import { Awaitable } from "./types.js";
 
 export type PureFunction = () => Awaitable<void>;
 

@@ -3,7 +3,7 @@ import {
   RESTPostAPIApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { Awaitable, Cog } from "../base";
+import { Awaitable, Cog } from "../base/index.js";
 
 export const GlobalCommand = "Global";
 export type GlobalCommand = typeof GlobalCommand;

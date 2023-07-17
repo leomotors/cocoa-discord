@@ -1,2 +1,2 @@
-export * from "./types";
-export * from "./MessageCenter";
+export * from "./types.js";
+export * from "./MessageCenter.js";
