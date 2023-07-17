@@ -17,8 +17,8 @@ import {
   getEphemeral,
 } from "../template/index.js";
 
-import { CogSlashClass, replaceNameKeyword } from "./class/index.js";
 import { CommandsPack, syncCommands } from "./SlashSync.js";
+import { CogSlashClass, replaceNameKeyword } from "./class/index.js";
 import { CocoaSlash, CogSlash, GlobalCommand } from "./types.js";
 
 export interface SlashEvents {
