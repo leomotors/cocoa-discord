@@ -1,1 +1,1 @@
-<!-- @include: ../../../packages/cocoa-discord-utils/CHANGELOG.md -->
+<!-- @include: ../../../packages/cocoa-discord/CHANGELOG.md -->

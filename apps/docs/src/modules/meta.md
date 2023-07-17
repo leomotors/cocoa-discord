@@ -1,7 +1,7 @@
 # Meta
 
 ```ts
-import { ... } from "cocoa-discord-utils/meta";
+import { ... } from "cocoa-discord/meta";
 ```
 
 `meta` is a module that contains metainfo about this library as listed here
@@ -16,4 +16,4 @@ It also contains a few utilities function
 
 ---
 
-For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)
+For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord/typedoc/)

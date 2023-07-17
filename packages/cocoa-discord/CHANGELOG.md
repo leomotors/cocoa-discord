@@ -2,15 +2,20 @@
 
 All notables change for Cocoa Discord Utils will be noted here
 
-See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord-utils/releases)
+See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 
 ## Note
 
 - Changelog before 1.0.0-pre is not available here
 
-- Not all change will be noted, see commits for *full* changelog
+- Not all change will be noted, see commits for _full_ changelog
 
 - Some pre-release or beta build may not appear here
+
+## [3.0.0] - 2023-07-17
+
+- refactor: Package is now pure ESM
+- feat: use `.set()` for syncing commands
 
 ## [2.3.0] - 2022-09-18
 
@@ -71,16 +76,16 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord-utils/rel
 ## [1.4.1] - 2022-03-28
 
 - Fix fatal bug that will fail every command with embed style `author: invoker`
-when invoked by user with no avatar
+  when invoked by user with no avatar
 
 ## [1.4.0] - 2022-03-27
 
 - Specfic-Guild Command for Message Center
 
 - This library nows only create Readline Interface when you use the function
-that require them. It also exports that interface for you in order to prevent
-more than one interface being created. In addition to that, you can also provide
-your interface.
+  that require them. It also exports that interface for you in order to prevent
+  more than one interface being created. In addition to that, you can also provide
+  your interface.
 
 ## [1.3.0] - 2022-03-24
 
@@ -95,7 +100,7 @@ your interface.
 - /meta: getTemp and getRAM now returns `null` if not applicable
 
 - You can now use SlashCommandBuidler without needing to call .toJSON()
-*this currently, only works on `CogSlashClass`*
+  _this currently, only works on `CogSlashClass`_
 
 ## [1.2.0-pre.1] - 2022-03-09
 
@@ -128,7 +133,7 @@ your interface.
 ## [1.0.0] - 2022-02-22
 
 - @MessageCommand (CogMessageClass) no longer require 'name' field.
-(You can still specify it to override what ever your method name is)
+  (You can still specify it to override what ever your method name is)
 
 - Added `checkLogin()`
 
@@ -145,7 +150,7 @@ your interface.
 ## [1.0.0-rc.4] - 2022-02-20
 
 - **BREAKING**: `ephemeral` is now `Ephemeral`, and some few interfaces have
-their name changed
+  their name changed
 
 - Added `getEphemeral(ctx)` to shortly retrieve ephemeral option
 

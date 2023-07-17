@@ -1,13 +1,13 @@
 # Cocoa Discord Utils
 
-[![](https://img.shields.io/npm/v/cocoa-discord-utils.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord-utils)
-[![](https://img.shields.io/npm/dt/cocoa-discord-utils.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord-utils)
-[![](https://github.com/Leomotors/cocoa-discord-utils/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/Leomotors/cocoa-discord-utils/actions)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/Leomotors/cocoa-discord-utils/main.svg?style=flat-square)](https://codecov.io/gh/Leomotors/cocoa-discord-utils/)
+[![](https://img.shields.io/npm/v/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
+[![](https://img.shields.io/npm/dt/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
+[![](https://github.com/Leomotors/cocoa-discord/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/Leomotors/cocoa-discord/actions)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/Leomotors/cocoa-discord/main.svg?style=flat-square)](https://codecov.io/gh/Leomotors/cocoa-discord/)
 
 Yet another Discord Bot Utility npm package
 
-*NOTE*: The current version (v2) uses discord.js 14, for discord.js 13, please visit branch `v1`
+_NOTE_: The current version (v2) uses discord.js 14, for discord.js 13, please visit branch `v1`
 
 ## ✨ Features
 
@@ -24,7 +24,7 @@ Yet another Discord Bot Utility npm package
 - Made for TypeScript
 
 - Flexible, because this is not a framework, part of your bot can be constructed
-using pure discord.js API
+  using pure discord.js API
 
 ## 🛍️ Subpackages
 
@@ -64,7 +64,7 @@ or /slash/class.
 
 **TypeScript is required to use Decorators**.
 
-**Note**: Command Management is inspired by discord.py's cogs system. 
+**Note**: Command Management is inspired by discord.py's cogs system.
 There are two implementations, one that are different, focuses on concept of
 one function per file. And the other one, that is more like discord.py's cogs.
 
@@ -87,18 +87,18 @@ You can use [degit](https://www.npmjs.com/package/degit) to clone the template
 Example:
 
 ```bash
-npx degit leomotors/cocoa-discord-utils/templates/slash-only my-bot
+npx degit leomotors/cocoa-discord/templates/slash-only my-bot
 ```
 
 ## 📚 Documentation
 
-- Doc & Guide: [LINK](https://leomotors.github.io/cocoa-discord-utils)
+- Doc & Guide: [LINK](https://leomotors.github.io/cocoa-discord)
 
 **Note**: For runtime safety, **please use TypeScript** or activate @ts-check on JavaScript.
 
 To use generic type and decorators (Cog Class Syntax), TypeScript is required.
 
-**Tips**: Always use *await* with any async methods, so try-catch works.
+**Tips**: Always use _await_ with any async methods, so try-catch works.
 
 ## 🍫 What is Cocoa?
 
@@ -106,7 +106,7 @@ Cocoa may have many meanings, but the name `Cocoa / ココア` that is used in t
 
 ![](https://c.tenor.com/82-e-VM5qNwAAAAC/gochiusa-cocoa.gif)
 
-*nigerundayo... Smokey!* — No one said
+_nigerundayo... Smokey!_ — No one said
 
 Anime Name: [Is the Order a Rabbit?](https://myanimelist.net/anime/21273/Gochuumon_wa_Usagi_Desu_ka)
 

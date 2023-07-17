@@ -5,7 +5,7 @@ export default defineConfig({
   description:
     "Documentation for Cocoa Discord Utils, Library to simplify creating discord bots",
   lastUpdated: true,
-  base: "/cocoa-discord-utils",
+  base: "/cocoa-discord",
 
   themeConfig: {
     footer: {
@@ -16,12 +16,12 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/Leomotors/cocoa-discord-utils",
+        link: "https://github.com/Leomotors/cocoa-discord",
       },
     ],
     editLink: {
       pattern:
-        "https://github.com/Leomotors/cocoa-discord-utils/edit/main/docs/:path",
+        "https://github.com/Leomotors/cocoa-discord/edit/main/docs/:path",
       text: "Suggest or contribute changes to this page",
     },
 
@@ -32,12 +32,12 @@ export default defineConfig({
       },
       {
         text: "TypeDoc",
-        link: "https://leomotors.github.io/cocoa-discord-utils/typedoc",
+        link: "https://leomotors.github.io/cocoa-discord/typedoc",
       },
     ],
     sidebar: [
       {
-        collapsible: true,
+        collapsed: true,
         text: "Blog",
         items: [
           {
@@ -47,7 +47,7 @@ export default defineConfig({
         ],
       },
       {
-        collapsible: true,
+        collapsed: true,
         text: "Introduction",
         items: [
           {
@@ -60,7 +60,7 @@ export default defineConfig({
           },
           {
             text: "TypeDoc",
-            link: "https://leomotors.github.io/cocoa-discord-utils/typedoc",
+            link: "https://leomotors.github.io/cocoa-discord/typedoc",
           },
           {
             text: "Migrate from V1 -> V2",
@@ -73,7 +73,7 @@ export default defineConfig({
         ],
       },
       {
-        collapsible: true,
+        collapsed: true,
         text: "Configuration",
         items: [
           {
@@ -83,7 +83,7 @@ export default defineConfig({
         ],
       },
       {
-        collapsible: true,
+        collapsed: true,
         text: "Modules",
         items: [
           {
@@ -105,7 +105,7 @@ export default defineConfig({
         ],
       },
       {
-        collapsible: true,
+        collapsed: true,
         text: "Command Management System",
         items: [
           {

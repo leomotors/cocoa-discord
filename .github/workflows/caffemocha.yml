@@ -15,22 +15,15 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         id: pnpm-install
-        with:
-          version: 7
-          run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
 
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: Setup node with cache
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install Dependencies
         run: pnpm install
@@ -40,7 +33,7 @@ jobs:
 
       - name: CRLF Phobia
         run: npx crlf-phobia *
-  
+
   docs:
     name: Docs Gen Test
     runs-on: ubuntu-latest
@@ -49,25 +42,14 @@ jobs:
       - name: actions/checkout
         uses: actions/checkout@v2
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: Setup node with cache
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install Dependencies
         run: pnpm install
@@ -85,36 +67,25 @@ jobs:
       - name: actions/checkout
         uses: actions/checkout@v2
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: Setup node with cache
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install Dependencies
         run: pnpm install
 
       - name: Build all Package
-        run: pnpm turbo run --filter=cocoa-discord-utils build
+        run: pnpm turbo run --filter=cocoa-discord build
 
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
-        run: pnpm --filter=cocoa-discord-utils test:coverage
+        run: pnpm --filter=cocoa-discord test:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          directory: ./packages/cocoa-discord-utils/coverage
+          directory: ./packages/cocoa-discord/coverage
