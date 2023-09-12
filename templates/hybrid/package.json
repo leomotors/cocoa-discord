@@ -5,7 +5,7 @@
   "main": "dist/bot.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build:app": "tsc",
     "clean": "rm -rf dist/*",
     "start": "node --es-module-specifier-resolution=node dist/bot.js",
     "format": "prettier --write \"src/**/*.ts\"",

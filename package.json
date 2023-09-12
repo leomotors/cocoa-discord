@@ -2,6 +2,7 @@
   "name": "@cocoa-discord/turborepo",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@8.7.5",
   "scripts": {
     "build": "FORCE_COLOR=2 turbo run build",
     "dev": "FORCE_COLOR=2 turbo run dev --parallel",
