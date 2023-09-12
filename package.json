@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@8.7.5",
   "scripts": {
+    "build:app": "FORCE_COLOR=2 turbo run build:app",
     "build": "FORCE_COLOR=2 turbo run build",
     "dev": "FORCE_COLOR=2 turbo run dev --parallel",
     "lint": "FORCE_COLOR=2 turbo run lint",

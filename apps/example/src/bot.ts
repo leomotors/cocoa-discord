@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 import {
   ActivityGroupLoader,
   ActivityManager,
@@ -12,10 +10,10 @@ import { CocoaIntent } from "cocoa-discord/template";
 
 import { Client } from "discord.js";
 
-import { MainMessageCog } from "./commands/main.message";
-import { MainSlashCog } from "./commands/main.slash";
-import { style } from "./commands/styles";
-import { GuildIds } from "./environment";
+import { MainMessageCog } from "./commands/main.message.js";
+import { MainSlashCog } from "./commands/main.slash.js";
+import { style } from "./commands/styles.js";
+import { GuildIds } from "./environment.js";
 
 const client = new Client(
   new CocoaIntent()

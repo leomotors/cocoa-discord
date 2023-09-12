@@ -1,7 +1,7 @@
 {
   "name": "@cocoa-discord/template-hybrid",
-  "version": "1.0.0",
-  "description": "Template Discord Bot using Cocoa Discord Utils (Has both message and slash commands)",
+  "version": "0.0.0",
+  "description": "Template Discord Bot using Cocoa Discord (Has both message and slash commands)",
   "main": "dist/bot.js",
   "type": "module",
   "scripts": {
