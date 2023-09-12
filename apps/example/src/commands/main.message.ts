@@ -1,7 +1,4 @@
-import {
-  CogMessageClass,
-  MessageCommand,
-} from "cocoa-discord-utils/message/class";
+import { CogMessageClass, MessageCommand } from "cocoa-discord/message/class";
 
 import { Message } from "discord.js";
 

@@ -1,17 +1,18 @@
 {
-  "name": "@cocoa-discord/template-slash-only",
+  "name": "@cocoa-discord/template-hybrid",
   "version": "1.0.0",
-  "description": "Template Discord Bot using Cocoa Discord Utils (Slash Commands Only)",
+  "description": "Template Discord Bot using Cocoa Discord Utils (Has both message and slash commands)",
   "main": "dist/bot.js",
   "type": "module",
   "scripts": {
     "build:app": "tsc",
     "clean": "rm -rf dist/*",
-    "start": "node --es-module-specifier-resolution=node dist/bot.js",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src && prettier --check \"src/**/*.ts\""
+    "start": "node dist/bot.js",
+    "format": "eslint src --fix",
+    "lint": "eslint src"
   },
   "devDependencies": {
+    "@leomotors/config": "0.11.0",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
@@ -20,8 +21,9 @@
     "typescript": "5.2.2"
   },
   "dependencies": {
-    "cocoa-discord-utils": "^2.3.0",
-    "discord.js": "^14.13.0",
-    "dotenv": "^16.3.1"
+    "cocoa-discord": "3.0.0",
+    "discord.js": "14.13.0",
+    "dotenv": "16.3.1",
+    "zod": "3.22.2"
   }
 }

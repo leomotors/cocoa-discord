@@ -3,12 +3,12 @@ import "dotenv/config";
 import {
   ActivityGroupLoader,
   ActivityManager,
-  checkLogin,
   Cocoa,
-} from "cocoa-discord-utils";
-import { MessageCenter } from "cocoa-discord-utils/message";
-import { SlashCenter } from "cocoa-discord-utils/slash";
-import { CocoaIntent } from "cocoa-discord-utils/template";
+  checkLogin,
+} from "cocoa-discord";
+import { MessageCenter } from "cocoa-discord/message";
+import { SlashCenter } from "cocoa-discord/slash";
+import { CocoaIntent } from "cocoa-discord/template";
 
 import { Client } from "discord.js";
 
@@ -55,7 +55,7 @@ client.on("ready", (cli) => {
   console.log(
     `Logged in as ${cli.user.tag}, took ${process.uptime().toFixed(3)} seconds`,
   );
-  scenter.syncCommands(true);
+  scenter.syncCommands();
   activityManager.nextActivity();
 });
 

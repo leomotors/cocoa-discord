@@ -1,10 +1,10 @@
-import { CogSlashClass, SlashCommand } from "cocoa-discord-utils/slash/class";
+import { CogSlashClass, SlashCommand } from "cocoa-discord/slash/class";
 
-export class MainCog extends CogSlashClass {
+export class MainSlashCog extends CogSlashClass {
   private timePinged = 0;
 
   constructor() {
-    super("Main Cog", "Main Cog of this bot");
+    super("Main Cog", "Main Slash Cog of this bot");
   }
 
   @SlashCommand("Pong!")
