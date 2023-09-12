@@ -87,7 +87,7 @@ export class SlashCenter extends ManagementCenter<
   }
 
   /** Sync Slash Commands, Call this **ONLY** after client is ready */
-  async syncCommands(verbose = false) {
+  async syncCommands() {
     if (!this.client.isReady()) {
       throw Error(
         "FATAL ERROR: SyncCommands must be called after Client is Ready",
@@ -101,7 +101,7 @@ export class SlashCenter extends ManagementCenter<
 
     const { commandData, guildIdsSet } = await this.buildCommandsPack();
 
-    await syncCommands(commandData, this.client, [...guildIdsSet], verbose);
+    await syncCommands(commandData, this.client, [...guildIdsSet]);
   }
 
   private async handleInteraction(interaction: ChatInputCommandInteraction) {
