@@ -47,15 +47,8 @@ type SlashCommandReturnType = (
 ) => void;
 
 export function SlashCommand(description: string): SlashCommandReturnType;
-/** @deprecated Use `@Guilds` instead */
-export function SlashCommand(
-  description: string,
-  guild_ids?: string[],
-): SlashCommandReturnType;
-export function SlashCommand(
-  description: string,
-  guild_ids?: string[],
-): SlashCommandReturnType {
+
+export function SlashCommand(description: string): SlashCommandReturnType {
   return (cog: CogSlashClass, key: string, _: unknown) => {
     const cogStore = (V2Stores[cog.constructor.name] ??= {});
 
@@ -63,7 +56,6 @@ export function SlashCommand(
       ...cogStore[key],
       name: key,
       description,
-      guild_ids,
     };
   };
 }

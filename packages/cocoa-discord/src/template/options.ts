@@ -8,55 +8,6 @@ import {
 
 import { Context } from "../main/index.js";
 
-/**
- * Basic Template Intents includes
- *
- * GUILDS, GUILD_MESSAGES, GUILD_MESSAGE_REACTIONS, DIRECT_MESSAGES, DIRECT_MESSAGE_REACTIONS
- *
- * @deprecated use {@link CocoaIntent} instead, also avoid adding unused intents.
- */
-export const CocoaIntents: ClientOptions["intents"] = [
-  I.Guilds,
-  I.GuildMessages,
-  I.GuildMessageReactions,
-  I.DirectMessages,
-  I.DirectMessageReactions,
-];
-
-/**
- * Template Intents with Voice, includes
- *
- * CocoaIntents + GUILD_VOICE_STATES
- *
- * @deprecated use {@link CocoaIntent} instead, also avoid adding unused intents.
- */
-export const DJCocoaIntents: ClientOptions["intents"] = [
-  ...CocoaIntents,
-  I.GuildVoiceStates,
-];
-
-/**
- * Template ClientOptions used in Cocoa Grader
- *
- * @deprecated use {@link CocoaIntent} instead, also avoid adding unused intents.
- */
-export const CocoaOptions: ClientOptions = {
-  intents: CocoaIntents,
-  // To Accept DM
-  partials: [P.Channel],
-};
-
-/**
- * Template ClientOptions used in Harunon.js
- *
- * @deprecated use {@link CocoaIntent} instead, also avoid adding unused intents.
- */
-export const DJCocoaOptions: ClientOptions = {
-  intents: DJCocoaIntents,
-  // To Accept DM
-  partials: [P.Channel],
-};
-
 export interface MessageIntentOptions {
   withReaction?: true;
   withTyping?: true;
@@ -96,13 +47,15 @@ export class CocoaIntent
    *
    * This is **required** if you are syncing commands by guild
    */
-  useGuildSlash() {
+  useGuild() {
     this.intents.push(I.Guilds);
     return this;
   }
 
   /**
    * Add `GuildMessages`
+   *
+   * `useGuild` is also required for this to work
    *
    * @param withReaction Use this if you want to recieve information about reactions change
    * @param withTyping Use this if you want to recieve information about user is typing

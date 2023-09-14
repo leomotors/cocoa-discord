@@ -159,7 +159,7 @@ export class MessageCenter extends ManagementCenter<
     this.validated = false;
     const emb = this.generateHelpCommandAsEmbed();
 
-    this.addCog({
+    this.addCogs({
       name: "Help",
       commands: {
         help: {

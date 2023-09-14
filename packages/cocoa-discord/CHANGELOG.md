@@ -12,10 +12,12 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 
 - Some pre-release or beta build may not appear here
 
-## [3.0.0] - 2023-07-17
+## [3.0.0] - 2023-??-??
 
 - refactor: Package is now pure ESM
-- feat: use `.set()` for syncing commands
+- refactor: use `.set()` for syncing commands
+- Deprecated Removed: `CocoaIntent`, add Singular methods, etc.
+- Rename CocoaIntent.useGuildSlash to CocoaIntent.useGuild
 
 ## [2.3.0] - 2022-09-18
 

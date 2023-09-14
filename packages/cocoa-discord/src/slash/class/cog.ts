@@ -15,7 +15,7 @@ import { muckFuture, muckStorage } from "./legacy.js";
 /**
  * This class implements `CogSlash`, by OOP magic, you can use
  * ```js
- * addCog(new [your_extended_classname]())
+ * addCogs(new [your_extended_classname]())
  * ```
  */
 export abstract class CogSlashClass implements CogSlash {

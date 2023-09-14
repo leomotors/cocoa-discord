@@ -208,7 +208,7 @@ function testClass() {
 function helpCommand() {
   it("Should generate fine", () => {
     const center = new MessageCenter(client, { prefixes: ["!"] });
-    center.addCog(CorrectMCog);
+    center.addCogs(CorrectMCog);
     center.useHelpCommand();
 
     // @ts-ignore

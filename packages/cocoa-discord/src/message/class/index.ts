@@ -10,7 +10,7 @@ const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 /**
  * This class implements `CogMessage`, by OOP magic, you can use
  * ```js
- * addCog(new [your_extended_classname]())
+ * addCogs(new [your_extended_classname]())
  * ```
  */
 export abstract class CogMessageClass implements CogMessage {

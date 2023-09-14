@@ -40,12 +40,6 @@ export abstract class ManagementCenter<
     store.subscribe("login", this.validateCommands.bind(this));
   }
 
-  /** @deprecated Use `addCogs` instead */
-  addCog(cog: Cog | CogClass) {
-    this.validated = false;
-    this.cogs.push(cog);
-  }
-
   addCogs(...cogs: NonEmptyArray<Cog | CogClass>) {
     this.validated = false;
     this.cogs.push(...cogs);
