@@ -84,8 +84,3 @@ jobs:
 
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
         run: pnpm --filter=cocoa-discord test:coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          directory: ./packages/cocoa-discord/coverage

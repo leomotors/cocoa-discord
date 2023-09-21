@@ -1,9 +1,9 @@
 # Cocoa Discord Utils
 
-[![](https://img.shields.io/npm/v/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
-[![](https://img.shields.io/npm/dt/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
+<!-- [![](https://img.shields.io/npm/v/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
+[![](https://img.shields.io/npm/dt/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord) -->
+
 [![](https://github.com/Leomotors/cocoa-discord/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/Leomotors/cocoa-discord/actions)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/Leomotors/cocoa-discord/main.svg?style=flat-square)](https://codecov.io/gh/Leomotors/cocoa-discord/)
 
 Yet another Discord Bot Utility npm package
 
