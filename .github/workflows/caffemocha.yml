@@ -33,7 +33,6 @@ jobs:
   docs:
     name: Docs Gen Test
     runs-on: ubuntu-latest
-    if: false
 
     steps:
       - name: actions/checkout
@@ -77,7 +76,7 @@ jobs:
         run: pnpm install
 
       - name: Build all Package
-        run: pnpm turbo run --filter=cocoa-discord build
+        run: pnpm run build
 
       - name: Mocha Test, Actually it is now Jest, and just switched to Vitest
-        run: pnpm --filter=cocoa-discord test:coverage
+        run: pnpm run test

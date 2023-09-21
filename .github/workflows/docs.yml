@@ -4,9 +4,11 @@ name: Documentation
 
 on:
   push:
-    tags:
-      - "TEMP-DISABLED__cocoa-discord@*.*"
-  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - apps/docs/**
+      - packages/*/CHANGELOG.md
 
 permissions:
   contents: read
@@ -48,10 +50,10 @@ jobs:
         run: pnpm run docs
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: docs-dist
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@main
+        uses: actions/deploy-pages@v2

@@ -23,7 +23,6 @@
     "lint": "eslint src tests *.ts --max-warnings=0",
     "format": "eslint src tests *.ts --fix",
     "test": "FORCE_COLOR=2 vitest run",
-    "test:coverage": "FORCE_COLOR=2 vitest run --coverage",
     "docs": "pnpm lm:config && typedoc"
   },
   "keywords": [
