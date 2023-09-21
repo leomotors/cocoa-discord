@@ -1,6 +1,6 @@
 {
   "name": "@cocoa-discord/template-hybrid",
-  "version": "0.0.0",
+  "private": true,
   "description": "Template Discord Bot using Cocoa Discord (Has both message and slash commands)",
   "main": "dist/bot.js",
   "type": "module",
@@ -14,8 +14,8 @@
   "devDependencies": {
     "@leomotors/config": "0.11.0",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
-    "@typescript-eslint/eslint-plugin": "6.7.0",
-    "@typescript-eslint/parser": "6.7.0",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
     "eslint": "8.49.0",
     "prettier": "3.0.3",
     "typescript": "5.2.2"

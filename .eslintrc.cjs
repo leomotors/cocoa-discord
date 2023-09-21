@@ -11,11 +11,12 @@ const config = {
       files: ["*.ts", "*.tsx"],
       rules: {
         // TODO Turn these rules off
+        "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
       },
     },
     {
-      files: "./tests/**/*",
+      files: "**/*/tests/**/*",
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-empty-function": "off",
