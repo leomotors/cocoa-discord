@@ -5,16 +5,16 @@ import { GuildMember, VoiceChannel } from "discord.js";
 
 import {
   AudioPlayerStatus,
+  VoiceConnection,
+  VoiceConnectionStatus,
   createAudioPlayer,
   entersState,
   getVoiceConnection,
   joinVoiceChannel as libJoinVoiceChannel,
-  VoiceConnection,
-  VoiceConnectionStatus,
 } from "@discordjs/voice";
 
 import { MusicState } from "./types.js";
-import { getYoutubeVideo, YoutubeAdapter } from "./youtube.js";
+import { YoutubeAdapter, getYoutubeVideo } from "./youtube.js";
 
 function createDefaultMusicState() {
   return {

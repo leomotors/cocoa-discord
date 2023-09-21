@@ -1,8 +1,8 @@
 import { EmbedStyle } from "cocoa-discord-utils";
 import {
   CogSlashClass,
-  SlashCommand,
   Param,
+  SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 
 import {
@@ -16,16 +16,16 @@ import {
 import chalk from "chalk";
 import { search } from "play-dl";
 
-import { generateId, SearchEmbedIdPrefix } from "./constants.js";
+import { SearchEmbedIdPrefix, generateId } from "./constants.js";
 import * as Service from "./music.service.js";
 import {
-  musicStates,
-  getState,
-  removeFromQueue,
-  isPaused,
-  skipMusic,
-  clearMusicQueue,
   addMusicToQueue,
+  clearMusicQueue,
+  getState,
+  isPaused,
+  musicStates,
+  removeFromQueue,
+  skipMusic,
 } from "./voice.js";
 
 export class Music extends CogSlashClass {
