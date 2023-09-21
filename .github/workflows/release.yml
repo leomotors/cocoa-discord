@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      data: ${{ steps.step-data.outputs }}
+      data: ${{ steps.step-data.outputs.data }}
 
     steps:
       - name: Checkout Repository
@@ -24,7 +24,7 @@ jobs:
 
       - name: Get Data
         id: step-data
-        run: node packages/tools/src/tag.mjs ${{ github.ref_name }} >> $GITHUB_OUTPUT
+        run: echo data=$(node packages/tools/src/tag.mjs ${{ github.ref_name }}) >> $GITHUB_OUTPUT
 
   github-release:
     name: Publish GitHub Release
