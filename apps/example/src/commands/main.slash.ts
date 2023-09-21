@@ -1,6 +1,6 @@
-import { CogSlashClass, SlashCommand } from "cocoa-discord/slash/class";
+import { SlashCommand, SlashModuleClass } from "cocoa-discord/slash/class";
 
-export class MainSlashCog extends CogSlashClass {
+export class MainSlashModule extends SlashModuleClass {
   private timePinged = 0;
 
   constructor() {

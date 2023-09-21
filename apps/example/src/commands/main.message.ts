@@ -1,8 +1,11 @@
-import { CogMessageClass, MessageCommand } from "cocoa-discord/message/class";
+import {
+  MessageCommand,
+  MessageModuleClass,
+} from "cocoa-discord/message/class";
 
 import { Message } from "discord.js";
 
-export class MainMessageCog extends CogMessageClass {
+export class MainMessageModule extends MessageModuleClass {
   private timePinged = 0;
 
   constructor() {
