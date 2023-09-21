@@ -1,7 +1,7 @@
 # Template
 
 ```ts
-import { ... } from "cocoa-discord-utils/meta";
+import { ... } from "cocoa-discord/meta";
 ```
 
 `template` is a module that contains many things to save up your time, for example
@@ -18,4 +18,4 @@ One of the problem of old intent templates are, there are using more than what i
 
 ---
 
-For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord-utils/typedoc/)
+For full list of functions, please look at [TypeDoc](https://leomotors.me/cocoa-discord/typedoc/)

@@ -1,6 +1,5 @@
 {
-  "name": "@cocoa-discord-utils/docs",
-  "version": "0.0.0",
+  "name": "@cocoa-discord/docs",
   "private": true,
   "scripts": {
     "dev": "vitepress dev src --port=3186",
@@ -8,19 +7,18 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@cocoa-discord-utils/config": "workspace:0.0.0",
-    "@vitejs/plugin-vue-jsx": "^2.0.1",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
-    "@vue/tsconfig": "^0.1.3",
-    "autoprefixer": "^10.4.12",
-    "eslint": "^8.24.0",
-    "eslint-plugin-vue": "^9.6.0",
-    "postcss": "^8.4.17",
-    "tailwindcss": "^3.1.8",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.6",
-    "vitepress": "1.0.0-alpha.19",
-    "vue": "^3.2.40"
+    "@vitejs/plugin-vue-jsx": "3.0.2",
+    "@vue/eslint-config-prettier": "8.0.0",
+    "@vue/eslint-config-typescript": "12.0.0",
+    "@vue/tsconfig": "0.4.0",
+    "autoprefixer": "10.4.16",
+    "eslint": "8.49.0",
+    "eslint-plugin-vue": "9.17.0",
+    "postcss": "8.4.30",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2",
+    "vite": "4.4.9",
+    "vitepress": "1.0.0-rc.4",
+    "vue": "3.3.4"
   }
 }

@@ -1,7 +1,6 @@
 ---
 layout: home
 
-
 title: Cocoa Discord Utils
 titleTemplate: Simplify creating Discord Bots
 
@@ -10,18 +9,18 @@ hero:
   text: For discord.js
   tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨
   actions:
-  - theme: brand
-    text: Get Started
-    link: /introduction/overview
-  - theme: alt
-    text: View on GitHub
-    link: https://github.com/Leomotors/cocoa-discord-utils
-  - theme: alt
-    text: View on NPM
-    link: https://www.npmjs.com/package/cocoa-discord-utils
-  - theme: alt
-    text: View TypeDoc
-    link: https://leomotors.github.io/cocoa-discord-utils/typedoc
+    - theme: brand
+      text: Get Started
+      link: /introduction/overview
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/Leomotors/cocoa-discord
+    - theme: alt
+      text: View on NPM
+      link: https://www.npmjs.com/package/cocoa-discord
+    - theme: alt
+      text: View TypeDoc
+      link: https://leomotors.github.io/cocoa-discord/typedoc
 
 features:
   - icon: 🍫

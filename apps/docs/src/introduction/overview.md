@@ -14,13 +14,13 @@ Apart from miscellaneous utilities, it also come with powerful slash command (an
 
 ## Supports
 
-- nodejs 16.9+ (discord.js requirements, 16.15-16.16 recommended)
-- Both CommonJS and ESM, TypeScript recommended (Decorators require TypeScript)
+- nodejs 16.9+ (discord.js requirements, 18 recommended as 16 going to EOL 💀)
+- Only ESM is supported, TypeScript recommended (Experimental Decorators requires TypeScript)
 
 ## Installation
 
 ```bash
-yarn add cocoa-discord-utils
+pnpm add cocoa-discord
 ```
 
 or others up to your package manager.

@@ -1,9 +1,5 @@
 // @ts-check
 
-/** @type {import("prettier").Config & Record<string, unknown>} */
-const config = {
-  ...require("@cocoa-discord-utils/config/prettier-web"),
+module.exports = require("@leomotors/config/prettier").withSortImports({
   importOrder: ["^vitepress/theme", "^[.][/]styles", "^[$]"],
-};
-
-module.exports = config;
+});
