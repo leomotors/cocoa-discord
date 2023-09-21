@@ -1,6 +1,6 @@
 {
-  "name": "@leomotors/music-bot",
-  "version": "1.0.0-beta.0",
+  "name": "@cocoa-discord/music-module",
+  "version": "1.0.0-dev.0",
   "description": "discord.js music bot that can be run standalone or as a module for other bots",
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -14,7 +14,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@8.7.6",
   "scripts": {
     "build": "pnpm lm-config && tsc",
     "lint": "eslint src",
