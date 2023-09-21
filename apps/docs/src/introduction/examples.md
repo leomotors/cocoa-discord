@@ -5,7 +5,7 @@ how I use this library is to see the source code of my bots.
 
 Discord Bots that use Cocoa Discord
 
-- Music Bot - See Music Module Section
+- Music Bot - See [Music Module Section](/music-module/intro)
 - [Waifu Bot](https://github.com/Leomotors/waifu-bot)
 - [cminusminus](https://github.com/Leomotors/cminusminus)
 - [Salim Bot](https://github.com/Leomotors/Salim-Bot)

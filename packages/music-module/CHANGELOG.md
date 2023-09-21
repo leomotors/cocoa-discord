@@ -4,7 +4,11 @@ All notables change for @cocoa-discord/music-module will be noted here
 
 See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 
-Note: Version before 1.0.0 is under package name `@leomotors/music-bot`
+## Note
+
+- Version before 1.0.0 is under package name `@leomotors/music-bot`
+- Not all change will be noted, see commits for _full_ changelog
+- Some pre-release or beta build may not appear here
 
 ## [1.0.0] - 2023-09-??
 

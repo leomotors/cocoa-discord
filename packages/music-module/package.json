@@ -20,7 +20,8 @@
     "format": "eslint src --fix",
     "test": "node tests/index.js",
     "bot": "pnpm build && node tests/bot.js",
-    "prepack": "rimraf dist/* && pnpm build && pnpm lint && pnpm test"
+    "prepack": "rimraf dist/* && pnpm build && pnpm lint && pnpm test",
+    "docs": "pnpm lm-config && typedoc"
   },
   "devDependencies": {
     "@discordjs/opus": "0.9.0",
@@ -37,6 +38,7 @@
     "libsodium-wrappers": "0.7.13",
     "prettier": "3.0.3",
     "rimraf": "5.0.1",
+    "typedoc": "0.25.1",
     "typescript": "5.2.2"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
-# @leomotors/music-bot
+# @cocoa-discord/music-module
 
-[![](https://img.shields.io/npm/v/@leomotors/music-bot.svg?maxAge=3600)](https://www.npmjs.com/package/@leomotors/music-bot)
-[![](https://img.shields.io/npm/dt/@leomotors/music-bot.svg?maxAge=3600)](https://www.npmjs.com/package/@leomotors/music-bot)
+[![](https://img.shields.io/npm/v/@cocoa-discord/music-module.svg?maxAge=3600)](https://www.npmjs.com/package/@cocoa-discord/music-module)
+[![](https://img.shields.io/npm/dt/@cocoa-discord/music-module.svg?maxAge=3600)](https://www.npmjs.com/package/@cocoa-discord/music-module)
 [![](https://github.com/Leomotors/music-bot/actions/workflows/test.yml/badge.svg)](https://github.com/Leomotors/music-bot/actions)
 
 Music Bot components extracted from [harunon.js](https://github.com/CarelessDev/harunon.js)
@@ -30,7 +30,7 @@ you can directly interact with api underneath, all of them is public.
 
 ## Prerequisites
 
-- node 16 (Minimum required by discord.js, What my bots are optimized for)
+- node 18 (16 gone eol :skull:)
 
 - **IMPORTANT** [Encoding Libraries](https://www.npmjs.com/package/@discordjs/voice#dependencies)
   (This library does not ship these encoding libraries, so you can freely decide which one to install)

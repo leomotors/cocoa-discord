@@ -2,6 +2,16 @@
 
 The core of discord bots are command.
 
+::: warning NOTES
+
+The Cog which is the word used in discord.py is now renamed to "Module"
+in cocoa-discord version 3. You may still see the word "Cog" in some places.
+I'm lazy to update it all :skull:
+
+Also, I'm lazy to update this section to latest, so read changelog yourself.
+
+:::
+
 ## Table of Contents
 
 [[toc]]
@@ -29,8 +39,8 @@ Slash Command has 2 parts, the command data and how we handle it.
 
 ```js
 const command = {
-    name: "ping",
-    description: "Ping the Bot!"
+  name: "ping",
+  description: "Ping the Bot!",
 };
 ```
 
@@ -39,11 +49,12 @@ so that they recognize our command and register them for user.
 
 Note that apart from writing the pure JSON, `discord.js` provides `SlashCommandBuilder`
 to help simplify things, the equivalent to above commands would be
+
 ```js
 new SlashCommandBuilder()
-    .setName("ping")
-    .setDescription("Ping the Bot!")
-    .toJSON()
+  .setName("ping")
+  .setDescription("Ping the Bot!")
+  .toJSON();
 ```
 
 Then, on `interactionCreate` the event is sent to our bot that is running and we handle them.
@@ -69,19 +80,19 @@ This is the preliminary approaches to this library. Focuses on concept of 'one f
 
 ```ts
 export const ping: CocoaSlash = {
-    command: CocoaBuilderFull("ping", "pong!").toJSON(),
-    func: async (ctx) => {
-        await ctx.reply("pong!");
-    },
-}
+  command: CocoaBuilderFull("ping", "pong!").toJSON(),
+  func: async (ctx) => {
+    await ctx.reply("pong!");
+  },
+};
 ```
 
 **Note**: CocoaBuilderFull is a utility function that returns SlashCommandBuilder
 
 ```ts
-CocoaBuilderFull("ping", "pong!")
+CocoaBuilderFull("ping", "pong!");
 // Returns
-new SlashCommandBuilder().setName("ping").setDescription("pong!")
+new SlashCommandBuilder().setName("ping").setDescription("pong!");
 // You can continue extend the SlashCommandBuilder normally
 ```
 
@@ -90,7 +101,7 @@ The goal of this function is to reduce the amount of frequently used code.
 **Remark**:
 
 - Cocoa Discord Utils does not provide Slash Command Builder,
-you will need to use `SlashCommandBuilder` from `discord.js` or `CocoaBuilder` that will eventually returns `SlashCommandBuilder`
+  you will need to use `SlashCommandBuilder` from `discord.js` or `CocoaBuilder` that will eventually returns `SlashCommandBuilder`
 
 - Please refer to `discord.js` documents on how to handle interaction
 
@@ -103,12 +114,12 @@ being a garbage. Visit [here](https://www.npmjs.com/package/s-bot-framework)~~
 
 ```ts
 export const mainCog: CogSlash = {
-    name: "Main Cog",
-    description: "This is the main cog",
-    commands: {
-        ping,
-    },
-}
+  name: "Main Cog",
+  description: "This is the main cog",
+  commands: {
+    ping,
+  },
+};
 ```
 
 As we have stated earlier, the Cog is collection of commands
@@ -121,9 +132,9 @@ mentioned in the next section.
 
 ```ts
 const center = new SlashCenter(
-    client,
-    process.env.GUILD_IDS?.split(",") ?? []
-    // or use "Global" for Global Commands
+  client,
+  process.env.GUILD_IDS?.split(",") ?? [],
+  // or use "Global" for Global Commands
 );
 // addCog for adding 1 Cog, addCogs for multiple Cogs
 // However, addCogs also works on adding 1 Cog
@@ -142,15 +153,15 @@ and come up with the Class Cog syntax.
 **Note**: The Class Syntax (Both V1 and V2 that I will talk about it soon) will
 eventually compiled down to Object Cog.
 
-- The only bot that still use *pure* Object Cog is [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
+- The only bot that still use _pure_ Object Cog is [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
 
 ### The Syntax
 
-*This syntax is inspired by discord.py*
+_This syntax is inspired by discord.py_
 
 ## Class Cog V1
 
-*Note*: The following syntax will still be available in Version 2, but it is recommended
+_Note_: The following syntax will still be available in Version 2, but it is recommended
 to use newer syntax where possible.
 
 **To use Class Cog**, We will need to extend the base class given,
@@ -159,7 +170,7 @@ and implement methods/commands with decorator.
 The `CogClass` are based on Object Cog, so we can add it to management center
 in the ~~same~~ similar way as the Object Cog.
 
-*Definition for `CogSlashClass`*
+_Definition for `CogSlashClass`_
 
 ```ts
 export abstract class CogSlashClass implements CogSlash
@@ -209,10 +220,10 @@ center.addCogs(new MainCog());
 
 Because CogSlashClass implements CogSlash, we can add it to Slash Center and even mix it with Object Cog.
 
-**Note**: Due to some TypeScript mumbo jumbo, you are required to explicitly 
+**Note**: Due to some TypeScript mumbo jumbo, you are required to explicitly
 specify type in your method arguments.
 
-*Argument Name can be changed, but must specify the correct type*
+_Argument Name can be changed, but must specify the correct type_
 
 **Warning**: Extending Cog Class is not recommended, decorators may behave unexpectly
 

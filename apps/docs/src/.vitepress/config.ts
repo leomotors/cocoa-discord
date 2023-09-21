@@ -40,6 +40,10 @@ export default defineConfig({
         text: "Blog",
         items: [
           {
+            text: "About this Website",
+            link: "/blog/about",
+          },
+          {
             text: "Introducing V2",
             link: "/blog/introducing-v2",
           },
@@ -83,23 +87,23 @@ export default defineConfig({
       },
       {
         collapsed: true,
-        text: "Modules",
+        text: "Cocoa Discord Package",
         items: [
           {
             text: "Main",
-            link: "/modules/main",
+            link: "/main-package/main",
           },
           {
             text: "Meta",
-            link: "/modules/meta",
+            link: "/main-package/meta",
           },
           {
             text: "Template",
-            link: "/modules/template",
+            link: "/main-package/template",
           },
           {
             text: "Message & Slash",
-            link: "/modules/msgslash",
+            link: "/main-package/msgslash",
           },
         ],
       },
@@ -134,8 +138,18 @@ export default defineConfig({
           },
         ],
       },
+      {
+        collapsed: true,
+        text: "Music Module",
+        items: [
+          {
+            text: "Introduction",
+            link: "/music-module/intro",
+          },
+        ],
+      },
     ],
   },
 
-  outDir: "../dist",
+  outDir: "../docs-dist",
 });

@@ -11,7 +11,9 @@
     },
     "lint": {},
     "format": {},
-    "docs": {},
+    "docs": {
+      "outputs": ["docs-dist/**"]
+    },
     "test": {},
     "dev": {
       "cache": false

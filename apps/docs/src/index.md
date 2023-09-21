@@ -25,7 +25,7 @@ hero:
 features:
   - icon: 🍫
     title: Build by me, for me
-    details: It is used in all of my Discord Bots, most popular 'useful' one is Harunon (CarelessDev/waifu-bot)
+    details: It is used in all of my Discord Bots, most popular 'useful' one is Waifu Bot (leomotors/waifu-bot)
   - icon: 🦺
     title: Build with TypeScript
     details: Fully Type Safe and power your discord bot development with IntelliSense

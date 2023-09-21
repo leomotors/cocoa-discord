@@ -4,14 +4,11 @@ All notables change for Cocoa Discord will be noted here
 
 See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 
-Note: Version before 3.0.0 is under package name `cocoa-discord-utils`
-
 ## Note
 
+- Version before 3.0.0 is under package name `cocoa-discord-utils`
 - Changelog before 1.0.0-pre is not available here
-
 - Not all change will be noted, see commits for _full_ changelog
-
 - Some pre-release or beta build may not appear here
 
 ## [3.0.0] - 2023-??-??

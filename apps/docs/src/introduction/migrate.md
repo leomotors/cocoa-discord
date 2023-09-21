@@ -1,8 +1,10 @@
-# Migration from Version 2
+# Migration from Version 2 -> 3
 
 See [Change Log](/changelog/cocoa-discord)
 
-# Migration from Version 1
+---
+
+# Migration from Version 1 -> 2
 
 Version 2 has many changes, it also upgraded to discord.js 14 so you can expect
 changes from discord.js too

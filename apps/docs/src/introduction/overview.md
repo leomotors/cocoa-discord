@@ -1,6 +1,6 @@
 # Overview
 
-The Cocoa Discord Utils contains a set of utilities seperated into multiple subpackages:
+The Cocoa Discord contains a set of utilities seperated into multiple subpackages:
 
 - main (/)
 - /message

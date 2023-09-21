@@ -1,0 +1,6 @@
+{
+  "entryPoints": ["./src/index.ts"],
+  "out": "docs-dist/typedoc-music",
+  "includeVersion": true,
+  "readme": "README.md"
+}
