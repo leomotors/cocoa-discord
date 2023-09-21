@@ -1,4 +1,4 @@
-# Cocoa Discord Utils
+# Cocoa Discord
 
 <!-- [![](https://img.shields.io/npm/v/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
 [![](https://img.shields.io/npm/dt/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord) -->
@@ -92,7 +92,7 @@ npx degit leomotors/cocoa-discord/templates/slash-only my-bot
 
 ## 📚 Documentation
 
-- Doc & Guide: [LINK](https://leomotors.github.io/cocoa-discord)
+- Doc & Guide: [LINK](https://cocoa.leomotors.me)
 
 **Note**: For runtime safety, **please use TypeScript** or activate @ts-check on JavaScript.
 

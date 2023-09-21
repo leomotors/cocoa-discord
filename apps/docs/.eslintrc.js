@@ -10,6 +10,9 @@ const config = {
     "@vue/eslint-config-prettier",
   ],
   ignorePatterns: ["!src/.vitepress/**/*", "*.js"],
+  env: {
+    node: true,
+  },
 };
 
 module.exports = config;

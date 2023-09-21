@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: Cocoa Discord Utils
+title: Cocoa Discord
 titleTemplate: Simplify creating Discord Bots
 
 hero:
-  name: Cocoa Discord Utils
+  name: Cocoa Discord
   text: For discord.js
   tagline: Simplifying how you create interactive Discord Bot with Slash Command ✨✨✨
   actions:
@@ -20,7 +20,7 @@ hero:
       link: https://www.npmjs.com/package/cocoa-discord
     - theme: alt
       text: View TypeDoc
-      link: https://leomotors.github.io/cocoa-discord/typedoc
+      link: https://cocoa.leomotors.me/typedoc
 
 features:
   - icon: 🍫
@@ -30,7 +30,7 @@ features:
     title: Build with TypeScript
     details: Fully Type Safe and power your discord bot development with IntelliSense
   - icon: ⚙️
-    title: Cog System inspired by discord.py
+    title: Module (Cog) System inspired by discord.py
     details: Get some fancy decorators on your functions and now it represents a slash command! (Message command also supported)
   - icon: 🔁
     title: Build in Slash Command Syncer

@@ -1,6 +1,7 @@
 {
   "name": "@cocoa-discord/docs",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev src --port=3186",
     "docs": "vitepress build src",

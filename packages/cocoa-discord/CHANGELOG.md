@@ -1,6 +1,6 @@
 # Changelog
 
-All notables change for Cocoa Discord Utils will be noted here
+All notables change for Cocoa Discord will be noted here
 
 See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 

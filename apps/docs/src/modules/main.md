@@ -44,4 +44,4 @@ new ConsoleManager().useLogout(client).useReload(activity);
 
 ---
 
-For full list of functions, please look at [TypeDoc](https://leomotors.github.io/cocoa-discord/typedoc/)
+For full list of functions, please look at [TypeDoc](https://cocoa.leomotors.me/typedoc/)

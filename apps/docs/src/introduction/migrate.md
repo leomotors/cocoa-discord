@@ -1,3 +1,7 @@
+# Migration from Version 2
+
+See [Change Log](/changelog)
+
 # Migration from Version 1
 
 Version 2 has many changes, it also upgraded to discord.js 14 so you can expect
