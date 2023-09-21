@@ -50,6 +50,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Build all Package
+        run: pnpm run build
+
       - name: Generating Documents Test
         run: pnpm run docs
 

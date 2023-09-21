@@ -46,7 +46,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build packages
+      - name: Build all Package
         run: pnpm run build
 
       - name: Build documentation
