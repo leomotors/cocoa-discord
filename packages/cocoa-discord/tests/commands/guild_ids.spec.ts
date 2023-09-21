@@ -4,13 +4,13 @@ import { describe, expect, it } from "vitest";
 import { Client } from "discord.js";
 
 import { GlobalCommand, SlashCenter } from "../../src/slash";
-import { CogSlashClass, Guilds, SlashCommand } from "../../src/slash/class";
+import { Guilds, SlashCommand, SlashModuleClass } from "../../src/slash/class";
 
 const client = new Client({ intents: [] });
 
 describe("Testing Guild IDs Union", () => {
   it("Union IDs with Decorators", async () => {
-    class UnionIds extends CogSlashClass {
+    class UnionIds extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
       async bruh(ctx: SlashCommand.Context) {
@@ -21,7 +21,7 @@ describe("Testing Guild IDs Union", () => {
     const center = new SlashCenter(client, ["000"]);
     const cog = new UnionIds();
     await cog.presync();
-    center.addCogs(cog);
+    center.addModules(cog);
 
     // @ts-ignore yeet: Access protected property
     const gids = center.unionAllGuildIds();
@@ -29,11 +29,11 @@ describe("Testing Guild IDs Union", () => {
     expect(gids).toStrictEqual(["000", "123"]);
 
     // @ts-ignore yeet: Protected Property
-    expect(center.cogs[0].commands.bruh.guild_ids).toStrictEqual(["123"]);
+    expect(center.modules[0].commands.bruh.guild_ids).toStrictEqual(["123"]);
   });
 
   it("Union IDs with One Global", async () => {
-    class UnionIds extends CogSlashClass {
+    class UnionIds extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
       async bruh(ctx: SlashCommand.Context) {
@@ -50,7 +50,7 @@ describe("Testing Guild IDs Union", () => {
     const center = new SlashCenter(client, ["000"]);
     const cog = new UnionIds();
     await cog.presync();
-    center.addCogs(cog);
+    center.addModules(cog);
 
     // @ts-ignore yeet: Access protected property
     const gids = center.unionAllGuildIds();
@@ -58,13 +58,13 @@ describe("Testing Guild IDs Union", () => {
     expect(gids).toStrictEqual("Global");
 
     // @ts-ignore yeet: Protected Property
-    expect(center.cogs[0].commands.bruh.guild_ids).toStrictEqual(["123"]);
+    expect(center.modules[0].commands.bruh.guild_ids).toStrictEqual(["123"]);
     // @ts-ignore yeet: Protected Property
-    expect(center.cogs[0].commands.global.guild_ids).toStrictEqual("Global");
+    expect(center.modules[0].commands.global.guild_ids).toStrictEqual("Global");
   });
 
   it("Union IDs with Root Global", async () => {
-    class UnionIds2 extends CogSlashClass {
+    class UnionIds2 extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
       async bruh(ctx: SlashCommand.Context) {
@@ -81,7 +81,7 @@ describe("Testing Guild IDs Union", () => {
     const center = new SlashCenter(client, "Global");
     const cog = new UnionIds2();
     await cog.presync();
-    center.addCogs(cog);
+    center.addModules(cog);
 
     // @ts-ignore yeet: Access protected property
     const gids = center.unionAllGuildIds();
@@ -89,13 +89,15 @@ describe("Testing Guild IDs Union", () => {
     expect(gids).toStrictEqual("Global");
 
     // @ts-ignore yeet: Protected Property
-    expect(center.cogs[0].commands.bruh.guild_ids).toStrictEqual(["123"]);
+    expect(center.modules[0].commands.bruh.guild_ids).toStrictEqual(["123"]);
     // @ts-ignore yeet: Protected Property
-    expect(center.cogs[0].commands.global.guild_ids).toStrictEqual(["69420"]);
+    expect(center.modules[0].commands.global.guild_ids).toStrictEqual([
+      "69420",
+    ]);
   });
 
   it("Building Commands Pack 1", async () => {
-    class TestCog extends CogSlashClass {
+    class TestCog extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
       async bruh(ctx: SlashCommand.Context) {
@@ -113,7 +115,7 @@ describe("Testing Guild IDs Union", () => {
 
     const cog = new TestCog();
     await cog.presync();
-    center.addCogs(cog);
+    center.addModules(cog);
 
     // @ts-ignore yeet private properties
     const { commandData, guildIdsSet } = await center.buildCommandsPack();
@@ -128,7 +130,7 @@ describe("Testing Guild IDs Union", () => {
   });
 
   it("Building Commands Pack 2", async () => {
-    class TestCog2 extends CogSlashClass {
+    class TestCog2 extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
       async bruh(ctx: SlashCommand.Context) {
@@ -145,7 +147,7 @@ describe("Testing Guild IDs Union", () => {
 
     const cog = new TestCog2();
     await cog.presync();
-    center.addCogs(cog);
+    center.addModules(cog);
 
     // @ts-ignore yeet private properties
     const { commandData, guildIdsSet } = await center.buildCommandsPack();
@@ -160,7 +162,7 @@ describe("Testing Guild IDs Union", () => {
   });
 
   it("Building Commands Pack 3", async () => {
-    class TestCog3 extends CogSlashClass {
+    class TestCog3 extends SlashModuleClass {
       @SlashCommand("Bruh")
       async bruh(ctx: SlashCommand.Context) {
         return;
@@ -176,7 +178,7 @@ describe("Testing Guild IDs Union", () => {
 
     const cog = new TestCog3();
     await cog.presync();
-    center.addCogs(cog);
+    center.addModules(cog);
     // @ts-ignore yeet private method
     center._useHelpCommand();
 

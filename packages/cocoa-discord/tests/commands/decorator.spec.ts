@@ -9,15 +9,15 @@ import {
 } from "discord.js";
 
 import {
-  CogSlashClass,
   Help,
   Param,
   SlashCommand,
+  SlashModuleClass,
 } from "../../src/slash/class";
 
 describe("Slash Command Class V2", () => {
   it("Has Data as expected", async () => {
-    class V2Test extends CogSlashClass {
+    class V2Test extends SlashModuleClass {
       @SlashCommand("The command that say hi to specific person")
       async sayhi(
         ctx: SlashCommand.Context,
@@ -58,7 +58,7 @@ describe("Slash Command Class V2", () => {
 
   it("Should throw error when using Param in wrong position", () => {
     expect(() => {
-      class _ extends CogSlashClass {
+      class _ extends SlashModuleClass {
         @SlashCommand("Pong!")
         async ping(
           @Param.String("Pong!")
@@ -69,7 +69,7 @@ describe("Slash Command Class V2", () => {
   });
 
   // * Classes need to be outside, otherwise prettier will break
-  class test extends CogSlashClass {
+  class test extends SlashModuleClass {
     @SlashCommand("Pong!")
     async ping(
       ctx: SlashCommand.Context,
@@ -91,7 +91,7 @@ describe("Slash Command Class V2", () => {
     ]);
   });
 
-  class test2 extends CogSlashClass {
+  class test2 extends SlashModuleClass {
     @SlashCommand("Pong!")
     async ping(
       ctx: SlashCommand.Context,
@@ -114,7 +114,7 @@ describe("Slash Command Class V2", () => {
     ]);
   });
 
-  class withHelp extends CogSlashClass {
+  class withHelp extends SlashModuleClass {
     @SlashCommand("Pong!")
     @Help("Pong Tai!")
     async ping(ctx: SlashCommand.Context) {}

@@ -22,7 +22,7 @@ const style = new EmbedStyle({
 });
 
 const center = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
-center.addCogs(new Music(client, style));
+center.addModules(new Music(client, style));
 center.useHelpCommand(style);
 center.on("error", (name, err, ctx) => {
   // * FOR DEBUG PURPOSES ONLY, Don't do this on production

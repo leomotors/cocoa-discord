@@ -16,7 +16,7 @@ export type commandsDict<T extends BaseCommand> = {
   [commandName: string]: T;
 };
 
-export interface Cog<T extends BaseCommand> {
+export interface Module<T extends BaseCommand> {
   name: string;
   description?: string;
   commands: commandsDict<T>;

@@ -4,15 +4,15 @@ import { describe, expect, it } from "vitest";
 
 import { ChatInputCommandInteraction, Client } from "discord.js";
 
-import { CogMessage, MessageCenter } from "../src/message";
-import { CogSlash, SlashCenter } from "../src/slash";
-import { CogSlashClass, SlashFull } from "../src/slash/class";
+import { MessageCenter, MessageModule } from "../src/message";
+import { SlashCenter, SlashModule } from "../src/slash";
+import { SlashFull, SlashModuleClass } from "../src/slash/class";
 
 const client = new Client({ intents: [] });
 const mcenter = new MessageCenter(client, { mention: true }, ["1", "2"]);
 const scenter = new SlashCenter(client, ["123"]);
 
-const CorrectMCog: CogMessage = {
+const CorrectMCog: MessageModule = {
   name: "Cocoa",
   commands: {
     test: {
@@ -32,7 +32,7 @@ const CorrectMCog: CogMessage = {
   },
 };
 
-const WrongMCog: CogMessage = {
+const WrongMCog: MessageModule = {
   name: "Wrong Cocoa",
   commands: {
     play: {
@@ -50,7 +50,7 @@ const WrongMCog: CogMessage = {
   },
 };
 
-const CorrectSCog: CogSlash = {
+const CorrectSCog: SlashModule = {
   name: "Cocoa",
   commands: {
     test: {
@@ -71,7 +71,7 @@ const CorrectSCog: CogSlash = {
   },
 };
 
-const WrongSCog: CogSlash = {
+const WrongSCog: SlashModule = {
   name: "Cocoa",
   commands: {
     play: {
@@ -100,7 +100,7 @@ describe("[command] /message & /slash", () => {
 
 function testMessage() {
   it("Validation should Pass", () => {
-    mcenter.addCogs(CorrectMCog);
+    mcenter.addModules(CorrectMCog);
     mcenter.validateCommands();
   });
 
@@ -112,16 +112,16 @@ function testMessage() {
   });
 
   it("Validation should Fail (Illegal Cog: Command name mismatch)", () => {
-    // @ts-ignore to yeet all the cogs
-    mcenter.cogs = [];
-    mcenter.addCogs(WrongMCog);
+    // @ts-ignore to yeet all the modules
+    mcenter.modules = [];
+    mcenter.addModules(WrongMCog);
     return expect(mcenter.validateCommands()).rejects.toBeTruthy();
   });
 
   it("Validation should Fail (Duplicate cog names)", () => {
-    // @ts-ignore to yeet all the cogs
-    mcenter.cogs = [];
-    mcenter.addCogs(CorrectMCog, CorrectMCog);
+    // @ts-ignore to yeet all the modules
+    mcenter.modules = [];
+    mcenter.addModules(CorrectMCog, CorrectMCog);
     return expect(mcenter.validateCommands()).rejects.toBeTruthy();
   });
 
@@ -154,7 +154,7 @@ function testMessage() {
 
 function testSlash() {
   it("Validation should Pass", () => {
-    scenter.addCogs(CorrectSCog);
+    scenter.addModules(CorrectSCog);
     scenter.validateCommands();
   });
 
@@ -166,21 +166,21 @@ function testSlash() {
   });
 
   it("Validation should Fail (Illegal Cog: Command name mismatch)", async () => {
-    scenter.addCogs(WrongSCog);
+    scenter.addModules(WrongSCog);
     return expect(scenter.validateCommands()).rejects.toBeTruthy();
   });
 
   it("Validation should Fail (Duplicate cog names)", async () => {
-    // @ts-ignore to yeeeet all the cogs
-    scenter.cogs = [];
-    scenter.addCogs(CorrectSCog, CorrectSCog);
+    // @ts-ignore to yeeeet all the modules
+    scenter.modules = [];
+    scenter.addModules(CorrectSCog, CorrectSCog);
     return expect(scenter.validateCommands()).rejects.toBeTruthy();
   });
 }
 
 function testClass() {
   it("Should equivalent to CorrectSCog, Decorator should resolve correctly", async () => {
-    class CSCog extends CogSlashClass {
+    class CSCog extends SlashModuleClass {
       constructor() {
         super("Cocoa");
       }
@@ -208,14 +208,14 @@ function testClass() {
 function helpCommand() {
   it("Should generate fine", () => {
     const center = new MessageCenter(client, { prefixes: ["!"] });
-    center.addCogs(CorrectMCog);
+    center.addModules(CorrectMCog);
     center.useHelpCommand();
 
     // @ts-ignore
-    expect(center.cogs.length).toBe(2);
+    expect(center.modules.length).toBe(2);
 
     // @ts-ignore
-    const help = center.cogs[1];
+    const help = center.modules[1];
     expect(help.name).toBe("Help");
     expect(Object.keys(help.commands).length).toBe(1);
     expect(help.commands.help?.command.name).toBe("help");

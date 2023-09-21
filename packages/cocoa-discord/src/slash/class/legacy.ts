@@ -4,7 +4,7 @@ import { commandsDict } from "../../base/index.js";
 import { Ephemeral, getEphemeral } from "../../template/index.js";
 import { CocoaSlash } from "../types.js";
 
-import { CogSlashClass } from "./cog.js";
+import { SlashModuleClass } from "./module.js";
 
 export const muckStorage: { [cogName: string]: commandsDict<CocoaSlash> } = {};
 export const muckFuture: {
@@ -32,7 +32,7 @@ export function SlashFull(
   guild_ids?: string[],
 ) {
   return (
-    cog: CogSlashClass,
+    cog: SlashModuleClass,
     key: string,
     desc: TypedPropertyDescriptor<CocoaSlash["func"]> | undefined,
   ) => {
@@ -74,13 +74,13 @@ SlashFull.Ephemeral = (
   guild_ids?: string[],
 ) => {
   return (
-    cog: CogSlashClass,
+    mod: SlashModuleClass,
     key: string,
     desc: TypedPropertyDescriptor<
       (ctx: ChatInputCommandInteraction, ephemeral: boolean) => Promise<void>
     >,
   ) => {
-    const muck = (muckStorage[cog.constructor.name] ??= {});
+    const muck = (muckStorage[mod.constructor.name] ??= {});
 
     command.addBooleanOption(Ephemeral());
 
@@ -114,11 +114,11 @@ SlashFull.Future = (
   guild_ids?: string[],
 ) => {
   return (
-    cog: CogSlashClass,
+    mod: SlashModuleClass,
     key: string,
     desc: TypedPropertyDescriptor<CocoaSlash["func"]>,
   ) => {
-    const muckF = (muckFuture[cog.constructor.name] ??= []);
+    const muckF = (muckFuture[mod.constructor.name] ??= []);
     muckF.push(
       (async () => {
         const command = (await resolver()).toJSON();
@@ -126,7 +126,7 @@ SlashFull.Future = (
 
         if (command.name === replaceNameKeyword) (command as m).name = key;
 
-        const muck = (muckStorage[cog.constructor.name] ??= {});
+        const muck = (muckStorage[mod.constructor.name] ??= {});
         if (muck[command.name]) {
           throw Error(`Duplicate Command Name: ${command.name}`);
         }

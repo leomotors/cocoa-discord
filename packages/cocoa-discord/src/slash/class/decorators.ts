@@ -4,7 +4,7 @@ import { ChatInputCommandInteraction } from "discord.js";
 import { ResolvesTo } from "../../base/index.js";
 import { GlobalCommand } from "../types.js";
 
-import { CogSlashClass } from "./cog.js";
+import { SlashModuleClass } from "./module.js";
 
 export namespace V2Decorators {
   export interface Params {
@@ -30,30 +30,28 @@ export namespace V2Decorators {
 export const V2Stores = {} as Record<string, Record<string, V2Decorators.Data>>;
 
 export function Guilds(guild_ids: string[] | GlobalCommand) {
-  return (cog: CogSlashClass, key: string, _: unknown) => {
-    const cogStore = (V2Stores[cog.constructor.name] ??= {});
+  return (mod: SlashModuleClass, key: string, _: unknown) => {
+    const moduleStore = (V2Stores[mod.constructor.name] ??= {});
 
-    cogStore[key] = {
-      ...cogStore[key],
+    moduleStore[key] = {
+      ...moduleStore[key],
       guild_ids,
     };
   };
 }
 
 type SlashCommandReturnType = (
-  cog: CogSlashClass,
+  mod: SlashModuleClass,
   key: string,
   descriptor: unknown,
 ) => void;
 
-export function SlashCommand(description: string): SlashCommandReturnType;
-
 export function SlashCommand(description: string): SlashCommandReturnType {
-  return (cog: CogSlashClass, key: string, _: unknown) => {
-    const cogStore = (V2Stores[cog.constructor.name] ??= {});
+  return (mod: SlashModuleClass, key: string, _: unknown) => {
+    const moduleStore = (V2Stores[mod.constructor.name] ??= {});
 
-    cogStore[key] = {
-      ...cogStore[key],
+    moduleStore[key] = {
+      ...moduleStore[key],
       name: key,
       description,
     };
@@ -61,11 +59,11 @@ export function SlashCommand(description: string): SlashCommandReturnType {
 }
 
 export function Help(long_description: string) {
-  return (cog: CogSlashClass, key: string, _: unknown) => {
-    const cogStore = (V2Stores[cog.constructor.name] ??= {});
+  return (mod: SlashModuleClass, key: string, _: unknown) => {
+    const moduleStore = (V2Stores[mod.constructor.name] ??= {});
 
-    cogStore[key] = {
-      ...cogStore[key],
+    moduleStore[key] = {
+      ...moduleStore[key],
       long_description,
     };
   };
@@ -75,9 +73,9 @@ export namespace SlashCommand {
   export type Context = ChatInputCommandInteraction;
 }
 
-export function getArgumentStore(cog: CogSlashClass, propertyKey: string) {
-  const cogStore = (V2Stores[cog.constructor.name] ??= {});
-  const paramsStore = ((cogStore[propertyKey] ??= {}).params ??= {});
+export function getArgumentStore(mod: SlashModuleClass, propertyKey: string) {
+  const moduleStore = (V2Stores[mod.constructor.name] ??= {});
+  const paramsStore = ((moduleStore[propertyKey] ??= {}).params ??= {});
   return paramsStore;
 }
 
@@ -109,11 +107,11 @@ export namespace Param {
       : never,
   ) {
     return (
-      cog: CogSlashClass,
+      mod: SlashModuleClass,
       propertyKey: string,
       parameterIndex: number,
     ) => {
-      const argsStore = getArgumentStore(cog, propertyKey);
+      const argsStore = getArgumentStore(mod, propertyKey);
       (argsStore[parameterIndex] ??= {}).choices = choices;
     };
   }
@@ -126,7 +124,7 @@ export namespace Param {
     const { autocomplete = false, required = true } = option ?? {};
 
     return (
-      cog: CogSlashClass,
+      mod: SlashModuleClass,
       propertyKey: string,
       parameterIndex: number,
     ) => {
@@ -134,7 +132,7 @@ export namespace Param {
         throw Error("First argument must be ctx!");
       }
 
-      const argsStore = getArgumentStore(cog, propertyKey);
+      const argsStore = getArgumentStore(mod, propertyKey);
 
       argsStore[parameterIndex] = {
         ...argsStore[parameterIndex],

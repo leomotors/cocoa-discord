@@ -5,8 +5,8 @@ import chalk from "chalk";
 import { Awaitable, ManagementCenter, NonEmptyArray } from "../base/index.js";
 import { EmbedStyle } from "../main/index.js";
 
-import { CogMessageClass } from "./class/index.js";
-import { CogMessage } from "./types.js";
+import { MessageModuleClass } from "./class/index.js";
+import { MessageModule } from "./types.js";
 
 export type MessageCriteria =
   | ({ prefixes: NonEmptyArray<string> } & { mention?: false })
@@ -18,8 +18,8 @@ export interface MessageEvents {
 }
 
 export class MessageCenter extends ManagementCenter<
-  CogMessage,
-  CogMessageClass,
+  MessageModule,
+  MessageModuleClass,
   MessageEvents
 > {
   private readonly criteria: MessageCriteria;
@@ -84,14 +84,14 @@ export class MessageCenter extends ManagementCenter<
 
     let handled = "";
 
-    for (const cog of this.cogs) {
+    for (const mod of this.modules) {
       if (handled) break;
 
       // * Call by Real Name
-      if (cog.commands[cmdName]) {
+      if (mod.commands[cmdName]) {
         if (
           this.guild_ids &&
-          !(cog.commands[cmdName]!.guild_ids ?? this.guild_ids).includes(
+          !(mod.commands[cmdName]!.guild_ids ?? this.guild_ids).includes(
             message.guildId ?? "bruh",
           )
         ) {
@@ -101,7 +101,7 @@ export class MessageCenter extends ManagementCenter<
         }
 
         try {
-          await cog.commands[cmdName]!.func(
+          await mod.commands[cmdName]!.func(
             message,
             msgToken.slice(1).join(" "),
           );
@@ -117,7 +117,7 @@ export class MessageCenter extends ManagementCenter<
       }
 
       // * Call by Aliases
-      for (const [fullName, cmd] of Object.entries(cog.commands)) {
+      for (const [fullName, cmd] of Object.entries(mod.commands)) {
         if (cmd.command.aliases?.includes(cmdName)) {
           if (
             this.guild_ids &&
@@ -159,7 +159,7 @@ export class MessageCenter extends ManagementCenter<
     this.validated = false;
     const emb = this.generateHelpCommandAsEmbed();
 
-    this.addCogs({
+    this.addModules({
       name: "Help",
       commands: {
         help: {

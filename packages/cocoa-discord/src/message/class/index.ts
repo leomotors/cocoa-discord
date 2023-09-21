@@ -1,19 +1,19 @@
 import { commandsDict } from "../../base/index.js";
 import {
   CocoaMessage,
-  CogMessage,
+  MessageModule,
   PartialCocoaMessageFunction,
 } from "../types.js";
 
 const muckStorage: { [cogName: string]: commandsDict<CocoaMessage> } = {};
 
 /**
- * This class implements `CogMessage`, by OOP magic, you can use
+ * This class implements `MessageModule`, by OOP magic, you can use
  * ```js
- * addCogs(new [your_extended_classname]())
+ * addModules(new [your_extended_classname]())
  * ```
  */
-export abstract class CogMessageClass implements CogMessage {
+export abstract class MessageModuleClass implements MessageModule {
   name: string;
   description?: string;
   commands: commandsDict<CocoaMessage>;
@@ -45,7 +45,7 @@ export function MessageCommand(
   guild_ids?: string[],
 ) {
   return (
-    cog: CogMessageClass,
+    cog: MessageModule,
     key: string,
     desc:
       | TypedPropertyDescriptor<CocoaMessage["func"]>

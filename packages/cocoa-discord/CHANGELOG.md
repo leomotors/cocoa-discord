@@ -16,6 +16,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 
 - refactor: Package is now pure ESM
 - refactor: use `.set()` for syncing commands
+- refactor: renamed "Cog" to "Module"
 - Deprecated Removed: `CocoaIntent`, add Singular methods, etc.
 - Rename CocoaIntent.useGuildSlash to CocoaIntent.useGuild
 - refactor: some undocumented changes, let typescript tell you what changed

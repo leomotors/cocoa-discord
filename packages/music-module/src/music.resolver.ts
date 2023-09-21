@@ -1,5 +1,9 @@
 import { EmbedStyle } from "cocoa-discord";
-import { CogSlashClass, Param, SlashCommand } from "cocoa-discord/slash/class";
+import {
+  Param,
+  SlashCommand,
+  SlashModuleClass,
+} from "cocoa-discord/slash/class";
 
 import {
   ActionRowBuilder,
@@ -24,7 +28,7 @@ import {
   skipMusic,
 } from "./voice.js";
 
-export class Music extends CogSlashClass {
+export class Music extends SlashModuleClass {
   protected selectMenuHandler?: (
     i: StringSelectMenuInteraction,
   ) => Awaitable<void>;

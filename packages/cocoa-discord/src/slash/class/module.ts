@@ -7,18 +7,18 @@ import {
 } from "discord.js";
 
 import { Awaitable, commandsDict } from "../../base/index.js";
-import { CocoaSlash, CogSlash } from "../types.js";
+import { CocoaSlash, SlashModule } from "../types.js";
 
 import { V2Stores } from "./decorators.js";
 import { muckFuture, muckStorage } from "./legacy.js";
 
 /**
- * This class implements `CogSlash`, by OOP magic, you can use
+ * This class implements `SlashModule`, by OOP magic, you can use
  * ```js
- * addCogs(new [your_extended_classname]())
+ * addModules(new [your_extended_classname]())
  * ```
  */
-export abstract class CogSlashClass implements CogSlash {
+export abstract class SlashModuleClass implements SlashModule {
   name: string;
   description?: string;
   commands: commandsDict<CocoaSlash> = {};

@@ -8,15 +8,15 @@ import { SlashEvents } from "../slash/index.js";
 import { GlobalCommand } from "../slash/types.js";
 
 import { store } from "./store.js";
-import { Cog as BaseCog, BaseCommand, NonEmptyArray } from "./types.js";
+import { BaseCommand, Module as BaseModule, NonEmptyArray } from "./types.js";
 
 export abstract class ManagementCenter<
-  Cog extends BaseCog<BaseCommand>,
-  CogClass extends Cog,
+  Module extends BaseModule<BaseCommand>,
+  ModuleClass extends Module,
   Events = MessageEvents | SlashEvents,
 > {
   protected readonly client: Client;
-  protected cogs: Cog[] = [];
+  protected modules: Module[] = [];
   protected validated = false;
   protected guild_ids?: string[] | GlobalCommand;
 
@@ -40,9 +40,9 @@ export abstract class ManagementCenter<
     store.subscribe("login", this.validateCommands.bind(this));
   }
 
-  addCogs(...cogs: NonEmptyArray<Cog | CogClass>) {
+  addModules(...modules: NonEmptyArray<Module | ModuleClass>) {
     this.validated = false;
-    this.cogs.push(...cogs);
+    this.modules.push(...modules);
   }
 
   on<T extends keyof Events>(event: T, callback: Events[T]) {
@@ -98,18 +98,18 @@ export abstract class ManagementCenter<
         chalk.yellow(`[WARN ${this.centerType} Center] Already Validated!`),
       );
 
-    const cogNames = [];
+    const moduleNames = [];
     const cmdNames = [];
-    for (const cog of this.cogs) {
-      cogNames.push(cog.name);
-      for (const [name, cmd] of Object.entries(cog.commands)) {
+    for (const mod of this.modules) {
+      moduleNames.push(mod.name);
+      for (const [name, cmd] of Object.entries(mod.commands)) {
         cmdNames.push(name);
         if (name !== cmd.command.name) throw Error("Command name mismatch");
       }
     }
 
-    if (new Set(cogNames).size !== cogNames.length)
-      throw Error("Duplicate Cog names");
+    if (new Set(moduleNames).size !== moduleNames.length)
+      throw Error("Duplicate Module names");
 
     if (new Set(cmdNames).size !== cmdNames.length) {
       throw Error("Duplicate Command names");
@@ -121,12 +121,12 @@ export abstract class ManagementCenter<
   protected generateHelpCommand() {
     if (this.helpText) return this.helpText;
 
-    for (const cog of this.cogs) {
-      this.helpText += `<== **${cog.name}${
-        cog.description ? ` - ${cog.description}` : ""
+    for (const mod of this.modules) {
+      this.helpText += `<== **${mod.name}${
+        mod.description ? ` - ${mod.description}` : ""
       }** ==>\n`;
 
-      for (const [_, command] of Object.entries(cog.commands)) {
+      for (const [_, command] of Object.entries(mod.commands)) {
         const cmd = command.command;
         this.helpText += `${cmd.name}${
           cmd.description ? ` - ${cmd.description}` : ""
@@ -157,8 +157,8 @@ export abstract class ManagementCenter<
 
     const guildIds = new Set<string>(this.guild_ids ?? []);
 
-    for (const cog of this.cogs) {
-      for (const [_, cmd] of Object.entries(cog.commands)) {
+    for (const mod of this.modules) {
+      for (const [_, cmd] of Object.entries(mod.commands)) {
         if (cmd.guild_ids === GlobalCommand)
           return GlobalCommand as unknown as string[];
 
@@ -171,7 +171,7 @@ export abstract class ManagementCenter<
 
   protected allCommands?: BaseCommand[];
   protected getAllCommands() {
-    return (this.allCommands ??= this.cogs.reduce<BaseCommand[]>(
+    return (this.allCommands ??= this.modules.reduce<BaseCommand[]>(
       (prev, curr) => prev.concat(Object.values(curr.commands)),
       [],
     ));

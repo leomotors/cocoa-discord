@@ -15,7 +15,7 @@ const style = new EmbedStyle({});
 async function test() {
   const music = new Music(client, style);
   const scenter = new SlashCenter(client, ["1234567890"]);
-  scenter.addCogs(music);
+  scenter.addModules(music);
   scenter.useHelpCommand(style);
   await scenter.validateCommands();
 }

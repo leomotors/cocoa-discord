@@ -3,7 +3,7 @@ import {
   RESTPostAPIApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { Awaitable, Cog } from "../base/index.js";
+import { Awaitable, Module } from "../base/index.js";
 
 export const GlobalCommand = "Global";
 export type GlobalCommand = typeof GlobalCommand;
@@ -16,7 +16,7 @@ export interface CocoaSlash {
   long_description?: string;
 }
 
-export interface CogSlash extends Cog<CocoaSlash> {
+export interface SlashModule extends Module<CocoaSlash> {
   /** This hook should only be handled internally */
   presync?: () => Awaitable<void>;
 }

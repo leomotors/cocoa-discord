@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 
-import { Cog, NonEmptyArray } from "../base/index.js";
+import { Module, NonEmptyArray } from "../base/index.js";
 
 export interface CocoaMessageCommandOptions {
   name: string;
@@ -22,4 +22,4 @@ export interface CocoaMessage {
 /** To silent decorators TypeScript warning, you don't need to use this */
 export type PartialCocoaMessageFunction = (message: Message) => Promise<void>;
 
-export type CogMessage = Cog<CocoaMessage>;
+export type MessageModule = Module<CocoaMessage>;

@@ -18,8 +18,8 @@ import {
 } from "../template/index.js";
 
 import { CommandsPack, syncCommands } from "./SlashSync.js";
-import { CogSlashClass, replaceNameKeyword } from "./class/index.js";
-import { CocoaSlash, CogSlash, GlobalCommand } from "./types.js";
+import { SlashModuleClass, replaceNameKeyword } from "./class/index.js";
+import { CocoaSlash, GlobalCommand, SlashModule } from "./types.js";
 
 export interface SlashEvents {
   error: (
@@ -34,8 +34,8 @@ export interface SlashEvents {
 }
 
 export class SlashCenter extends ManagementCenter<
-  CogSlash,
-  CogSlashClass,
+  SlashModule,
+  SlashModuleClass,
   SlashEvents
 > {
   /**
@@ -56,7 +56,7 @@ export class SlashCenter extends ManagementCenter<
   }
 
   override async validateCommands() {
-    await Promise.all(this.cogs.map((cog) => cog.presync?.()));
+    await Promise.all(this.modules.map((cog) => cog.presync?.()));
     if (this.useHelp) this._useHelpCommand(this.helpStyle);
     await super.validateCommands();
   }
@@ -67,10 +67,10 @@ export class SlashCenter extends ManagementCenter<
     );
 
     const commandData: CommandsPack[] = [];
-    for (const cog of this.cogs) {
-      for (const [_, command] of Object.entries(cog.commands)) {
+    for (const mod of this.modules) {
+      for (const [_, command] of Object.entries(mod.commands)) {
         if (command.command.name === replaceNameKeyword) {
-          throw "You cannot use AutoBuilder with Object Cog";
+          throw "You cannot use AutoBuilder with Object Module";
         }
 
         if (command.guild_ids !== GlobalCommand)
@@ -107,10 +107,10 @@ export class SlashCenter extends ManagementCenter<
   private async handleInteraction(interaction: ChatInputCommandInteraction) {
     const cmdname = interaction.commandName;
 
-    for (const cog of this.cogs) {
-      if (cog.commands[cmdname]) {
+    for (const mod of this.modules) {
+      if (mod.commands[cmdname]) {
         try {
-          await cog.commands[cmdname]!.func(interaction);
+          await mod.commands[cmdname]!.func(interaction);
           if (this.hasHandler("interaction"))
             await this.runAllHandler("interaction", cmdname, interaction);
         } catch (error) {
@@ -138,7 +138,7 @@ export class SlashCenter extends ManagementCenter<
     this.validated = false;
     const allEmb = this.generateHelpCommandAsEmbed();
 
-    this.addCogs({
+    this.addModules({
       name: "Help",
       commands: {
         help: {
