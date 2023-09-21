@@ -1,6 +1,6 @@
 # Migration from Version 2
 
-See [Change Log](/changelog)
+See [Change Log](/changelog/cocoa-discord)
 
 # Migration from Version 1
 

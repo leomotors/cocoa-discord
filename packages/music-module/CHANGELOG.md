@@ -1,6 +1,10 @@
 # Changelog
 
-All notables change for @leomotors/music-bot will be noted here
+All notables change for @cocoa-discord/music-module will be noted here
+
+See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
+
+Note: Version before 1.0.0 is under package name `@leomotors/music-bot`
 
 ## [1.0.0] - 2023-09-??
 

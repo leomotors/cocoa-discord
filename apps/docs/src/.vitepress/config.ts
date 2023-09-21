@@ -62,22 +62,22 @@ export default defineConfig({
             link: "https://cocoa.leomotors.me/typedoc",
           },
           {
-            text: "Migrate from V1 -> V2",
+            text: "Migration Guide",
             link: "/introduction/migrate",
-          },
-          {
-            text: "Release Changelog",
-            link: "/changelog",
           },
         ],
       },
       {
         collapsed: true,
-        text: "Configuration",
+        text: "Release Changelog",
         items: [
           {
-            text: "Using .cocoarc",
-            link: "/configuration/cocoarc",
+            text: "Cocoa Discord",
+            link: "/changelog/cocoa-discord",
+          },
+          {
+            text: "Music Module",
+            link: "/changelog/music-module",
           },
         ],
       },
