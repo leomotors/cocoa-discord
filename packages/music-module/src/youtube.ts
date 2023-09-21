@@ -1,5 +1,5 @@
-import { CocoaEmbed, EmbedStyle } from "cocoa-discord-utils";
-import { SlashCommand } from "cocoa-discord-utils/slash/class";
+import { CocoaEmbed, EmbedStyle } from "cocoa-discord";
+import { SlashCommand } from "cocoa-discord/slash/class";
 
 import { AudioResource, createAudioResource } from "@discordjs/voice";
 

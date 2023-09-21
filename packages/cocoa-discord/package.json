@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord",
-  "version": "3.0.0-dev.0",
+  "version": "3.0.0",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "type": "module",

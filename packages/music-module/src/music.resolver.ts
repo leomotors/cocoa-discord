@@ -1,9 +1,5 @@
-import { EmbedStyle } from "cocoa-discord-utils";
-import {
-  CogSlashClass,
-  Param,
-  SlashCommand,
-} from "cocoa-discord-utils/slash/class";
+import { EmbedStyle } from "cocoa-discord";
+import { CogSlashClass, Param, SlashCommand } from "cocoa-discord/slash/class";
 
 import {
   ActionRowBuilder,

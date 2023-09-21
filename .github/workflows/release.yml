@@ -75,6 +75,6 @@ jobs:
         run: pnpm turbo run --filter=${{ fromJson(needs.data.outputs.data).packageName }} build
 
       - name: Release Package
-        run: pnpm --filter=${{ fromJson(needs.data.outputs.data).packageName }} publish --no-git-checks
+        run: pnpm --filter=${{ fromJson(needs.data.outputs.data).packageName }} publish --no-git-checks --tag ${{ fromJson(needs.data.outputs.data).tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

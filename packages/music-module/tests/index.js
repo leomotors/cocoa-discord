@@ -1,12 +1,13 @@
-import { EmbedStyle } from "cocoa-discord-utils";
-import { SlashCenter } from "cocoa-discord-utils/slash";
-import { CocoaOptions } from "cocoa-discord-utils/template";
+// @ts-check
+import { EmbedStyle } from "cocoa-discord";
+import { SlashCenter } from "cocoa-discord/slash";
+import { CocoaIntent } from "cocoa-discord/template";
 
 import { Client } from "discord.js";
 
 import { Music } from "../dist/index.js";
 
-const client = new Client(CocoaOptions);
+const client = new Client(new CocoaIntent().useGuild().useGuildVoice());
 const style = new EmbedStyle({});
 
 // * Test if initialization can be done without error
@@ -14,7 +15,7 @@ const style = new EmbedStyle({});
 async function test() {
   const music = new Music(client, style);
   const scenter = new SlashCenter(client, ["1234567890"]);
-  scenter.addCog(music);
+  scenter.addCogs(music);
   scenter.useHelpCommand(style);
   await scenter.validateCommands();
 }

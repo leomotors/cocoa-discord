@@ -1,9 +1,9 @@
 // @ts-check
 import "dotenv/config";
 
-import { checkLogin, ConsoleManager, EmbedStyle } from "cocoa-discord-utils";
-import { SlashCenter } from "cocoa-discord-utils/slash";
-import { CocoaIntent } from "cocoa-discord-utils/template";
+import { ConsoleManager, EmbedStyle, checkLogin } from "cocoa-discord";
+import { SlashCenter } from "cocoa-discord/slash";
+import { CocoaIntent } from "cocoa-discord/template";
 
 import { Client } from "discord.js";
 
@@ -14,7 +14,7 @@ import { Music } from "../dist/index.js";
 // * Also minimum code required to fire the bot
 // * Good Example!
 
-const client = new Client(new CocoaIntent().useGuildSlash().useGuildVoice());
+const client = new Client(new CocoaIntent().useGuild().useGuildVoice());
 const style = new EmbedStyle({
   author: "invoker",
   color: 0xd7f6fc,
@@ -22,7 +22,7 @@ const style = new EmbedStyle({
 });
 
 const center = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
-center.addCog(new Music(client, style));
+center.addCogs(new Music(client, style));
 center.useHelpCommand(style);
 center.on("error", (name, err, ctx) => {
   // * FOR DEBUG PURPOSES ONLY, Don't do this on production
@@ -37,7 +37,7 @@ center.on("error", (name, err, ctx) => {
 
 client.on("ready", (cli) => {
   console.log(`Logged in as ${cli.user.tag}`);
-  center.syncCommands(true);
+  center.syncCommands();
 });
 
 new ConsoleManager().useLogout(client);

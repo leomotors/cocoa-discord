@@ -5,6 +5,7 @@ All notables change for @leomotors/music-bot will be noted here
 ## [1.0.0] - 2023-09-??
 
 - chore: bump deps
+- feat!: cocoa-discord 3
 - style: format prettier 3
 - refactor!: remove namespace
 - feat!: partially rewritten to make it more customizable, ex: Playable interface

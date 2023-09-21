@@ -1,4 +1,4 @@
-import { SlashCommand } from "cocoa-discord-utils/slash/class";
+import { SlashCommand } from "cocoa-discord/slash/class";
 
 import { StringSelectMenuInteraction } from "discord.js";
 

@@ -1,5 +1,5 @@
-import { Context } from "cocoa-discord-utils";
-import { Awaitable } from "cocoa-discord-utils/internal/base";
+import { Context } from "cocoa-discord";
+import { Awaitable } from "cocoa-discord/internal/base";
 
 import { GuildMember, VoiceChannel } from "discord.js";
 

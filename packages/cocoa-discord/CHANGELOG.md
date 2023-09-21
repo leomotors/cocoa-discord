@@ -18,6 +18,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - refactor: use `.set()` for syncing commands
 - Deprecated Removed: `CocoaIntent`, add Singular methods, etc.
 - Rename CocoaIntent.useGuildSlash to CocoaIntent.useGuild
+- refactor: some undocumented changes, let typescript tell you what changed
 
 ## [2.3.0] - 2022-09-18
 
