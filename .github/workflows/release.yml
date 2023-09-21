@@ -39,8 +39,8 @@ jobs:
         uses: Leomotors/auto-publish-release@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          title: "${{ fromJson(needs.data.outputs.data).packageTitle }} {VERSION}"
-          tag: ${{ github.ref }}
+          title: ${{ fromJson(needs.data.outputs.data).packageTitle }}
+          tag: ${{ fromJson(needs.data.outputs.data).version }}
           changelog: ${{ fromJson(needs.data.outputs.data).packagePath }}/CHANGELOG.md
 
   npm-release:
@@ -72,6 +72,6 @@ jobs:
         run: pnpm turbo run --filter=${{ fromJson(needs.data.outputs.data).packageName }} build
 
       - name: Release Package
-        run: pnpm --filter=${{ fromJson(needs.data.outputs.data).packageName }} publish
+        run: pnpm --filter=${{ fromJson(needs.data.outputs.data).packageName }} publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
