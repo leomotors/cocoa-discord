@@ -26,9 +26,6 @@
     "test:coverage": "FORCE_COLOR=2 vitest run --coverage",
     "docs": "pnpm lm:config && typedoc"
   },
-  "bin": {
-    "cocoadu": "dist/cli/index.js"
-  },
   "keywords": [
     "discord-bot",
     "slash-commands",
