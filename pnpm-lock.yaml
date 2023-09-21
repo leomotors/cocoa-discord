@@ -102,7 +102,7 @@ importers:
   apps/example:
     dependencies:
       cocoa-discord:
-        specifier: ^3.0.0-beta
+        specifier: ^3.0.0-dev
         version: link:../../packages/cocoa-discord
       discord.js:
         specifier: 14.13.0

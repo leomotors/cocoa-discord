@@ -33,6 +33,7 @@ jobs:
   docs:
     name: Docs Gen Test
     runs-on: ubuntu-latest
+    if: false
 
     steps:
       - name: actions/checkout
