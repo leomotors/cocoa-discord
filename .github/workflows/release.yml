@@ -51,6 +51,9 @@ jobs:
     env:
       NPM_CONFIG_PROVENANCE: true
 
+    permissions:
+      id-token: write
+
     steps:
       - name: actions/checkout
         uses: actions/checkout@v4
