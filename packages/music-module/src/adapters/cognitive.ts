@@ -78,7 +78,7 @@ export abstract class CognitiveSearch {
   static #SPEECH_KEY: string;
   static #SPEECH_REGION: string;
 
-  static voiceNames: string[] = [];
+  static voiceNames: Array<{ name: string; displayName: string }> = [];
   static voiceNamesPromise: Promise<void>;
 
   static init(SPEECH_KEY: string, SPEECH_REGION: string) {
@@ -95,8 +95,10 @@ export abstract class CognitiveSearch {
   static async searchNames(search: string) {
     await CognitiveSearch.voiceNamesPromise;
 
+    const searchLower = search.toLowerCase();
+
     return CognitiveSearch.voiceNames.filter((v) =>
-      v.toLowerCase().includes(search.toLowerCase()),
+      v.displayName.toLowerCase().includes(searchLower),
     );
   }
 
@@ -112,9 +114,12 @@ export abstract class CognitiveSearch {
       },
     ).then((r) => r.json());
 
-    CognitiveSearch.voiceNames = (result as Array<{ ShortName: string }>).map(
-      (v) => v.ShortName,
-    );
+    CognitiveSearch.voiceNames = (
+      result as Array<{ LocalName: string; ShortName: string }>
+    ).map((v) => ({
+      name: v.ShortName,
+      displayName: `${v.ShortName} (${v.LocalName})`,
+    }));
 
     console.log("[CognitiveSearch] Voice Names Loaded");
   }

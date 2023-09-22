@@ -52,7 +52,7 @@ export class TTS extends SlashModuleClass {
       data: new CognitiveAdapter(
         this.#speechKey,
         this.#speechRegion,
-        voiceName,
+        voiceName.name,
         content,
       ),
       requestedBy: ctx.user.id,
