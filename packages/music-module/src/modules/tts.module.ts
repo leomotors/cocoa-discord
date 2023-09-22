@@ -9,6 +9,8 @@ import { CognitiveAdapter, CognitiveSearch } from "../adapters/cognitive.js";
 import { Queueable } from "../core/types.js";
 import { getState, playNextMusicInQueue } from "../core/voice.js";
 
+import * as Service from "./music.service.js";
+
 export class TTS extends SlashModuleClass {
   readonly #speechKey: string;
   readonly #speechRegion: string;
@@ -39,6 +41,8 @@ export class TTS extends SlashModuleClass {
 
     await ctx.deferReply();
 
+    if (await Service.joinHook(ctx)) return;
+
     const voiceNames = await CognitiveSearch.searchNames(voice);
 
     if (voiceNames.length === 0) {
@@ -54,6 +58,7 @@ export class TTS extends SlashModuleClass {
         this.#speechRegion,
         voiceName.name,
         content,
+        voiceName.displayName,
       ),
       requestedBy: ctx.user.id,
     } satisfies Queueable;

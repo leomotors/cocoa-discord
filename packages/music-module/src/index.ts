@@ -2,8 +2,10 @@ export * from "./config.g.js";
 
 export { CocoaVersion } from "cocoa-discord/meta";
 
-export { Music } from "./modules/music.module.js";
+export * from "./modules/music.module.js";
 export * as Service from "./modules/music.service.js";
+
+export * from "./modules/tts.module.js";
 
 export * from "./core/voice.js";
 export * from "./core/types.js";

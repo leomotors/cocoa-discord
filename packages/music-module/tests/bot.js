@@ -8,7 +8,7 @@ import { CocoaIntent } from "cocoa-discord/template";
 import { Client } from "discord.js";
 
 // import { Music } from "@cocoa-discord/music-module"
-import { Music } from "../dist/index.js";
+import { Music, TTS } from "../dist/index.js";
 
 // * A simple discord bot to E2E (manually) test this module
 // * Also minimum code required to fire the bot
@@ -25,8 +25,19 @@ if (!process.env.GUILD_ID) {
   throw new Error("GUILD_ID is not set");
 }
 
+if (!process.env.SPEECH_KEY) {
+  throw new Error("SPEECH_KEY is not set");
+}
+
+if (!process.env.SPEECH_REGION) {
+  throw new Error("SPEECH_REGION is not set");
+}
+
 const center = new SlashCenter(client, [process.env.GUILD_ID]);
-center.addModules(new Music(client, style));
+center.addModules(
+  new Music(client, style),
+  new TTS(process.env.SPEECH_KEY, process.env.SPEECH_REGION, style),
+);
 center.useHelpCommand(style);
 center.on("error", async (name, err, ctx) => {
   await ctx.channel?.send(`Error ${err}`);

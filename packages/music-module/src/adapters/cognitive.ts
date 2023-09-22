@@ -17,6 +17,7 @@ export class CognitiveAdapter implements Playable {
     SPEECH_REGION: string,
     readonly voiceName: string,
     readonly content: string,
+    readonly voiceFullName?: string,
   ) {
     const speechConfig = sdk.SpeechConfig.fromSubscription(
       SPEECH_KEY,
@@ -51,7 +52,8 @@ export class CognitiveAdapter implements Playable {
       .addInlineFields(
         {
           name: "🎙️Speaker",
-          value: this.#speechConfig.speechSynthesisVoiceName,
+          value:
+            this.voiceFullName ?? this.#speechConfig.speechSynthesisVoiceName,
         },
         {
           name: "🎫Requested By",
@@ -70,7 +72,9 @@ export class CognitiveAdapter implements Playable {
   }
 
   getTitle(): string {
-    throw new Error("Method not implemented.");
+    return `TTS ${
+      this.voiceFullName ?? this.#speechConfig.speechSynthesisVoiceName
+    }`;
   }
 }
 
