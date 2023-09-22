@@ -4,7 +4,7 @@ import { StringSelectMenuInteraction } from "discord.js";
 
 import chalk from "chalk";
 
-import { JoinFailureReason, joinFromContext } from "./voice.js";
+import { JoinFailureReason, joinFromContext } from "../core/voice.js";
 
 /**
  * Try to remove components from that select menu and add a message,

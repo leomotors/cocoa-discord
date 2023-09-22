@@ -5,8 +5,8 @@ import { AudioResource, createAudioResource } from "@discordjs/voice";
 
 import * as play from "play-dl";
 
-import { Playable } from "./types.js";
-import { beautifyNumber, parseLength, pickLast } from "./utils.js";
+import { Playable } from "../core/types.js";
+import { beautifyNumber, parseLength, pickLast } from "../core/utils.js";
 
 /**
  * {@link Playable} that plays YouTube Video

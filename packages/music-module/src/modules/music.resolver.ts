@@ -16,8 +16,7 @@ import {
 import chalk from "chalk";
 import { search } from "play-dl";
 
-import { SearchEmbedIdPrefix, generateId } from "./constants.js";
-import * as Service from "./music.service.js";
+import { SearchEmbedIdPrefix, generateId } from "../core/constants.js";
 import {
   addMusicToQueue,
   clearMusicQueue,
@@ -26,7 +25,9 @@ import {
   musicStates,
   removeFromQueue,
   skipMusic,
-} from "./voice.js";
+} from "../core/voice.js";
+
+import * as Service from "./music.service.js";
 
 export class Music extends SlashModuleClass {
   protected selectMenuHandler?: (

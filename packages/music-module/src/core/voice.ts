@@ -13,8 +13,9 @@ import {
   joinVoiceChannel as libJoinVoiceChannel,
 } from "@discordjs/voice";
 
+import { YoutubeAdapter, getYoutubeVideo } from "../adapters/youtube.js";
+
 import { MusicState } from "./types.js";
-import { YoutubeAdapter, getYoutubeVideo } from "./youtube.js";
 
 function createDefaultMusicState() {
   return {
