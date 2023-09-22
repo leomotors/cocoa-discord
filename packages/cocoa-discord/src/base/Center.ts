@@ -66,7 +66,7 @@ export abstract class ManagementCenter<
             // @ts-expect-error too complicated
             await handler(...args);
           } catch (error) {
-            console.log(chalk.red(`[Event Handler ERROR: ${error}`));
+            console.log(chalk.red(`[Event Handler ERROR]: ${error}`));
           }
         })(),
       );
