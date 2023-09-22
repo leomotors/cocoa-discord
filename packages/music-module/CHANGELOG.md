@@ -10,7 +10,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - Not all change will be noted, see commits for _full_ changelog
 - Some pre-release or beta build may not appear here
 
-## [1.0.0] - 2023-09-??
+## [1.0.0] - 2023-09-22
 
 - chore: bump deps
 - feat!: cocoa-discord 3

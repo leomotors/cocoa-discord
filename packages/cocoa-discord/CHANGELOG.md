@@ -11,7 +11,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - Not all change will be noted, see commits for _full_ changelog
 - Some pre-release or beta build may not appear here
 
-## [3.0.0] - 2023-??-??
+## [3.0.0] - 2023-09-22
 
 - refactor: Package is now pure ESM
 - refactor: use `.set()` for syncing commands
