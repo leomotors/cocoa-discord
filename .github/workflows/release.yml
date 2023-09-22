@@ -40,7 +40,7 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           title: ${{ fromJson(needs.data.outputs.data).packageTitle }}
-          tag: ${{ fromJson(needs.data.outputs.data).version }}
+          tag: ${{ github.ref_name }}
           changelog: ${{ fromJson(needs.data.outputs.data).packagePath }}/CHANGELOG.md
 
   npm-release:
