@@ -20,6 +20,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - refactor!: remove subscribers and like from embed, so extra data fetch is not needed
 - refactor!: remove time progress from /now
 - feat: TTS Module for text to speech using Azure Cognitive Services
+- fix(music): prevent command in DM
 
 ## [0.24.0] - 2023-03-19
 

@@ -58,11 +58,16 @@ export class Music extends SlashModuleClass {
     ctx: SlashCommand.Context,
     @Param.String("Youtube URL or Search Query") song: Param.String.Type,
   ) {
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
     await ctx.deferReply();
 
     if (await Service.joinHook(ctx)) return;
 
-    const video = await addMusicToQueue(ctx.guildId!, song, ctx.user.id);
+    const video = await addMusicToQueue(ctx.guildId, song, ctx.user.id);
 
     if (typeof video === "string") {
       await ctx.followUp("Cannot find any video with that name");
@@ -82,20 +87,26 @@ export class Music extends SlashModuleClass {
 
   @SlashCommand("Pause the song")
   async pause(ctx: SlashCommand.Context) {
-    if (musicStates[ctx.guildId!]?.audioPlayer?.pause()) await ctx.reply("⏸️");
-    else await ctx.reply("❓");
+    if (musicStates[ctx.guildId ?? "void"]?.audioPlayer?.pause())
+      await ctx.reply("⏸️");
+    else await ctx.reply("");
   }
 
   @SlashCommand("Resume paused song")
   async resume(ctx: SlashCommand.Context) {
-    if (musicStates[ctx.guildId!]?.audioPlayer?.unpause())
+    if (musicStates[ctx.guildId ?? "void"]?.audioPlayer?.unpause())
       await ctx.reply("▶️");
     else await ctx.reply("❓");
   }
 
   @SlashCommand("Toggle Loop")
   async loop(ctx: SlashCommand.Context) {
-    const state = getState(ctx.guildId!);
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    const state = getState(ctx.guildId);
     state.isLooping = !state.isLooping;
 
     await ctx.reply(state.isLooping ? "🔁" : "🔂");
@@ -103,7 +114,12 @@ export class Music extends SlashModuleClass {
 
   @SlashCommand("Prints the current song")
   async now(ctx: SlashCommand.Context) {
-    const state = getState(ctx.guildId!);
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    const state = getState(ctx.guildId);
 
     if (!state.isPlaying || !state.nowPlaying) {
       await ctx.reply("Nothing is playing right now!");
@@ -125,12 +141,17 @@ export class Music extends SlashModuleClass {
     ctx: SlashCommand.Context,
     @Param.Integer("Index of removal") index: Param.Integer.Type,
   ) {
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
     if (index <= 0) {
       await ctx.reply("❗Invalid Index");
       return;
     }
 
-    const music = removeFromQueue(ctx.guildId!, index);
+    const music = removeFromQueue(ctx.guildId, index);
 
     if (music) {
       await ctx.reply(`✅ Removed **${music.data.getTitle()}**`);
@@ -144,6 +165,13 @@ export class Music extends SlashModuleClass {
     ctx: SlashCommand.Context,
     @Param.String("What to search for") song: Param.String.Type,
   ) {
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    const guildId = ctx.guildId;
+
     await ctx.deferReply();
 
     const songs = await search(song, { limit: 10 });
@@ -193,7 +221,7 @@ export class Music extends SlashModuleClass {
 
       if (await Service.joinHook(ctx)) return;
       const prom = addMusicToQueue(
-        ctx.guildId!,
+        guildId,
         interaction.values[0]!,
         ctx.user.id,
       );
@@ -238,15 +266,19 @@ export class Music extends SlashModuleClass {
 
   @SlashCommand("Prints out the current Queue")
   async queue(ctx: SlashCommand.Context) {
-    const state = getState(ctx.guildId!);
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    const state = getState(ctx.guildId);
     const q = state.musicQueue;
 
     let text = "";
 
     if (state.isLooping) text += "*Loop is currently enabled*\n";
 
-    if (isPaused(ctx.guildId!))
-      text += "*Music is currently manually paused*\n";
+    if (isPaused(ctx.guildId)) text += "*Music is currently manually paused*\n";
 
     if (state.nowPlaying) {
       if (text) text += "\n";
@@ -269,7 +301,12 @@ export class Music extends SlashModuleClass {
 
   @SlashCommand("Skip the current song")
   async skip(ctx: SlashCommand.Context) {
-    skipMusic(ctx.guildId!);
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    skipMusic(ctx.guildId);
 
     await ctx.reply("⏩");
   }
@@ -278,7 +315,12 @@ export class Music extends SlashModuleClass {
     "Clear all songs in the queue, stop playing and leave the channel",
   )
   async clear(ctx: SlashCommand.Context) {
-    clearMusicQueue(ctx.guildId!);
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    clearMusicQueue(ctx.guildId);
 
     await ctx.reply("Cleared!");
   }
