@@ -19,6 +19,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - feat!: partially rewritten to make it more customizable, ex: Playable interface
 - refactor!: remove subscribers and like from embed, so extra data fetch is not needed
 - refactor!: remove time progress from /now
+- feat: TTS Module for text to speech using Azure Cognitive Services
 
 ## [0.24.0] - 2023-03-19
 

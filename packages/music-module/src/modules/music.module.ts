@@ -16,9 +16,9 @@ import {
 import chalk from "chalk";
 import { search } from "play-dl";
 
+import { addMusicToQueue } from "../adapters/youtube.js";
 import { SearchEmbedIdPrefix, generateId } from "../core/constants.js";
 import {
-  addMusicToQueue,
   clearMusicQueue,
   getState,
   isPaused,
@@ -39,7 +39,7 @@ export class Music extends SlashModuleClass {
     private style: EmbedStyle,
     description?: string,
   ) {
-    super("Music", description ?? "Cog for playing musics from YouTube");
+    super("Music", description ?? "Module for playing musics from YouTube");
 
     client.on("interactionCreate", async (interaction) => {
       if (interaction.isStringSelectMenu() && this.selectMenuHandler) {

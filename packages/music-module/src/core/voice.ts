@@ -13,8 +13,6 @@ import {
   joinVoiceChannel as libJoinVoiceChannel,
 } from "@discordjs/voice";
 
-import { YoutubeAdapter, getYoutubeVideo } from "../adapters/youtube.js";
-
 import { MusicState } from "./types.js";
 
 function createDefaultMusicState() {
@@ -117,45 +115,6 @@ export async function joinVoiceChannel(
     return connection;
   } catch (err) {
     return undefined;
-  }
-}
-
-/**
- * Add music to queue and play it if not playing
- * @returns A Queueable object or string indicating failure reason
- */
-export async function addMusicToQueue(
-  guildId: string,
-  search: string,
-  requester: string,
-) {
-  const videos = await getYoutubeVideo(search);
-
-  if (typeof videos === "string") {
-    return videos;
-  }
-
-  const state = getState(guildId);
-
-  if (Array.isArray(videos)) {
-    const toAdd = videos.map((v) => ({
-      data: new YoutubeAdapter(v),
-      requestedBy: requester,
-    }));
-
-    state.musicQueue.push(...toAdd);
-
-    if (!state.isPlaying) playNextMusicInQueue(guildId);
-    return toAdd[0]!;
-  } else {
-    const toAdd = {
-      data: new YoutubeAdapter(videos),
-      requestedBy: requester,
-    };
-
-    state.musicQueue.push(toAdd);
-    if (!state.isPlaying) playNextMusicInQueue(guildId);
-    return toAdd;
   }
 }
 

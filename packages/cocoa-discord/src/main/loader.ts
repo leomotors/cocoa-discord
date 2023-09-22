@@ -1,5 +1,6 @@
-import chalk from "chalk";
 import { readFile } from "node:fs/promises";
+
+import chalk from "chalk";
 
 export class Loader<T> {
   readonly name: string;

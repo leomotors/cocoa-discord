@@ -46,6 +46,7 @@
     "chalk": "^5.3.0",
     "cocoa-discord": "^3.0.0",
     "discord.js": "^14.13.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.32.0",
     "play-dl": "^1.9.6",
     "tslib": "^2.6.2",
     "uuid": "^9.0.1"

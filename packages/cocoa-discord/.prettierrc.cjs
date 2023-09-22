@@ -7,6 +7,7 @@ module.exports = require("@leomotors/config/prettier").withSortImports({
     "^vitest",
     "^discord[-.]",
     "^@discordjs",
+    "^node:",
     "^[a-zA-Z]",
     "^[.][.]",
     "^[.]",
