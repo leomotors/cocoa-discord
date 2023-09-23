@@ -43,7 +43,9 @@ export class YoutubeAdapter implements Playable {
       .use(ctx)
       .setTitle(title)
       .setDescription(
-        `[${this.video.title}](${this.video.url})\n${extraDescription}`.trim(),
+        `[${this.video.title}](${this.video.url})\n${
+          extraDescription ?? ""
+        }`.trim(),
       )
       .setThumbnail(pickLast(this.video.thumbnails)?.url ?? "")
       .addInlineFields(

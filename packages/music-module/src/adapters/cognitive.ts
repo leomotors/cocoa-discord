@@ -63,8 +63,8 @@ export class CognitiveAdapter implements Playable {
       .addFields({
         name: "Content",
         value:
-          this.content.length > 50
-            ? this.content.slice(0, 50) + "..."
+          this.content.length > 200
+            ? this.content.slice(0, 200) + "..."
             : this.content,
       });
 

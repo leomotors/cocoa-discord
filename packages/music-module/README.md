@@ -63,6 +63,4 @@ _Note: Picture from previous release, lazy to update_
 
 - This module has its cog named "Music", be sure to not creating a duplicate name
 
-- Despite cocoa-discord supports CommonJS, this module does not
-
-- This module is still in beta, not implemented features includes but not limited to: Working in edge cases for example, user invoke command without being in voice channel
+- Some edge cases like user invoke command without being in voice channel might not be handled yet

@@ -14,6 +14,7 @@ export async function patchPlayDl() {
 
   if (content.includes("markersMap?.find")) {
     console.warn("WARNING: play-dl is already patched");
+    return;
   }
 
   const afterContent = content.replace("markersMap.find", "markersMap?.find");

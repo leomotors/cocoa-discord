@@ -13,7 +13,7 @@
     "@vue/eslint-config-typescript": "12.0.0",
     "@vue/tsconfig": "0.4.0",
     "autoprefixer": "10.4.16",
-    "eslint": "8.49.0",
+    "eslint": "8.50.0",
     "eslint-plugin-vue": "9.17.0",
     "postcss": "8.4.30",
     "tailwindcss": "3.3.3",
