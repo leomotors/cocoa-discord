@@ -10,16 +10,16 @@ importers:
     devDependencies:
       '@leomotors/config':
         specifier: 0.11.0
-        version: 0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.2)(@types/node@18.17.18)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@9.0.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2)
+        version: 0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.3)(@types/node@18.17.19)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@9.0.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: 4.2.0
         version: 4.2.0(prettier@3.0.3)
       '@types/eslint':
-        specifier: 8.44.2
-        version: 8.44.2
+        specifier: 8.44.3
+        version: 8.44.3
       '@types/node':
-        specifier: 18.17.18
-        version: 18.17.18
+        specifier: 18.17.19
+        version: 18.17.19
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.2
         version: 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)(typescript@5.2.2)
@@ -37,7 +37,7 @@ importers:
         version: 2.28.1(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)
       eslint-plugin-prettier:
         specifier: 5.0.0
-        version: 5.0.0(@types/eslint@8.44.2)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3)
+        version: 5.0.0(@types/eslint@8.44.3)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3)
       eslint-plugin-sort-destructure-keys:
         specifier: 1.5.0
         version: 1.5.0(eslint@8.50.0)
@@ -52,7 +52,7 @@ importers:
         version: 5.2.2
       vite:
         specifier: 4.4.9
-        version: 4.4.9(@types/node@18.17.18)
+        version: 4.4.9(@types/node@18.17.19)
       vitest:
         specifier: 0.34.5
         version: 0.34.5
@@ -91,10 +91,10 @@ importers:
         version: 5.2.2
       vite:
         specifier: 4.4.9
-        version: 4.4.9(@types/node@18.17.18)
+        version: 4.4.9(@types/node@18.17.19)
       vitepress:
         specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4(@algolia/client-search@4.20.0)(@types/node@18.17.18)(search-insights@2.8.2)
+        version: 1.0.0-rc.4(@algolia/client-search@4.20.0)(@types/node@18.17.19)(search-insights@2.8.2)
       vue:
         specifier: 3.3.4
         version: 3.3.4
@@ -116,7 +116,7 @@ importers:
     devDependencies:
       '@leomotors/config':
         specifier: 0.11.0
-        version: 0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.2)(@types/node@18.17.18)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@8.10.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2)
+        version: 0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.2)(@types/node@18.17.19)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@8.10.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2)
       '@trivago/prettier-plugin-sort-imports':
         specifier: 4.2.0
         version: 4.2.0(prettier@3.0.3)
@@ -160,6 +160,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: 0.34.5
         version: 0.34.5(vitest@0.34.5)
+      bun-types:
+        specifier: 1.0.3
+        version: 1.0.3
       rimraf:
         specifier: 5.0.1
         version: 5.0.1
@@ -168,7 +171,7 @@ importers:
         version: 16.0.0
       ts-node:
         specifier: 10.9.1
-        version: 10.9.1(@types/node@20.6.3)(typescript@5.2.2)
+        version: 10.9.1(@types/node@18.17.19)(typescript@5.2.2)
       typedoc:
         specifier: 0.25.1
         version: 0.25.1(typescript@5.2.2)
@@ -197,8 +200,8 @@ importers:
         specifier: ^1.32.0
         version: 1.32.0
       play-dl:
-        specifier: ^1.9.6
-        version: 1.9.6
+        specifier: ^1.9.7
+        version: 1.9.7
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -238,7 +241,7 @@ importers:
         version: 2.28.1(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)
       eslint-plugin-prettier:
         specifier: 5.0.0
-        version: 5.0.0(@types/eslint@8.44.2)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3)
+        version: 5.0.0(@types/eslint@8.44.3)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3)
       libsodium-wrappers:
         specifier: 0.7.13
         version: 0.7.13
@@ -1270,7 +1273,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@leomotors/config@0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.2)(@types/node@18.17.18)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@8.10.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2):
+  /@leomotors/config@0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.2)(@types/node@18.17.19)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@8.10.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2):
     resolution: {integrity: sha512-4vm4c+cgxoZUrZjo2yi4Ocw12xgFW9tab2JlLaLt3Wf6gvxlnJor3sRCbRk6xm1f7N5fbbgL6m8PjUdh67Snmw==}
     peerDependencies:
       '@trivago/prettier-plugin-sort-imports': ^4.1.1
@@ -1306,7 +1309,7 @@ packages:
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.0(prettier@3.0.3)
       '@types/eslint': 8.44.2
-      '@types/node': 18.17.18
+      '@types/node': 18.17.19
       '@typescript-eslint/eslint-plugin': 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/parser': 6.7.2(eslint@8.50.0)(typescript@5.2.2)
       eslint: 8.50.0
@@ -1318,7 +1321,7 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /@leomotors/config@0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.2)(@types/node@18.17.18)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@9.0.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2):
+  /@leomotors/config@0.11.0(@trivago/prettier-plugin-sort-imports@4.2.0)(@types/eslint@8.44.3)(@types/node@18.17.19)(@typescript-eslint/eslint-plugin@6.7.2)(@typescript-eslint/parser@6.7.2)(eslint-config-prettier@9.0.0)(eslint-plugin-import@2.28.1)(eslint-plugin-prettier@5.0.0)(eslint-plugin-sort-destructure-keys@1.5.0)(eslint@8.50.0)(prettier@3.0.3)(typescript@5.2.2):
     resolution: {integrity: sha512-4vm4c+cgxoZUrZjo2yi4Ocw12xgFW9tab2JlLaLt3Wf6gvxlnJor3sRCbRk6xm1f7N5fbbgL6m8PjUdh67Snmw==}
     peerDependencies:
       '@trivago/prettier-plugin-sort-imports': ^4.1.1
@@ -1353,14 +1356,14 @@ packages:
         optional: true
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.0(prettier@3.0.3)
-      '@types/eslint': 8.44.2
-      '@types/node': 18.17.18
+      '@types/eslint': 8.44.3
+      '@types/node': 18.17.19
       '@typescript-eslint/eslint-plugin': 6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/parser': 6.7.2(eslint@8.50.0)(typescript@5.2.2)
       eslint: 8.50.0
       eslint-config-prettier: 9.0.0(eslint@8.50.0)
       eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)
-      eslint-plugin-prettier: 5.0.0(@types/eslint@8.44.2)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3)
+      eslint-plugin-prettier: 5.0.0(@types/eslint@8.44.3)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3)
       eslint-plugin-sort-destructure-keys: 1.5.0(eslint@8.50.0)
       prettier: 3.0.3
       typescript: 5.2.2
@@ -1516,8 +1519,19 @@ packages:
       '@types/json-schema': 7.0.12
     dev: true
 
+  /@types/eslint@8.44.3:
+    resolution: {integrity: sha512-iM/WfkwAhwmPff3wZuPLYiHX18HI24jU8k1ZSH7P8FHwxTjZ2P6CoX2wnF43oprR+YXJM6UUxATkNvyv/JHd+g==}
+    dependencies:
+      '@types/estree': 1.0.2
+      '@types/json-schema': 7.0.13
+    dev: true
+
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
+    dev: true
+
+  /@types/estree@1.0.2:
+    resolution: {integrity: sha512-VeiPZ9MMwXjO32/Xu7+OwflfmeoRwkE/qzndw42gGtgJwZopBnzy2gD//NN1+go1mADzkDcqf/KnFRSjTJ8xJA==}
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
@@ -1536,12 +1550,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@18.17.18:
-    resolution: {integrity: sha512-/4QOuy3ZpV7Ya1GTRz5CYSz3DgkKpyUptXuQ5PPce7uuyJAOR7r9FhkmxJfvcNUXyklbC63a+YvB3jxy7s9ngw==}
-
-  /@types/node@20.6.3:
-    resolution: {integrity: sha512-HksnYH4Ljr4VQgEy2lTStbCKv/P590tmPe5HqOnv9Gprffgv5WXAY+Y5Gqniu0GGqeTCUdBnzC3QSrzPkBkAMA==}
-    dev: true
+  /@types/node@18.17.19:
+    resolution: {integrity: sha512-+pMhShR3Or5GR0/sp4Da7FnhVmTalWm81M6MkEldbwjETSaPalw138Z4KdpQaistvqQxLB7Cy4xwYdxpbSOs9Q==}
 
   /@types/semver@7.5.2:
     resolution: {integrity: sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==}
@@ -1568,7 +1578,7 @@ packages:
   /@types/ws@8.5.5:
     resolution: {integrity: sha512-lwhs8hktwxSjf9UaZ9tG5M03PGogvFaH8gUgLNbN9HKIg0dvv6q+gkSuJ8HN4/VbyxkuLzCjlN7GquQ0gUJfIg==}
     dependencies:
-      '@types/node': 18.17.18
+      '@types/node': 18.17.19
     dev: false
 
   /@typescript-eslint/eslint-plugin@6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.50.0)(typescript@5.2.2):
@@ -1712,7 +1722,7 @@ packages:
       '@babel/core': 7.22.17
       '@babel/plugin-transform-typescript': 7.22.15(@babel/core@7.22.17)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.22.17)
-      vite: 4.4.9(@types/node@18.17.18)
+      vite: 4.4.9(@types/node@18.17.19)
       vue: 3.3.4
     transitivePeerDependencies:
       - supports-color
@@ -1725,7 +1735,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.9(@types/node@18.17.18)
+      vite: 4.4.9(@types/node@18.17.19)
       vue: 3.3.4
     dev: true
 
@@ -2309,6 +2319,10 @@ packages:
       update-browserslist-db: 1.0.12(browserslist@4.21.10)
     dev: true
 
+  /bun-types@1.0.3:
+    resolution: {integrity: sha512-XlyKVdYCHa7K5PHYGcwOVOrGE/bMnLS51y7zFA3ZAAXyiQ6dTaNXNCWTTufgII/6ruN770uhAXphQmzvU/r2fQ==}
+    dev: true
+
   /bundle-name@3.0.0:
     resolution: {integrity: sha512-PKA4BeSvBpQKQ8iPOGCSiell+N8P+Tf1DlwqmYhpe2gAhKPHn8EYOxVT+ShuGmhg8lN8XiSlS80yiExKXrURlw==}
     engines: {node: '>=12'}
@@ -2885,7 +2899,7 @@ packages:
       synckit: 0.8.5
     dev: true
 
-  /eslint-plugin-prettier@5.0.0(@types/eslint@8.44.2)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3):
+  /eslint-plugin-prettier@5.0.0(@types/eslint@8.44.3)(eslint-config-prettier@9.0.0)(eslint@8.50.0)(prettier@3.0.3):
     resolution: {integrity: sha512-AgaZCVuYDXHUGxj/ZGu1u8H8CYgDY3iG6w5kUFw4AzMVXzB7VvbKgYR4nATIN+OvUrghMbiDLeimVjVY5ilq3w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2899,7 +2913,7 @@ packages:
       eslint-config-prettier:
         optional: true
     dependencies:
-      '@types/eslint': 8.44.2
+      '@types/eslint': 8.44.3
       eslint: 8.50.0
       eslint-config-prettier: 9.0.0(eslint@8.50.0)
       prettier: 3.0.3
@@ -4263,8 +4277,8 @@ packages:
     resolution: {integrity: sha512-ZAqHUKkQLix2Iga7pPbsf1LpUoBjcpwU93F1l3qBIfxYddQLhxS6GKmS0d3jV8kSVaUbr6NnOEcEMFvuX93SWQ==}
     dev: false
 
-  /play-dl@1.9.6:
-    resolution: {integrity: sha512-JW44bQbME9fNfGhGXQ/rdcsHr4BfgJabVlSgpS9QY/NscfprFH1asv+q9atrZThP3+hHIpgtFNABccg9rFWlwg==}
+  /play-dl@1.9.7:
+    resolution: {integrity: sha512-KpgerWxUCY4s9Mhze2qdqPhiqd8Ve6HufpH9mBH3FN+vux55qSh6WJKDabfie8IBHN7lnrAlYcT/UdGax58c2A==}
     engines: {node: '>=16.0.0'}
     dependencies:
       play-audio: 0.5.2
@@ -4875,7 +4889,7 @@ packages:
     resolution: {integrity: sha512-k43M7uCG1AkTyxgnmI5MPwKoUvS/bRvLvUb7+Pgpdlmok8AoqmUaZxUUw8zKM5B1lqZrt41GjYgnvAi0fppqgQ==}
     dev: false
 
-  /ts-node@10.9.1(@types/node@20.6.3)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@18.17.19)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4894,7 +4908,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.6.3
+      '@types/node': 18.17.19
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -5116,7 +5130,7 @@ packages:
       convert-source-map: 1.9.0
     dev: true
 
-  /vite-node@0.34.5(@types/node@18.17.18):
+  /vite-node@0.34.5(@types/node@18.17.19):
     resolution: {integrity: sha512-RNZ+DwbCvDoI5CbCSQSyRyzDTfFvFauvMs6Yq4ObJROKlIKuat1KgSX/Ako5rlDMfVCyMcpMRMTkJBxd6z8YRA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -5126,7 +5140,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.9(@types/node@18.17.18)
+      vite: 4.4.9(@types/node@18.17.19)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -5138,7 +5152,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.4.9(@types/node@18.17.18):
+  /vite@4.4.9(@types/node@18.17.19):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5166,7 +5180,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.17.18
+      '@types/node': 18.17.19
       esbuild: 0.18.20
       postcss: 8.4.30
       rollup: 3.29.2
@@ -5174,7 +5188,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress@1.0.0-rc.4(@algolia/client-search@4.20.0)(@types/node@18.17.18)(search-insights@2.8.2):
+  /vitepress@1.0.0-rc.4(@algolia/client-search@4.20.0)(@types/node@18.17.19)(search-insights@2.8.2):
     resolution: {integrity: sha512-JCQ89Bm6ECUTnyzyas3JENo00UDJeK8q1SUQyJYou+4Yz5BKEc/F3O21cu++DnUT2zXc0kvQ2Aj4BZCc/nioXQ==}
     hasBin: true
     dependencies:
@@ -5189,7 +5203,7 @@ packages:
       mark.js: 8.11.1
       minisearch: 6.1.0
       shiki: 0.14.4
-      vite: 4.4.9(@types/node@18.17.18)
+      vite: 4.4.9(@types/node@18.17.19)
       vue: 3.3.4
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -5251,7 +5265,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.6
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.17.18
+      '@types/node': 18.17.19
       '@vitest/expect': 0.34.5
       '@vitest/runner': 0.34.5
       '@vitest/snapshot': 0.34.5
@@ -5270,8 +5284,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 4.4.9(@types/node@18.17.18)
-      vite-node: 0.34.5(@types/node@18.17.18)
+      vite: 4.4.9(@types/node@18.17.19)
+      vite-node: 0.34.5(@types/node@18.17.19)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

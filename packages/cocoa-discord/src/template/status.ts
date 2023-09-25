@@ -1,3 +1,4 @@
+/// <reference types="bun-types" />
 import { APIEmbedField } from "discord-api-types/v10";
 import { CommandInteraction, Message } from "discord.js";
 
@@ -12,6 +13,14 @@ export interface GetStatusFieldsOption {
   botMemory?: string;
   systemUptime?: string;
   botUptime?: string;
+}
+
+export function getRuntimeVersion() {
+  if (typeof Bun !== "undefined") {
+    return `Bun v${Bun.version}`;
+  } else {
+    return `Node.js ${process.version}`;
+  }
 }
 
 /**
@@ -41,7 +50,7 @@ export async function getStatusFields(
   return [
     {
       name: runningOn ?? "Running On",
-      value: `${process.platform} ${process.arch}, Node.js ${process.version}`,
+      value: `${process.platform} ${process.arch}, ${getRuntimeVersion()}`,
       inline,
     },
     {

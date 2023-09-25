@@ -10,6 +10,10 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - Not all change will be noted, see commits for _full_ changelog
 - Some pre-release or beta build may not appear here
 
+## [1.2.x] - Upcoming Release
+
+- chore: bump play-dl to 1.9.7, removed play-dl patch function
+
 ## [1.1.0] - 2023-09-23
 
 - fix: undefined text in embed

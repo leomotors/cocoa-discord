@@ -11,6 +11,3 @@ export * from "./core/voice.js";
 export * from "./core/types.js";
 
 export * from "./adapters/youtube.js";
-
-// TEMP See: https://github.com/play-dl/play-dl/issues/357
-export * from "./patch.js";

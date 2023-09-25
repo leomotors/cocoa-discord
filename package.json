@@ -15,8 +15,8 @@
   "devDependencies": {
     "@leomotors/config": "0.11.0",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
-    "@types/eslint": "8.44.2",
-    "@types/node": "18.17.18",
+    "@types/eslint": "8.44.3",
+    "@types/node": "18.17.19",
     "@typescript-eslint/eslint-plugin": "6.7.2",
     "@typescript-eslint/parser": "6.7.2",
     "eslint": "8.50.0",

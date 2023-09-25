@@ -11,6 +11,10 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - Not all change will be noted, see commits for _full_ changelog
 - Some pre-release or beta build may not appear here
 
+## [3.1.0] - 2023-09-25
+
+- feat(template): status embed -> Running On fields now show Bun if is running on Bun
+
 ## [3.0.0] - 2023-09-22
 
 - refactor: Package is now pure ESM
