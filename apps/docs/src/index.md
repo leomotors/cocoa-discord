@@ -14,7 +14,7 @@ hero:
       link: /introduction/overview
     - theme: alt
       text: View on GitHub
-      link: https://github.com/Leomotors/cocoa-discord
+      link: https://github.com/leomotors/cocoa-discord
     - theme: alt
       text: View on NPM
       link: https://www.npmjs.com/package/cocoa-discord

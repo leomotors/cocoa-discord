@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/npm/v/@cocoa-discord/music-module.svg?maxAge=3600)](https://www.npmjs.com/package/@cocoa-discord/music-module)
 [![](https://img.shields.io/npm/dt/@cocoa-discord/music-module.svg?maxAge=3600)](https://www.npmjs.com/package/@cocoa-discord/music-module)
-[![](https://github.com/Leomotors/cocoa-discord/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/Leomotors/cocoa-discord/actions)
+[![](https://github.com/leomotors/cocoa-discord/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/leomotors/cocoa-discord/actions)
 
 Music Bot components extracted from [harunon.js](https://github.com/CarelessDev/harunon.js)
 
@@ -10,7 +10,7 @@ Music Bot components extracted from [harunon.js](https://github.com/CarelessDev/
 
 This package has 2 parts, the underlying mechanics and the part that consume it.
 
-You likely only want to import complete Music Cog which is compatible to [cocoa-discord](https://github.com/Leomotors/cocoa-discord)
+You likely only want to import complete Music Cog which is compatible to [cocoa-discord](https://github.com/leomotors/cocoa-discord)
 
 See Example at [tests/bot.js](./tests/bot.js)
 
@@ -25,8 +25,8 @@ you can directly interact with api underneath, all of them is public.
 
 ### Advanced Usage
 
-- Import music module to existing bot that use [Cocoa Discord](https://github.com/Leomotors/cocoa-discord)
-  (See [cminusminus](https://github.com/Leomotors/cminusminus) for minimal example or [Waifu Bot](https://github.com/Leomotors/waifu-bot) for sized bot)
+- Import music module to existing bot that use [Cocoa Discord](https://github.com/leomotors/cocoa-discord)
+  (See [cminusminus](https://github.com/leomotors/cminusminus) for minimal example or [Waifu Bot](https://github.com/leomotors/waifu-bot) for sized bot)
 
 ## Prerequisites
 

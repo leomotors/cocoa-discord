@@ -7,12 +7,12 @@ Both `MessageCenter` and `SlashCenter` is capable of generating help command, ma
 The help command is named `help` in `Help` Cog, so beware not to create cog or command with the same name.
 
 ```js
-scenter.addCogs( /* all your cogs */);
+scenter.addCogs(/* all your cogs */);
 // * Help Command, must be called after All Cogs are added
 scenter.useHelpCommand(style);
 // * BUT before Validate Commands
 scenter.validateCommands();
-scenter.on("error", /* if you wanna set */);
+scenter.on("error" /* if you wanna set */);
 // * REMINDER: syncCommands should be used in client.on("ready")
 ```
 
@@ -22,4 +22,4 @@ scenter.on("error", /* if you wanna set */);
 
 ## PS
 
-See [cocoa-grader](https://github.com/Leomotors/cocoa-grader) and [harunon.js](https://github.com/CarelessDev/harunon.js)
+See [cocoa-grader](https://github.com/leomotors/cocoa-grader) and [harunon.js](https://github.com/CarelessDev/harunon.js)

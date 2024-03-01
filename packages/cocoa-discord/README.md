@@ -1,97 +1,95 @@
-# Cocoa Discord
+# Changelog
 
-[![](https://img.shields.io/npm/v/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
-[![](https://img.shields.io/npm/dt/cocoa-discord.svg?maxAge=3600)](https://www.npmjs.com/package/cocoa-discord)
-[![](https://github.com/Leomotors/cocoa-discord/actions/workflows/caffemocha.yml/badge.svg)](https://github.com/Leomotors/cocoa-discord/actions)
+All notables change for @cocoa-discord/music-module will be noted here
 
-Yet another Discord Bot Utility npm package
+See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 
-## ✨ Features
+## Note
 
-- Many utilities that **made by me for me** to make my bots
+- Version before 1.0.0 is under package name `@leomotors/music-bot`
+- Not all change will be noted, see commits for _full_ changelog
+- Some pre-release or beta build may not appear here
 
-- Utilities that will help you reducing lines of code
+## [2.0.0] - 2024-03-01
 
-- Automatic Activity Presence Management from Files
+- chore: removed patch script as play-dl is fixed
+- feat!: this.style changed to this.getStyle to allow dynamic style
 
-- Command Management (Message and Slash) System
+## [1.1.0] - 2023-09-23
 
-- many more miscellanous utilities that my bots rely on
+- fix: undefined text in embed
+- feat(cognitive): increase content length limit to 200
 
-- Made for TypeScript
+## [1.0.0] - 2023-09-22
 
-- Flexible, because this is not a framework, part of your bot can be constructed
-  using pure discord.js API
+- chore: bump deps
+- feat!: cocoa-discord 3
+- style: format prettier 3
+- refactor!: remove namespace
+- feat!: partially rewritten to make it more customizable, ex: Playable interface
+- refactor!: remove subscribers and like from embed, so extra data fetch is not needed
+- refactor!: remove time progress from /now
+- feat: TTS Module for text to speech using Azure Cognitive Services
+- fix(music): prevent command in DM
 
-## 🛍️ Subpackages
+## [0.24.0] - 2023-03-19
 
-Many utilities are classified into many subpackages
+- chore: bump deps, this will fix bug that caused connections to drop off
 
-**NOTE**: You need to use the very new version of node.js (16.9+) as it is requirement
-of discord.js
+## [0.23.0] - 2022-12-12
 
-### /
+- chore: bump deps
+- refactor: Migrated to new ESModule Standard (that shit one that force you to add .js on import),
+  this mean you no longer need `-es-module-specifier-resolution=node`
+  and it now supports `moduleResolution` of `node16` or `nodenext` for TypeScript
+- refactor: deprecated APIs
+- fix: a bug where the bot can no longer play music on that server after /clear is used
 
-Miscellanous, consists of many utility classes
+## [0.22.0] - 2022-11-16
 
-### /meta
+- fix: export MusicService
 
-Info Stuff, ex. Utils Version, Device Info, etc.
+## [0.21.0] - 2022-11-16
 
-### /message
+- chore: bump deps
 
-Message Command Management
+## [0.20.1] - 2022-09-18
 
-### /slash
+- chore: bump deps
 
-Slash Command Management
+## [0.20.0] - 2022-09-04
 
-### /template
+- [BREAKING] Switched to `play-dl`, schema changed
+- [Experimental] Add playlist
+- [BREAKING] Some dependencies are now peer dependencies
 
-Frequently used stuff
+## [0.15.1] - 2022-07-18
 
-### /internal
+- Upgraded to discord.js 14!
 
-As the name suggests, you should avoid touching this subpackage
+## [0.9.0] - 2022-06-22
 
-### /message/class & /slash/class
+- Update to `cocoa-discord` 1.9 which supports `discord.js` 13.8
 
-To use Class Cog (with Decorators like discord.py), import them from /message/class
-or /slash/class.
+## [0.7.0] - 2022-06-11
 
-**TypeScript is required to use Decorators**.
+- Fixed bugs in /now
+- Update /now
 
-**Note**: Command Management is inspired by discord.py's cogs system.
-There are two implementations, one that are different, focuses on concept of
-one function per file. And the other one, that is more like discord.py's cogs.
+## [0.5.0] - 2022-06-09
 
-## ✍️ Discord Bots that use this Package a.k.a. Examples
+- Added /now
 
-- [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
+## [0.4.0] - 2022-05-06
 
-- [Harunon JS](https://github.com/CarelessDev/harunon.js)
+- The bot now tell user if it is attempting to joining empty or not joinable functions
 
-- [Bots Gulag](https://github.com/CarelessDev/bots-gulag)
+- Add /rejoin to force bot to join the voice channel
 
-If you wish for examples, see above repositories
+## [0.3.0] - 2022-05-03
 
-## ✏️ Templates
-
-Templates are available at /templates
-
-You can use [degit](https://www.npmjs.com/package/degit) to clone the template
-
-Example:
-
-```bash
-npx degit leomotors/cocoa-discord/templates/slash-only my-bot
-```
-
-## 📚 Documentation
-
-- Doc & Guide: [LINK](https://cocoa.leomotors.me)
-
-**Note**: For runtime safety, **please use TypeScript** or activate @ts-check on JavaScript.
+- Fixed an issue where all server share the same music state (Reference and Value Stuff, again)
+ck on JavaScript.
 
 To use generic type and decorators (Cog Class Syntax), TypeScript is required.
 

@@ -2,7 +2,7 @@
 
 All notables change for @cocoa-discord/music-module will be noted here
 
-See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
+See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 
 ## Note
 
@@ -10,9 +10,10 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 - Not all change will be noted, see commits for _full_ changelog
 - Some pre-release or beta build may not appear here
 
-## [1.2.x] - Upcoming Release
+## [2.0.0] - 2024-03-01
 
-- chore: bump play-dl to 1.9.7, removed play-dl patch function
+- chore: removed patch script as play-dl is fixed
+- feat!: this.style changed to this.getStyle to allow dynamic style
 
 ## [1.1.0] - 2023-09-23
 

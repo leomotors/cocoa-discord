@@ -19,7 +19,7 @@ _Note_: This documentation/guide is partially done.
 
 [Guild for Embed from discord.js](https://discordjs.guide/popular-topics/embeds.html#embed-preview)
 
-_Full implementation_ [See Code](https://github.com/Leomotors/cocoa-discord/blob/main/src/main/embed.ts)
+_Full implementation_ [See Code](https://github.com/leomotors/cocoa-discord/blob/main/src/main/embed.ts)
 
 <<< @/../../../packages/cocoa-discord/src/main/embed.ts#CocoaEmbed
 

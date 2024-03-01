@@ -2,7 +2,7 @@
 
 All notables change for Cocoa Discord will be noted here
 
-See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
+See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 
 ## Note
 
@@ -60,7 +60,7 @@ See also: [GitHub Releases](https://github.com/Leomotors/cocoa-discord/releases)
 
 ## [1.8.0] - 2022-05-03
 
-- Add Log Function from [S-Bot-Framework](https://github.com/Leomotors/s-bot-framework)
+- Add Log Function from [S-Bot-Framework](https://github.com/leomotors/s-bot-framework)
 
 ## [1.7.0] - 2022-04-26
 

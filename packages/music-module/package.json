@@ -1,13 +1,13 @@
 {
   "name": "@cocoa-discord/music-module",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "discord.js music bot that can be run standalone or as a module for other bots",
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Leomotors/cocoa-discord"
+    "url": "https://github.com/leomotors/cocoa-discord"
   },
   "author": "Leomotors",
   "license": "MIT",

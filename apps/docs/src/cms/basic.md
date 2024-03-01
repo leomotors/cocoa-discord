@@ -153,7 +153,7 @@ and come up with the Class Cog syntax.
 **Note**: The Class Syntax (Both V1 and V2 that I will talk about it soon) will
 eventually compiled down to Object Cog.
 
-- The only bot that still use _pure_ Object Cog is [Cocoa Grader](https://github.com/Leomotors/cocoa-grader)
+- The only bot that still use _pure_ Object Cog is [Cocoa Grader](https://github.com/leomotors/cocoa-grader)
 
 ### The Syntax
 

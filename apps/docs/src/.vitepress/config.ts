@@ -15,12 +15,12 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/Leomotors/cocoa-discord",
+        link: "https://github.com/leomotors/cocoa-discord",
       },
     ],
     editLink: {
       pattern:
-        "https://github.com/Leomotors/cocoa-discord/edit/main/docs/:path",
+        "https://github.com/leomotors/cocoa-discord/edit/main/docs/:path",
       text: "Suggest or contribute changes to this page",
     },
 
