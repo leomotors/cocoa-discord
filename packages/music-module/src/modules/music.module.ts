@@ -324,6 +324,64 @@ export class Music extends SlashModuleClass {
     await ctx.reply({ embeds: [emb] });
   }
 
+  @SlashCommand("Move the song at index to front of the queue")
+  async jumpqueue(
+    ctx: SlashCommand.Context,
+    @Param.Integer("Index of the song") index: Param.Integer.Type,
+  ) {
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    const state = getState(ctx.guildId);
+    const queue = state.musicQueue;
+
+    if (!queue[index - 1]) {
+      await ctx.reply("❗️ No music at that index!");
+      return;
+    }
+
+    const music = queue.splice(index - 1, 1)[0]!;
+    queue.unshift(music);
+
+    await ctx.reply(
+      `✅ Moved **${music.data.getTitle()}** to front of the queue`,
+    );
+  }
+
+  @SlashCommand("Get the song data at given index")
+  async musicinfo(
+    ctx: SlashCommand.Context,
+    @Param.Integer("Index of the song") index: Param.Integer.Type,
+  ) {
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
+    const state = getState(ctx.guildId);
+    const queue = state.musicQueue;
+
+    if (!queue[index - 1]) {
+      await ctx.reply("❗️ No music at that index!");
+      return;
+    }
+
+    const music = queue[index - 1]!;
+
+    const emb = music.data.makeEmbed(
+      ctx,
+      this.getStyle(),
+      ctx.user.id,
+      `Music at Index ${index}`,
+    );
+
+    emb.setTitle(`Music at Index ${index}`);
+
+    await ctx.reply({ embeds: [emb] });
+  }
+
   @SlashCommand("Skip the current song")
   async skip(ctx: SlashCommand.Context) {
     if (!ctx.guildId) {

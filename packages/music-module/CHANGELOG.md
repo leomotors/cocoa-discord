@@ -16,6 +16,8 @@ See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 - feat!: this.style changed to this.getStyle to allow dynamic style
 - feat: embed now tell if playlist is added
 - fix: prevent printing queue from exceeding characters limit
+- feat: /jumpqueue for moving music to front
+- feat: /musicinfo for getting music info in the queue
 
 ## [1.1.0] - 2023-09-23
 
