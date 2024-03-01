@@ -15,6 +15,7 @@
       "outputs": ["docs-dist/**"]
     },
     "test": {},
+    "test:cov": {},
     "dev": {
       "cache": false
     }

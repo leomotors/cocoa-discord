@@ -35,7 +35,7 @@ if (!process.env.SPEECH_REGION) {
 
 const center = new SlashCenter(client, [process.env.GUILD_ID]);
 center.addModules(
-  new Music(client, style),
+  new Music(client, () => style),
   new TTS(process.env.SPEECH_KEY, process.env.SPEECH_REGION, style),
 );
 center.useHelpCommand(style);

@@ -13,11 +13,13 @@ const style = new EmbedStyle({});
 // * Test if initialization can be done without error
 // * Will be run with GitHub Actions
 async function test() {
-  const music = new Music(client, style);
+  const music = new Music(client, () => style);
   const scenter = new SlashCenter(client, ["1234567890"]);
   scenter.addModules(music);
   scenter.useHelpCommand(style);
   await scenter.validateCommands();
+
+  console.log("Validation Test Passed!");
 }
 
 test();

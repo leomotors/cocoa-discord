@@ -1,7 +1,15 @@
+/**
+ * Get last element of an array, returns undefined if array is empty
+ *
+ * Implemented by arr[arr.length - 1]
+ */
 export function pickLast<T>(arr: T[]) {
   return arr[arr.length - 1];
 }
 
+/**
+ * Parse seconds into `m:ss` format
+ */
 export function parseLength(seconds: number) {
   const minutes = Math.floor(seconds / 60);
 
@@ -10,7 +18,9 @@ export function parseLength(seconds: number) {
   return `${minutes}:${seconds >= 10 ? `${seconds}` : `0${seconds}`}`;
 }
 
-/** Only works for positive number */
+/**
+ * Only works on positive number, inserts space every 3 digits
+ */
 export function beautifyNumber(
   n: number | string | undefined | null,
   fallback = "Unknown",

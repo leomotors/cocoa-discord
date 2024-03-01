@@ -9,8 +9,9 @@
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
     "test": "FORCE_COLOR=2 turbo run test",
+    "test:cov": "FORCE_COLOR=2 turbo run test:cov",
     "docs": "FORCE_COLOR=2 turbo run docs --parallel && bash postdoc.bash",
-    "music": "pnpm --filter=@cocoa-discord/music-module bot"
+    "music": "FORCE_COLOR=2 pnpm --filter=@cocoa-discord/music-module bot"
   },
   "devDependencies": {
     "@leomotors/config": "0.11.0",

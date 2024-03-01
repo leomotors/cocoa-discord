@@ -9,7 +9,7 @@
     "url": "https://github.com/leomotors/cocoa-discord"
   },
   "homepage": "https://cocoa.leomotors.me",
-  "author": "Leomotors",
+  "author": "leomotors",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -22,7 +22,8 @@
     "prepack": "pnpm cb && pnpm lint && pnpm test",
     "lint": "eslint src tests *.ts --max-warnings=0",
     "format": "eslint src tests *.ts --fix",
-    "test": "FORCE_COLOR=2 vitest run",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
     "docs": "pnpm lm:config && typedoc"
   },
   "keywords": [
