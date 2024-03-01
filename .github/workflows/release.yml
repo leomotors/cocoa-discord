@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
 
@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Publish Release
-        uses: Leomotors/auto-publish-release@main
+        uses: leomotors/auto-publish-release@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           title: ${{ fromJson(needs.data.outputs.data).packageTitle }}
@@ -59,10 +59,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
 
       - name: Setup node with cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
