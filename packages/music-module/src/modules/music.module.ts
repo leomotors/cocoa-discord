@@ -36,7 +36,7 @@ export class Music extends SlashModuleClass {
 
   constructor(
     private client: Client,
-    private style: EmbedStyle,
+    private getStyle: () => EmbedStyle,
     description?: string,
   ) {
     super("Music", description ?? "Module for playing musics from YouTube");
@@ -77,7 +77,7 @@ export class Music extends SlashModuleClass {
     // TODO Handle playlist case (Playlist embed)
     const embed = video.data.makeEmbed(
       ctx,
-      this.style,
+      this.getStyle(),
       ctx.user.id,
       "Added to Queue",
     );
@@ -128,7 +128,7 @@ export class Music extends SlashModuleClass {
 
     const embed = state.nowPlaying.data.makeEmbed(
       ctx,
-      this.style,
+      this.getStyle(),
       ctx.user.id,
       "Now Playing",
     );
@@ -183,7 +183,7 @@ export class Music extends SlashModuleClass {
       text += `**${i + 1})** ${ss[i]!.title} [${ss[i]!.durationRaw}]\n`;
     }
 
-    const emb = this.style
+    const emb = this.getStyle()
       .use(ctx)
       .setTitle(`Search Results for "**${song}**"`)
       .setDescription(text || "NO RESULT");
@@ -252,7 +252,12 @@ export class Music extends SlashModuleClass {
       await interaction.message.edit({
         embeds: [
           emb.setDescription(newtext),
-          video.data.makeEmbed(ctx, this.style, ctx.user.id, "Added to Queue"),
+          video.data.makeEmbed(
+            ctx,
+            this.getStyle(),
+            ctx.user.id,
+            "Added to Queue",
+          ),
         ],
         components: [],
       });
@@ -291,7 +296,7 @@ export class Music extends SlashModuleClass {
       text += `**${+index + 1})** ${m.data.getTitle()}\n`;
     }
 
-    const emb = this.style
+    const emb = this.getStyle()
       .use(ctx)
       .setTitle("Music Queue")
       .setDescription(text || "**The Queue is Empty!**");
