@@ -18,6 +18,7 @@ import { search } from "play-dl";
 
 import { addMusicToQueue } from "../adapters/youtube.js";
 import { SearchEmbedIdPrefix, generateId } from "../core/constants.js";
+import { pickFirst } from "../core/utils.js";
 import {
   clearMusicQueue,
   getState,
@@ -74,13 +75,28 @@ export class Music extends SlashModuleClass {
       return;
     }
 
-    // TODO Handle playlist case (Playlist embed)
-    const embed = video.data.makeEmbed(
+    const videoForEmbed = pickFirst(video)!;
+
+    const embed = videoForEmbed.data.makeEmbed(
       ctx,
       this.getStyle(),
       ctx.user.id,
       "Added to Queue",
     );
+
+    if (Array.isArray(video) && video.length > 1) {
+      embed.setTitle("Added Playlist to Queue");
+
+      const otherTitles = [video[1]?.data.getTitle(), video[2]?.data.getTitle()]
+        .filter(Boolean)
+        .join("\n");
+      const moreText =
+        video.length > 3 ? `\n... and ${video.length - 3} more` : "";
+
+      embed.setDescription(
+        embed.data.description + `\n${otherTitles}${moreText}`,
+      );
+    }
 
     await ctx.followUp({ embeds: [embed] });
   }
@@ -252,7 +268,7 @@ export class Music extends SlashModuleClass {
       await interaction.message.edit({
         embeds: [
           emb.setDescription(newtext),
-          video.data.makeEmbed(
+          pickFirst(video)!.data.makeEmbed(
             ctx,
             this.getStyle(),
             ctx.user.id,
@@ -293,8 +309,12 @@ export class Music extends SlashModuleClass {
     if (q?.length > 0) text += "**Queue**\n";
 
     for (const [index, m] of Object.entries(q ?? [])) {
+      if (+index >= 20) break;
+
       text += `**${+index + 1})** ${m.data.getTitle()}\n`;
     }
+
+    if (q?.length > 20) text += `... and ${q.length - 20} more`;
 
     const emb = this.getStyle()
       .use(ctx)

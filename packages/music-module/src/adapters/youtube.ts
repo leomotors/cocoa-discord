@@ -136,7 +136,7 @@ export async function addMusicToQueue(
     state.musicQueue.push(...toAdd);
 
     if (!state.isPlaying) playNextMusicInQueue(guildId);
-    return toAdd[0]!;
+    return toAdd;
   } else {
     const toAdd = {
       data: new YoutubeAdapter(videos),

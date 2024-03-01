@@ -1,10 +1,19 @@
 /**
  * Get last element of an array, returns undefined if array is empty
  *
- * Implemented by arr[arr.length - 1]
+ * Implemented by `arr[arr.length - 1]`
  */
 export function pickLast<T>(arr: T[]) {
   return arr[arr.length - 1];
+}
+
+/**
+ * Get first element of an array, returns itself if not an array
+ *
+ * Implemented by `Array.isArray(arr) ? arr[0] : arr`
+ */
+export function pickFirst<T>(arr: T | T[]) {
+  return Array.isArray(arr) ? arr[0] : arr;
 }
 
 /**

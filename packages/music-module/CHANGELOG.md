@@ -14,6 +14,8 @@ See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 
 - chore: removed patch script as play-dl is fixed
 - feat!: this.style changed to this.getStyle to allow dynamic style
+- feat: embed now tell if playlist is added
+- fix: prevent printing queue from exceeding characters limit
 
 ## [1.1.0] - 2023-09-23
 

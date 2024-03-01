@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { beautifyNumber, parseLength, pickLast } from "./utils.js";
+import { beautifyNumber, parseLength, pickFirst, pickLast } from "./utils.js";
 
 describe("Utils", () => {
   it("pickLast", () => {
@@ -14,6 +14,23 @@ describe("Utils", () => {
 
     expect(pickLast([{ a: 1 }])).toEqual({ a: 1 });
     expect(pickLast([{ a: 1 }, { b: 2 }, { c: 3 }])).toEqual({ c: 3 });
+  });
+
+  it("pickFirst", () => {
+    expect(pickFirst([])).toBe(undefined);
+
+    expect(pickFirst([1])).toBe(1);
+    expect(pickFirst([1, 2, 3])).toBe(1);
+
+    expect(pickFirst(["a"])).toBe("a");
+    expect(pickFirst(["a", "b", "c"])).toBe("a");
+
+    expect(pickFirst([{ a: 1 }])).toEqual({ a: 1 });
+    expect(pickFirst([{ a: 1 }, { b: 2 }, { c: 3 }])).toEqual({ a: 1 });
+
+    expect(pickFirst("hello")).toBe("hello");
+    expect(pickFirst(123)).toBe(123);
+    expect(pickFirst({ a: 1 })).toEqual({ a: 1 });
   });
 
   it("parseLength", () => {
