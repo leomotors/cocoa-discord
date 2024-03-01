@@ -1,4 +1,3 @@
-/// <reference types="bun-types" />
 import { APIEmbedField } from "discord-api-types/v10";
 import { CommandInteraction, Message } from "discord.js";
 
@@ -16,7 +15,9 @@ export interface GetStatusFieldsOption {
 }
 
 export function getRuntimeVersion() {
+  // @ts-expect-error Bun Types
   if (typeof Bun !== "undefined") {
+    // @ts-expect-error Bun Types
     return `Bun v${Bun.version}`;
   } else {
     return `Node.js ${process.version}`;

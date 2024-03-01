@@ -108,9 +108,7 @@ export abstract class CognitiveSearch {
 
   private static async getNames() {
     const result = await fetch(
-      `https://${
-        this.#SPEECH_REGION
-      }.tts.speech.microsoft.com/cognitiveservices/voices/list`,
+      `https://${this.#SPEECH_REGION}.tts.speech.microsoft.com/cognitiveservices/voices/list`,
       {
         headers: {
           "Ocp-Apim-Subscription-Key": this.#SPEECH_KEY,

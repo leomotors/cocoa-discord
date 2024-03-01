@@ -103,8 +103,8 @@ export namespace Param {
     choices: T extends string
       ? ACO<string>
       : T extends number
-      ? ACO<number>
-      : never,
+        ? ACO<number>
+        : never,
   ) {
     return (
       mod: SlashModuleClass,

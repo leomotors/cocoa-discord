@@ -153,8 +153,8 @@ export class SlashCenter extends ManagementCenter<
             const emb = command
               ? this.commandHelp(command, ctx, style)
               : style
-              ? style.apply(ctx, allEmb)
-              : allEmb;
+                ? style.apply(ctx, allEmb)
+                : allEmb;
             const ephemeral = getEphemeral(ctx);
             await ctx.reply({
               embeds: [emb],

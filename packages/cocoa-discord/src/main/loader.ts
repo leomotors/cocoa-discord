@@ -6,7 +6,7 @@ export class Loader<T> {
   readonly name: string;
   protected _data: T;
   protected readonly filePath?: string;
-  private reloadInterval?: NodeJS.Timer;
+  private reloadInterval?: NodeJS.Timeout;
 
   initialPromise?: Promise<void>;
 

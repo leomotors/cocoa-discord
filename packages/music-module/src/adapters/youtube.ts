@@ -51,8 +51,9 @@ export class YoutubeAdapter implements Playable {
       .addInlineFields(
         {
           name: "🎙️Author",
-          value: `[${this.video.channel?.name ?? "Unknown"}](${this.video
-            .channel?.url})`,
+          value: `[${this.video.channel?.name ?? "Unknown"}](${
+            this.video.channel?.url
+          })`,
         },
         {
           name: "⌛Duration",
