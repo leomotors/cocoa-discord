@@ -1,7 +1,7 @@
 import { Client } from "discord.js";
 
 import chalk from "chalk";
-import readline from "readline";
+import readline from "node:readline";
 
 import { Awaitable } from "../base/index.js";
 
@@ -16,6 +16,7 @@ let rl: readline.Interface;
 export function getReadlineInterface() {
   if (!rl)
     rl = readline.createInterface({
+      // @ts-expect-error it works, trust me
       input: process.stdin,
       output: process.stdout,
     });

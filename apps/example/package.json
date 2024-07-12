@@ -14,16 +14,16 @@
   "devDependencies": {
     "@leomotors/config": "0.11.0",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
-    "@typescript-eslint/eslint-plugin": "7.1.0",
-    "@typescript-eslint/parser": "7.1.0",
+    "@typescript-eslint/eslint-plugin": "7.16.0",
+    "@typescript-eslint/parser": "7.16.0",
     "eslint": "8.57.0",
-    "prettier": "3.2.5",
-    "typescript": "5.3.3"
+    "prettier": "3.3.2",
+    "typescript": "5.5.3"
   },
   "dependencies": {
     "cocoa-discord": "workspace:^",
-    "discord.js": "14.14.1",
+    "discord.js": "14.15.3",
     "dotenv": "16.4.5",
-    "zod": "3.22.4"
+    "zod": "3.23.8"
   }
 }
