@@ -17,7 +17,6 @@ let rl: readline.Interface;
 export function getReadlineInterface() {
   if (!rl)
     rl = readline.createInterface({
-      // @ts-expect-error it works, trust me
       input: process.stdin,
       output: process.stdout,
     });

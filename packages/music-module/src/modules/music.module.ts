@@ -48,7 +48,14 @@ export class Music extends SlashModuleClass {
           await this.selectMenuHandler(interaction);
         } catch (err) {
           console.log(chalk.red(`Error while handling Select Menu: ${err}`));
-          await interaction.channel?.send(`${err}`).catch(console.error);
+
+          if (interaction.channel?.isSendable()) {
+            await interaction.channel.send(`${err}`).catch(console.error);
+          } else {
+            console.log(
+              chalk.red(`Channel ${interaction.channelId} is not sendable`),
+            );
+          }
         }
       }
     });

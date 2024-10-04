@@ -1,3 +1,6 @@
+// TODO Fix EsLint
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Context } from "cocoa-discord";
 import { Awaitable } from "cocoa-discord/internal/base";
 

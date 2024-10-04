@@ -1,3 +1,6 @@
+// TODO Fix EsLint
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { exec as execCb } from "node:child_process";
 import { promisify } from "node:util";
 

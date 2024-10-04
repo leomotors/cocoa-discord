@@ -32,21 +32,21 @@
     "discordjs"
   ],
   "devDependencies": {
-    "@leomotors/scripts": "3.1.0",
-    "@types/sinon": "17.0.3",
-    "@vitest/coverage-v8": "2.0.2",
-    "rimraf": "6.0.1",
-    "sinon": "18.0.0",
-    "ts-node": "10.9.2",
-    "typedoc": "0.26.4",
-    "typescript": "5.5.3",
-    "vitest": "2.0.2"
+    "@leomotors/scripts": "^3.1.0",
+    "@types/sinon": "^17.0.3",
+    "@vitest/coverage-v8": "^2.1.2",
+    "rimraf": "^6.0.1",
+    "sinon": "^19.0.2",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.26.7",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.2"
   },
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^12.1.0",
-    "discord-api-types": "^0.37.92",
-    "discord.js": "^14.15.3"
+    "discord-api-types": "^0.37.101",
+    "discord.js": "^14.16.3"
   },
   "exports": {
     ".": "./dist/main/index.js",

@@ -8,7 +8,6 @@ export default {
   ...DefaultTheme,
   Layout() {
     return (
-      // @ts-expect-error
       <DefaultTheme.Layout>
         {{
           "home-features-after": () => <Home />,
