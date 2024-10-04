@@ -12,8 +12,7 @@ See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 
 ## [3.0.0] - 2024-10-05
 
-- feat!: use [@distube/yt-dl](https://github.com/distubejs/ytdl-core) to play video,
-  search still be done using play-dl
+- feat!: use [@distube/yt-dl](https://github.com/distubejs/ytdl-core) to play video, search still be done using play-dl
 
 ## [2.0.0] - 2024-03-01
 
