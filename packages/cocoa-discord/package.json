@@ -1,6 +1,6 @@
 {
   "name": "cocoa-discord",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Yet another Discord Bot Utility npm package",
   "main": "dist/main/index.js",
   "type": "module",
@@ -38,7 +38,7 @@
     "rimraf": "^6.0.1",
     "sinon": "^19.0.2",
     "ts-node": "^10.9.2",
-    "typedoc": "^0.26.7",
+    "typedoc": "^0.26.8",
     "typescript": "^5.6.2",
     "vitest": "^2.1.2"
   },

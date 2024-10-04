@@ -1,6 +1,6 @@
 {
   "name": "@cocoa-discord/music-module",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "discord.js music bot that can be run standalone or as a module for other bots",
   "main": "dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -40,12 +40,13 @@
     "libsodium-wrappers": "^0.7.15",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
-    "typedoc": "^0.26.7",
+    "typedoc": "^0.26.8",
     "typescript": "^5.6.2",
     "vitest": "^2.1.2"
   },
   "dependencies": {
     "@discordjs/voice": "^0.17.0",
+    "@distube/ytdl-core": "^4.14.4",
     "chalk": "^5.3.0",
     "cocoa-discord": "workspace:^",
     "discord.js": "^14.16.3",

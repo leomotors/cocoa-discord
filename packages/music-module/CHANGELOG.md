@@ -10,6 +10,11 @@ See also: [GitHub Releases](https://github.com/leomotors/cocoa-discord/releases)
 - Not all change will be noted, see commits for _full_ changelog
 - Some pre-release or beta build may not appear here
 
+## [3.0.0] - 2024-10-05
+
+- feat!: use [@distube/yt-dl](https://github.com/distubejs/ytdl-core) to play video,
+  search still be done using play-dl
+
 ## [2.0.0] - 2024-03-01
 
 - chore: removed patch script as play-dl is fixed

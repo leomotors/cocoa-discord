@@ -157,6 +157,8 @@ export async function playNextMusicInQueue(guildId: string) {
   state.isPlaying = true;
   state.playingSince = new Date().getTime();
 
+  console.log(state);
+
   return await new Promise<boolean>((resolve, reject) => {
     audioPlayer.on(AudioPlayerStatus.Idle, () => {
       playNextMusicInQueue(guildId);

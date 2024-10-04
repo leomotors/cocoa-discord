@@ -1,3 +1,5 @@
+import ytdl from "@distube/ytdl-core";
+
 import { CocoaEmbed, EmbedStyle } from "cocoa-discord";
 import { SlashCommand } from "cocoa-discord/slash/class";
 
@@ -16,12 +18,9 @@ export class YoutubeAdapter implements Playable {
   constructor(readonly video: play.YouTubeVideo) {}
 
   async getAudioResource(): Promise<AudioResource> {
-    const stream = await play.stream(this.video.url);
+    const stream = ytdl(this.video.url, { filter: "audioonly" });
 
-    const resource = createAudioResource(stream.stream, {
-      inputType: stream.type,
-    });
-
+    const resource = createAudioResource(stream);
     return resource;
   }
 

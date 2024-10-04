@@ -40,7 +40,11 @@ center.addModules(
 );
 center.useHelpCommand(style);
 center.on("error", async (name, err, ctx) => {
-  await ctx.channel?.send(`Error ${err}`);
+  if (ctx.channel?.isSendable()) {
+    await ctx.channel.send(`Error ${err}`);
+  } else {
+    console.error(`Error occured in unsendable channel: ${ctx.channelId}`);
+  }
   await client.destroy();
 
   // * FOR DEBUG PURPOSES ONLY, Don't do this on production
