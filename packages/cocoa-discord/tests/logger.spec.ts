@@ -14,6 +14,6 @@ describe("[logger] Logger", () => {
     const f = Cocoa.format("Hello World", LogStatus.Success);
 
     // eslint-disable-next-line no-control-regex
-    expect(f).toMatch(/^\u001b\[32m/);
+    expect(f).toMatch(/^\x1B\[32m/);
   });
 });
