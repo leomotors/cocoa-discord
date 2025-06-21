@@ -1,6 +1,5 @@
-import { Client } from "discord.js";
-
 import chalk from "chalk";
+import { Client } from "discord.js";
 
 import { store } from "../base/index.js";
 

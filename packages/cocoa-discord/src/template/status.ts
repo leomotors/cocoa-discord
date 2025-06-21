@@ -1,5 +1,5 @@
-import { APIEmbedField } from "discord-api-types/v10";
 import { CommandInteraction, Message } from "discord.js";
+import { APIEmbedField } from "discord-api-types/v10";
 
 import { parseTime } from "../main/index.js";
 import { getLinuxUptime, getRAM, getTemp } from "../meta/index.js";

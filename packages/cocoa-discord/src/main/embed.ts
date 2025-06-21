@@ -1,5 +1,5 @@
-import { APIEmbedField } from "discord-api-types/v10";
 import { EmbedBuilder } from "discord.js";
+import { APIEmbedField } from "discord-api-types/v10";
 
 // #region CocoaEmbed
 /**

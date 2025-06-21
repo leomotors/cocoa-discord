@@ -9,13 +9,21 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "lint": {},
-    "format": {},
+    "lint": {
+      "cache": false
+    },
+    "format": {
+      "cache": false
+    },
     "docs": {
       "outputs": ["docs-dist/**"]
     },
-    "test": {},
-    "test:cov": {},
+    "test": {
+      "cache": false
+    },
+    "test:cov": {
+      "cache": false
+    },
     "dev": {
       "cache": false
     }

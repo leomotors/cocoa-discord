@@ -2,7 +2,6 @@
 import { EmbedStyle } from "cocoa-discord";
 import { SlashCenter } from "cocoa-discord/slash";
 import { CocoaIntent } from "cocoa-discord/template";
-
 import { Client } from "discord.js";
 
 import { Music } from "../dist/index.js";

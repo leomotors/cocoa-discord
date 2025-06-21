@@ -1,10 +1,7 @@
+import { AudioResource, createAudioResource } from "@discordjs/voice";
 import ytdl from "@distube/ytdl-core";
-
 import { CocoaEmbed, EmbedStyle } from "cocoa-discord";
 import { SlashCommand } from "cocoa-discord/slash/class";
-
-import { AudioResource, createAudioResource } from "@discordjs/voice";
-
 import * as play from "play-dl";
 
 import { Playable } from "../core/types.js";

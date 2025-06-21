@@ -1,13 +1,12 @@
 import {
   ActivityGroupLoader,
   ActivityManager,
-  Cocoa,
   checkLogin,
+  Cocoa,
 } from "cocoa-discord";
 import { MessageCenter } from "cocoa-discord/message";
 import { SlashCenter } from "cocoa-discord/slash";
 import { CocoaIntent } from "cocoa-discord/template";
-
 import { Client } from "discord.js";
 
 import { MainMessageModule } from "./commands/main.message.js";

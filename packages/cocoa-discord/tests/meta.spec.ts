@@ -5,7 +5,6 @@ import {
   CocoaVersion,
   getElapsed,
   getLinuxUptime,
-  getRAM,
 } from "../src/meta";
 
 const time = 1655640259 * 1000;

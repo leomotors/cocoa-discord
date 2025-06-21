@@ -7,7 +7,6 @@ import {
 
 import { valueOf } from "../base/index.js";
 import { Author } from "../template/index.js";
-
 import { CocoaEmbed } from "./embed.js";
 
 /** Message | Interaction */

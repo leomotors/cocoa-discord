@@ -1,15 +1,13 @@
 import "./stub";
 
-import { beforeEach, describe, expect, it } from "vitest";
-
 import { ActivityType } from "discord-api-types/v10";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import {
   ActivityGroupLoader,
   ActivityManager,
   isGroupLoader,
 } from "../src/main";
-
 import Activities from "./mock/activities.mock.json";
 
 describe("[activity] Activity Group Loader", () => {

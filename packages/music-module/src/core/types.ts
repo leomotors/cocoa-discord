@@ -1,7 +1,6 @@
+import { AudioPlayer, AudioResource } from "@discordjs/voice";
 import { CocoaEmbed, EmbedStyle } from "cocoa-discord";
 import { SlashCommand } from "cocoa-discord/slash/class";
-
-import { AudioPlayer, AudioResource } from "@discordjs/voice";
 
 /** Has methods compatible to this library */
 export interface Playable {

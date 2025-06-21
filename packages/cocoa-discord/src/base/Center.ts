@@ -1,12 +1,10 @@
-import { Client, EmbedBuilder } from "discord.js";
-
 import chalk from "chalk";
+import { Client, EmbedBuilder } from "discord.js";
 
 import { EmbedStyle } from "../main/index.js";
 import { MessageEvents } from "../message/index.js";
 import { SlashEvents } from "../slash/index.js";
 import { GlobalCommand } from "../slash/types.js";
-
 import { store } from "./store.js";
 import { BaseCommand, Module as BaseModule, NonEmptyArray } from "./types.js";
 

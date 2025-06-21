@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { EmbedStyle, createEmbedStyle } from "../src/main";
+import { createEmbedStyle, EmbedStyle } from "../src/main";
 
 describe("[styles] Embed Style", () => {
   const style = new EmbedStyle({

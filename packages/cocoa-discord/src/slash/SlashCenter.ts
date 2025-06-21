@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import {
   ApplicationCommandOptionType,
   ChatInputCommandInteraction,
@@ -5,8 +6,6 @@ import {
   Interaction,
   RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
-
-import chalk from "chalk";
 
 import { Awaitable, ManagementCenter } from "../base/index.js";
 import { EmbedStyle } from "../main/index.js";
@@ -16,9 +15,8 @@ import {
   Ephemeral,
   getEphemeral,
 } from "../template/index.js";
-
+import { replaceNameKeyword, SlashModuleClass } from "./class/index.js";
 import { CommandsPack, syncCommands } from "./SlashSync.js";
-import { SlashModuleClass, replaceNameKeyword } from "./class/index.js";
 import { CocoaSlash, GlobalCommand, SlashModule } from "./types.js";
 
 export interface SlashEvents {

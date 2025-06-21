@@ -8,7 +8,6 @@ import {
 
 import { Awaitable, commandsDict } from "../../base/index.js";
 import { CocoaSlash, SlashModule } from "../types.js";
-
 import { V2Stores } from "./decorators.js";
 import { muckFuture, muckStorage } from "./legacy.js";
 

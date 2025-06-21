@@ -1,10 +1,8 @@
-import { Client, Message } from "discord.js";
-
 import chalk from "chalk";
+import { Client, Message } from "discord.js";
 
 import { Awaitable, ManagementCenter, NonEmptyArray } from "../base/index.js";
 import { EmbedStyle } from "../main/index.js";
-
 import { MessageModuleClass } from "./class/index.js";
 import { MessageModule } from "./types.js";
 

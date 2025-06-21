@@ -1,8 +1,7 @@
 import "./stub";
 
-import { describe, expect, it } from "vitest";
-
 import { ChatInputCommandInteraction, Client } from "discord.js";
+import { describe, expect, it } from "vitest";
 
 import { MessageCenter, MessageModule } from "../src/message";
 import { SlashCenter, SlashModule } from "../src/slash";
@@ -19,14 +18,14 @@ const CorrectMCog: MessageModule = {
       command: {
         name: "test",
       },
-      func: async (msg) => {},
+      func: async (_) => {},
       guild_ids: ["3"],
     },
     play: {
       command: {
         name: "play",
       },
-      func: async (msg) => {},
+      func: async (_) => {},
       guild_ids: ["1", "3"],
     },
   },
@@ -39,13 +38,13 @@ const WrongMCog: MessageModule = {
       command: {
         name: "test",
       },
-      func: async (ctx) => {},
+      func: async (_) => {},
     },
     test: {
       command: {
         name: "play",
       },
-      func: async (ctx) => {},
+      func: async (_) => {},
     },
   },
 };
@@ -58,7 +57,7 @@ const CorrectSCog: SlashModule = {
         name: "test",
         description: "bruh",
       },
-      func: async (ctx) => {},
+      func: async (_) => {},
       guild_ids: ["555"],
     },
     play: {
@@ -66,7 +65,7 @@ const CorrectSCog: SlashModule = {
         name: "play",
         description: "bruh",
       },
-      func: async (ctx) => {},
+      func: async (_) => {},
     },
   },
 };
@@ -79,14 +78,14 @@ const WrongSCog: SlashModule = {
         name: "test",
         description: "bruh",
       },
-      func: async (ctx) => {},
+      func: async (_) => {},
     },
     test: {
       command: {
         name: "play",
         description: "bruh",
       },
-      func: async (ctx) => {},
+      func: async (_) => {},
     },
   },
 };
@@ -186,10 +185,10 @@ function testClass() {
       }
 
       @SlashFull({ name: "test", description: "bruh" }, ["12345"])
-      async test(ctx: ChatInputCommandInteraction) {}
+      async test(_: ChatInputCommandInteraction) {}
 
       @SlashFull({ name: "play", description: "bruh" })
-      async play(ctx: ChatInputCommandInteraction) {}
+      async play(_: ChatInputCommandInteraction) {}
     }
     const cog = new CSCog();
     await cog.presync();

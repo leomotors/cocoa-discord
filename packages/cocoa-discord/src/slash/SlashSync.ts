@@ -1,10 +1,9 @@
+import chalk from "chalk";
 import {
   Client,
   Guild,
   RESTPostAPIApplicationCommandsJSONBody,
 } from "discord.js";
-
-import chalk from "chalk";
 
 import { GlobalCommand } from "./types.js";
 

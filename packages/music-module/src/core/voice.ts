@@ -1,20 +1,17 @@
 // TODO Fix EsLint
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Context } from "cocoa-discord";
-import { Awaitable } from "cocoa-discord/internal/base";
-
-import { GuildMember, VoiceChannel } from "discord.js";
-
 import {
   AudioPlayerStatus,
-  VoiceConnection,
-  VoiceConnectionStatus,
   createAudioPlayer,
   entersState,
   getVoiceConnection,
   joinVoiceChannel as libJoinVoiceChannel,
+  VoiceConnection,
+  VoiceConnectionStatus,
 } from "@discordjs/voice";
+import { Context } from "cocoa-discord";
+import { Awaitable } from "cocoa-discord/internal/base";
+import { GuildMember, VoiceChannel } from "discord.js";
 
 import { MusicState } from "./types.js";
 
@@ -39,7 +36,7 @@ export function getState(guildId: string) {
 export function forceDestroyConnection(conn: VoiceConnection | undefined) {
   try {
     conn?.destroy();
-  } catch (e) {
+  } catch (_) {
     // pass
   }
 }
@@ -105,7 +102,7 @@ export async function joinVoiceChannel(
         entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
       ]);
       // Seems to be reconnecting to a new channel - ignore disconnect
-    } catch (error) {
+    } catch (_) {
       // Seems to be a real disconnect which SHOULDN'T be recovered from
       forceDestroyConnection(connection);
       await onDisconnect?.();
@@ -116,7 +113,7 @@ export async function joinVoiceChannel(
     await entersState(connection, VoiceConnectionStatus.Ready, 5_000);
     getState(channel.guildId).channelId = channel.id;
     return connection;
-  } catch (err) {
+  } catch (_) {
     return undefined;
   }
 }
@@ -157,6 +154,7 @@ export async function playNextMusicInQueue(guildId: string) {
   state.isPlaying = true;
   state.playingSince = new Date().getTime();
 
+  // todo remove this shit
   console.log(state);
 
   return await new Promise<boolean>((resolve, reject) => {

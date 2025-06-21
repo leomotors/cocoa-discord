@@ -1,10 +1,9 @@
 // @ts-check
 import "dotenv/config";
 
-import { ConsoleManager, EmbedStyle, checkLogin } from "cocoa-discord";
+import { checkLogin, ConsoleManager, EmbedStyle } from "cocoa-discord";
 import { SlashCenter } from "cocoa-discord/slash";
 import { CocoaIntent } from "cocoa-discord/template";
-
 import { Client } from "discord.js";
 
 // import { Music } from "@cocoa-discord/music-module"

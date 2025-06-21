@@ -1,7 +1,6 @@
 // import "../stub";
-import { describe, expect, it } from "vitest";
-
 import { Client } from "discord.js";
+import { describe, expect, it } from "vitest";
 
 import { GlobalCommand, SlashCenter } from "../../src/slash";
 import { Guilds, SlashCommand, SlashModuleClass } from "../../src/slash/class";
@@ -13,7 +12,7 @@ describe("Testing Guild IDs Union", () => {
     class UnionIds extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
-      async bruh(ctx: SlashCommand.Context) {
+      async bruh(_: SlashCommand.Context) {
         return;
       }
     }
@@ -36,13 +35,13 @@ describe("Testing Guild IDs Union", () => {
     class UnionIds extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
-      async bruh(ctx: SlashCommand.Context) {
+      async bruh(_: SlashCommand.Context) {
         return;
       }
 
       @Guilds("Global")
       @SlashCommand("This is global command")
-      async global(ctx: SlashCommand.Context) {
+      async global(_: SlashCommand.Context) {
         return;
       }
     }
@@ -67,13 +66,13 @@ describe("Testing Guild IDs Union", () => {
     class UnionIds2 extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
-      async bruh(ctx: SlashCommand.Context) {
+      async bruh(_: SlashCommand.Context) {
         return;
       }
 
       @Guilds(["69420"])
       @SlashCommand("This is global command")
-      async global(ctx: SlashCommand.Context) {
+      async global(_: SlashCommand.Context) {
         return;
       }
     }
@@ -100,13 +99,13 @@ describe("Testing Guild IDs Union", () => {
     class TestCog extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
-      async bruh(ctx: SlashCommand.Context) {
+      async bruh(_: SlashCommand.Context) {
         return;
       }
 
       @Guilds("Global")
       @SlashCommand("This is global command")
-      async global(ctx: SlashCommand.Context) {
+      async global(_: SlashCommand.Context) {
         return;
       }
     }
@@ -133,12 +132,12 @@ describe("Testing Guild IDs Union", () => {
     class TestCog2 extends SlashModuleClass {
       @Guilds(["123"])
       @SlashCommand("Bruh")
-      async bruh(ctx: SlashCommand.Context) {
+      async bruh(_: SlashCommand.Context) {
         return;
       }
 
       @SlashCommand("Unspecified one is default to Global")
-      async unspec(ctx: SlashCommand.Context) {
+      async unspec(_: SlashCommand.Context) {
         return;
       }
     }
@@ -164,12 +163,12 @@ describe("Testing Guild IDs Union", () => {
   it("Building Commands Pack 3", async () => {
     class TestCog3 extends SlashModuleClass {
       @SlashCommand("Bruh")
-      async bruh(ctx: SlashCommand.Context) {
+      async bruh(_: SlashCommand.Context) {
         return;
       }
 
       @SlashCommand("Unspecified one is default to Global")
-      async unspec(ctx: SlashCommand.Context) {
+      async unspec(_: SlashCommand.Context) {
         return;
       }
     }

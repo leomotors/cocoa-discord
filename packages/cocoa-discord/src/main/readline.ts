@@ -1,11 +1,9 @@
-import { Client } from "discord.js";
-
 import readline from "node:readline";
 
 import chalk from "chalk";
+import { Client } from "discord.js";
 
 import { Awaitable } from "../base/index.js";
-
 import { Loader } from "./loader.js";
 
 let rl: readline.Interface;

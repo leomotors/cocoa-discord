@@ -1,10 +1,10 @@
+import chalk from "chalk";
 import { EmbedStyle } from "cocoa-discord";
 import {
   Param,
   SlashCommand,
   SlashModuleClass,
 } from "cocoa-discord/slash/class";
-
 import {
   ActionRowBuilder,
   Awaitable,
@@ -12,12 +12,10 @@ import {
   StringSelectMenuBuilder,
   StringSelectMenuInteraction,
 } from "discord.js";
-
-import chalk from "chalk";
 import { search } from "play-dl";
 
 import { addMusicToQueue } from "../adapters/youtube.js";
-import { SearchEmbedIdPrefix, generateId } from "../core/constants.js";
+import { generateId, SearchEmbedIdPrefix } from "../core/constants.js";
 import { pickFirst } from "../core/utils.js";
 import {
   clearMusicQueue,
@@ -27,7 +25,6 @@ import {
   removeFromQueue,
   skipMusic,
 } from "../core/voice.js";
-
 import * as Service from "./music.service.js";
 
 export class Music extends SlashModuleClass {

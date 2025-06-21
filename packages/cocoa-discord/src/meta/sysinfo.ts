@@ -1,6 +1,5 @@
 // TODO Fix EsLint
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { exec as execCb } from "node:child_process";
 import { promisify } from "node:util";
 
@@ -16,7 +15,7 @@ export async function getTemp() {
     const pst = (temp.stdout.split("=")[1]?.split("'") ?? [])[0];
     if (isNaN(+(pst as string))) throw 0;
     return pst;
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 }
@@ -34,7 +33,7 @@ export async function getRAM(): Promise<[number, number] | null> {
     const ramCap = +(ln1[1] as string);
     if (isNaN(ramUsed) || isNaN(ramCap)) throw 0;
     return [ramUsed, ramCap];
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 }
@@ -47,7 +46,7 @@ export async function getLinuxUptime() {
     let uptime = sp[0]!.split("up")[1]?.trim();
     if (uptime?.includes("day")) uptime += " " + sp[1]!.trim();
     return uptime ?? null;
-  } catch (err) {
+  } catch (_) {
     return null;
   }
 }

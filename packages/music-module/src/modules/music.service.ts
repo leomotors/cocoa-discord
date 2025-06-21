@@ -1,8 +1,6 @@
-import { SlashCommand } from "cocoa-discord/slash/class";
-
-import { StringSelectMenuInteraction } from "discord.js";
-
 import chalk from "chalk";
+import { SlashCommand } from "cocoa-discord/slash/class";
+import { StringSelectMenuInteraction } from "discord.js";
 
 import { JoinFailureReason, joinFromContext } from "../core/voice.js";
 

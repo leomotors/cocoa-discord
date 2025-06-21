@@ -2,7 +2,6 @@ import {
   MessageCommand,
   MessageModuleClass,
 } from "cocoa-discord/message/class";
-
 import { Message } from "discord.js";
 
 export class MainMessageModule extends MessageModuleClass {

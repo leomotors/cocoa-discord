@@ -1,12 +1,12 @@
+/* eslint-disable unused-imports/no-unused-vars */
 import "../stub";
-
-import { describe, expect, it } from "vitest";
 
 import {
   ApplicationCommandOptionType,
   ApplicationCommandType,
   RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
+import { describe, expect, it } from "vitest";
 
 import {
   Help,

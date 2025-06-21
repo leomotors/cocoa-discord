@@ -8,7 +8,6 @@ import {
 import { CognitiveAdapter, CognitiveSearch } from "../adapters/cognitive.js";
 import { Queueable } from "../core/types.js";
 import { getState, playNextMusicInQueue } from "../core/voice.js";
-
 import * as Service from "./music.service.js";
 
 export class TTS extends SlashModuleClass {

@@ -1,9 +1,8 @@
-import { ActivityType } from "discord-api-types/v10";
-import { ActivityOptions, Client } from "discord.js";
-
 import { readFile } from "node:fs/promises";
 
 import chalk from "chalk";
+import { ActivityOptions, Client } from "discord.js";
+import { ActivityType } from "discord-api-types/v10";
 
 import { ArrayLoader } from "./loader.js";
 

@@ -1,10 +1,8 @@
-import { Cocoa, CocoaEmbed, EmbedStyle, LogStatus } from "cocoa-discord";
-import { SlashCommand } from "cocoa-discord/slash/class";
-
-import { AudioResource, createAudioResource } from "@discordjs/voice";
-
 import { Readable } from "node:stream";
 
+import { AudioResource, createAudioResource } from "@discordjs/voice";
+import { Cocoa, CocoaEmbed, EmbedStyle, LogStatus } from "cocoa-discord";
+import { SlashCommand } from "cocoa-discord/slash/class";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
 import { Playable } from "../core/types.js";
