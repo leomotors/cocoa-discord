@@ -1,0 +1,21 @@
+{
+  "name": "cocoa-discord-v4",
+  "version": "4.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "discord-api-types": "^0.38.12",
+    "discord.js": "^14.20.0"
+  },
+  "devDependencies": {
+    "tsdown": "^0.15.12",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
