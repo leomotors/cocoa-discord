@@ -15,7 +15,6 @@
     "format": "FORCE_COLOR=2 turbo run format --continue",
     "test": "FORCE_COLOR=2 turbo run test --continue",
     "test:cov": "FORCE_COLOR=2 turbo run test:cov --continue",
-    "docs": "FORCE_COLOR=2 turbo run docs --parallel && bash postdoc.bash",
     "music": "FORCE_COLOR=2 pnpm --filter=@cocoa-discord/music-module bot"
   },
   "devDependencies": {

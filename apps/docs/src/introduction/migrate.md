@@ -1,3 +1,9 @@
+# Migration from Version 3 -> 4
+
+See [Blog](/blog/introducing-v4)
+
+---
+
 # Migration from Version 2 -> 3
 
 See [Change Log](/changelog/cocoa-discord)

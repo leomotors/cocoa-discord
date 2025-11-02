@@ -1,4 +1,5 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 title: Cocoa Discord
@@ -18,9 +19,6 @@ hero:
     - theme: alt
       text: View on NPM
       link: https://www.npmjs.com/package/cocoa-discord
-    - theme: alt
-      text: View TypeDoc
-      link: https://cocoa.leomotors.me/typedoc
 
 features:
   - icon: 🍫
@@ -29,10 +27,7 @@ features:
   - icon: 🦺
     title: Build with TypeScript
     details: Fully Type Safe and power your discord bot development with IntelliSense
-  - icon: ⚙️
-    title: Module (Cog) System inspired by discord.py
-    details: Get some fancy decorators on your functions and now it represents a slash command! (Message command also supported)
-  - icon: 🔁
-    title: Build in Slash Command Syncer
-    details: Slash Command Auto Sync is a feature that save you a lot of times on syncing them manually
+  - icon: 🧠
+    title: Automatic Type Inference
+    details: Inspired by Elysia.js
 ---

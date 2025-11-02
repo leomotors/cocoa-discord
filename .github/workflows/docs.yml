@@ -3,12 +3,14 @@
 name: Documentation
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - apps/docs/**
-      - packages/*/CHANGELOG.md
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - apps/docs/**
+  #     - packages/*/CHANGELOG.md
+  workflow_dispatch:
+    # Temp disable
 
 permissions:
   actions: read
@@ -31,7 +33,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -39,7 +41,7 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Setup node with cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: pnpm
@@ -54,7 +56,7 @@ jobs:
         run: pnpm run docs
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs-dist
 
