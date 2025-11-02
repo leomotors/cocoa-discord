@@ -3,21 +3,25 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { TypedSlashBuilder } from "./builder.js";
 
 // Mock the SlashCommandBuilder
-vi.mock("discord.js", () => ({
-  SlashCommandBuilder: vi.fn(() => ({
-    setName: vi.fn().mockReturnThis(),
-    setDescription: vi.fn().mockReturnThis(),
-    addAttachmentOption: vi.fn().mockReturnThis(),
-    addBooleanOption: vi.fn().mockReturnThis(),
-    addChannelOption: vi.fn().mockReturnThis(),
-    addIntegerOption: vi.fn().mockReturnThis(),
-    addMentionableOption: vi.fn().mockReturnThis(),
-    addNumberOption: vi.fn().mockReturnThis(),
-    addRoleOption: vi.fn().mockReturnThis(),
-    addStringOption: vi.fn().mockReturnThis(),
-    addUserOption: vi.fn().mockReturnThis(),
-  })),
-}));
+vi.mock("discord.js", () => {
+  const MockSlashCommandBuilder = class {
+    setName = vi.fn().mockReturnThis();
+    setDescription = vi.fn().mockReturnThis();
+    addAttachmentOption = vi.fn().mockReturnThis();
+    addBooleanOption = vi.fn().mockReturnThis();
+    addChannelOption = vi.fn().mockReturnThis();
+    addIntegerOption = vi.fn().mockReturnThis();
+    addMentionableOption = vi.fn().mockReturnThis();
+    addNumberOption = vi.fn().mockReturnThis();
+    addRoleOption = vi.fn().mockReturnThis();
+    addStringOption = vi.fn().mockReturnThis();
+    addUserOption = vi.fn().mockReturnThis();
+  };
+
+  return {
+    SlashCommandBuilder: MockSlashCommandBuilder,
+  };
+});
 
 describe("TypedSlashBuilder", () => {
   let builder: TypedSlashBuilder;

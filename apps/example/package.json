@@ -5,7 +5,6 @@
   "main": "dist/bot.js",
   "type": "module",
   "scripts": {
-    "build:app": "tsc",
     "clean": "rm -rf dist/*",
     "start": "node dist/bot.js",
     "format": "eslint src --fix",
@@ -14,16 +13,16 @@
   "devDependencies": {
     "@leomotors/config": "^1.0.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@typescript-eslint/eslint-plugin": "^8.34.1",
-    "@typescript-eslint/parser": "^8.34.1",
-    "eslint": "^9.29.0",
-    "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.39.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "cocoa-discord": "workspace:^",
-    "discord.js": "^14.20.0",
-    "dotenv": "^16.5.0",
-    "zod": "^3.25.67"
+    "discord.js": "^14.24.2",
+    "dotenv": "^17.2.3",
+    "zod": "^4.1.12"
   }
 }

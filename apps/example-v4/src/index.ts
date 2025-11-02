@@ -5,6 +5,7 @@ import {
 } from "cocoa-discord-v4/utils";
 import { Client, Events } from "discord.js";
 
+import { environment } from "./config/environment";
 import { pingHandler } from "./handlers/ping";
 
 const client = new Client(new CocoaIntent().useGuild());
@@ -16,7 +17,7 @@ const activityManager = new ActivityManager(activity, client);
 client.once(Events.ClientReady, async (c) => {
   console.log(`Ready! Logged in as ${c.user.tag}`);
 
-  const guild = await client.guilds.fetch("827812873363128351");
+  const guild = await client.guilds.fetch(environment.DEV_GUILD_ID);
   if (!guild) {
     console.log("Guild not found");
     return;
@@ -41,4 +42,4 @@ process.on("SIGINT", async () => {
 });
 
 console.log("Logging in...");
-await client.login();
+await client.login(environment.DISCORD_TOKEN);
