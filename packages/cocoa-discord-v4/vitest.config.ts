@@ -5,6 +5,8 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json", "html"],
       reportsDirectory: "../../coverage/cocoa-discord-v4",
+      include: ["src/**/*.ts"],
+      exclude: ["src/**/__mocks__/**", "src/**/*.spec.ts"],
     },
   },
 });

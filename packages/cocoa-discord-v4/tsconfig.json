@@ -14,5 +14,5 @@
     "moduleResolution": "bundler",
     "noUncheckedIndexedAccess": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "define.d.ts"]
 }

@@ -243,9 +243,15 @@ importers:
         specifier: ^14.20.0
         version: 14.20.0
     devDependencies:
+      '@types/sinon':
+        specifier: ^17.0.4
+        version: 17.0.4
       '@vitest/coverage-v8':
         specifier: ^3.2.4
         version: 3.2.4(vitest@3.2.4(@types/node@22.15.32)(jiti@2.6.1)(yaml@2.8.0))
+      sinon:
+        specifier: ^21.0.0
+        version: 21.0.0
       tsdown:
         specifier: ^0.15.12
         version: 0.15.12(typescript@5.8.3)

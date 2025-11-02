@@ -1,0 +1,25 @@
+{
+    "LISTENING": [
+        "Daydream café",
+        "ノーポイッ!",
+        "天空カフェテリア"
+    ],
+    "PLAYING": [
+        "Café Grader",
+        "beta.programming.in.th Grader"
+    ],
+    "WATCHING": [
+        "IOI Competition Livestream"
+    ],
+    "COMPETING": [
+        "Thailand Olympiad in Informatics",
+        "International Olympiad in Informatics"
+    ],
+    "STREAMING": [
+        "The Asian Pacific Informatics Olympiad",
+        {
+            "name": "IPST Round 2",
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        }
+    ]
+}

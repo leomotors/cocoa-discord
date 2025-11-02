@@ -20,7 +20,7 @@ import {
   RoleOptionType,
 } from "./types.js";
 
-type AddOptionParams<
+export type AddOptionParams<
   _Name extends string,
   _Required extends boolean,
   _Builder extends ApplicationCommandOptionBase,

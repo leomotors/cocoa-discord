@@ -3,10 +3,25 @@
   "version": "4.0.0",
   "description": "",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/core/index.js",
+  "types": "dist/core/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./info": {
+      "import": "./dist/info/index.js",
+      "types": "./dist/info/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.js",
+      "types": "./dist/utils/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsdown",
+    "check": "tsc --noEmit",
     "test": "vitest run",
     "test:cov": "vitest run --coverage"
   },
@@ -16,7 +31,9 @@
     "discord.js": "^14.20.0"
   },
   "devDependencies": {
+    "@types/sinon": "^17.0.4",
     "@vitest/coverage-v8": "^3.2.4",
+    "sinon": "^21.0.0",
     "tsdown": "^0.15.12",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

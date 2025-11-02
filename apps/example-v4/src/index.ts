@@ -1,34 +1,17 @@
-import { SlashCommandHandler } from "cocoa-discord-v4";
-import { Client, Events, GatewayIntentBits } from "discord.js";
+import {
+  ActivityGroupLoader,
+  ActivityManager,
+  CocoaIntent,
+} from "cocoa-discord-v4/utils";
+import { Client, Events } from "discord.js";
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+import { pingHandler } from "./handlers/ping";
 
-// Use local variable instead of class member (from v3)
-let pinged = 0;
+const client = new Client(new CocoaIntent().useGuild());
 
-const handler = new SlashCommandHandler();
-
-handler.addCommand(
-  (builder) =>
-    builder
-      .setName("ping")
-      .setDescription("An example command")
-      .addStringOption({
-        name: "ping",
-        description: "pong",
-      })
-      .addIntegerOption({
-        name: "count",
-        description: "idk",
-      }),
-  async (ctx, { ping, count }) => {
-    pinged++;
-    // here: ping is typed as string and count is typed as number
-    await ctx.reply(
-      `You provided: ping: ${ping} and count: ${count} and called this command total of ${pinged} times!`,
-    );
-  },
-);
+// ? Edit data/activites.json to customize, or delete this line to not use activities
+const activity = new ActivityGroupLoader("data/activities.json");
+const activityManager = new ActivityManager(activity, client);
 
 client.once(Events.ClientReady, async (c) => {
   console.log(`Ready! Logged in as ${c.user.tag}`);
@@ -38,14 +21,16 @@ client.once(Events.ClientReady, async (c) => {
     console.log("Guild not found");
     return;
   }
-  await guild.commands.set(handler.getCommands());
+  await guild.commands.set(pingHandler.getCommands());
+
+  activityManager.nextActivity();
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (handler.hasCommand(interaction.commandName)) {
-    await handler.handleInteraction(interaction);
+  if (pingHandler.hasCommand(interaction.commandName)) {
+    await pingHandler.handleInteraction(interaction);
   }
 });
 
@@ -55,4 +40,5 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
+console.log("Logging in...");
 await client.login();
