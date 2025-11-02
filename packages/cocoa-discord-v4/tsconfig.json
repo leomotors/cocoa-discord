@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "NodeNext",
+    "module": "esnext",
     "declaration": true,
     "sourceMap": true,
     "declarationMap": true,
@@ -11,11 +11,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "NodeNext",
-    "experimentalDecorators": true,
-    "noUncheckedIndexedAccess": true,
-    "incremental": true,
-    "importHelpers": true
+    "moduleResolution": "bundler",
+    "noUncheckedIndexedAccess": true
   },
   "include": ["./src/**/*"]
 }
