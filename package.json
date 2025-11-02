@@ -9,7 +9,8 @@
   "scripts": {
     "build:app": "FORCE_COLOR=2 turbo run build:app",
     "build": "FORCE_COLOR=2 turbo run build",
-    "dev": "FORCE_COLOR=2 turbo run dev --parallel",
+    "check": "FORCE_COLOR=2 turbo run check --continue",
+    "dev": "FORCE_COLOR=2 turbo run dev",
     "lint": "FORCE_COLOR=2 turbo run lint --continue",
     "format": "FORCE_COLOR=2 turbo run format --continue",
     "test": "FORCE_COLOR=2 turbo run test --continue",

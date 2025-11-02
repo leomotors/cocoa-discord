@@ -9,6 +9,9 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "check": {
+      "cache": false
+    },
     "lint": {
       "cache": false
     },
