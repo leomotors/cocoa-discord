@@ -5,7 +5,7 @@ import {
   RESTPostAPIChatInputApplicationCommandsJSONBody,
 } from "discord.js";
 
-import { MyBuilder } from "./builder.js";
+import { TypedSlashBuilder } from "./builder.js";
 
 export class SlashCommandHandler {
   private handlers: Map<
@@ -30,15 +30,15 @@ export class SlashCommandHandler {
   }
 
   public addCommand<T extends Record<string, unknown>>(
-    command: (builder: MyBuilder) => MyBuilder<T>,
+    command: (builder: TypedSlashBuilder) => TypedSlashBuilder<T>,
     handler: (
       ctx: ChatInputCommandInteraction,
       data: {
-        [o in keyof T]: T[o];
+        [Option in keyof T]: T[Option];
       },
     ) => unknown,
   ) {
-    const builder = command(new MyBuilder()).builder;
+    const builder = command(new TypedSlashBuilder()).builder;
 
     this.handlers.set(builder.name, {
       command: builder.toJSON(),
@@ -57,16 +57,52 @@ export class SlashCommandHandler {
     const data = {} as Record<string, unknown>;
 
     command.options?.map(async (option) => {
-      if (option.type === ApplicationCommandOptionType.String) {
-        const value = ctx.options.getString(option.name);
-        data[option.name] = value;
-        return;
-      }
-
-      if (option.type === ApplicationCommandOptionType.Integer) {
-        const value = ctx.options.getInteger(option.name);
-        data[option.name] = value;
-        return;
+      switch (option.type) {
+        case ApplicationCommandOptionType.Attachment: {
+          const value = ctx.options.getAttachment(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.Boolean: {
+          const value = ctx.options.getBoolean(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.Channel: {
+          const value = ctx.options.getChannel(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.Integer: {
+          const value = ctx.options.getInteger(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.Mentionable: {
+          const value = ctx.options.getMentionable(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.Number: {
+          const value = ctx.options.getNumber(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.Role: {
+          const value = ctx.options.getRole(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.String: {
+          const value = ctx.options.getString(option.name);
+          data[option.name] = value;
+          return;
+        }
+        case ApplicationCommandOptionType.User: {
+          const value = ctx.options.getUser(option.name);
+          data[option.name] = value;
+          return;
+        }
       }
     });
 
