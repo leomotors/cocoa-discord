@@ -353,6 +353,7 @@ describe("TypedSlashBuilder", () => {
         setName: vi.fn().mockReturnThis(),
         setDescription: vi.fn().mockReturnThis(),
         setRequired: vi.fn().mockReturnThis(),
+        setAutocomplete: vi.fn().mockReturnThis(),
       };
       stringOptionBuilder(mockStringOption);
       expect(mockStringOption.setName).toHaveBeenCalledWith("text");
@@ -368,6 +369,7 @@ describe("TypedSlashBuilder", () => {
         setName: vi.fn().mockReturnThis(),
         setDescription: vi.fn().mockReturnThis(),
         setRequired: vi.fn().mockReturnThis(),
+        setAutocomplete: vi.fn().mockReturnThis(),
       };
       integerOptionBuilder(mockIntegerOption);
       expect(mockIntegerOption.setName).toHaveBeenCalledWith("count");
@@ -399,6 +401,7 @@ describe("TypedSlashBuilder", () => {
         setName: vi.fn().mockReturnThis(),
         setDescription: vi.fn().mockReturnThis(),
         setRequired: vi.fn().mockReturnThis(),
+        setAutocomplete: vi.fn().mockReturnThis(),
       });
 
       builder.addStringOption({
