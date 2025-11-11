@@ -31,7 +31,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   if (pingHandler.hasCommand(interaction.commandName)) {
-    await pingHandler.handleInteraction(interaction);
+    await pingHandler.handleCommandInteraction(interaction);
   }
 });
 

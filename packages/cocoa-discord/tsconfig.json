@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "declaration": true,
-    "sourceMap": true,
     "declarationMap": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "rootDirs": ["./src"],
+    "noEmit": true,
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "nodenext",
-    "experimentalDecorators": true,
-    "noUncheckedIndexedAccess": true,
-    "outDir": "dist"
+    "noUncheckedIndexedAccess": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "define.d.ts"]
 }

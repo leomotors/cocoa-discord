@@ -1,16 +1,11 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "NodeNext",
-    "rootDirs": ["./src"],
-    "outDir": "./dist",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "nodenext",
-    "experimentalDecorators": true,
-    "incremental": true,
     "noUncheckedIndexedAccess": true
   },
   "include": ["./src/**/*"]

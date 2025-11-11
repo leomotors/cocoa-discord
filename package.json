@@ -4,35 +4,29 @@
   "engines": {
     "node": "^24.11"
   },
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.21.0",
   "type": "module",
   "scripts": {
-    "build:app": "FORCE_COLOR=2 turbo run build:app",
-    "build": "FORCE_COLOR=2 turbo run build",
-    "check": "FORCE_COLOR=2 turbo run check --continue",
-    "dev": "FORCE_COLOR=2 turbo run dev",
-    "lint": "FORCE_COLOR=2 turbo run lint --continue",
-    "format": "FORCE_COLOR=2 turbo run format --continue",
-    "test": "FORCE_COLOR=2 turbo run test --continue",
-    "test:cov": "FORCE_COLOR=2 turbo run test:cov --continue",
-    "music": "FORCE_COLOR=2 pnpm --filter=@cocoa-discord/music-module bot"
+    "build": "turbo run build",
+    "check-types": "turbo run check-types --continue",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint --continue",
+    "format": "turbo run format --continue",
+    "test": "turbo run test --continue",
+    "test:cov": "turbo run test:cov --continue",
+    "music": "pnpm --filter=@cocoa-discord/music-module bot"
   },
   "devDependencies": {
     "@leomotors/config": "^1.0.1",
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/node": "^24.9.2",
-    "@typescript-eslint/eslint-plugin": "^8.46.2",
-    "@typescript-eslint/parser": "^8.46.2",
-    "eslint": "^9.39.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-sort-destructure-keys": "^2.0.0",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "eslint": "^9.39.1",
     "prettier": "^3.6.2",
     "turbo": "^2.6.0",
     "typescript": "^5.9.3",
-    "vite": "^7.1.12",
-    "vitest": "^4.0.6"
+    "vite": "^7.2.2",
+    "vitest": "^4.0.8"
   },
   "pnpm": {
     "overrides": {

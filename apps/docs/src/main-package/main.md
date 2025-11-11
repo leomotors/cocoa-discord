@@ -21,13 +21,13 @@ _Note_: This documentation/guide is partially done.
 
 _Full implementation_ [See Code](https://github.com/leomotors/cocoa-discord/blob/main/src/main/embed.ts)
 
-<<< @/../../../packages/cocoa-discord/src/main/embed.ts#CocoaEmbed
+<<< @/../../../packages/cocoa-discord/src/utils/embed.ts#CocoaEmbed
 
 ## [Function] setConsoleEvent
 
 _Full Implementation, does what it say_
 
-<<< @/../../../packages/cocoa-discord/src/main/readline.ts#setConsoleEvent
+<<< @/../../../packages/cocoa-discord/src/utils/readline.ts#setConsoleEvent
 
 Trigger handler everytime you press enter in the console
 

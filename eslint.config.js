@@ -12,6 +12,9 @@ export default defineConfig([
     },
   },
   {
+    ignores: ["**/*.g.ts"],
+  },
+  {
     files: ["**/*.ts", "**/*.tsx"],
     rules: {
       // TODO Turn these rules off

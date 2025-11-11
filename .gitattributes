@@ -1,2 +1,0 @@
-apps/docs/**/* linguist-documentation=false
-*.d.ts linguist-vendored=false
