@@ -40,13 +40,13 @@ describe("utils > activity (group loader)", () => {
       if (item!.url)
         expect(
           Activities[
-            ActivityType[item!.type!].toUpperCase() as keyof typeof Activities
+            ActivityType[item!.type!]!.toUpperCase() as keyof typeof Activities
           ],
         ).toContainEqual({ name: item!.name, url: item!.url });
       else
         expect(
           Activities[
-            ActivityType[item!.type!].toUpperCase() as keyof typeof Activities
+            ActivityType[item!.type!]!.toUpperCase() as keyof typeof Activities
           ],
         ).toContain(item!.name);
     }

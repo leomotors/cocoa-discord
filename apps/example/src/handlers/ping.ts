@@ -1,4 +1,4 @@
-import { SlashCommandHandler } from "cocoa-discord-v4";
+import { SlashCommandHandler } from "cocoa-discord";
 
 // Use local variable instead of class member (from v3)
 let pinged = 0;

@@ -21,13 +21,15 @@ export type AutocompleteHandler<T extends string | number> = (
   },
 ) => unknown;
 
+export type SupportedCommand =
+  | ChatInputApplicationCommandData
+  | RESTPostAPIChatInputApplicationCommandsJSONBody;
+
 export class SlashCommandHandler {
   private handlers: Map<
     string,
     {
-      command:
-        | ChatInputApplicationCommandData
-        | RESTPostAPIChatInputApplicationCommandsJSONBody;
+      command: SupportedCommand;
       handler: CallableFunction;
       autocomplete?: Record<string, CallableFunction>;
     }
@@ -180,5 +182,6 @@ export class SlashCommandHandler {
       value: focusedOption.value,
       verify: (options: unknown) => options,
     });
+    return true;
   }
 }

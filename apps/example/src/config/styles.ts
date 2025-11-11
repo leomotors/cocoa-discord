@@ -1,4 +1,4 @@
-import { EmbedStyle } from "cocoa-discord-v4/utils";
+import { EmbedStyle } from "cocoa-discord/utils";
 
 export const style = new EmbedStyle({
   author: "invoker",

@@ -2,7 +2,7 @@ import {
   ActivityGroupLoader,
   ActivityManager,
   CocoaIntent,
-} from "cocoa-discord-v4/utils";
+} from "cocoa-discord/utils";
 import { Client, Events } from "discord.js";
 
 import { environment } from "./config/environment";
